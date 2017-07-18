@@ -29,7 +29,7 @@
         <li><a href="../../index.html"><i class="home"></i>首页</a></li>
         <li><a href="../search.html"><i class="search"></i>搜索</a></li>
         <li><a href="../product_first_categroy.html"><i class="categroy"></i>分类</a></li>
-        <li><a href="javascript:void(0);"><i class="message"></i>消息<sup></sup></a></li>
+        <li><a href="javascript:void(0);"><i class="message"></i>消息</a></li>
         <li><a href="../cart_list.html"><i class="cart"></i>购物车<sup></sup></a></li>
         <li><a href="../member/member.html"><i class="member"></i>我的商城</a></li>
       </ul>
@@ -181,12 +181,16 @@
 	<% if (if_receive){ %>
 	<a href="javascript:void(0)" order_id="<%=order_id%>" class="btn key sure-order">确认收货</a>
 	<% } %>
+	<!--
 	<% if (if_evaluation) {%>
 	<a href="javascript:void(0)" order_id="<%=order_id%>" class="btn key evaluation-order">评价订单</a>
 	<% } %>
+	-->
+	<!--
 	<% if (if_evaluation_again){ %>
 	<a href="javascript:void(0)" order_id="<%=order_id%>" class="btn evaluation-again-order">追加评价</a>
 	<% } %>
+	-->
 	</div>
 </script> 
 <script type="text/javascript" src="../../js/zepto.min.js"></script> 

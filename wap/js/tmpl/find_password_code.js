@@ -14,13 +14,14 @@ $(function() {
 			return false
 		}
 		var c = $("#mobilecode").val();
-		if (c.length == 0) {
-			errorTipsShow("<p>请填写验证码<p>")
+		if (c.length == "") {
+			errorTipsShow("<p>请填写动态码<p>");
+			return false;
 		}
 		check_sms_captcha(e, c);
 		return false
 	});
-	loadSeccode();
+	
 	$("#refreshcode").bind("click", function() {
 		loadSeccode()
 	})

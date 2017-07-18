@@ -14,7 +14,6 @@ class indexControl extends BaseHomeControl{
 		
 		//把加密的用户id写入cookie  by 3 3h ao.co m 已换另一个方式，临时去掉此方法
 		$uid = intval(base64_decode($_COOKIE['uid']));
-
 		//抢购专区
 		Language::read('member_groupbuy');
         $model_groupbuy = Model('groupbuy');

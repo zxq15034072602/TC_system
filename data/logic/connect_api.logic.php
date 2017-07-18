@@ -112,12 +112,11 @@ class connect_apiLogic {
             $model_sms_log = Model('sms_log');
             $sms_log = $model_sms_log->getSmsInfo($condition);
             if(empty($sms_log) || ($sms_log['add_time'] < TIMESTAMP-1800)) {//半小时内进行验证为有效
-                $state = '动态码错误或已过期，重新输入1';
-				output_error($sms_log);
+                $state = '动态码错误或已过期，重新输入';
+				output_error($state);
             }
 			return true;
         }
-		output_error("1");
         return false;
     }
 	/**

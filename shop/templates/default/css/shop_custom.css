@@ -19,12 +19,12 @@
 /* 商家中心店铺装页面
 -------------------------------------*/
 .store-decoration-page .goods-list { filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#E5FFFFFF', endColorstr='#E5FFFFFF');background:rgba(255,255,255,0.9); width: 1200px; margin: 0 auto; font-size: 0; *word-spacing:-1px/*IE6、7*/;}
-.store-decoration-page .goods-list li { font-size: 12px; vertical-align: top; letter-spacing: normal; word-spacing: normal; text-align: center; display: inline-block; *display: inline/*IE7*/; width: 220px; padding: 15px; *zoom: 1;}
+.store-decoration-page .goods-list li { font-size: 12px; vertical-align: top; letter-spacing: normal; word-spacing: normal; text-align: center; display: inline-block; *display: inline/*IE7*/; width: 210px; padding: 15px; *zoom: 1;}
 .store-decoration-page .goods-list li:hover { background-color: #FFF;}
-.store-decoration-page .goods-thumb { width: 220px; height: 220px; }
-.store-decoration-page .goods-thumb a { line-height: 0; background-color: #FFF; text-align: center; vertical-align: middle; display: table-cell; *display: block; width: 220px; height: 220px; overflow: hidden;}
-.store-decoration-page .goods-thumb img { max-width: 220px; max-height: 220px; margin-top:expression(220-this.height/2); *margin-top:expression(100-this.height/2)/*IE6,7*/;}
-.store-decoration-page .goods-info { width: 220px; text-align: left; margin: 10px auto 0 auto;}
+.store-decoration-page .goods-thumb { width: 210px; height: 210px; }
+.store-decoration-page .goods-thumb a { line-height: 0; background-color: #FFF; text-align: center; vertical-align: middle; display: table-cell; *display: block; width: 210px; height: 210px; overflow: hidden;}
+.store-decoration-page .goods-thumb img { max-width: 210px; max-height: 210px; margin-top:expression(220-this.height/2); *margin-top:expression(100-this.height/2)/*IE6,7*/;}
+.store-decoration-page .goods-info { width: 210px; text-align: left; margin: 10px auto 0 auto;}
 .store-decoration-page .goods-info dt { display: block; line-height: 16px; height: 32px; overflow: hidden;}
 .store-decoration-page .goods-info dt a { color: #333;}
 .store-decoration-page .goods-info dt a:hover { color: #F87622;}

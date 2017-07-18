@@ -253,6 +253,30 @@ class store_deliverControl extends BaseSellerControl {
 		Tpl::output('e_url',$express[$order_info['extend_order_common']['shipping_express_id']]['e_url']);
 		Tpl::output('shipping_code',$order_info['shipping_code']);
 
+		$lsetting = Model('setting')->getListSetting();
+		$AppKey = $lsetting['kd100_appid'];
+		$AppKey2 = $lsetting['kd100_isuse'];
+		if($AppKey && $AppKey2){
+			$typeCom = $express[$order_info['extend_order_common']['shipping_express_id']]['e_code'];
+			$typeNu = $order_info['shipping_code'];
+			
+			$url = 'http://www.kuaidi100.com/applyurl?key='.$AppKey.'&com='.$typeCom.'&nu='.$typeNu;//
+			if (function_exists('curl_init') == 1){
+			  $curl = curl_init();
+			  curl_setopt ($curl, CURLOPT_URL, $url);
+			  curl_setopt ($curl, CURLOPT_HEADER,0);
+			  curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+			  curl_setopt ($curl, CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT']);
+			  curl_setopt ($curl, CURLOPT_TIMEOUT,5);
+			  $get_content = curl_exec($curl);
+			  curl_close ($curl);
+			}
+		}else{
+			$get_content = '';
+		}
+		//print_r($get_content);exit();
+		Tpl::output('shipping_express',$get_content);
+
 		self::profile_menu('search','search');
 		Tpl::showpage('store_deliver.detail');
 	}

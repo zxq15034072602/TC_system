@@ -192,7 +192,7 @@ class member_paymentControl extends mobileMemberControl {
             $logic_buy = Logic('buy_virtual');
             //使用充值卡支付
             if (!empty($post['rcb_pay'])) {
-                $order_info = $logic_buy->rcbPay($order_info, $post, $buyer_info);
+                $order_info = $logic_buy->_rcbPay($order_info, $post, $buyer_info);
             }
     
             //使用预存款支付

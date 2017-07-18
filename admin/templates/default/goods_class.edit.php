@@ -77,7 +77,7 @@
           <td class="vatop tips">必须为0-100的整数</td>
         </tr>
 	<!--v3-10 33hao.com-->
-	<tr>
+	<!--<tr>
           <td colspan="2" class="required"><label for="parent_id"><?php echo $lang['goods_class_add_sup_class'];?>:</label></td>
         </tr>
         <tr class="noborder">
@@ -90,7 +90,7 @@
               <?php } ?>
             </select></td>
           <td class="vatop tips"><span style="color:#ff0000">注意：切换不要把顶级分类整体移动到其它分类下；</span> <?php echo $lang['goods_class_add_sup_class_notice'];?></td>
-        </tr>
+        </tr>-->
         <tr>
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['goods_class_add_type'];?>:</label>
             <span>

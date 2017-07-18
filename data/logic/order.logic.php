@@ -1,8 +1,8 @@
 <?php
 /**
- * 实物订单行为 v3-b12
+ * 实物订单行为
  *
- * 好商城 V3 33hao.com
+ * 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class orderLogic {
@@ -98,13 +98,18 @@ class orderLogic {
      */
     public function changeOrderStateReceive($order_info, $role, $user = '', $msg = '') {
         try {
-            //v3-b11
+
+            //zmr>>>
             $member_id=$order_info['buyer_id'];
+			//zmr<<<
             $order_id = $order_info['order_id'];
             $model_order = Model('order');
 
             //更新订单状态
             $update_order = array();
+			//zmr>>>
+			$update_order['seller_money'] = floatval($order_info['seller_money']);
+			//zmr<<<
             $update_order['finnshed_time'] = TIMESTAMP;
             $update_order['order_state'] = ORDER_STATE_SUCCESS;
             $update = $model_order->editOrder($update_order,array('order_id'=>$order_id));
@@ -133,10 +138,11 @@ class orderLogic {
 			//邀请人获得返利积分 by 33ha o .com
 			$model_member = Model('member');
 			$inviter_id = $model_member->table('member')->getfby_member_id($member_id,'inviter_id');
+			
+			file_put_contents('zmrlog.txt',"是uu成功".$member_id,FILE_APPEND);
 			$inviter_name = $model_member->table('member')->getfby_member_id($inviter_id,'member_name');
 			$rebate_amount = ceil(0.01 * $order_info['order_amount'] * $GLOBALS['setting_config']['points_rebate']);
-			//v3-b12
-			Model('points')->savePointsLog('rebate',array('pl_memberid'=>$inviter_id,'pl_membername'=>$inviter_name,'pl_points'=>$rebate_amount),true);
+			Model('points')->savePointsLog('rebate',array('pl_memberid'=>$inviter_id,'pl_membername'=>$inviter_name,'rebate_amount'=>$rebate_amount),true);
 
             return callback(true,'操作成功');
         } catch (Exception $e) {
@@ -322,8 +328,7 @@ class orderLogic {
 
             $data = array();
             $data['api_pay_state'] = 1;
-	    // 33hao 
-	      $update = $model_order->editOrderPay($data,array('pay_sn'=>$order_list[0]['pay_sn']));
+			$update = $model_order->editOrderPay($data,array('pay_sn'=>$order_list[0]['pay_sn']));
             //$update = $model_order->editOrderPay($data,array('pay_sn'=>$order_info['pay_sn']));
             if (!$update) {
                 throw new Exception('更新支付单状态失败');

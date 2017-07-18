@@ -21,7 +21,7 @@ $(function() {
         e(t.datas);
         if (!$.isEmptyObject(t.datas.chat_goods)) {
             var a = t.datas.chat_goods;
-            var s = '<div class="nctouch-chat-product"> <a href="' + WapSiteUrl + "/tmpl/product_detail.html?goods_id=" + a.goods_id + '" target="_blank"><div class="goods-pic"><img src="' + a.pic36 + '" alt=""/></div><div class="goods-info"><div class="goods-name">' + a.goods_name + '</div><div class="goods-price">￥' + a.goods_promotion_price + "</div></div></a> </div>";
+            var s = '<div class="nctouch-chat-product"> <a href="' + WapSiteUrl + "/tmpl/product_detail.html?goods_id=" + a.goods_id + '" target="_blank"><div class="goods-pic"><img src="' + a.pic + '" alt=""/></div><div class="goods-info"><div class="goods-name">' + a.goods_name + '</div><div class="goods-price">￥' + a.goods_promotion_price + "</div></div></a> </div>";
             $("#chat_msg_html").append(s)
         }
     });

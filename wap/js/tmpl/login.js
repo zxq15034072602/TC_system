@@ -1,6 +1,9 @@
 $(function() {
     var e = getCookie("key");
     if (e) {
+		delCookie('username');
+		delCookie('userid');
+		delCookie('key');
         //window.location.href = WapSiteUrl + "/tmpl/member/member.html";
         return
     }
@@ -27,16 +30,16 @@ $(function() {
             }
         }
     });
-    var a = true;
+   // var a = true;
     $("#loginbtn").click(function() {
-        if (!$(this).parent().hasClass("ok")) {
+       /* if (!$(this).parent().hasClass("ok")) {
             return false
-        }
-        if (a) {
-            a = false
-        } else {
-            return false
-        }
+        }*/
+       // if (a) {
+       //     a = false
+      //  } else {
+      //      return false
+      //  }
         var e = $("#username").val();
         var i = $("#userpwd").val();
         var t = "wap";
@@ -51,7 +54,7 @@ $(function() {
                 },
                 dataType: "json",
                 success: function(e) {
-                    a = true;
+                    //a = true;
                     if (!e.datas.error) {
                         if (typeof e.datas.key == "undefined") {
                             return false
@@ -79,7 +82,4 @@ $(function() {
     $(".qq").click(function() {
         location.href = ApiUrl + "/index.php?act=connect&op=get_qq_oauth2"
     });
-	$(".weixin").click(function() {
-        location.href = ApiUrl + "/index.php?act=login&op=wxlogin"
-    })
 });

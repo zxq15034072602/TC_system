@@ -1,6 +1,6 @@
 //v3-b11
 $(function(){
-	var ac_id = GetQueryString('ac_id')
+	var ac_id = getQueryString('ac_id')
 	
 	if (ac_id=='') {
     	window.location.href = WapSiteUrl + '/index.html';

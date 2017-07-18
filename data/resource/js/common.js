@@ -1,6 +1,10 @@
 $(function(){
 	//search v4 by 33 hao.c om
-	var act = "store_list";
+	$.getUrlParam = function(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r!=null) return unescape(r[2]); return null;}
+	var act = $.getUrlParam('act');
 	if (act == "store_list"){
 		$('#search ul.tab li span').eq(0).html('店铺');
 		$('#search ul.tab li span').eq(1).html('商品');

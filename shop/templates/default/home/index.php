@@ -32,7 +32,7 @@
           </a> <a target="_blank" href="index.php?act=member_order&op=index" class="line">
           <p class="num"><?php echo $output['member_order_info']['order_noreceipt_count'];?></p>
           <p class="txt">待收货</p>
-          </a> <a target="_blank" href="index.php?act=member_refund&op=index">
+          </a> <a target="_blank" href="index.php?act=member_order&state_type=state_noeval">
           <p class="num"><?php echo $output['member_order_info']['order_noeval_count'];?></p>
           <p class="txt">待评价</p>
           </a> </div>
@@ -143,13 +143,13 @@
           <div class="tabs-panel">
             <div class="tabs-panel"> <a href="<?php echo urlShop('show_joinin', 'index');?>" title="商家入驻" class="store-join-btn" target="_blank">商家入驻</a> <a href="<?php echo urlShop('seller_login','show_login');?>" target="_blank" class="store-join-help"><i class="icon-cog"></i>登录商家中心</a> </div>
             <ul class="mall-news">
-              <?php if(!empty($output['show_article']['notice']['list']) && is_array($output['show_article']['notice']['list'])) { ?>
-              <?php foreach($output['show_article']['notice']['list'] as $val) { ?>
-              <li><i></i><a target="_blank" href="<?php echo empty($val['article_url']) ? urlMember('article', 'show',array('article_id'=> $val['article_id'])):$val['article_url'] ;?>" title="<?php echo $val['article_title']; ?>"><?php echo str_cut($val['article_title'],24);?> </a>
-                <time>(<?php echo date('Y-m-d',$val['article_time']);?>)</time>
-              </li>
-              <?php } ?>
-              <?php } ?>
+			  <?php if(!empty($output['show_article']['notice']['list']) && is_array($output['show_article']['notice']['list'])) { ?>
+			  <?php foreach($output['show_article']['notice']['list'] as $val) { ?>
+			  <li><i></i><a target="_blank" href="<?php echo empty($val['article_url']) ? urlShop('article', 'show',array('article_id'=> $val['article_id'])):$val['article_url'] ;?>" title="<?php echo $val['article_title']; ?>"><?php echo str_cut($val['article_title'],24);?> </a>
+				<time>(<?php echo date('Y-m-d',$val['article_time']);?>)</time>
+			  </li>
+			  <?php } ?>
+			  <?php } ?>
             </ul>
           </div>
         </div>

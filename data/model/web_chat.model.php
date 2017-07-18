@@ -347,4 +347,25 @@ class web_chatModel extends Model{
         return (int) $this->table('chat_msg')->where($condition)->count();
 	}
 	
+	/**
+     * 删除消息
+     *
+     * @param
+     * @return array
+     */
+    public function deleteMsg($condition) {
+		return $this->table('chat_msg')->where($condition)->delete();
+	}
+
+
+	/**
+     * 删除消息
+     *
+     * @param
+     * @return array
+     */
+    public function delChatMsg($condition) {
+		return $this->table('chat_msg')->where($condition)->delete();
+	}
+	
 }

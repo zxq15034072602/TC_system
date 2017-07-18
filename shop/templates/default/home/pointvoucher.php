@@ -7,6 +7,7 @@
   </div>
   <?php } ?>
   <div class="ncp-main-layout">
+    <?php if (intval($_GET['store_id']) <= 0) {?>
     <div class="ncp-category">
       <dl>
         <dt>选择分类：</dt>
@@ -84,6 +85,7 @@
         </dd>
       </dl>
       <!-- 高级搜索end --></div>
+      <?php }?>
     <?php if (!empty($output['voucherlist'])){?>
     <ul class="ncp-voucher-list">
       <?php foreach ($output['voucherlist'] as $k=>$v){?>
@@ -96,12 +98,17 @@
           </div>
           <dl class="value">
             <dt><?php echo $lang['currency'];?><em><?php echo $v['voucher_t_price'];?></em></dt>
-            <dd>购物满<?php echo $v['voucher_t_limit'];?>元可用</dd>
+            <dd><?php if ($v['voucher_t_limit'] > 0){?>购物满<?php echo $v['voucher_t_limit'];?>元可用<?php } else { ?>无限额代金券<?php } ?></dd>
             <dd class="time">有效期至<?php echo @date('Y-m-d',$v['voucher_t_end_date']);?></dd>
           </dl>
           <div class="point">
             <p class="required">需<em><?php echo $v['voucher_t_points'];?></em>积分</p>
             <p><em><?php echo $v['voucher_t_giveout'];?></em>人兑换</p>
+            <?php if ($v['voucher_t_mgradelimit'] > 0){ ?>
+            <span style="background-color: #e8e8e8;clear: left;display: block;float: right;font-family: Georgia,Arial;font-size: 18px;height: 53px;line-height: 53px;text-align: center;width: 40px;">
+                <?php echo $v['voucher_t_mgradelimittext'];?>
+            </span>
+            <?php } ?>
           </div>
           <div class="button"><a target="_blank" href="###" nc_type="exchangebtn" data-param='{"vid":"<?php echo $v['voucher_t_id'];?>"}' class="ncp-btn ncp-btn-red">立即兑换</a></div>
         </div>

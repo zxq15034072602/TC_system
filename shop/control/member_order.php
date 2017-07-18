@@ -2,7 +2,7 @@
 /**
  * 买家 我的实物订单
  *
- * by www.33hao.com 33hao 开发调试*/
+ * */
 
 
 defined('InShopNC') or exit('Access Invalid!');
@@ -257,7 +257,7 @@ class member_orderControl extends BaseMemberControl {
         //显示系统自动取消订单日期
         if ($order_info['order_state'] == ORDER_STATE_NEW) {
             //$order_info['order_cancel_day'] = $order_info['add_time'] + ORDER_AUTO_CANCEL_DAY * 24 * 3600;
-			// by 33hao.com
+			// by abc.com
 			$order_info['order_cancel_day'] = $order_info['add_time'] + ORDER_AUTO_CANCEL_DAY + 3 * 24 * 3600;
         }
 
@@ -272,7 +272,7 @@ class member_orderControl extends BaseMemberControl {
         //显示系统自动收获时间
         if ($order_info['order_state'] == ORDER_STATE_SEND) {
            //$order_info['order_confirm_day'] = $order_info['delay_time'] + ORDER_AUTO_RECEIVE_DAY * 24 * 3600;
-			//by 33hao.com
+			//by abc.com
 			$order_info['order_confirm_day'] = $order_info['delay_time'] + ORDER_AUTO_RECEIVE_DAY + 15 * 24 * 3600;
         }
 
@@ -328,7 +328,56 @@ class member_orderControl extends BaseMemberControl {
 		if($_GET['state_type'] == 'order_cancel') {
 		    $result = $this->_order_cancel($order_info, $_POST);
 		} else if ($_GET['state_type'] == 'order_receive') {
+			
+			if($order_info['order_state']>=40)
+			{
+				 showDialog($result['msg'],'reload','js');
+				 return;
+			}
+			//zmr>>>
+			$store_info=Model('store')->table('store')->where(array('store_id'=>$order_info['store_id']))->find();
+			$seller_info=Model('member')->table('member')->where(array('member_id'=>$store_info['member_id']))->find();
+			$refund=Model('refund_return')->table('refund_return')->where(array('order_id'=>$order_info['order_id'],'refund_state'=>3))->find();
+			$seller_money=0;
+            if($refund){
+                $seller_money=$order_info['order_amount']-$refund['refund_amount'];
+            }else{
+                $seller_money=$order_info['order_amount'];
+            }
+			//取得拥金金额
+			 $field = 'SUM(ROUND(goods_pay_price*commis_rate/100,2)) as commis_amount';
+			 $order_goods_condition['order_id'] = $order_id;
+		     $order_goods_condition['buyer_id'] = $_SESSION['member_id'];
+             $order_goods_info = $model_order->getOrderGoodsInfo($order_goods_condition,$field);
+             $commis_rate_totals_array[] = $order_goods_info['commis_amount'];
+			 $commis_amount_sum=floatval(array_sum($commis_rate_totals_array));
+			 if($commis_amount_sum>0)
+			 {
+				  $seller_money=$seller_money-$commis_amount_sum;
+			 }
+			$order_info['seller_money']=$seller_money;
 		    $result = $this->_order_receive($order_info, $_POST);
+			//检测是否货到付款方式
+			$is_offline=($order_info['payment_code']=="offline");
+		     if($seller_money>0&&$is_offline==false)
+			 {
+			    //变更会员预存款
+			   $model_pd = Model('predeposit');
+		       $data = array();
+			   $data['msg']="";
+			   if($commis_amount_sum>0)
+			   {
+				    $data['msg']=$commis_amount_sum;
+			   }
+		       $data['member_id'] = $store_info['member_id'];
+		       $data['member_name'] = $store_info['member_name'];
+		       $data['amount'] = $seller_money;
+		       $data['pdr_sn'] = $order_info['order_sn'];
+		       $model_pd->changePd('seller_money',$data);
+			 }
+			//zmr<<<
+			
+			
 		} else if (in_array($_GET['state_type'],array('order_delete','order_drop','order_restore'))){
 		    $result = $this->_order_recycle($order_info, $_GET);
 		} else {

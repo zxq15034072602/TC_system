@@ -179,7 +179,7 @@
                                        <?php echo $val['pic_list']['34']['pic_name'];?></a></dt>
 									   <?php } ?>
                                           <dd class="banner-thumb">
-                                          	<a href="<?php echo $val['pic_list']['11']['pic_url'];?>" title="<?php echo $val['pic_list']['34']['pic_name'];?>" class="a1" target="_blank">
+                                          	<a href="<?php echo $val['pic_list']['34']['pic_url'];?>" title="<?php echo $val['pic_list']['34']['pic_name'];?>" class="a1" target="_blank">
                                         <img src="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif" alt="<?php echo $val['pic_list']['34']['pic_name'];?>" data-url="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_list']['34']['pic_img'];?>" rel="lazy" /></a></dd>
                                         </dl>
                                       </li>

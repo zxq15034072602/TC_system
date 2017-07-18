@@ -120,7 +120,7 @@ h6 { font-size:12px;}
 
 .layout-header { background: url(../images/mac/bg_position.gif) no-repeat 0 0; text-align:left; width:100%; height: 91px; position:relative; z-index:1; zoom:1;}
 
-.top-nav { background: url(../images/mac/bg_position.png) no-repeat 0px -100px; width:320px; height: 28px; position: absolute; z-index:1; top: 16px; right: 8px;}
+.top-nav { background: url(../images/mac/bg_position.png) no-repeat 0px -100px; width:420px;_width:expression((documentElement.clientWidth >420) ? "420px" : "auto" );/* IE6 */ height: 28px; position: absolute; z-index:1; top: 16px; right: 8px;}
 	.top-nav ul { line-height: 20px; color:#999; height:20px; padding:5px 4px 3px 10px;}
 		.top-nav li { color:#565D68; background: url(../images/mac/bg_position.png) no-repeat scroll -638px -99px; display:inline; padding-left: 4px; margin-left: 2px; float: left;}
 			.top-nav li a { color:#565D68; line-height:16px; height:16px; border:dotted 1 #000; padding-left: 3px;}

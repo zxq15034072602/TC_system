@@ -384,7 +384,7 @@ class store_transportControl extends BaseSellerControl {
                 //if (checkPlatformStore()) {
                     $menu_array[] = array(
                         'menu_key' => 'offpay_area',
-                        'menu_name' => '配送地区',
+                        'menu_name' => '货到付款地区',
                         'menu_url' => 'index.php?act=store_transport&op=offpay_area'
                     );
                 //}

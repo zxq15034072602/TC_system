@@ -6,7 +6,7 @@
   <ul class="menu">
     <?php if (!empty($output['show_goods_class']) && is_array($output['show_goods_class'])) { $i = 0; ?>
     <?php foreach ($output['show_goods_class'] as $key => $val) { $i++; ?>
-    <li cat_id="<?php echo $val['gc_id'];?>" class="<?php echo $i%2==1 ? 'odd':'even';?>" <?php if($i>11){?>style="display:none;"<?php }?>>
+    <li cat_id="<?php echo $val['gc_id'];?>" class="<?php echo $i%2==1 ? 'odd':'even';?>" <?php if($i>14){?>style="display:none;"<?php }?>>
       <div class="class">
       <span class="arrow"></span>
         <?php if(!empty($val['pic'])) { ?>
@@ -62,10 +62,10 @@
           <?php }?>
           <div class="adv-promotions">
           <?php if($val['cn_adv1'] != '') { ?>
-          <a <?php echo $val['cn_adv1_link'] == '' ? 'href="javascript:;"' : 'target="_blank" href="'.$val['cn_adv1_link'].'"';?>><img src="<?php echo $val['cn_adv1'];?>" data-url="<?php echo $val['cn_adv1'];?>" class="scrollLoading" /></a>
+          <a <?php echo $val['cn_adv1_link'] == '' ? 'href="javascript:;"' : 'target="_blank" href="'.$val['cn_adv1_link'].'"';?>><img src="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif" rel="lazy" data-url="<?php echo $val['cn_adv1'];?>" /></a>
           <?php } ?>
           <?php if($val['cn_adv2'] != '') { ?>
-          <a <?php echo $val['cn_adv2_link'] == '' ? 'href="javascript:;"' : 'target="_blank" href="'.$val['cn_adv2_link'].'"';?>><img src="<?php echo $val['cn_adv2'];?>" data-url="<?php echo $val['cn_adv2'];?>" class="scrollLoading" /></a>
+          <a <?php echo $val['cn_adv2_link'] == '' ? 'href="javascript:;"' : 'target="_blank" href="'.$val['cn_adv2_link'].'"';?>><img src="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif" rel="lazy" data-url="<?php echo $val['cn_adv2'];?>" /></a>
           <?php } ?></div>
         </div>
       </div>

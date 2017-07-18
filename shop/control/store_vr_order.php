@@ -4,7 +4,7 @@
  *
  *
  *
- **by 好商城V3 www.33hao.com 运营版*/
+ ***/
 
 
 defined('InShopNC') or exit('Access Invalid!');
@@ -96,7 +96,7 @@ class store_vr_orderControl extends BaseSellerControl {
         //显示系统自动取消订单日期
         if ($order_info['order_state'] == ORDER_STATE_NEW) {
             //$order_info['order_cancel_day'] = $order_info['add_time'] + ORDER_AUTO_CANCEL_DAY * 24 * 3600;
-			// by 33hao.com
+			// by abc.com
 			$order_info['order_cancel_day'] = $order_info['add_time'] + ORDER_AUTO_CANCEL_DAY + 3 * 24 * 3600;
         }
 
@@ -182,10 +182,71 @@ class store_vr_orderControl extends BaseSellerControl {
             $update['vr_state'] = 1;
             $update['vr_usetime'] = TIMESTAMP;
             $update = $model_vr_order->editOrderCode($update, array('vr_code' => $_GET['vr_code']));
-
+			
+			
+			
+			
+			
+			
+			
+			//zmr>v90
+			$order_info = $model_vr_order->getOrderInfo(array('order_id'=>$vr_code_info['order_id']));
+			if($order_info['order_state']>=40)
+			{
+				 return array('error' => '该兑换码已被使用');
+				 return;
+			}
+			$store_info=Model('store')->table('store')->where(array('store_id'=>$order_info['store_id']))->find();
+			$seller_info=Model('member')->table('member')->where(array('member_id'=>$store_info['member_id']))->find();
+			$refund=Model('refund_return')->table('refund_return')->where(array('order_id'=>$order_info['order_id'],'refund_state'=>3))->find();
+			$seller_money=0;
+            if($refund){
+                $seller_money=$order_info['order_amount']-$refund['refund_amount'];
+            }else{
+                $seller_money=$order_info['order_amount'];
+            }
+			//取得拥金金额
+			 $commis_amount_sum=0;
+			 $commis_rate=floatval($vr_code_info['commis_rate'])/100;
+			 if($commis_rate>0&&$commis_rate<=1)
+			 {
+			   $commis_amount_sum=floatval($vr_code_info['pay_price'])*$commis_rate;
+			 }
+			 if($commis_amount_sum>0)
+			 {
+				  $seller_money=$seller_money-$commis_amount_sum;
+			 }
+			$order_info['seller_money']=$seller_money;
+			
+			//zmr<v90
+			
+			
+			
             //如果全部兑换完成，更新订单状态
             Logic('vr_order')->changeOrderStateSuccess($vr_code_info['order_id']);
-
+			
+			
+			
+			//zmr>v90
+			 if($seller_money>0)
+			 {
+			    //变更会员预存款
+			   $model_pd = Model('predeposit');
+		       $data = array();
+			   $data['msg']="";
+			   if($commis_amount_sum>0)
+			   {
+				    $data['msg']=$commis_amount_sum;
+			   }
+		       $data['member_id'] = $store_info['member_id'];
+		       $data['member_name'] = $store_info['member_name'];
+		       $data['amount'] = $seller_money;
+		       $data['pdr_sn'] = $order_info['order_sn'];
+		       $model_pd->changePd('seller_money',$data);
+			 }
+			//zmr<v90
+			
+			
             if ($update) {
                 //取得返回信息
                 $order_info = $model_vr_order->getOrderInfo(array('order_id'=>$vr_code_info['order_id']));

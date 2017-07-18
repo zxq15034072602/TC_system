@@ -26,7 +26,7 @@ class connectControl extends mobileHomeControl{
      * QQ登陆
      */
     public function get_qq_oauth2Op() {
-		$code_url = MOBILE_SITE_URL.'/api.php?act=toqq';
+		$code_url = BASE_SITE_URL.'/shop/api.php?act=mobiletoqq';
 		@header("location:$code_url");
 	}
 
@@ -44,8 +44,8 @@ class connectControl extends mobileHomeControl{
             $condition['log_ip'] = getIp();
             $condition['log_type'] = $log_type;
             $sms_log = $model_sms_log->getSmsInfo($condition);
-            if(!empty($sms_log) && ($sms_log['add_time'] > TIMESTAMP-10)) {//同一IP十分钟内只能发一条短信
-                $state = '同一IP地址十分钟内，请勿多次获取动态码！';
+            if(!empty($sms_log) && ($sms_log['add_time'] > TIMESTAMP-1800)) {//同一IP十分钟内只能发一条短信
+                $state = '同一IP地址半小时内，请勿多次获取动态码！';
             } else {
                 $state = 'true';
                 $log_array = array();
@@ -103,8 +103,7 @@ class connectControl extends mobileHomeControl{
                         $log_array['log_type'] = $log_type;
                         $log_array['add_time'] = time();
                         $model_sms_log->addSms($log_array);
-						
-						output_data(array('sms_time'=>10,'error'=>'1'));
+						output_data(array('sms_time'=>10,'error'=>'发送成功'));
                     } else {
                         $state = '手机短信发送失败';
                     }
@@ -122,9 +121,7 @@ class connectControl extends mobileHomeControl{
         $state = '验证失败';
         $phone = $_GET['phone'];
         $captcha = $_GET['captcha'];
-        //if (strlen($phone) == 11 && strlen($captcha) == 6){
-		if (strlen($phone) == 11){
-			output_data("11");
+        if (strlen($phone) == 11){
             $state = 'true';
             $condition = array();
             $condition['log_phone'] = $phone;
@@ -165,7 +162,7 @@ class connectControl extends mobileHomeControl{
 			$new_password = md5($_POST['password']);
 			$model_member->editMember(array('member_id'=> $member['member_id']),array('member_passwd'=> $new_password));
 			
-			$token = $this->_get_token($member['member_id'], $member['member_name'], $_POST['client']);
+			$token = $this->_get_token($member['member_id'], $member['member_name'], 'wap');
             if($token) {
                 output_data(array('username' => $member_info['member_name'], 'key' => $token));
             }
@@ -207,7 +204,7 @@ class connectControl extends mobileHomeControl{
         $password = $_POST['password'];
         $client = $_POST['client'];
         $logic_connect_api = Logic('connect_api');
-        //$state_data = $logic_connect_api->smsPassword($phone, $captcha, $password, $client);
+        $state_data = $logic_connect_api->smsPassword($phone, $captcha, $password, $client);
         $this->connect_output_data($state_data);
     }
 

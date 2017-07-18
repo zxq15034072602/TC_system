@@ -4,7 +4,7 @@
  *
  *
  *
- **by 好商城V3 www.33hao.com 运营版*/
+ ***/
 
 defined('InShopNC') or exit('Access Invalid!');
 class returnControl extends SystemControl{
@@ -102,7 +102,9 @@ class returnControl extends SystemControl{
 
 				showMessage(Language::get('nc_common_save_succ'),'index.php?act=return&op=return_manage');
 			} else {
-				showMessage(Language::get('nc_common_save_fail'));
+				//zmr>>>
+				showMessage(Language::get('nc_common_save_fail').",可能商家可回扣资金不足");
+				//zmr<<<
 			}
 		}
 		Tpl::output('return',$return);

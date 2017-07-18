@@ -242,12 +242,22 @@ $(function(){
 	// 推荐商品异步显示
     $('div[nctype="booth_goods"]').load('<?php echo urlShop('search', 'get_booth_goods', array('cate_id' => $_GET['cate_id']))?>', function(){
         $(this).show();
+		$("img[rel='lazy']").lazyload({
+		threshold: 200,
+        failure_limit: 10,
+		skip_invisible : false,
+        effect: "fadeIn"
     });
 	<?php }?>
 	<?php if(isset($_GET['cate_id']) && intval($_GET['cate_id']) > 0){?>
 	// 推荐商品异步显示
     $('div[id="gc_goods_recommend_div"]').load('<?php echo urlShop('search', 'get_hot_goods', array('cate_id' => $_GET['cate_id']))?>', function(){
         $(this).show();
+		$("img[rel='lazy']").lazyload({
+		threshold: 200,
+        failure_limit: 10,
+		skip_invisible : false,
+        effect: "fadeIn"
     });
 	<?php }?>
 	//浏览历史处滚条
@@ -256,11 +266,16 @@ $(function(){
 	//猜你喜欢
 	$('#guesslike_div').load('<?php echo urlShop('search', 'get_guesslike', array()); ?>', function(){
         $(this).show();
+		$("img[rel='lazy']").lazyload({
+		threshold: 200,
+        failure_limit: 10,
+		skip_invisible : false,
+        effect: "fadeIn"
     });
     $('#priceBtn').click(function(){
         var priceMin = $('#priceMin').val();
         var priceMax = $('#priceMax').val();
-        var url = window.location.href;
+        var url = "<?php echo SHOP_SITE_URL;?>/?act=search&keyword=<?php echo $_GET['keyword'];?>";
         var url = url + "&priceMin=" + priceMin + "&priceMax=" + priceMax;
         window.location.href = url;
     });

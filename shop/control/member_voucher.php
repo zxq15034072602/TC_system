@@ -58,7 +58,65 @@ class member_voucherControl extends BaseMemberControl{
         Tpl::showpage('member_voucher.list');
     }
 
-	/**
+    /**
+     * 通过卡密绑定代金券
+     */
+    public function voucher_bindingOp()
+    {
+        if (chksubmit(false, true)) {
+            $obj_validate = new Validate();
+            $obj_validate->validateparam = array(
+                array(
+                    "input" => $_POST["pwd_code"],
+                    "require" => "true",
+                    "message" => '请输入代金券卡密'
+                )
+            );
+            $error = $obj_validate->validate();
+            if ($error != '') {
+                showDialog($error);
+            }
+            // 查询代金券
+            $model_voucher = Model('voucher');
+            $where = array();
+            $where['voucher_pwd'] = md5($_POST["pwd_code"]);
+            $voucher_info = $model_voucher->getVoucherInfo($where);
+            if (! $voucher_info) {
+                showDialog('代金券卡密错误');
+            }
+            if (intval($_SESSION['store_id']) == $voucher_info['voucher_store_id']) {
+                showDialog('不能领取自己店铺的代金券');
+            }
+            if ($voucher_info['voucher_owner_id'] > 0) {
+                showDialog('该代金券卡密已被使用，不可重复领取');
+            }
+            $where = array();
+            $where['voucher_id'] = $voucher_info['voucher_id'];
+            $update_arr = array();
+            $update_arr['voucher_owner_id'] = $_SESSION['member_id'];
+            $update_arr['voucher_owner_name'] = $_SESSION['member_name'];
+            $update_arr['voucher_active_date'] = time();
+            $result = $model_voucher->editVoucher($update_arr, $where, $_SESSION['member_id']);
+            if ($result) {
+                // 更新代金券模板
+                $update_arr = array();
+                $update_arr['voucher_t_giveout'] = array(
+                    'exp',
+                    'voucher_t_giveout+1'
+                );
+                $model_voucher->editVoucherTemplate(array(
+                    'voucher_t_id' => $voucher_info['voucher_t_id']
+                ), $update_arr);
+                showDialog('代金券领取成功', 'index.php?act=member_voucher&op=voucher_list', 'succ');
+            } else {
+                showDialog('代金券领取失败');
+            }
+        }
+        $this->profile_menu('voucher_binding');
+        Tpl::showpage('member_voucher.binding');
+    }
+
+    /**
 	 * 用户中心右边，小导航
 	 *
 	 * @param string	$menu_type	导航类型
@@ -69,6 +127,8 @@ class member_voucherControl extends BaseMemberControl{
 	private function profile_menu($menu_key='') {
 		$menu_array = array(
 			1=>array('menu_key'=>'voucher_list','menu_name'=>Language::get('nc_myvoucher'),'menu_url'=>'index.php?act=member_voucher&op=voucher_list'),
+			2=>array('menu_key'=>'voucher_binding','menu_name'=>'领取代金券','menu_url'=>'index.php?act=member_voucher&op=voucher_binding'),
+
 		);
 		Tpl::output('member_menu',$menu_array);
 		Tpl::output('menu_key',$menu_key);

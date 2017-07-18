@@ -491,4 +491,14 @@ class queueLogic {
             return callback(false);
         }
     }
+	/**
+     * 消费记录
+     */
+    public function addConsume($data) {
+          if (Model('consume')->addConsume($data)) {
+              return callback(true);
+          } else {
+              return callback(false);
+          }
+    }
 }

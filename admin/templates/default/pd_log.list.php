@@ -8,7 +8,7 @@
         <li><a href="index.php?act=predeposit&op=predeposit"><span><?php echo $lang['admin_predeposit_rechargelist']?></span></a></li>
         <li><a href="index.php?act=predeposit&op=pd_cash_list"><span><?php echo $lang['admin_predeposit_cashmanage']; ?></span></a></li>    
         <li><a href="JavaScript:void(0);" class="current"><span><?php echo $lang['nc_member_predepositlog'];?></span></a></li>
-        <li><a href="index.php?act=predeposit&op=predeposit_add"><span>µ÷½ÚÔ¤´æ¿î</span></a></li>
+        <li><a href="index.php?act=predeposit&op=predeposit_add"><span>è°ƒèŠ‚é¢„å­˜æ¬¾</span></a></li>
       </ul>
     </div>
   </div>

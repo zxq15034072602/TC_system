@@ -5,7 +5,7 @@
  *
  *
  *
- * by 33hao 好商城V3  www.33hao.com 开发
+ 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class vr_orderModel extends Model {
@@ -72,6 +72,9 @@ class vr_orderModel extends Model {
             $order_code[$i]['pay_price'] = $each_pay_price;
             $order_code[$i]['vr_indate'] = $order_info['vr_indate'];
             $order_code[$i]['vr_invalid_refund'] = $order_info['vr_invalid_refund'];
+			//zmr>v90
+			$order_code[$i]['commis_rate'] = $order_info['commis_rate'];
+			//zmr>v90
         }
 
         //将因舍出小数部分出现的差值补到最后一个商品的实际成交价中

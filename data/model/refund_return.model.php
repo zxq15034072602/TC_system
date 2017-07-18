@@ -1,11 +1,11 @@
 <?php
 /**
- * 退款退货 v3-b12
+ * 退款退货
  *
  *
  *
  *
- * by 33hao 好商城V3  www.33hao.com 开发
+ 
  */
 
 
@@ -136,10 +136,30 @@ class refund_returnModel extends Model{
 		if ($refund_id > 0) {
 		    Language::read('model_lang_index');
 			$order_id = $refund['order_id'];//订单编号
-			$field = 'order_id,buyer_id,buyer_name,store_id,order_sn,order_amount,payment_code,order_state,refund_amount,rcb_amount';
-    		$model_order = Model('order');
+			//zmr>>>
+			$field = 'order_id,buyer_id,buyer_name,store_id,order_sn,order_amount,payment_code,order_state,refund_amount,rcb_amount,seller_money';
+    		//zmr<<<
+			$model_order = Model('order');
     		$order = $model_order->getOrderInfo(array('order_id'=> $order_id),array(),$field);
-
+			
+			//zmr>>>
+			//处理商城退款
+			$order_info=$order;
+			$seller_money=floatval($order_info['seller_money']);
+			$store_info=Model('store')->table('store')->where(array('store_id'=>$order_info['store_id']))->find();
+			$seller_info=Model('member')->table('member')->where(array('member_id'=>$store_info['member_id']))->find();
+			$seller_available_predeposit=floatval($seller_info['available_predeposit']);
+			if($seller_money>$refund['refund_amount'])
+			{ 
+			    //设置真正的退款值
+				$seller_money=floatval($refund['refund_amount']);
+			}
+			if($seller_money>$seller_available_predeposit)
+			{
+				//如果商家的资金不足
+				return false;	
+			}
+			//zmr<<<
 			$model_predeposit = Model('predeposit');
     	    try {
     	        $this->beginTransaction();
@@ -168,13 +188,26 @@ class refund_returnModel extends Model{
     	                $log_array['amount'] = $predeposit_amount;
     	            }
                     $state = $model_predeposit->changePd('refund', $log_array);//增加买家可用预存款金额
+					
                 }
+				//zmr>>>
+				//检测是否货到付款方式
+			    $is_offline=($order_info['payment_code']=="offline");
+				if($seller_money>0&&$is_offline==false)
+				{
+					$log_array = array();
+					$log_array['member_id'] = $seller_info['member_id'];
+					$log_array['member_name'] = $seller_info['member_name'];
+					$log_array['order_sn'] = $order['order_sn'];
+					$log_array['amount'] = $seller_money;//退预存款金额
+                    $state = $model_predeposit->changePd('seller_refund', $log_array);//减少家可用预存款金额
+				}
+				//zmr<<<
 
     			$order_state = $order['order_state'];
     			$model_trade = Model('trade');
     			$order_paid = $model_trade->getOrderState('order_paid');//订单状态20:已付款
-				//v3-b12
-    			if ($state && $order_state >= $order_paid) {
+    			if ($state && $order_state == $order_paid) {
             	    Logic('order')->changeOrderStateCancel($order, 'system', '系统', '商品全部退款完成取消订单',false);
             	}
     			if ($state) {
@@ -199,68 +232,16 @@ class refund_returnModel extends Model{
 		return false;
 	}
 
-    /**
-     * 增加退款详细
-     *
-     * @param
-     * @return int
-     */
-    public function addDetail($refund,$order) {
-        $detail_array = array();
-        $detail_array['refund_id'] = $refund['refund_id'];
-        $detail_array['order_id'] = $refund['order_id'];
-        $detail_array['batch_no'] = date('YmdHis').$refund['refund_id'];//批次号。支付宝要求格式为：当天退款日期+流水号。
-        $detail_array['refund_amount'] = ncPriceFormat($refund['refund_amount']);
-        $detail_array['refund_code'] = 'predeposit';
-        $detail_array['refund_state'] = '1';
-        $detail_array['add_time'] = time();
-        if (!empty($order['trade_no']) && in_array($order['payment_code'],array('wxpay','wx_jsapi','wx_saoma'))) {//微信支付
-            $api_file = BASE_PATH.DS.'api'.DS.'refund'.DS.'wxpay'.DS.'WxPay.Config.php';
-            if ($order['payment_code'] == 'wxpay') {
-                $api_file = BASE_PATH.DS.'api'.DS.'refund'.DS.'wxpay'.DS.'WxPayApp.Config.php';
-            }
-            include $api_file;
-            $apiclient_cert = WxPayConfig::SSLCERT_PATH;
-            $apiclient_key = WxPayConfig::SSLKEY_PATH;
-            if (!empty($apiclient_cert) && !empty($apiclient_key)) {//验证商户证书路径设置
-                $detail_array['refund_code'] = $order['payment_code'];
-            }
-        }
-        if (!empty($order['trade_no']) && $order['payment_code'] == 'alipay') {//支付宝
-            $detail_array['refund_code'] = 'alipay';
-        }
-        $result = $this->table('refund_detail')->insert($detail_array);
-        return $result;
-    }
-
-    /**
-     * 增加退款退货原因
-     *
-     * @param
-     * @return int
-     */
-    public function addReason($reason_array) {
-        $reason_id = $this->table('refund_reason')->insert($reason_array);
-        return $reason_id;
-    }
-
-    /**
-     * 修改退款详细记录
-     *
-     * @param
-     * @return bool
-     */
-    public function editDetail($condition, $data) {
-        if (empty($condition)) {
-            return false;
-        }
-        if (is_array($data)) {
-            $result = $this->table('refund_detail')->where($condition)->update($data);
-            return $result;
-        } else {
-            return false;
-        }
-    }
+	/**
+	 * 增加退款退货原因
+	 *
+	 * @param
+	 * @return int
+	 */
+	public function addReason($reason_array) {
+		$reason_id = $this->table('refund_reason')->insert($reason_array);
+		return $reason_id;
+	}
 
 	/**
 	 * 修改退款退货原因记录
@@ -350,68 +331,7 @@ class refund_returnModel extends Model{
 	public function getRefundsn($store_id) {
 		$result = mt_rand(100,999).substr(100+$store_id,-3).date('ymdHis');
 		return $result;
-    }
-
-    /**
-     * 退款详细记录
-     *
-     * @param
-     * @return array
-     */
-    public function getDetailInfo($condition = array(), $fields = '*') {
-        return $this->table('refund_detail')->where($condition)->field($fields)->find();
-    }
-
-    /**
-     * 订单在线退款计算
-     *
-     * @param
-     * @return array
-     */
-    public function getPayDetailInfo($detail_array) {
-        $condition = array();
-        $condition['order_id'] = $detail_array['order_id'];
-        $model_order = Model('order');
-        $order = $model_order->getOrderInfo($condition);//订单详细
-        $order['pay_amount'] = ncPriceFormat($order['order_amount']-$order['rcb_amount']-$order['pd_amount']);//在线支付金额=订单总价格-充值卡支付金额-预存款支付金额
-        $out_amount = $order['pay_amount']-$order['refund_amount'];//可在线退款金额
-        
-        $refund_amount = $detail_array['refund_amount'];//本次退款总金额
-        if ($refund_amount > $out_amount) {
-            $refund_amount = $out_amount;
-        }
-        $order['pay_refund_amount'] = ncPriceFormat($refund_amount);
-        $condition = array();
-        $payment_config = array();
-        $condition['payment_code'] = $order['payment_code'];
-        if(in_array($order['payment_code'],array('wxpay','wx_jsapi'))) {//手机客户端微信支付
-            if($order['payment_code'] == 'wx_jsapi') {
-                $condition['payment_code'] = 'wxpay_jsapi';
-            }
-            $model_payment = Model('mb_payment');
-            $payment_info = $model_payment->getMbPaymentInfo($condition);//接口参数
-            $payment_info = $payment_info['payment_config'];
-            if($order['payment_code'] == 'wxpay') {
-                $payment_config['appid'] = $payment_info['wxpay_appid'];
-                $payment_config['mchid'] = $payment_info['wxpay_partnerid'];
-                $payment_config['key'] = $payment_info['wxpay_partnerkey'];
-            }
-            if($order['payment_code'] == 'wx_jsapi') {
-                $payment_config['appid'] = $payment_info['appId'];
-                $payment_config['mchid'] = $payment_info['partnerId'];
-                $payment_config['key'] = $payment_info['apiKey'];
-            }
-        } else {
-            if($order['payment_code'] == 'wx_saoma') {
-                $condition['payment_code'] = 'wxpay';
-            }
-            $model_payment = Model('payment');
-            $payment_info = $model_payment->getPaymentInfo($condition);//接口参数
-            $payment_config = unserialize($payment_info['payment_config']);
-        }
-        $order['payment_config'] = $payment_config;
-        return $order;
-    }
+	}
 
 	/**
 	 * 取一条记录
@@ -638,37 +558,19 @@ class refund_returnModel extends Model{
         return $this->table('refund_return')->where($condition)->count();
     }
 
-    /**
-     * 取得退款数量
-     * @param unknown $condition
-     */
-    public function getRefundCount($condition) {
-        $condition['refund_type'] = 1;
-        return $this->table('refund_return')->where($condition)->count();
-    }
-
-    /**
-     * 取得退款退货数量
-     * @param unknown $condition
-     */
-    public function getReturnCount($condition) {
-        $condition['refund_type'] = 2;
-        return $this->table('refund_return')->where($condition)->count();
-    }
-
-    /*
-     *  获得退货退款的店铺列表
-     *  @param array $complain_list
-     *  @return array
-     */
-    public function getRefundStoreList($list) {
+	/*
+	 *  获得退货退款的店铺列表
+	 *  @param array $complain_list
+	 *  @return array
+	 */
+	public function getRefundStoreList($list) {
         $store_ids = array();
-        if (!empty($list) && is_array($list)) {
-            foreach ($list as $key => $value) {
-                $store_ids[] = $value['store_id'];//店铺编号
-            }
-        }
-        $field = 'store_id,store_name,member_id,member_name,seller_name,store_company_name,store_qq,store_ww,store_phone,store_domain';
+	    if (!empty($list) && is_array($list)) {
+    	    foreach ($list as $key => $value) {
+    	        $store_ids[] = $value['store_id'];//店铺编号
+    	    }
+	    }
+	    $field = 'store_id,store_name,member_id,member_name,seller_name,store_company_name,store_qq,store_ww,store_phone,store_domain';
         return Model('store')->getStoreMemberIDList($store_ids, $field);
 	}
 

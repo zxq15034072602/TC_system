@@ -46,6 +46,13 @@ if($_GET['act'] == 'adv'){
 	}else{
 		include 'api/qq/oauth/qq_login.php';
 	}
+}elseif ($_GET['act'] == 'mobiletoqq'){
+	define('SHOP_SITE_URL',$config['mobile_site_url']);
+	if ($_GET['op'] == 'g'){
+		include 'api/qq/oauth/qq_callback.php';
+	}else{
+		include 'api/qq/oauth/qq_login.php';
+	}
 }elseif ($_GET['act'] == 'tosina'){
 	define('SHOP_SITE_URL',$site_url);
 	if ($_GET['op'] == 'g'){

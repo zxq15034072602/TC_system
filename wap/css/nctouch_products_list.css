@@ -159,3 +159,14 @@
 .favorites-store-list li .store-info dd span { display: inline-block; font-size: 0.55rem; color: #888;}
 .favorites-store-list li .store-info dd span em { font-size: 0.65rem; font-weight: 600; margin: 0 0.1rem; color: #000;}
 .favorites-store-list li .del-fav {position: absolute; z-index: 2; right: 0.5rem; top: 1rem; width: 1rem; height: 1rem; margin: 0; background-image: url(../images/del_b.png); background-repeat: no-repeat; background-position: 50% 50%; background-size: 65%; opacity: 0.75;}
+/*店铺分页列表*/
+.pagination{text-align: center;font-size: 0.45rem; }
+.pagination a{color: #6e6e6e;}
+.pagination a.disabled{color:#ccc;}
+.pre-page,.page-warp,.next-page,.pagew-size{border: 1px solid #ccc;cursor: pointer;padding: 5px 10px;background: #fff;}
+.pre-page,.page-warp,.next-page{display: inline-block;}
+.pagination select {padding:4px 8px;border: 1px solid #ccc;vertical-align: bottom;}
+.page-warp{width: 80px;position: relative;text-align: center;z-index: 10;}
+.pagew-size{position: absolute;width: 80px;z-index: 10;left: -1px;bottom: 30px;display: none;}
+.pagew-size li{border-bottom: 1px dashed #ddd;padding: 4px 0px;}
+.pagew-size li a{display:block;}

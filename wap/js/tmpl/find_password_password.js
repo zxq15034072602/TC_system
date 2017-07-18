@@ -35,7 +35,7 @@ $(function() {
 		if ($.sValid()) {
 			$.ajax({
 				type: "post",
-				url: ApiUrl + "/index.php?act=connect&op=find_password",
+				url: ApiUrl + "/index.php?act=connect&op=find_password_ww",
 				data: {
 					phone: e,
 					captcha: a,
@@ -47,7 +47,8 @@ $(function() {
 					if (!e.datas.error) {
 						addCookie("username", e.datas.username);
 						addCookie("key", e.datas.key);
-						location.href = WapSiteUrl + "/tmpl/member/member.html"
+						errorTipsShow("<p>重设密码成功，正在跳转...</p>");
+						setTimeout("location.href = WapSiteUrl+'/tmpl/member/member.html'",3000);
 					} else {
 						errorTipsShow("<p>" + e.datas.error + "</p>")
 					}

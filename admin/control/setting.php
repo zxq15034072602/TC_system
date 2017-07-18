@@ -11,6 +11,7 @@ class settingControl extends SystemControl{
 	private $links = array(
 		array('url'=>'act=setting&op=base','lang'=>'web_set'),
 		array('url'=>'act=setting&op=dump','lang'=>'dis_dump'),
+		array('url'=>'act=setting&op=kd100','lang'=>'kd100Settings'),
 	);
 	public function __construct(){
 		parent::__construct();
@@ -169,6 +170,46 @@ class settingControl extends SystemControl{
 		Tpl::output('top_link',$this->sublink($this->links,'dump'));
 		Tpl::showpage('setting.dump');
 	}
+	
+	/**
+	 * 快递100设置 by 33 hao v 4
+	 */
+	
+	public function kd100Op(){
+		$model_setting = Model('setting');
+		if (chksubmit()){
+			$obj_validate = new Validate();
+			if (trim($_POST['kd100_isuse']) == '1'){
+				$obj_validate->validateparam = array(
+					array("input"=>$_POST["kd100_appid"], "require"=>"true","message"=>'物流系统密钥不可为空')
+				);
+			}
+			$error = $obj_validate->validate();
+			if ($error != ''){
+				showMessage($error);
+			}else {
+				$update_array = array();
+				$update_array['kd100_isuse'] 	= $_POST['kd100_isuse'];
+				$update_array['kd100_appid'] 	= $_POST['kd100_appid'];
+				$result = $model_setting->updateSetting($update_array);
+				if ($result === true){
+					$this->log(L('nc_edit,qqSettings'),1);
+					showMessage(Language::get('nc_common_save_succ'));
+				}else {
+					$this->log(L('nc_edit,qqSettings'),0);
+					showMessage(Language::get('nc_common_save_fail'));
+				}
+			}
+		}
+
+		$list_setting = $model_setting->getListSetting();
+		Tpl::output('list_setting',$list_setting);
+
+		//输出子菜单
+		Tpl::output('top_link',$this->sublink($this->links,'kd100'));
+		Tpl::showpage('setting.kd100_setting');
+	}
+	
 
 	/**
 	 * SEO与rewrite设置

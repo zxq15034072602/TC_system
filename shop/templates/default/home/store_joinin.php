@@ -74,8 +74,106 @@
     </span> <span class="content"><?php echo $output['show_txt'];?></span></div>
 </div>
 <div class="main mt30">
-  <h2 class="index-title">入驻流程</h2>
-  <div class="joinin-index-step"><span class="step"><i class="a"></i>签署入驻协议</span><span class="arrow"></span><span class="step"><i class="b"></i>商家信息提交</span><span class="arrow"></span><span class="step"><i class="c"></i>平台审核资质</span><span class="arrow"></span><span class="step"><i class="d"></i>商家缴纳费用</span><span class="arrow"></span><span class="step"><i class="e"></i>店铺开通</span></div>
+  <div class="pro_head">
+				<div class="line"></div>
+				<div class="tit">
+					<h2>入驻流程</h2>
+					<p>SETTLED  PROCESS</p>
+				</div>
+			</div>
+  <div class="pro_con">
+				<ul class="clearfix">
+					<li class="con1">
+						<a href="javascript:void(0);">
+							<div class="con_icon"></div>
+							<h2>注册并登录</h2>
+							<p>注册成为网站会员并</p>
+							<p>登录进入商家入驻平台</p>
+						</a>
+						<div class="num"><span>1</span><i class="triangle_topleft"></i></div>
+						<div class="arrow"><span></span></div>
+					</li>
+					<li class="con2">
+						<a href="javascript:void(0);">
+							<div class="con_icon"></div>
+							<h2>提交入驻资料</h2>
+							<p>签署入驻协议</p>
+							<p>提交个人/企业资质信息</p>
+						</a>
+						<div class="num"><span>2</span><i class="triangle_topleft"></i></div>
+						<div class="arrow"><span></span></div>
+					</li>
+					<li class="con3">
+						<a href="javascript:void(0);">
+							<div class="con_icon"></div>
+							<h2>等待审核</h2>
+							<p>等待平台工作</p>
+							<p>人员审核相关资质</p>
+						</a>
+						<div class="num"><span>3</span><i class="triangle_topleft"></i></div>
+						<div class="arrow"><span></span></div>
+					</li>
+					<li class="con4">
+						<a href="javascript:void(0);">
+							<div class="con_icon"></div>
+							<h2>缴纳保证金</h2>
+							<p>缴纳保证金</p>
+							<p>提交缴纳相关凭据</p>
+						</a>
+						<div class="num"><span>4</span><i class="triangle_topleft"></i></div>
+						<div class="arrow"><span></span></div>
+					</li>
+					<li class="con5">
+						<a href="javascript:void(0);">
+							<div class="con_icon"></div>
+							<h2>店铺开通</h2>
+							<p>开通店铺</p>
+							<p>登录卖家管理中心发布商品</p>
+						</a>
+						<div class="num"><span>5</span><i class="triangle_topleft"></i></div>
+						<div class="arrow"><span></span></div>
+					</li>
+				</ul>
+			</div>
+			<div class="s_join_btn">
+				<a href="/index.php?act=store_joinin&amp;op=step0">我要入驻衡乐购</a>
+			</div>
+			
+			<div class="s_hot_class">
+			<div class="s_hot_head">
+				<div class="head_l">
+					<h2>热招类目</h2>
+				</div>
+				<div class="head_r">
+					<h2>店主之家</h2>
+					<span class="more"><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&op=article&ac_id=3">更多公告<i class="jt">&gt;</i></a></span>
+				</div>
+			</div>
+			<div class="s_hot_con">
+				<div class="con_l">
+					<ul>
+						<li><a href="">电脑配件</a></li>
+						<li><a href="">显卡</a></li>
+						<li><a href="">主板</a></li>
+						<li><a href="">内存</a></li>
+						<li><a href="">手机配件</a></li>
+						<li><a href="">贴膜</a></li>
+						<li><a href="">挂饰</a></li>
+						<li><a href="">后壳</a></li>
+					</ul>
+				</div>
+				<div class="con_r">
+					<ul>
+												<li><em class="time">06-30</em><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&op=show&article_id=15" title="如何开店">如何开店</a></li>
+												<li><em class="time">06-30</em><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&op=show&article_id=11" title="店铺管理">店铺管理</a></li>
+												<li><em class="time">10-16</em><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&op=show&article_id=12" title="售中商品">售中商品</a></li>
+												<li><em class="time">10-20</em><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&op=show&article_id=14" title="商品促销">商品促销</a></li>
+												<li><em class="time">10-21</em><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&op=show&article_id=42" title="在线交易">在线交易</a></li>
+												<li><em class="time">10-26</em><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&op=show&article_id=44" title="免责声明">免责声明</a></li>
+											</ul>
+				</div>
+			</div>
+		</div>
   <h2 class="index-title">入驻指南</h2>
   <div class="joinin-info">
     <ul class="tabs-nav">

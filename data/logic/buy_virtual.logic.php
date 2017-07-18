@@ -234,7 +234,7 @@ class buy_virtualLogic {
      * 充值卡支付
      * 如果充值卡足够就单独支付了该订单，如果不足就暂时冻结，等API支付成功了再彻底扣除
      */
-    private function _rcbPay($order_info, $input, $buyer_info) {
+    public function _rcbPay($order_info, $input, $buyer_info) {
         $available_rcb_amount = floatval($buyer_info['available_rc_balance']);
 
         if ($available_rcb_amount <= 0) return;
@@ -302,7 +302,7 @@ class buy_virtualLogic {
      * 预存款支付
      * 如果预存款足够就单独支付了该订单，如果不足就暂时冻结，等API支付成功了再彻底扣除
      */
-    private function _pdPay($order_info, $input, $buyer_info) {
+    public function _pdPay($order_info, $input, $buyer_info) {
         if ($order_info['order_state'] == ORDER_STATE_PAY) return;
 
         $available_pd_amount = floatval($buyer_info['available_predeposit']);

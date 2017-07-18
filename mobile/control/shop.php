@@ -18,15 +18,12 @@ class shopControl extends mobileHomeControl {
      * 首页显示
      */
     public function indexOp(){
-
-
         $this->_get_Own_Store_List();
 
     }
 
 
     private  function  _get_Own_Store_List(){
-		
 		$model_store = Model('store');
         //查询条件
         $condition = array();
@@ -48,8 +45,16 @@ class shopControl extends mobileHomeControl {
 
             $simply_store_list[$key]['store_id'] = $own_store_list[$key]['store_id'];
             $simply_store_list[$key]['store_name'] = $own_store_list[$key]['store_name'];
+			$simply_store_list[$key]['store_collect'] = $own_store_list[$key]['store_collect'];
             $simply_store_list[$key]['store_address'] = $own_store_list[$key]['store_address'];
             $simply_store_list[$key]['store_area_info'] = $own_store_list[$key]['area_info'];
+			$simply_store_list[$key]['store_avatar'] =$own_store_list[$key]['store_avatar'];
+			$simply_store_list[$key]['goods_count'] = $own_store_list[$key]['goods_count'];
+            $simply_store_list[$key]['store_avatar_url'] = UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_store_avatar');
+			if($own_store_list[$key]['store_avatar']){
+				$simply_store_list[$key]['store_avatar_url'] = UPLOAD_SITE_URL.'/shop/store/'.$own_store_list[$key]['store_avatar'];
+			}
+			
 
         }
 		
@@ -86,14 +91,4 @@ class shopControl extends mobileHomeControl {
         }
         return $result;
     }
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

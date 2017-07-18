@@ -47,7 +47,7 @@ class sns_albumControl extends mobileMemberControl {
     
         $upload->set('default_dir',$upload_dir.$upload->getSysSetPath());
         $thumb_width    = '240,1024';
-        $thumb_height   = '2048,1024';
+        $thumb_height   = '240,1024';
     
         $upload->set('max_size',C('image_max_filesize'));
         $upload->set('thumb_width', $thumb_width);
@@ -59,7 +59,7 @@ class sns_albumControl extends mobileMemberControl {
             output_error($upload->error);
         }
     
-        $img_path = $upload->getSysSetPath().$upload->file_name;
+        $img_path = $member_id.'/'.$upload->getSysSetPath().$upload->file_name;
         list($width, $height, $type, $attr) = getimagesize(BASE_UPLOAD_PATH.DS.ATTACH_MALBUM.DS.$member_id.DS.$img_path);
     
         $image = explode('.', $_FILES["file"]["name"]);
@@ -75,7 +75,7 @@ class sns_albumControl extends mobileMemberControl {
         $insert['upload_time']  = time();
         $insert['member_id']    = $member_id;
         $result = $model->table('sns_albumpic')->insert($insert);
-    
+        
         $data = array();
         $data['file_id'] = $result;
         $data['file_name'] = $img_path;

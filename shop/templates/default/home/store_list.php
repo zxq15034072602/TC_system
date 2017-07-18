@@ -134,7 +134,7 @@ function query(name, value){
     <li class="item">
       <dl class="shop-info">
         <dt class="shop-name"><a href="<?php echo urlShop('show_store','', array('store_id'=>$store['store_id']),$store['store_domain']);?>" target="_blank"><?php echo $store['store_name'];?></a></dt>
-        <dd class="shop-pic"><a href="<?php echo urlShop('show_store','', array('store_id'=>$store['store_id']),$store['store_domain']);?>" title="" target="_blank"><span class="size72"><img src="<?php echo getStoreLogo($store['store_avatar']);?>"  alt="<?php echo $store['store_name'];?>" title="<?php echo $store['store_name'];?>" class="size72" /></span></a></dd>
+        <dd class="shop-pic"><a href="<?php echo urlShop('show_store','', array('store_id'=>$store['store_id']),$store['store_domain']);?>" title="" target="_blank"><span class="size72"><img src="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif" rel="lazy" data-url="<?php echo getStoreLogo($store['store_avatar']);?>"  alt="<?php echo $store['store_name'];?>" title="<?php echo $store['store_name'];?>" class="size72" /></span></a></dd>
         <dd class="main-runs" title="<?php echo $store['store_zy']?>"><?php echo $lang['store_class_index_store_zy'].$lang['nc_colon'];?><?php echo $store['store_zy']?></dd>
         <dd class="shopkeeper"><?php echo $lang['store_class_index_owner'].$lang['nc_colon'];?><?php echo $store['member_name'];?><a target="_blank" class="message" href="index.php?act=member_message&op=sendmsg&member_id=<?php echo $store['member_id'];?>"></a><span>
         <?php if(!empty($store['store_qq'])){?>
@@ -189,7 +189,7 @@ function query(name, value){
         <?php foreach($store['search_list_goods'] as $k=>$v){?>
         <li>
             <dl>
-              <dt class="goods-pic"><span class="thumb size160"> <i></i> <a href="index.php?act=goods&goods_id=<?php echo $v['goods_id'];?>" target="_blank"> <img  onload="javascript:DrawImage(this,160,160);" alt="<?php echo $v['goods_name'];?>" src="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif" rel="lazy" data-url="<?php echo thumb($v,'small');?>"></a></span></dt>
+              <dt class="goods-pic"><span class="thumb size160"> <i></i> <a href="index.php?act=goods&goods_id=<?php echo $v['goods_id'];?>" target="_blank"> <img  onload="javascript:DrawImage(this,160,160);" alt="<?php echo $v['goods_name'];?>" src="<?php echo thumb($v,'small');?>"></a></span></dt>
               <dd class="goods-name"><a href="<?php echo urlShop('goods','',array('goods_id'=>$v['goods_id']));?>" title="<?php echo $v['goods_name'];?>" target="_blank"><?php echo $v['goods_name'];?></a></dd>
               <dd class="goods-price"><em><?php echo $v['goods_price'];?></em></dd>
               <dd class="goods-sales"><?php echo $lang['store_class_index_deal'];?><?php echo $v['goods_salenum'];?><?php echo $lang['store_class_index_jian'];?></dd>

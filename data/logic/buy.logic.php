@@ -5,7 +5,7 @@
  *
  *
  *
- * by 33hao  www.33hao.com 开发
+ * by abc  www.abc.com 开发
  */
 defined('InShopNC') or exit('Access Invalid!');
 class buyLogic {
@@ -173,7 +173,7 @@ class buyLogic {
         $result['need_calc_sid_list'] = $need_calc_sid_list;
         $result['cancel_calc_sid_list'] = $cancel_calc_sid_list;
 
-        //将商品ID、数量、售卖区域、运费序列化，加密，输出到模板，选择地区AJAX计算运费时作为参数使用
+        //将商品ID、数量、运费模板、运费序列化，加密，输出到模板，选择地区AJAX计算运费时作为参数使用
         $freight_list = $this->_logic_buy_1->getStoreFreightList($goods_list,array_keys($cancel_calc_sid_list));
         $result['freight_list'] = $this->buyEncrypt($freight_list, $member_id);
 
@@ -236,7 +236,7 @@ class buyLogic {
      * @return array
      */
     public function buyStep2($post, $member_id, $member_name, $member_email) {
-
+        
         $this->_member_info['member_id'] = $member_id;
         $this->_member_info['member_name'] = $member_name;
         $this->_member_info['member_email'] = $member_email;
@@ -290,18 +290,18 @@ class buyLogic {
     
     /**
      * 选择不同地区时，异步处理并返回每个店铺总运费以及本地区是否能使用货到付款
-     * 如果店铺统一设置了满免运费规则，则售卖区域无效
-     * 如果店铺未设置满免规则，且使用售卖区域，按售卖区域计算，如果其中有商品使用相同的售卖区域，则两种商品数量相加后再应用该售卖区域计算（即作为一种商品算运费）
-     * 如果未找到售卖区域，按免运费处理
-     * 如果没有使用售卖区域，商品运费按快递价格计算，运费不随购买数量增加
+     * 如果店铺统一设置了满免运费规则，则运费模板无效
+     * 如果店铺未设置满免规则，且使用运费模板，按运费模板计算，如果其中有商品使用相同的运费模板，则两种商品数量相加后再应用该运费模板计算（即作为一种商品算运费）
+     * 如果未找到运费模板，按免运费处理
+     * 如果没有使用运费模板，商品运费按快递价格计算，运费不随购买数量增加
      */
     public function changeAddr($freight_hash, $city_id, $area_id, $member_id) {
-        //$city_id计算售卖区域,$area_id计算货到付款
+        //$city_id计算运费模板,$area_id计算货到付款
         $city_id = intval($city_id);
         $area_id = intval($area_id);
         if ($city_id <= 0 || $area_id <= 0) return null;
     
-        //将hash解密，得到运费信息(店铺ID，运费,售卖区域ID,购买数量),hash内容有效期为1小时
+        //将hash解密，得到运费信息(店铺ID，运费,运费模板ID,购买数量),hash内容有效期为1小时
         $freight_list = $this->buyDecrypt($freight_hash, $member_id);
     
         //算运费
@@ -316,14 +316,12 @@ class buyLogic {
         //$offline_store_id_array = Model('store')->getOwnShopIds();
         $order_platform_store_ids = array();
     
-        //if (is_array($freight_list['iscalced']))
-	 if (!empty($freight_list['iscalced'])&&is_array($freight_list['iscalced']))
+        if (is_array($freight_list['iscalced']))
         foreach (array_keys($freight_list['iscalced']) as $k)
         //if (in_array($k, $offline_store_id_array))
             $order_platform_store_ids[$k] = null;
     
-        //if (is_array($freight_list['nocalced']))
-	 if (!empty($freight_list['nocalced'])&&is_array($freight_list['nocalced']))
+        if (is_array($freight_list['nocalced']))
         foreach (array_keys($freight_list['nocalced']) as $k)
         //if (in_array($k, $offline_store_id_array))
             $order_platform_store_ids[$k] = null;
@@ -545,9 +543,10 @@ class buyLogic {
         $store_final_order_total = $this->_logic_buy_1->reCalcGoodsTotal($store_final_goods_total,$store_freight_total,'freight');
 
         //计算店铺分类佣金[改由任务计划]
-	// 33hao 
-         $store_gc_id_commis_rate_list = Model('store_bind_class')->getStoreGcidCommisRateList($goods_list);
-
+		//zmr>>>
+        $store_gc_id_commis_rate_list = Model('store_bind_class')->getStoreGcidCommisRateList($goods_list);
+		
+        //zmr<<<
         //将赠品追加到购买列表(如果库存0，则不送赠品)
         $append_premiums_to_cart_list = $this->_logic_buy_1->appendPremiumsToCartList($store_cart_list,$store_premiums_list,$store_mansong_rule_list,$this->_member_info['member_id']);
         if($append_premiums_to_cart_list === false) {
@@ -561,8 +560,9 @@ class buyLogic {
         $this->_order_data['store_final_order_total'] = $store_final_order_total;
         $this->_order_data['store_freight_total'] = $store_freight_total;
         $this->_order_data['store_promotion_total'] = $store_promotion_total;
-	// 33hao 
-         $this->_order_data['store_gc_id_commis_rate_list'] = $store_gc_id_commis_rate_list;
+		//zmr>>>
+        $this->_order_data['store_gc_id_commis_rate_list'] = $store_gc_id_commis_rate_list;
+		//zmr<<<
         $this->_order_data['store_mansong_rule_list'] = $store_mansong_rule_list;
         $this->_order_data['store_cart_list'] = $store_cart_list;
         $this->_order_data['goods_buy_quantity'] = $goods_buy_quantity;
@@ -645,11 +645,12 @@ class buyLogic {
             $order['shipping_fee'] = $store_freight_total[$store_id];
             $order['goods_amount'] = $order['order_amount'] - $order['shipping_fee'];
             $order['order_from'] = $order_from;
-			//如果支持方式为空时，默认为货到付款 33hao
+			//中山小修改货到付款bug>>>
 			if( $order['payment_code']=="")
 			{
 				$order['payment_code']="offline";
 			}
+			//中山小修改货到付款bug<<<
             $order_id = $model_order->addOrder($order);
             if (!$order_id) {
                 throw new Exception('订单保存失败[未生成订单数据]');
@@ -711,9 +712,9 @@ class buyLogic {
                         $order_goods[$i]['goods_type'] = 1;
                     }
                     $order_goods[$i]['promotions_id'] = $goods_info['promotions_id'] ? $goods_info['promotions_id'] : 0;
-		   //33hao
+					//zmr>>>
                     $order_goods[$i]['commis_rate'] =floatval($store_gc_id_commis_rate_list[$store_id][$goods_info['gc_id']]);
-
+					//zmr<<<
                     $order_goods[$i]['gc_id'] = $goods_info['gc_id'];
                     //计算商品金额
                     $goods_total = $goods_info['goods_price'] * $goods_info['goods_num'];
@@ -745,8 +746,7 @@ class buyLogic {
                         $order_goods[$i]['buyer_id'] = $member_id;
                         $order_goods[$i]['goods_type'] = 4;
                         $order_goods[$i]['promotions_id'] = $bl_goods_info['bl_id'];
-                        // 33hao 
-			$order_goods[$i]['commis_rate'] = floatval($store_gc_id_commis_rate_list[$store_id][$goods_info['gc_id']]);
+                        $order_goods[$i]['commis_rate'] = floatval($store_gc_id_commis_rate_list[$store_id][$goods_info['gc_id']]);
                         $order_goods[$i]['gc_id'] = $bl_goods_info['gc_id'];
     
                         //计算商品实际支付金额(goods_price减去分摊优惠金额后的值)

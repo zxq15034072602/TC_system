@@ -102,8 +102,8 @@ class connect_smsControl extends BaseHomeControl{
             $condition['log_ip'] = getIp();
             $condition['log_type'] = $log_type;
             $sms_log = $model_sms_log->getSmsInfo($condition);
-            if(!empty($sms_log) && ($sms_log['add_time'] > TIMESTAMP-600)) {//同一IP十分钟内只能发一条短信
-                $state = '同一IP地址十分钟内，请勿多次获取动态码！';
+            if(!empty($sms_log) && ($sms_log['add_time'] > TIMESTAMP-1800)) {//同一IP十分钟内只能发一条短信
+                $state = '同一IP地址半小时内，请勿多次获取动态码！';
             } else {
                 $state = 'true';
                 $log_array = array();

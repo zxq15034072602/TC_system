@@ -1,6 +1,6 @@
 //v3-b11
 $(function(){
-	var article_id = GetQueryString('article_id')
+	var article_id = getQueryString('article_id')
 	
 	if (article_id=='') {
     	window.location.href = WapSiteUrl + '/index.html';

@@ -18,7 +18,7 @@ $lang['site_tel400']                         = '前台客服电话';
 $lang['icp_number_notice400']                  = '显示在网站的底部';
 $lang['site_bank_weixinerwei']                  = '微信二维码';
 
-
+$lang['kd100Settings']   = '快递物流跟踪';
 $lang['web_set']        = '站点设置';
 $lang['account_syn']     = '账号同步';
 $lang['account_syn_subhead']= '设置使用第三方账号登录本站';

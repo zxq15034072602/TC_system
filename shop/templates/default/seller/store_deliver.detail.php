@@ -17,11 +17,22 @@
         <li class="active"><a href=""><?php echo $lang['member_show_express_ship_dstatus'];?></a></li>
       </ul>
     </div>
+	<!--
     <ul class="express-log" id="express_list">
       <?php if(!empty($output['order_info']['extend_order_common']['shipping_time'])) { ?>
       <li class="loading"><?php echo $lang['nc_common_loading'];?></li>
       <?php } ?>
     </ul>
+	-->
+	<?php if(!empty($output['order_info']['extend_order_common']['shipping_time']) && $output['shipping_express'] != '') { ?>
+		<iframe name="kuaidi100" src="<?php echo $output['shipping_express'];?>" width="630" height="360" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" style="margin-top:10px;"></iframe>
+		<!--<iframe src="<?php echo $output['shipping_express'];?>" width="630px;" height="360px;">-->
+		<label  style="display:none;">查询数据由：<a href="http://kuaidi100.com" target="_blank">KuaiDi100.Com （快递100）</a> 网站提供 </label>
+	<?php }else { ?>
+		<ul class="express-log" id="express_list">
+		  <li><?php echo '暂无物流信息';?></li>
+		</ul>
+	<?php } ?>
   </div>
   <div class="ncsc-flow-item">
     <div class="title"><?php echo $lang['member_show_order_info'];?></div>
@@ -91,6 +102,7 @@ $(function(){
 		allowTipHover: false
 	});
       var_send = '<li><?php echo date("Y-m-d H:i:s",$output['order_info']['extend_order_common']['shipping_time']); ?>&nbsp;&nbsp;<?php echo $lang['member_show_seller_has_send'];?></li>';
+	  /**
 	$.getJSON('index.php?act=store_deliver&op=get_express&e_code=<?php echo $output['e_code']?>&shipping_code=<?php echo $output['order_info']['shipping_code']?>&t=<?php echo random(7);?>',function(data){
 		if(data){
 			data = var_send+data;
@@ -99,5 +111,6 @@ $(function(){
 			$('#express_list').html(var_send);
 		}
 	});
+	**/
 });
 </script>

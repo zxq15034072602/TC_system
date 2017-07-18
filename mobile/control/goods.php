@@ -357,7 +357,7 @@ class goodsControl extends mobileHomeControl{
         $goods_detail = $this->_goods_detail_extend($goods_detail);
 
         // 如果已登录 判断该商品是否已被收藏&&添加浏览记录
-        if ($member_id = $this->getMemberIdIfExists()) {
+        if ($memberId = $this->getMemberIdIfExists()) {
             $c = (int) Model('favorites')->getGoodsFavoritesCountByGoodsId($goods_id, $member_id);
             $goods_detail['is_favorate'] = $c > 0;
 
@@ -390,6 +390,12 @@ class goodsControl extends mobileHomeControl{
         // 评价列表
         $goods_eval_list = Model("evaluate_goods")->getEvaluateGoodsList(array('geval_goodsid' => $goods_id), null, '3');
         //$goods_eval_list = Logic('member_evaluate')->evaluateListDity($goods_eval_list);
+        foreach($goods_eval_list as $key => $val){
+        	$goods_eval_list[$key]['geval_addtime_date'] = date('Y-m-d', $val['geval_addtime']);
+        	if($val['geval_isanonymous'] == 1){
+        		$goods_eval_list[$key]['geval_frommembername'] = str_cut($val['geval_frommembername'],2).'***';
+        	}
+        }
         $goods_detail['goods_eval_list'] = $goods_eval_list;
 
         //评价信息
@@ -397,8 +403,14 @@ class goodsControl extends mobileHomeControl{
         $goods_detail['goods_evaluate_info'] = $goods_evaluate_info;
         
         //$goods_detail['goods_hair_info'] = $this->_calc($area_id, $goods_id);
-	$goods_detail['goods_hair_info'] = array('content'=>'免运费','if_store_cn'=>'有货','if_store'=>true,'area_name'=>'全国');
-        output_data($goods_detail);
+		$goods_detail['goods_hair_info'] = array('content'=>'免运费','if_store_cn'=>'有货','if_store'=>true,'area_name'=>'全国');
+		$goods_detail['goods_evaluate_info'] = array('good'=>0,'normal'=>0,'bad'=>0,'all'=>0,'img'=>0,'good_percent'=>100,'normal_percent'=>0,'bad_percent'=>0,'good_star'=>5,'star_average'=>5);
+		$goods_detail['goods_eval_list']='';
+
+		if($goods_detail){
+			$model_goods_browse = Model('goods_browse')->addViewedGoods($goods_id,$memberId); //加入浏览历史数据库
+			output_data($goods_detail);
+		}
     }
 
     /**
@@ -463,27 +475,38 @@ class goodsControl extends mobileHomeControl{
         Tpl::showpage('goods_body');
     }
 
+    /**
+     * 商品评价
+     */
     public function goods_evaluateOp() {
-        $goods_id = intval($_GET['goods_id']);
-        $type = intval($_GET['type']);
+		$goods_id = intval($_GET['goods_id']);
+		if($goods_id <=0){
+			output_error('产品不存在');
+		}
+		
+		
+        $goodsevallist = $this->_get_comments($goods_id, $_GET['type'], $this->page);	
+		$model_evaluate_goods = Model("evaluate_goods");
+		$page_count = $model_evaluate_goods->gettotalpage();		
+		output_data(array('goods_eval_list'=>$goodsevallist),mobile_page($page_count));
+	
+	}
 
+	private function _get_comments($goods_id, $type, $page) {
         $condition = array();
         $condition['geval_goodsid'] = $goods_id;
         switch ($type) {
             case '1':
                 $condition['geval_scores'] = array('in', '5,4');
+                Tpl::output('type', '1');
                 break;
             case '2':
                 $condition['geval_scores'] = array('in', '3,2');
+                Tpl::output('type', '2');
                 break;
             case '3':
                 $condition['geval_scores'] = array('in', '1');
-                break;
-            case '4':
-                $condition['geval_image|geval_image_again'] = array('neq', '');
-                break;
-            case '5':
-                $condition['geval_content_again'] = array('neq', '');
+                Tpl::output('type', '3');
                 break;
         }
         
@@ -491,7 +514,17 @@ class goodsControl extends mobileHomeControl{
         $model_evaluate_goods = Model("evaluate_goods");
         $goods_eval_list = $model_evaluate_goods->getEvaluateGoodsList($condition, 10);
         $goods_eval_list = Logic('member_evaluate')->evaluateListDity($goods_eval_list);
-
+        foreach($goods_eval_list as $key => $val){
+        	$goods_eval_list[$key]['geval_addtime_date'] = date('Y-m-d', $val['geval_addtime']);
+        	if($val['geval_isanonymous'] == 1){
+        		$goods_eval_list[$key]['geval_frommembername'] = str_cut($val['geval_frommembername'],2).'***';
+        	}
+        	$image_array = explode(',', $val['geval_image']);
+        	foreach($image_array as $k => $v){
+        		$goods_eval_list[$key]['geval_image_240'][$k] = snsThumb($v, 240);
+        		$goods_eval_list[$key]['geval_image_1024'][$k] = snsThumb($v, 1024);
+        	}
+        }
         $page_count = $model_evaluate_goods->gettotalpage();
         output_data(array('goods_eval_list' => $goods_eval_list), mobile_page($page_count));
     }

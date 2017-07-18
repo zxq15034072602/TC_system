@@ -1,8 +1,8 @@
 <?php
 /**
- * 虚拟订单行为 v3-b12
+ * 虚拟订单行为
  *
- * by 33hao.com 好商城V3 运营版
+ 
  */
 defined('InShopNC') or exit('Access Invalid!');
 class vr_orderLogic {
@@ -145,11 +145,7 @@ class vr_orderLogic {
                     'order_sn' => $order_info['order_sn']
             );
             QueueClient::push('sendStoreMsg', $param);
-
-            //发送兑换码到手机 v3-b12
-            $param = array('order_id'=>$order_info['order_id'],'buyer_id'=>$order_info['buyer_id'],'buyer_phone'=>$order_info['buyer_phone']);
-            QueueClient::push('sendVrCode', $param);
-
+            
             $model_vr_order->commit();
             return callback(true,'更新成功');
 
@@ -173,7 +169,16 @@ class vr_orderLogic {
         $condition['vr_indate'] = array('gt',TIMESTAMP);
         $order_code_info = $model_vr_order->getOrderCodeInfo($condition,'*',true);
         if (empty($order_code_info)) {
-            $update = $model_vr_order->editOrder(array('order_state' => ORDER_STATE_SUCCESS,'finnshed_time' => TIMESTAMP), array('order_id' => $order_id));
+			
+			//zmr>v90
+			$update_order = array();
+			//zmr>>>
+			$update_order['seller_money'] = floatval($order_info['seller_money']);
+			//zmr<<<
+            $update_order['finnshed_time'] = TIMESTAMP;
+            $update_order['order_state'] = ORDER_STATE_SUCCESS;
+			//zmr<v90
+            $update = $model_vr_order->editOrder($update_order,array('order_id'=>$order_id));
             if (!$update) {
                 callback(false,'更新失败');
             }

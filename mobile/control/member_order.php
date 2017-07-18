@@ -119,7 +119,6 @@ class member_orderControl extends mobileMemberControl {
         $condition = array();
         $condition['order_id'] = $order_id;
         $condition['buyer_id'] = $this->member_info['member_id'];
-        $condition['order_type'] = 1;
         $order_info = $model_order->getOrderInfo($condition);
         $if_allow = $model_order->getOrderOperateState('buyer_cancel',$order_info);
         if (!$if_allow) {
@@ -182,8 +181,14 @@ class member_orderControl extends mobileMemberControl {
         $express = rkcache('express',true);
         $e_code = $express[$order_info['extend_order_common']['shipping_express_id']]['e_code'];
         $e_name = $express[$order_info['extend_order_common']['shipping_express_id']]['e_name'];
+		$shipping_code = $order_info['shipping_code'];
+		
+		$url = 'http://m.kuaidi100.com/index_all.html?type&='.$e_code.'&postid='.$shipping_code.'&callbackurl='.WAP_SITE_URL.'/tmpl/member/order_list.html';
 
-        $deliver_info = $this->_get_express($e_code, $order_info['shipping_code']);
+        //$deliver_info = $this->_get_express($e_code, $order_info['shipping_code']);
+		
+		$deliver_info = $url;
+		
         output_data(array('express_name' => $e_name, 'shipping_code' => $order_info['shipping_code'], 'deliver_info' => $deliver_info));
     }
 

@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.mousewheel.js"></script>
-<!--v3-v12-->
+<!--v4-->
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -140,7 +140,7 @@
         <h3><?php echo $lang['dashboard_welcome_sys_info'];?></h3>
         <div id="system-info">
           <ul>
-            <li>好商城V4 <?php echo $lang['dashboard_welcome_version'];?><span>20160113</span></li>
+            <li>好商城V4.1 <?php echo $lang['dashboard_welcome_version'];?><span>20160316</span></li>
             <li><?php echo $lang['dashboard_welcome_install_date'];?><span><?php echo $output['statistics']['setup_date'];?></span></li>
             <li><?php echo $lang['dashboard_welcome_server_os'];?><span><?php echo $output['statistics']['os'];?></span></li>
             <li>WEB <?php echo $lang['dashboard_welcome_server'];?><span><?php echo $output['statistics']['web_server'];?></span></li>
