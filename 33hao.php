@@ -1,5 +1,5 @@
 <?php
-//by bbs.33hao.com
+//by 太常系统 www.sxtaichang.com
 
 if (isset($_GET['dir'])){ //config the basedir
  $basedir=$_GET['dir'];

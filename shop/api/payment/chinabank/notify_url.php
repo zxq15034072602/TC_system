@@ -3,7 +3,7 @@
  * 网银在线自动对账文件
  *
  * 
- * by 33hao 好商城V3  www.33hao.com 开发
+ * by 太常系统 www.sxtaichang.com
  */
 error_reporting(7);
 $_GET['act']	= 'payment';

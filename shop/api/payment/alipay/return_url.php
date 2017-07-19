@@ -3,7 +3,7 @@
  * 支付宝返回地址
  *
  * 
- * by 33hao 好商城V3  www.33hao.com 开发
+ * by 太常系统 www.sxtaichang.com
  */
 $_GET['act']	= 'payment';
 $_GET['op']		= 'return';

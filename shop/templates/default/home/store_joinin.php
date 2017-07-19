@@ -136,7 +136,7 @@
 				</ul>
 			</div>
 			<div class="s_join_btn">
-				<a href="/index.php?act=store_joinin&amp;op=step0">我要入驻衡乐购</a>
+				<a href="/index.php?act=store_joinin&amp;op=step0">我要入驻</a>
 			</div>
 			
 			<div class="s_hot_class">

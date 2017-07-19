@@ -4,7 +4,7 @@
  *
  * v3-b12 
  *
- * by 好商城V3 www.33hao.com 运营版
+ * by 太常系统 www.sxtaichang.com
  */
 
 defined('InShopNC') or exit('Access Invalid!');

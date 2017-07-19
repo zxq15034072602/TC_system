@@ -2,7 +2,7 @@
 /**
  *
  *
- * by 33hao 好商城V3  www.33hao.com 开发
+ * by 太常系统 www.sxtaichang.com
  */
 define('APP_ID','delivery');
 define('BASE_PATH',str_replace('\\','/',dirname(__FILE__)));

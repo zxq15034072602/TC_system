@@ -5,7 +5,7 @@
  *
  *
  *
- * by 33hao 好商城V3  www.33hao.com 开发
+ * by 太常系统 www.sxtaichang.com
  */
 defined('InShopNC') or exit('Access Invalid!');
 class expressModel extends Model {
