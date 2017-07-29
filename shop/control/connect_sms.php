@@ -110,7 +110,7 @@ class connect_smsControl extends BaseHomeControl{
                 $model_member = Model('member');
                 $member = $model_member->getMemberInfo(array('member_mobile'=> $phone));
                 $captcha = rand(100000, 999999);
-                $log_msg = '【'.C('site_name').'】您于'.date("Y-m-d");
+                $log_msg = '【'.C('site_name').'】 ';
                 switch ($log_type) {
                     case '1':
                         if(C('sms_register') != 1) {
@@ -119,7 +119,7 @@ class connect_smsControl extends BaseHomeControl{
                         if(!empty($member)) {//检查手机号是否已被注册
                             $state = '当前手机号已被注册，请更换其他号码。';
                         }
-                        $log_msg .= '申请注册会员，动态码：'.$captcha.'。';
+                        $log_msg .= '验证码为'.$captcha.'（客服绝不会以任何理由索取此验证码，切勿告知他人），请在页面中输入以完成验证。';
                         break;
                     case '2':
                         if(C('sms_login') != 1) {
