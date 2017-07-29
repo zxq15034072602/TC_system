@@ -93,6 +93,7 @@ class Tpl{
 			}else {
 				$layout = 'layout'.DS.$layout.'.php';
 			}
+			
 			$layout_file = BASE_PATH.'/templates/'.TPL_NAME.DS.$layout;
 			$tpl_file = BASE_PATH.'/templates/'.TPL_NAME.DS.$tpl_dir.$page_name.'.php';
 			if (file_exists($tpl_file)){

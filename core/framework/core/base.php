@@ -74,7 +74,9 @@ final class Base{
 		if ($GLOBALS['setting_config']['enabled_subdomain'] == '1' && $_GET['act'] == 'index' && $_GET['op'] == 'index'){
 			$store_id = subdomain();
 			if ($store_id > 0) $_GET['act'] = 'show_store';
+			
 		}
+		
 		$act_file = realpath(BASE_PATH.'/control/'.$_GET['act'].'.php');
 		$class_name = $_GET['act'].'Control';
 		if (!@include($act_file)){

@@ -7,8 +7,11 @@
 
 
 defined('InShopNC') or exit('Access Invalid!');
-class indexControl extends BaseHomeControl{
-	public function indexOp(){
+class indexControl extends BaseHomeControl{ //父类定义了公共头部，以及模板路径等
+    public function selfindexOp(){//自定首页
+        
+    }
+	public function indexOp(){//商城首页
 		Language::read('home_index_index');
 		Tpl::output('index_sign','index');
 		
@@ -60,7 +63,7 @@ class indexControl extends BaseHomeControl{
 		Model('seo')->type('index')->show();
 		Tpl::showpage('index');
 	}
-
+    
 	//json输出商品分类
 	public function josn_classOp() {
 		/**
