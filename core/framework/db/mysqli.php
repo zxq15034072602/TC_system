@@ -32,7 +32,6 @@ class Db{
 		$conf = C('db.'.$host);
 		if (is_object(self::$link[$host])) return;
 		self::$link[$host] = @new mysqli($conf['dbhost'], $conf['dbuser'], $conf['dbpwd'], $conf['dbname'], $conf['dbport']);
-
 		if (mysqli_connect_errno()) throw_exception("Db Error: database connect failed");
 
 		switch (strtoupper($conf['dbcharset'])){
