@@ -97,6 +97,7 @@ class article_classControl extends SystemControl{
 				$insert_array['ac_name'] = trim($_POST['ac_name']);
 				$insert_array['ac_parent_id'] = intval($_POST['ac_parent_id']);
 				$insert_array['ac_sort'] = trim($_POST['ac_sort']);
+				$insert_array['type']    = intval($_POST['article_type']);
 
 				$result = $model_class->add($insert_array);
 				if ($result){
@@ -158,6 +159,7 @@ class article_classControl extends SystemControl{
 				$update_array['ac_name'] = trim($_POST['ac_name']);
 //				$update_array['ac_parent_id'] = intval($_POST['ac_parent_id']);
 				$update_array['ac_sort'] =trim($_POST['ac_sort']);
+				$update_array['type']    =intval($_POST['article_type']);
 
 				$result = $model_class->update($update_array);
 				if ($result){

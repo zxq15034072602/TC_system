@@ -61,6 +61,16 @@
           <td class="vatop tips"></td>
         </tr>
         <tr>
+          <td colspan="2" class="required">是否推荐: 
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff"><label for="article_recommend1" class="cb-enable selected" ><span><?php echo $lang['nc_yes'];?></span></label>
+            <label for="article_recommend0" class="cb-disable" ><span><?php echo $lang['nc_no'];?></span></label>
+            <input id="article_recommend1" name="article_recommend" checked="checked" value="1" type="radio">
+            <input id="article_recommend0" name="article_recommend" value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['article_add_content'];?>:</label></td>
         </tr>
         <tr class="noborder">

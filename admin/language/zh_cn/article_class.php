@@ -24,6 +24,8 @@ $lang['article_class_add_back_to_list']	= '返回分类列表';
 $lang['article_class_add_class']		= '继续新增分类';
 $lang['article_class_add_succ']			= '新增分类成功';
 $lang['article_class_add_fail']			= '新增分类失败';
+$lang['article_class_type_default']     = '默认商城样式';
+$lang['article_class_type_new']         = '资讯样式';
 /**
  * 编辑分类
  */

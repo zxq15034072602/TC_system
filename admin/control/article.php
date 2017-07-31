@@ -101,7 +101,6 @@ class articleControl extends SystemControl{
 				$parent_list[$k]['ac_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['ac_name'];
 			}
 		}
-
 		Tpl::output('article_list',$article_list);
 		Tpl::output('page',$page->show());
 		Tpl::output('search_title',trim($_GET['search_title']));
@@ -144,6 +143,7 @@ class articleControl extends SystemControl{
 				$insert_array['article_sort'] = trim($_POST['article_sort']);
 				$insert_array['article_content'] = trim($_POST['article_content']);
 				$insert_array['article_time'] = time();
+				$insert_array['article_recommend']= intval($_POST['article_recommend']);
 				$result = $model_article->add($insert_array);
 				if ($result){
 					/**
@@ -241,7 +241,7 @@ class articleControl extends SystemControl{
 				$update_array['article_show'] = trim($_POST['article_show']);
 				$update_array['article_sort'] = trim($_POST['article_sort']);
 				$update_array['article_content'] = trim($_POST['article_content']);
-
+                $update_array['article_recommend']=intval($_POST['article_recommend']);
 				$result = $model_article->update($update_array);
 				if ($result){
 					/**

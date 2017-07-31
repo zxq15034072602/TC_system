@@ -98,6 +98,10 @@
                 <input type="radio" <?php if($output['navigation_array']['nav_location'] == '2'){ ?>checked="checked"<?php } ?> value="2" name="nav_location" id="nav_location2">
                 <label for="nav_location2"><?php echo $lang['navigation_index_bottom'];?> </label>
               </li>
+              <li>
+                <input type="radio" <?php if($output['navigation_array']['nav_location'] == '3'){ ?>checked="checked"<?php } ?> value="3" name="nav_location" id="nav_location2">
+                <label for="nav_location2"><?php echo $lang['navigation_index_self'];?></label>
+              </li>
             </ul></td>
           <td class="vatop tips"></td>
         </tr>

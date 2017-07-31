@@ -39,10 +39,10 @@ class articleModel{
 		$result	= array();
 		$condition_str	= $this->_condition($condition);
 		$param	= array();
-		$param['table'] = 'article,article_class';
+		$param['table'] = 'article,article_class,upload';
 		$param['field']	= empty($condition['field'])?'*':$condition['field'];;
 		$param['join_type']	= empty($condition['join_type'])?'left join':$condition['join_type'];
-		$param['join_on']	= array('article.ac_id=article_class.ac_id');
+		$param['join_on']	= array('article.ac_id=article_class.ac_id','article.article_id=upload.item_id');
 		$param['where'] = $condition_str;
 		$param['limit'] = $condition['limit'];
 		$param['order']	= empty($condition['order'])?'article.article_sort':$condition['order'];

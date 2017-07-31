@@ -102,7 +102,7 @@ class articleControl extends BaseHomeControl {
 		$page	= new Page();
 		$page->setEachNum(10);
 		$page->setStyle('admin');
-		$article_list	= $article_model->getArticleList($condition,$page);
+		$article_list	= $article_model->getJoinList($condition,$page);
 		Tpl::output('article',$article_list);
 		Tpl::output('show_page',$page->show());
 		/**
@@ -117,7 +117,11 @@ class articleControl extends BaseHomeControl {
 		}
 		Tpl::output('new_article_list',$new_article_list);
 		Model('seo')->type('article')->param(array('article_class'=>$article_class['ac_name']))->show();
-		Tpl::showpage('article_list');
+		if($article_class[type]){//如果为资讯类样式
+		    Tpl::setLayout('home_dw_layout');
+		}
+		$templates_name=$article_class[type]?"dw_article_list":"article_list";
+		Tpl::showpage($templates_name);
 	}
 	/**
 	 * 单篇文章显示页面

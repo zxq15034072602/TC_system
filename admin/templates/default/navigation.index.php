@@ -25,6 +25,7 @@
               <option value="0" <?php if($output['search_nav_location'] == '0'){ ?>selected="selected"<?php } ?>><?php echo $lang['navigation_index_top'];?></option>
               <option value="1" <?php if($output['search_nav_location'] == '1'){ ?>selected="selected"<?php } ?>><?php echo $lang['navigation_index_center'];?></option>
               <option value="2" <?php if($output['search_nav_location'] == '2'){ ?>selected="selected"<?php } ?>><?php echo $lang['navigation_index_bottom'];?></option>
+              <option value="3" <?php if($output['search_nav_location'] == '3'){ ?>selected="selected"<?php } ?>><?php echo $lang['navigation_index_self'];?></option>
             </select></td>
           <td><a href="javascript:document.formSearch.submit();" class="btn-search " title="<?php echo $lang['nc_query'];?>">&nbsp;</a>
             <?php if($output['search_nav_title'] != '' or $output['search_nav_location'] != ''){?>

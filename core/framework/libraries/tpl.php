@@ -100,6 +100,7 @@ class Tpl{
 				//对模板变量进行赋值
 				$output = self::$output_value;
 				//页头
+				
 				$output['html_title'] = $output['html_title']!='' ? $output['html_title'] :$GLOBALS['setting_config']['site_name'];
 				$output['seo_keywords'] = $output['seo_keywords']!='' ? $output['seo_keywords'] :$GLOBALS['setting_config']['site_name'];
 				$output['seo_description'] = $output['seo_description']!='' ? $output['seo_description'] :$GLOBALS['setting_config']['site_name'];

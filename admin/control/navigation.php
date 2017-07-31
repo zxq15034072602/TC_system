@@ -62,6 +62,9 @@ class navigationControl extends SystemControl{
 					case '2':
 						$navigation_list[$k]['nav_location'] = $lang['navigation_index_bottom'];
 						break;
+					case '3':
+					    $navigation_list[$k]['nav_location'] = $lang['navigation_index_self'];
+					    break;
 				}
 				switch ($v['nav_new_open']){
 					case '0':

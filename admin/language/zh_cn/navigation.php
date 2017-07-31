@@ -8,6 +8,7 @@ $lang['navigation_index_choose_del']	= '请选择要删除的内容';
 $lang['navigation_index_top']			= '头部';
 $lang['navigation_index_center']		= '中部';
 $lang['navigation_index_bottom']		= '底部';
+$lang['navigation_index_self']        = '咨询类导航';
 $lang['navigation_index_nav']			= '页面导航';
 $lang['navigation_index_title']			= '标题';
 $lang['navigation_index_location']		= '所在位置';

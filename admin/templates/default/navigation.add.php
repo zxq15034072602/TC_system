@@ -96,6 +96,10 @@
                 <input type="radio" value="2" name="nav_location">
                 <label><?php echo $lang['navigation_index_bottom'];?></label>
               </li>
+               <li>
+                <input type="radio" value="3" name="nav_location">
+                <label><?php echo $lang['navigation_index_self'];?></label>
+              </li>
             </ul></td>
           <td class="vatop tips"></td>
         </tr>

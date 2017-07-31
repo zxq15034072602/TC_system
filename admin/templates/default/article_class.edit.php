@@ -45,6 +45,22 @@
           <td class="vatop rowform"><input type="text" value="<?php echo $output['class_array']['ac_sort'];?>" name="ac_sort" id="ac_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['article_class_add_update_sort'];?></td>
         </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="ac_sort">展示样式:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td>
+              <li style="float:left">
+                <input type="radio" value="0" name="article_type" id="article_type" <?php if($output['class_array']['type'] ==0){?>checked="checked" <?php }?>>
+                <label for="nav_location0"><?php echo $lang['article_class_type_default'];?></label>
+              </li>
+              <li>
+                <input type="radio" value="1" name="article_type" id="article_type" <?php if($output['class_array']['type'] ==1){?> checked="checked" <?php }?>>
+                <label for="nav_location1"><?php echo $lang['article_class_type_new'];?></label>
+              </li>
+              
+          </td>
+        </tr>
       </tbody>
       <tfoot>
         <tr class="tfoot">
