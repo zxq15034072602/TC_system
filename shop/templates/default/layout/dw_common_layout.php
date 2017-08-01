@@ -172,9 +172,10 @@ $(function(){
         <?php } else {?>
             <a class="help_ login" href="<?php echo urlShop('login','login');?>">登录</a>
             <a class="help_ sign" href="<?php echo urlShop('login','register');?>">注册</a>
+            <div class="public-top-layout w"></div>
         <?php }?>
        
-        <a class="help_" href="<?php echo urlShop('article', 'article', array('ac_id' => 2));?>">帮助中心</a>
+        <a class="help_" href="<?php echo urlShop('article', 'article', array('ac_id' => 2));?>" target="_blank">帮助中心</a>
         <div class="city_">
             太原
            

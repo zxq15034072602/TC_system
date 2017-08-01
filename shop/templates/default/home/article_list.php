@@ -9,7 +9,9 @@
       <div class="content">
         <ul class="nch-sidebar-article-class">
           <?php foreach ($output['sub_class_list'] as $k=>$v){?>
+          <?php if($v[type]!=1) {?>
           <li><a href="<?php echo urlShop('article', 'article', array('ac_id'=>$v['ac_id']));?>"><?php echo $v['ac_name']?></a></li>
+          <?php }?>
           <?php }?>
         </ul>
       </div>

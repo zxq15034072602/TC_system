@@ -121,6 +121,9 @@ class articleControl extends BaseHomeControl {
 		    Tpl::setLayout('home_dw_layout');
 		}
 		$templates_name=$article_class[type]?"dw_article_list":"article_list";
+		if($_REQUEST['childlist'] == 1){
+		    $templates_name="dw_article_list_html";
+		}
 		Tpl::showpage($templates_name);
 	}
 	/**
@@ -236,7 +239,11 @@ class articleControl extends BaseHomeControl {
 		$seo_param['name'] = $article['article_title'];
 		$seo_param['article_class'] = $article_class['ac_name'];
 		Model('seo')->type('article_content')->param($seo_param)->show();
-		Tpl::showpage('article_show');
+		if($article_class[type]==1){
+		    Tpl::setLayout('home_dw_layout');
+		}
+		$templates_name=$_REQUEST['childshow']?"dw_article_show":"article_show";
+		Tpl::showpage($templates_name);
 	}
 }
 ?>

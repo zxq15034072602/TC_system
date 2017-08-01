@@ -3,6 +3,7 @@
 	height: auto;
 	float: left;
 	background: #F8F8F8;
+	font-size: 18px;
 }
 .detailSmallBox_qty{
 	width: 1200px;
@@ -159,6 +160,9 @@
 	color: #F69C1C;
 	font-size: 18px;
 	font-weight: bolder;
+}
+.jiantouBox_qty a {
+    float: right;
 }
 .moreBox{
 	width: 100%;

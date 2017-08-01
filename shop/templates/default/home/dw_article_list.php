@@ -49,15 +49,15 @@ a:hover{text-decoration: none;}
 					    <?php foreach ($output['article'] as $k=>$article) {?>
 					    
 					    <?php if($article['ac_id']==$v['ac_id']&&$j<3) {?>
-					    <a <?php if($article['article_url']!=''){?>target="_blank"<?php }?> href="<?php if($article['article_url']!='')echo $article['article_url'];else echo urlShop('article', 'show', array('article_id'=>$article['article_id']));?>">
+					    <a <?php if($article['article_url']!=''){?>target="_blank"<?php }?> href="<?php if($article['article_url']!='')echo $article['article_url'];else echo urlShop('article', 'show', array('article_id'=>$article['article_id'],'childshow'=>1));?>">
 						<div class="healthRightSmall_qty">
 							<div class="healthSmall_qty">
 								<h4>&nbsp;<span><?php echo sprintf("%02d",$j+1)?></span><?php echo $article[article_title] ?></h4>
 								<div class="time_qty"><?php echo date("Y-m-d",$article[article_time])?></div>
 							</div>
 							<div class="healthBottomSmall_qty">
-							    
-								<?php echo mb_substr($article[article_content], 0,100,"utf-8")?>
+							     
+								<?php echo  mb_substr(strip_tags($article[article_content]), 0,70,"utf-8")?>
 							</div>
 							<div class="jiantouBox_qty"> <a href=""><span>&gt</span></a></div>
 						</div>
@@ -103,7 +103,7 @@ a:hover{text-decoration: none;}
 		   <?php $j=0;?>
 		   <?php if($article['article_recommend']&&j<6){?>
 			<li class="hotSmallBox_qty">
-				<a <?php if($article['article_url']!=''){?>target="_blank"<?php }?> href="<?php if($article['article_url']!='')echo $article['article_url'];else echo urlShop('article', 'show', array('article_id'=>$article['article_id']));?>">
+				<a <?php if($article['article_url']!=''){?>target="_blank"<?php }?> href="<?php if($article['article_url']!='')echo $article['article_url'];else echo urlShop('article', 'show', array('article_id'=>$article['article_id'],'childshow'=>1));?>">
 					<div class="hotSmall_qty">
 						<div class="hotTopFontBox_qty">
 							<span class="bTime_qty"><?php echo date("Y-m-d",$article['article_time'])?></span>
@@ -117,7 +117,7 @@ a:hover{text-decoration: none;}
 							<h5><?php echo $article['article_title']?></h5>
 						</div>
 						<div class="hotFontCenter_qty">
-							<?php echo mb_substr($article[article_content], 0,50,"utf-8")?>
+							<?php echo mb_substr(strip_tags($article[article_content]), 0,50,"utf-8")?>
 						</div>
 						<div class="rItBox_qty">
 							<div href="">&lt</div>
