@@ -1,208 +1,183 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
-<link href="<?php echo SHOP_TEMPLATES_URL;?>/css/layout.css" rel="stylesheet" type="text/css">
-<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/healthSchool_qty.css" rel="stylesheet" type="text/css">
+<link href="<?php echo SHOP_TEMPLATES_URL;?>/css/layout.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/healthSchool_qty.css"
+	rel="stylesheet" type="text/css">
 <!-- 视频首页 start -->
 <style>
-.nch-breadcrumb-layout{background: #F8F8F8;}
-
+.nch-breadcrumb-layout {
+	background: #F8F8F8;
+}
 </style>
 <div class="healthSchoolBox_qty">
-<div class="healthSchoolSmallBox_qty">
-<!--健康讲堂banner开始-->
-<div class="healthBannerBox_qty">
-	<!--banner左边开始-->
-<ul class="healthBannerLeft">
-	<div class="healthLeft_qty">
+	<div class="healthSchoolSmallBox_qty">
+		<!--健康讲堂banner开始-->
+		<div class="healthBannerBox_qty">
+			<!--banner左边开始-->
+			<ul class="healthBannerLeft">
+				<div class="healthLeft_qty">
 	    <?php foreach($output['sub_class_list'] as $class) {?>
 		<li class="color_qty"><?php echo $class['vd_name']?></span>
-			<div class="healthHidden_qty">
-				<div class="healthHiddenSmall_qty">
-					<h4><?php echo $class['vd_name'] ?>介绍</h4>
-					<div class="studyBox_qty">
-						<p>
+						<div class="healthHidden_qty">
+							<div class="healthHiddenSmall_qty">
+								<h4><?php echo $class['vd_name'] ?>介绍</h4>
+								<div class="studyBox_qty">
+									<p>
 						   <?php echo mb_substr($class['vd_description'], 0,200,"utf-8")?>
 						</p>
-					</div>
+								</div>
 					<?php if($class['child']&&is_array($class['child'])) {?>
 					<h4 class="top_qty"><?php echo $class['vd_name'] ?>分类</h4>
-					<div class="school_qty">
-						<div class="list_qty">
+								<div class="school_qty">
+									<div class="list_qty">
 						    <?php foreach($class['child'] as $child) {?>
 							<a href=""><?php echo $child['vd_name']?></a>
 							<?php }?>
 						</div>
-					</div>
+								</div>
 					<?php }?>
 				</div>
-			</div>
-		</li>
+						</div></li>
 		<?php }?>
 	</div>
-</ul>
-<!--banner左边结束-->
-<!--banner右边开始-->
-<div class="healthBannerRight">
-	<div class="ImgBox_qty">
+			</ul>
+			<!--banner左边结束-->
+			<!--banner右边开始-->
+			<div class="healthBannerRight">
+				<div class="ImgBox_qty">
 		<?php echo loadadv(1054);?>
 	</div>
-	<ul class="btn_qty">
-	</ul>
-  	<div class="lrbtn_qty">
-		<div class="left_qty"></div>
-		<div class="right_qty"></div>
-  	</div>
-</div>
-<!--banner右边结束-->
-</div>
-<!--健康讲堂banner结束-->
-<!--小热门视频开始-->
-<div class="healthBox_qty">
-	<div class="healthImgBox_qty">
-		<img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/store_qty.png"/>
-	</div>
-	<div class="healthRightBox_qty">
-		<div class="healthTopFont_qty">
-			热门<span>视频</span>
+				<ul class="btn_qty">
+				</ul>
+				<div class="lrbtn_qty">
+					<div class="left_qty"></div>
+					<div class="right_qty"></div>
+				</div>
+			</div>
+			<!--banner右边结束-->
 		</div>
-		<div class="healthBottomFont_qty">
-			VID<span>EO</span>
+		<!--健康讲堂banner结束-->
+		<!--小热门视频开始-->
+		<div class="healthBox_qty">
+			<div class="healthImgBox_qty">
+				<img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/store_qty.png" />
+			</div>
+			<div class="healthRightBox_qty">
+				<div class="healthTopFont_qty">
+					热门<span>视频</span>
+				</div>
+				<div class="healthBottomFont_qty">
+					VID<span>EO</span>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<!--小热门视频结束-->
-<!--热门视频开始-->
-<div class="videoBox_qty">
+		<!--小热门视频结束-->
+		<!--热门视频开始-->
+		<div class="videoBox_qty">
     <?php foreach ($output['new_article_list'] as $k=>$video) {?>
    
     <?php if($video[item]&&is_array($video[item])) {?>
 	<div class="videoFont_qty">.<?php echo $video['vd_name']?>.</div>
-	<div class="videoList_qty">
-		<ul>
+			<div class="videoList_qty">
+				<ul>
 		    <?php foreach($video['item'] as $childv) {?>
-			<li>
-				<a href="<?php echo urlShop("video","show",array("video_id"=>$childv['video_id']))?>">
-					<img src="<?php if($childv[file_name]){echo UPLOAD_SITE_URL.'/shop/article/'.$childv['file_name'];}else{echo UPLOAD_SITE_URL.'/shop/common/loading.gif';}?>" width="285" height="266" data-url="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif"/>
-					<div class="videoSmall_qty">
+			<li><a
+						href="<?php echo urlShop("video","show",array("video_id"=>$childv['video_id']))?>">
+							<img
+							src="<?php if($childv[file_name]){echo UPLOAD_SITE_URL.'/shop/article/'.$childv['file_name'];}else{echo UPLOAD_SITE_URL.'/shop/common/loading.gif';}?>"
+							width="285" height="266"
+							data-url="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif" />
+							<div class="videoSmall_qty">
 						<?php echo mb_substr($childv['video_title'], 0,8,"utf-8")?>
 					</div>
-				</a>
-			</li>
+					</a></li>
 			
 			<?php }?>
 		</ul>
-	</div>
+			</div>
 	
 	<?php }?>
 	<?php }?>
 	
 </div>
-<!--热门视频结束-->
-<!--小保健讲堂开始-->
-<div class="healthBox_qty">
-	<div class="healthImgBox_qty">
-		<img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/store_qty.png"/>
+		<!--热门视频结束-->
+		<!--小保健讲堂开始-->
+		<div class="healthBox_qty">
+			<div class="healthImgBox_qty">
+				<img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/store_qty.png" />
+			</div>
+			<div class="healthRightBox_qty">
+				<div class="healthTopFont_qty">
+					保健<span>讲堂</span>
+				</div>
+				<div class="healthBottomFont_qty">
+					HEALTH<span> LECTURE ROOM</span>
+				</div>
+			</div>
+		</div>
+		<!--小保健讲堂结束-->
+		<!--保健讲堂开始-->
+		<div class="healthRoom_qty">
+			<div class="healthRoomLeft_qty">
+	<?php echo loadadv(1055);?>
 	</div>
-	<div class="healthRightBox_qty">
-		<div class="healthTopFont_qty">
-			保健<span>讲堂</span>
+			<div class="healthRoomRight_qty">
+				<div class="healthRoomTop_qty">
+					<ul>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="heathRoomFont_qty">
+									<span>太常视频</span>
+									<div>
+										<img src="themes/image/eyes_qty_03.png" /> 18
+									</div>
+								</div>
+						</a></li>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="heathRoomFont_qty">
+									<span>太常视频</span>
+									<div>
+										<img src="themes/image/eyes_qty_03.png" /> 18
+									</div>
+								</div>
+						</a></li>
+					</ul>
+				</div>
+				<div class="healthRoomBottom_qty">
+					<ul class="img_qty">
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="healthRoomBs_qty">太常视频</div>
+						</a></li>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="healthRoomBs_qty">太常视频</div>
+						</a></li>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="healthRoomBs_qty">太常视频</div>
+						</a></li>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="healthRoomBs_qty">太常视频</div>
+						</a></li>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="healthRoomBs_qty">太常视频</div>
+						</a></li>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="healthRoomBs_qty">太常视频</div>
+						</a></li>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="healthRoomBs_qty">太常视频</div>
+						</a></li>
+						<li><a href=""> <img src="themes/image/detailList_qty.png" />
+								<div class="healthRoomBs_qty">太常视频</div>
+						</a></li>
+					</ul>
+					<ul class="lrbtns_qty">
+						<li class="lbtns_qty">&lt;</li>
+						<li class="rbtns_qty">&gt;</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<div class="healthBottomFont_qty">
-			HEALTH<span> LECTURE ROOM</span>
-		</div>
-	</div>
-</div>
-<!--小保健讲堂结束-->
-<!--保健讲堂开始-->
-<div class="healthRoom_qty">
-	<div class="healthRoomLeft_qty"></div>
-	<div class="healthRoomRight_qty">
-		<div class="healthRoomTop_qty">
-			<ul>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="heathRoomFont_qty">
-							<span>太常视频</span>
-							<div>
-								<img src="themes/image/eyes_qty_03.png"/>
-								18
-							</div>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="heathRoomFont_qty">
-							<span>太常视频</span>
-							<div>
-								<img src="themes/image/eyes_qty_03.png"/>
-								18
-							</div>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		<div class="healthRoomBottom_qty">
-			<ul class="img_qty">
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="healthRoomBs_qty">太常视频</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="healthRoomBs_qty">太常视频</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="healthRoomBs_qty">太常视频</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="healthRoomBs_qty">太常视频</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="healthRoomBs_qty">太常视频</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="healthRoomBs_qty">太常视频</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="healthRoomBs_qty">太常视频</div>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img src="themes/image/detailList_qty.png"/>
-						<div class="healthRoomBs_qty">太常视频</div>
-					</a>
-				</li>
-			</ul>
-			<ul class="lrbtns_qty">
-				<li class="lbtns_qty">&lt;</li>
-				<li class="rbtns_qty">&gt;</li>
-			</ul>
-		</div>
-	</div>
-</div>
-<!--保健讲堂结束-->
+		<!--保健讲堂结束-->
 	</div>
 </div>
 <script>

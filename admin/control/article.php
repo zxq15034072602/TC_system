@@ -101,6 +101,7 @@ class articleControl extends SystemControl{
 				$parent_list[$k]['ac_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['ac_name'];
 			}
 		}
+		
 		Tpl::output('article_list',$article_list);
 		Tpl::output('page',$page->show());
 		Tpl::output('search_title',trim($_GET['search_title']));
@@ -144,6 +145,7 @@ class articleControl extends SystemControl{
 				$insert_array['article_content'] = trim($_POST['article_content']);
 				$insert_array['article_time'] = time();
 				$insert_array['article_recommend']= intval($_POST['article_recommend']);
+				$insert_array['tag_id'] =intval($_POST['tag_id']);
 				$result = $model_article->add($insert_array);
 				if ($result){
 					/**
@@ -190,6 +192,11 @@ class articleControl extends SystemControl{
 			}
 		}
 		/**
+		 * 标签列表
+		 */
+		$model_class = Model("article_tag");
+		$tag_list=$model_class->getList(TRUE, null, 'tag_id desc');
+		/**
 		 * 模型实例化
 		 */
 		$model_upload = Model('upload');
@@ -204,6 +211,7 @@ class articleControl extends SystemControl{
 
 		Tpl::output('PHPSESSID',session_id());
 		Tpl::output('ac_id',intval($_GET['ac_id']));
+		Tpl::output('tag_list',$tag_list);
 		Tpl::output('parent_list',$parent_list);
 		Tpl::output('file_upload',$file_upload);
 		Tpl::showpage('article.add');
@@ -242,6 +250,7 @@ class articleControl extends SystemControl{
 				$update_array['article_sort'] = trim($_POST['article_sort']);
 				$update_array['article_content'] = trim($_POST['article_content']);
                 $update_array['article_recommend']=intval($_POST['article_recommend']);
+                $update_array['tag_id'] =intval($_POST['tag_id']);
 				$result = $model_article->update($update_array);
 				if ($result){
 					/**
@@ -295,6 +304,11 @@ class articleControl extends SystemControl{
 			}
 		}
 		/**
+		 * 标签列表
+		 */
+		$model_class = Model("article_tag");
+		$tag_list=$model_class->getList(TRUE, null, 'tag_id desc');
+		/**
 		 * 模型实例化
 		 */
 		$model_upload = Model('upload');
@@ -309,6 +323,7 @@ class articleControl extends SystemControl{
 
 		Tpl::output('PHPSESSID',session_id());
 		Tpl::output('file_upload',$file_upload);
+		Tpl::output('tag_list',$tag_list);
 		Tpl::output('parent_list',$parent_list);
 		Tpl::output('article_array',$article_array);
 		Tpl::showpage('article.edit');

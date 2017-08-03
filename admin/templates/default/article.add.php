@@ -37,6 +37,20 @@
           <td class="vatop tips"></td>
         </tr>
         <tr>
+          <td colspan="2" class=""><label class="" for="cate_id">文章标签:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><select name="tag_id" id="tag_id">
+              <option value=""><?php echo $lang['nc_please_choose'];?>...</option>
+              <?php if(!empty($output['tag_list']) && is_array($output['tag_list'])){ ?>
+              <?php foreach($output['tag_list'] as $k => $v){ ?>
+              <option   value="<?php echo $v['tag_id'];?>"><?php echo $v['tag_name'];?></option>
+              <?php } ?>
+              <?php } ?>
+            </select></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
           <td colspan="2" class="required"><label for="articleForm"><?php echo $lang['article_add_url'];?>:</label></td>
         </tr>
         <tr class="noborder">

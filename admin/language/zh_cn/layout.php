@@ -97,6 +97,7 @@ $lang['nc_order_manage']		= '实物订单';
 $lang['nc_bill_manage']			= '结算管理';
 $lang['nc_website']				= '网站';
 $lang['nc_website_setting']		= '功能模块';
+$lang['nc_article_tag']		    = '文章标签';
 $lang['nc_article_class']		= '文章分类';
 $lang['nc_article_manage']		= '文章管理';
 $lang['nc_video_class']         = '视频分类';

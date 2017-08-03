@@ -140,6 +140,7 @@ $arr = array(
 				'nav' => 'website',
 				'text' => $lang['nc_website'],
 				'list' => array(
+				    array('args'=>'article_tag_list,article_tag,website',	            'text'=>$lang['nc_article_tag']),
 					array('args'=>'article_class,article_class,website',	'text'=>$lang['nc_article_class']),
 					array('args'=>'article,article,website',				'text'=>$lang['nc_article_manage']),
 				    array('args'=>'video_class,video_class,website',		'text'=>$lang['nc_video_class']),
