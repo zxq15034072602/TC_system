@@ -231,6 +231,12 @@ $(function(){
                     echo ' class="current"';
                 }
                 break;
+            case '4':
+                echo ' href="' . urlShop('video', 'video', array('vd_id'=>$nav['item_id'])) . '"';
+                if (isset($_GET['vd_id']) && $_GET['vd_id'] == $nav['item_id']) {
+                    echo ' class="current"';
+                }
+                break;
         }
         ?>>
                    <div class="list_icon"></div>

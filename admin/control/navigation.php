@@ -124,6 +124,12 @@ class navigationControl extends SystemControl{
 				case '3':
 					$obj_validate->setValidate(array("input"=>$_POST["activity_id"], "require"=>"true", "message"=>$lang['navigation_add_activity_null']));
 					break;
+				/**
+				 * 视频分类
+				 */
+				case '4':
+				    $obj_validate->setValidate(array("input"=>$_POST["video_class_id"], "require"=>"true", "message"=>$lang['navigation_add_video_class_null']));
+				    break;
 			}
 
 			$error = $obj_validate->validate();
@@ -162,6 +168,12 @@ class navigationControl extends SystemControl{
 					case '3':
 						$insert_array['item_id'] = intval($_POST['activity_id']);
 						break;
+					/**
+					 * 视频分类
+					 */
+					case '4':
+					    $insert_array['item_id'] = intval($_POST['video_class_id']);
+					    break;
 				}
 
 				$result = $model_navigation->add($insert_array);
@@ -205,6 +217,16 @@ class navigationControl extends SystemControl{
 			}
 		}
 		/**
+		 * 视频分类
+		 */
+		$model_video_class = Model('video_class');
+		$video_class_list = $model_video_class->getTreeClassList(2);
+		if (is_array($video_class_list)){
+		    foreach ($video_class_list as $k => $v){
+		        $video_class_list[$k]['vd_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['vd_name'];
+		    }
+		}
+		/**
 		 * 活动
 		 */
 		$activity	= Model('activity');
@@ -212,6 +234,7 @@ class navigationControl extends SystemControl{
 		Tpl::output('activity_list',$activity_list);
 		Tpl::output('goods_class_list',$goods_class_list);
 		Tpl::output('article_class_list',$article_class_list);
+		Tpl::output('video_class_list',$video_class_list);
 		Tpl::showpage('navigation.add');
 	}
 
@@ -249,6 +272,12 @@ class navigationControl extends SystemControl{
 				case '2':
 					$obj_validate->setValidate(array("input"=>$_POST["article_class_id"], "require"=>"true", "message"=>$lang['navigation_add_article_class_null']));
 					break;
+				/**
+				 * 视频分类
+				 */
+				case '4':
+				    $obj_validate->setValidate(array("input"=>$_POST["video_class_id"], "require"=>"true", "message"=>$lang['navigation_add_video_class_null']));
+				    break;
 			}
 
 			$error = $obj_validate->validate();
@@ -288,6 +317,12 @@ class navigationControl extends SystemControl{
 					case '3':
 						$update_array['item_id'] = intval($_POST['activity_id']);
 						break;
+					/**
+					 * 视频分类
+					 */
+					case '4':
+					    $update_array['item_id'] = intval($_POST['video_class_id']);
+					    break;
 				}
 				$result = $model_navigation->update($update_array);
 				if ($result){
@@ -335,6 +370,16 @@ class navigationControl extends SystemControl{
 			}
 		}
 		/**
+		 * 视频分类
+		 */
+		$model_video_class = Model('video_class');
+		$video_class_list = $model_video_class->getTreeClassList(2);
+		if (is_array($video_class_list)){
+		    foreach ($video_class_list as $k => $v){
+		        $video_class_list[$k]['vd_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['vd_name'];
+		    }
+		}
+		/**
 		 * 活动
 		 */
 		$activity	= Model('activity');
@@ -343,6 +388,7 @@ class navigationControl extends SystemControl{
 		Tpl::output('navigation_array',$navigation_array);
 		Tpl::output('goods_class_list',$goods_class_list);
 		Tpl::output('article_class_list',$article_class_list);
+		Tpl::output('video_class_list',$video_class_list);
 		Tpl::showpage('navigation.edit');
 	}
 

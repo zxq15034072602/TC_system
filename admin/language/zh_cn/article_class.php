@@ -9,7 +9,9 @@ $lang['article_class_index_class']		= '文章分类';
 $lang['article_class_index_name']		= '分类名称';
 $lang['article_class_index_ensure_del']	= '删除该分类将会同时删除该分类的所有下级分类，您确定要删除吗';
 $lang['article_class_index_help1']		= '管理员新增文章时，可选择文章分类。文章分类将在前台文章列表页显示';
+$lang['video_class_index_help1']		= '管理员新增视频时，可选择视频分类。视频分类将在前台视频列表页显示';
 $lang['article_class_index_help2']		= '默认的文章分类不可以删除';
+$lang['video_class_index_help2']		= '默认的视频分类不可以删除';
 /**
  * 新增分类
  */

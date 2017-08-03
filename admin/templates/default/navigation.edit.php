@@ -62,6 +62,18 @@
                   <?php } ?>
                 </select>
               </li>
+              <li class="left w100pre"><span class="radio">
+                <input type="radio" <?php if($output['navigation_array']['nav_type'] == '4'){ ?>checked="checked"<?php } ?> value="4" name="nav_type" id="video_class" onclick="showType('video_class');">
+                <label for="video_class">视频分类</label>
+                </span>
+                <select name="video_class_id" id="video_class_id" style="display: none;">
+                  <?php if(is_array($output['video_class_list'])){ ?>
+                  <?php foreach($output['video_class_list'] as $k => $v){ ?>
+                  <option <?php if($output['navigation_array']['item_id'] == $v['vd_id']){ ?>selected="selected"<?php } ?> value="<?php echo $v['vd_id'];?>"><?php echo $v['vd_name'];?></option>
+                  <?php } ?>
+                  <?php } ?>
+                </select>
+              </li>
             </ul></td>
           <td class="vatop tips"></td>
         </tr>
@@ -174,11 +186,15 @@ $(document).ready(function(){
 	<?php if($output['navigation_array']['nav_type'] == '3'){ ?>
 	showType('activity');
 	<?php } ?>
+	<?php if($output['navigation_array']['nav_type'] == '4'){ ?>
+	showType('video_class');
+	<?php } ?>
 });
 
 function showType(type){
 	$('#goods_class_id').css('display','none');
 	$('#article_class_id').css('display','none');
+	$('#video_class_id').css('display','none');
 	$('#activity_id').css('display','none');
 	if(type == 'diy'){
 		$('#nav_url').attr('disabled',false);

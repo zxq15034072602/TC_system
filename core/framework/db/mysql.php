@@ -297,6 +297,7 @@ class Db{
 				}
 			}
 			$sql = 'UPDATE `'.DBPRE.$table_name.'` AS `'.$table_name.'` SET '.$string_value.' '.$where;
+			
 			return self::query($sql,$host);
 		}else {
 			return false;

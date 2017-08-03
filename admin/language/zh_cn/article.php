@@ -6,11 +6,14 @@ defined('InShopNC') or exit('Access Invalid!');
 $lang['article_index_del_succ']	= '删除文章成功。';
 $lang['article_index_choose']	= '请选择要删除的内容!';
 $lang['article_index_manage']	= '文章管理';
+$lang['video_index_manage']	    = '视频管理';
 $lang['article_index_title']	= '标题';
 $lang['article_index_class']	= '文章分类';
+$lang['video_index_class']	    = '视频分类';
 $lang['article_index_show']		= '显示';
 $lang['article_index_addtime']	= '添加时间';
 $lang['article_index_help1']	= '区别于系统文章，可在文章列表页点击查看';
+$lang['video_index_help1']	    = '区别于系统视频，可在文章列表页点击查看';
 /**
  * 添加文章
  */

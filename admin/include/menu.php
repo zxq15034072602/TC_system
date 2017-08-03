@@ -142,6 +142,8 @@ $arr = array(
 				'list' => array(
 					array('args'=>'article_class,article_class,website',	'text'=>$lang['nc_article_class']),
 					array('args'=>'article,article,website',				'text'=>$lang['nc_article_manage']),
+				    array('args'=>'video_class,video_class,website',		'text'=>$lang['nc_video_class']),
+				    array('args'=>'video,video,website',				    'text'=>$lang['nc_video_manage']),
 					array('args'=>'document,document,website',				'text'=>$lang['nc_document']),
 					array('args'=>'navigation,navigation,website',			'text'=>$lang['nc_navigation']),
 					array('args'=>'ap_manage,adv,website',					'text'=>$lang['nc_adv_manage']),
@@ -150,6 +152,7 @@ $arr = array(
 					array('args'=>'link,link,website',			'text'=>友情连接),
 				)
 			),
+		    
 			7 => array(
 				'nav' => 'operation',
 				'text' => $lang['nc_operation'],
@@ -186,6 +189,7 @@ $arr = array(
 
 				)
 			),
+		    
 		),
 );
 if(C('flea_isuse')==1){

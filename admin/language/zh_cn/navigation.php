@@ -22,6 +22,7 @@ $lang['navigation_add_sort_int']		= '分类排序仅能为数字';
 $lang['navigation_add_url_wrong']		= '链接格式不正确';
 $lang['navigation_add_goods_class_null']	= '商品分类不能为空';
 $lang['navigation_add_article_class_null']	= '文章分类不能为空';
+$lang['navigation_add_video_class_null']	= '视频分类不能为空';
 $lang['navigation_add_activity_null']	= '活动不能为空';
 $lang['navigation_add_back_to_list']	= '返回页面导航列表';
 $lang['navigation_add_again']			= '继续新增';
