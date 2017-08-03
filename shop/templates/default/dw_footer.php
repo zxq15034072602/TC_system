@@ -25,7 +25,7 @@
                 <div class="contact_b">CHINA MERCHANTS</div>
             </div>
             <div class="our_tell">市场合作 0351-2351212</div>
-            <a href="" class="our_adress">招商须知</a>
+            <a href="<?php echo urlShop("show_joinin","index")?>" class="our_adress">招商入驻</a>
         </div>
         <div class="look_at">
             <div class="look_me">扫我关注</div>

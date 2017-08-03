@@ -48,6 +48,7 @@ function advshow($ap_id, $type = 'js'){
     }else {
         $select = 0;
         if($ap_display == '1'){//多广告展示
+            
             $select = array_rand($adv_list);
         }
         $adv_select = $adv_list[$select];

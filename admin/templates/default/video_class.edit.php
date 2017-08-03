@@ -45,7 +45,14 @@
           <td class="vatop rowform"><input type="text" value="<?php echo $output['class_array']['vd_sort'];?>" name="vd_sort" id="ac_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['article_class_add_update_sort'];?></td>
         </tr>
-        
+         <tr>
+          <td colspan="2" class="required"><label for="vd_description">描述</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="" colspan="2">
+          <textarea rows="10" cols="100" name="vd_description" id="vd_description" style="height: 100%"><?php echo $output['class_array']['vd_description']?></textarea>
+          </td>
+        </tr>
       </tbody>
       <tfoot>
         <tr class="tfoot">
@@ -76,13 +83,13 @@ $(document).ready(function(){
                 url :'index.php?act=video_class&op=ajax&branch=check_class_name',
                 type:'get',
                 data:{
-                    ac_name : function(){
+                    vd_name : function(){
                         return $('#ac_name').val();
                     },
-                    ac_parent_id : function() {
+                    vd_parent_id : function() {
                         return $('#ac_parent_id').val();
                     },
-                    ac_id : '<?php echo $output['class_array']['vd_id'];?>'
+                    vd_id : '<?php echo $output['class_array']['vd_id'];?>'
                   }
                 }
             },

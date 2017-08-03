@@ -97,8 +97,7 @@ class video_classControl extends SystemControl{
                 $insert_array['vd_name'] = trim($_POST['vd_name']);
                 $insert_array['vd_parent_id'] = intval($_POST['vd_parent_id']);
                 $insert_array['vd_sort'] = trim($_POST['vd_sort']);
-                
-    
+                $insert_array['vd_description'] = trim($_POST['vd_description']);
                 $result = $model_class->add($insert_array);
                 if ($result){
                     $url = array(
@@ -158,7 +157,7 @@ class video_classControl extends SystemControl{
                 $update_array['vd_name'] = trim($_POST['vd_name']);
                 //				$update_array['ac_parent_id'] = intval($_POST['ac_parent_id']);
                 $update_array['vd_sort'] =trim($_POST['vd_sort']);
-    
+                $update_array['vd_description']=trim($_POST['vd_description']);
                 $result = $model_class->update($update_array);
                 if ($result){
                     $url = array(

@@ -44,7 +44,14 @@
           <td class="vatop rowform"><input type="text" value="255" name="vd_sort" id="ac_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['article_class_add_update_sort'];?></td>
         </tr>
-       
+        <tr>
+          <td colspan="2" class="required"><label for="vd_description">描述</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="" colspan="2">
+          <textarea rows="10" cols="100" name="vd_description" id="vd_description" style="height: 100%"></textarea>
+          </td>
+        </tr>
       </tbody>
       <tfoot>
         <tr class="tfoot">
