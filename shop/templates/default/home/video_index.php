@@ -18,7 +18,7 @@
 			<ul class="healthBannerLeft">
 				<div class="healthLeft_qty">
 	    <?php foreach($output['sub_class_list'] as $class) {?>
-		<li class="color_qty"><?php echo $class['vd_name']?></span>
+		<li class="color_qty"><a  style="color: #FFFFFF;" href="<?php echo urlShop("video","video",array("parent_id"=>$class['vd_parent_id'],"childlist"=>1,"vd_id"=>$class['vd_id']))?>"><?php echo $class['vd_name']?></a></span>
 						<div class="healthHidden_qty">
 							<div class="healthHiddenSmall_qty">
 								<h4><?php echo $class['vd_name'] ?>介绍</h4>
@@ -83,7 +83,7 @@
 				<ul>
 		    <?php foreach($video['item'] as $childv) {?>
 			<li><a
-						href="<?php echo urlShop("video","show",array("video_id"=>$childv['video_id']))?>">
+						href="<?php echo urlShop("video","show",array("video_id"=>$childv['video_id'],"parent_id"=>$childv['vd_parent_id']))?>">
 							<img
 							src="<?php if($childv[file_name]){echo UPLOAD_SITE_URL.'/shop/article/'.$childv['file_name'];}else{echo UPLOAD_SITE_URL.'/shop/common/loading.gif';}?>"
 							width="285" height="266"
@@ -120,55 +120,34 @@
 		<!--保健讲堂开始-->
 		<div class="healthRoom_qty">
 			<div class="healthRoomLeft_qty">
-	<?php echo loadadv(1055);?>
-	</div>
+        	<?php echo loadadv(1055);?>
+        	</div>
 			<div class="healthRoomRight_qty">
 				<div class="healthRoomTop_qty">
 					<ul>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="heathRoomFont_qty">
-									<span>太常视频</span>
-									<div>
-										<img src="themes/image/eyes_qty_03.png" /> 18
-									</div>
-								</div>
+					    <?php foreach ($output['video_recommend'][1]['code_info'] as $k=>$screen){?>
+					    <?php if($k<=2) {?>
+						<li><a href="<?php echo $screen['pic_url']?>"> <img src="<?php echo UPLOAD_SITE_URL.DS.$screen['pic_img']?>" />
+					    <div class="heathRoomFont_qty">
+						<span style="text-align:center;"><?php echo $screen['pic_name']?></span>
+						
+						</div>	
 						</a></li>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="heathRoomFont_qty">
-									<span>太常视频</span>
-									<div>
-										<img src="themes/image/eyes_qty_03.png" /> 18
-									</div>
-								</div>
-						</a></li>
+						<?php }?>
+						<?php }?>
 					</ul>
 				</div>
 				<div class="healthRoomBottom_qty">
 					<ul class="img_qty">
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="healthRoomBs_qty">太常视频</div>
+					    <?php foreach ($output['video_recommend'][0]['code_info'] as $focus){?>
+					    <?php foreach ($focus['pic_list'] as $child_focus) {?>
+					    <?php if($child_focus['pic_img']) {?>
+						<li><a href="<?php echo $child_focus['pic_url']?>"> <img src="<?php echo UPLOAD_SITE_URL.DS.$child_focus['pic_img']?>" />
+								<div class="healthRoomBs_qty"><?php echo $child_focus['pic_name'] ?></div>
 						</a></li>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="healthRoomBs_qty">太常视频</div>
-						</a></li>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="healthRoomBs_qty">太常视频</div>
-						</a></li>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="healthRoomBs_qty">太常视频</div>
-						</a></li>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="healthRoomBs_qty">太常视频</div>
-						</a></li>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="healthRoomBs_qty">太常视频</div>
-						</a></li>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="healthRoomBs_qty">太常视频</div>
-						</a></li>
-						<li><a href=""> <img src="themes/image/detailList_qty.png" />
-								<div class="healthRoomBs_qty">太常视频</div>
-						</a></li>
+						<?php }?>
+						<?php }?>
+						<?php }?>
 					</ul>
 					<ul class="lrbtns_qty">
 						<li class="lbtns_qty">&lt;</li>

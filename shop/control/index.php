@@ -9,6 +9,7 @@
 defined('InShopNC') or exit('Access Invalid!');
 class indexControl extends BaseHomeControl{ //父类定义了公共头部，以及模板路径等
     public function selfindexOp(){//自定首页
+        
         Model('seo')->type('index')->show();
         Tpl::setDir('duyiwang');
         Tpl::setLayout('home_dw_layout');

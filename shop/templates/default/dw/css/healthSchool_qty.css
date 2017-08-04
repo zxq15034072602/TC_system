@@ -275,6 +275,12 @@
 	float: left;
 	margin-left: 10px;
 }
+.healthBannerLeft li a {
+    color: #FFFFFF;
+}
+.healthBannerLeft li a:hover {
+    text-decoration: none;;
+}
 .healthTopFont_qty{
 	color: #9CC813;
 	line-height: 24px;
@@ -417,9 +423,10 @@
 	cursor: default;
 	position: absolute;
 	bottom: 0;
+	text-align: center;
 }
 .heathRoomFont_qty span{
-	float: left;
+	
 	margin-left: 10px;
 }
 .heathRoomFont_qty div{

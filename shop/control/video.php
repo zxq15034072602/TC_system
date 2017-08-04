@@ -42,6 +42,18 @@ class videoControl extends BaseHomeControl {
         if(empty($_GET['vd_id'])){
             showMessage($lang['para_error'],'','html','error');//'缺少参数:文章类别编号'
         }
+        $condition=array();
+        $condition['web_id']=102;
+       
+        //板块信息
+		$model_web_config = Model('web_config');
+		$webcode=$model_web_config->getCodeList($condition);
+		if($webcode){//获取视频推荐内容
+		    foreach ($webcode as &$video_recommend){
+		        $video_recommend[code_info]=$model_web_config->get_array($video_recommend['code_info'],"array");
+		    }
+		}
+		Tpl::output('video_recommend',$webcode);
         /**
          * 得到导航ID
          */
@@ -74,23 +86,7 @@ class videoControl extends BaseHomeControl {
             )
         );
         Tpl::output('nav_link_list',$nav_link);
-    
-        /**
-         * 左侧分类导航
-         */
-        $condition	= array();
-        $condition['vd_parent_id']	= $article_class['vd_id'];
-        $sub_class_list	= $article_class_model->getClassList($condition);
-        if(empty($sub_class_list) || !is_array($sub_class_list)){
-            $condition['vd_parent_id']	= $article_class['vd_parent_id'];
-            $sub_class_list	= $article_class_model->getClassList($condition);
-        }
-        foreach($sub_class_list as &$class){
-            $condition	= array();
-            $condition['vd_parent_id']=$class['vd_id'];
-            $class['child']=$article_class_model->getClassList($condition);
-        }
-        Tpl::output('sub_class_list',$sub_class_list);
+        
         /**
          * 视频列表
          */
@@ -110,40 +106,78 @@ class videoControl extends BaseHomeControl {
         $page->setEachNum(10);
         $page->setStyle('admin');
         $article_list	= $article_model->getJoinList($condition,$page);
+        if(empty($_REQUEST["childlist"])){
+            /**
+             * 左侧分类导航
+             */
+            $condition	= array();
+            $condition['vd_parent_id']	= $article_class['vd_id'];
+            $sub_class_list	= $article_class_model->getClassList($condition);
+            if(empty($sub_class_list) || !is_array($sub_class_list)){
+                $condition['vd_parent_id']	= $article_class['vd_parent_id'];
+                $sub_class_list	= $article_class_model->getClassList($condition);
+            }
+            foreach($sub_class_list as &$class){
+                $condition	= array();
+                $condition['vd_parent_id']=$class['vd_id'];
+                $class['child']=$article_class_model->getClassList($condition);
+            }
+            Tpl::output('sub_class_list',$sub_class_list);
+            /**
+             * 最新视频列表
+             */
+            rsort($article_list);
+            $count	= count($article_list);
+            $new_article_list	= array();
+            
+            foreach ($sub_class_list as $k=>$class){
+                $new_article_list[$k]['vd_name']=$class['vd_name'];
+                if(!empty($article_list) && is_array($article_list)){
+                    for ($i=0;$i<($count>$default_count?$default_count:$count);$i++){
+                        if($article_list[$i][vd_id]==$class[vd_id]){
+                            $new_article_list[$k]['item'][]=$article_list[$i];
+                        }
+            
+                    }
+                }
+            
+            }
+            $random_keys=array_rand($new_article_list,2);//随机显示视频分类的两个分类的最新视频
+            $recommend_video=array();
+            foreach ($random_keys as $k=>$key){
+                $recommend_video[$k]=$new_article_list[$key];
+            }
+            Tpl::output('new_article_list',$recommend_video);
+        }else{
+            /**
+             * 左侧分类导航
+             */
+            $condition	= array();
+            $condition['vd_parent_id']	= $_REQUEST['parent_id'];
+            $sub_class_list	= $article_class_model->getClassList($condition);
+            
+            if(empty($sub_class_list) || !is_array($sub_class_list)){
+                $condition['vd_parent_id']	= $article_class['vd_parent_id'];
+                $sub_class_list	= $article_class_model->getClassList($condition);
+            }
+            foreach($sub_class_list as &$class){
+                $condition	= array();
+                $condition['vd_parent_id']=$class['vd_id'];
+                $class['child']=$article_class_model->getClassList($condition);
+            }
+            Tpl::output('sub_class_list',$sub_class_list);
+           
+        }
         Tpl::output('article',$article_list);
         Tpl::output('show_page',$page->show());
-        /**
-         * 最新视频列表
-         */
-        rsort($article_list);
-        $count	= count($article_list);
-        $new_article_list	= array();
-        
-        foreach ($sub_class_list as $k=>$class){
-            $new_article_list[$k]['vd_name']=$class['vd_name'];
-            if(!empty($article_list) && is_array($article_list)){
-                for ($i=0;$i<($count>$default_count?$default_count:$count);$i++){
-                    if($article_list[$i][vd_id]==$class[vd_id]){
-                        $new_article_list[$k]['item'][]=$article_list[$i];
-                    }
-            
-                }
-            }
-            
-        }
-        $random_keys=array_rand($new_article_list,2);//随机显示视频分类的两个分类的最新视频
-        $recommend_video=array();
-        foreach ($random_keys as $k=>$key){
-            $recommend_video[$k]=$new_article_list[$key];
-        }
-        Tpl::output('new_article_list',$recommend_video);
+       
         Model('seo')->type('video')->param(array('video_class'=>$article_class['vd_name']))->show();
         
             
         
         $templates_name="video_index";
         if($_REQUEST['childlist'] == 1){
-            $templates_name="dw_article_list_html";
+            $templates_name="dw_video_list_html";
         }
         Tpl::showpage($templates_name);
     }
@@ -157,9 +191,23 @@ class videoControl extends BaseHomeControl {
         Tpl::setLayout('home_dw_layout');
         Language::read('home_article_index');
         $lang	= Language::getLangContent();
+        
+        
         if(empty($_GET['video_id'])){
             showMessage($lang['para_error'],'','html','error');//'缺少参数:文章编号'
         }
+        $condition=array();
+        $condition['web_id']=102;
+         
+        //板块信息
+        $model_web_config = Model('web_config');
+        $webcode=$model_web_config->getCodeList($condition);
+        if($webcode){//获取视频推荐内容
+            foreach ($webcode as &$video_recommend){
+                $video_recommend[code_info]=$model_web_config->get_array($video_recommend['code_info'],"array");
+            }
+        }
+        Tpl::output('video_recommend',$webcode);
         /**
          * 根据文章编号获取文章信息
          */
@@ -168,6 +216,9 @@ class videoControl extends BaseHomeControl {
         if(empty($article) || !is_array($article) || $article['video_show']=='0'){
             showMessage($lang['article_video_not_found'],'','html','error');//'该文章并不存在'
         }
+        $video_count=$article['video_count'];
+        $video_count=$video_count+1;
+        $article_model->update(array('video_count'=>$video_count,"video_id"=>$article['video_id']));
         Tpl::output('article',$article);
     
         /**
@@ -201,12 +252,18 @@ class videoControl extends BaseHomeControl {
          * 左侧分类导航
          */
         $condition	= array();
-        $condition['vd_parent_id']	= $article_class['vd_id'];
+        $condition['vd_parent_id']	= $_REQUEST['parent_id'];
         $sub_class_list	= $article_class_model->getClassList($condition);
         if(empty($sub_class_list) || !is_array($sub_class_list)){
-            $condition['vd_parent_id']	= $article_class['ac_parent_id'];
+            $condition['vd_parent_id']	= $article_class['vd_parent_id'];
             $sub_class_list	= $article_class_model->getClassList($condition);
         }
+        foreach($sub_class_list as &$class){
+            $condition	= array();
+            $condition['vd_parent_id']=$class['vd_id'];
+            $class['child']=$article_class_model->getClassList($condition);
+        }
+        
         Tpl::output('sub_class_list',$sub_class_list);
         /**
          * 文章列表
@@ -264,7 +321,7 @@ class videoControl extends BaseHomeControl {
         if($article_class[type]==1){
             Tpl::setLayout('home_dw_layout');
         }
-        $templates_name=$_REQUEST['childshow']?"dw_article_show":"article_show";
+        $templates_name="video_show";
         Tpl::showpage($templates_name);
     }
 }

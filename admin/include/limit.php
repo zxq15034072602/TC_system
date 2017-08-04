@@ -71,6 +71,7 @@ $_limit =  array(
 		array('name'=>$lang['nc_article_manage'], 'op'=>null, 'act'=>'article'),
 	    array('name'=>$lang['nc_video_class'], 'op'=>null, 'act'=>'video_class'),
 	    array('name'=>$lang['nc_video_manage'], 'op'=>null, 'act'=>'video'),
+	    array('name'=>$lang['nc_video_recommend'], 'op'=>null, 'act'=>'video_api'),
 		array('name'=>$lang['nc_document'], 'op'=>null, 'act'=>'document'),
 		array('name'=>$lang['nc_navigation'], 'op'=>null, 'act'=>'navigation'),
 		array('name'=>$lang['nc_adv_manage'], 'op'=>null, 'act'=>'adv'),

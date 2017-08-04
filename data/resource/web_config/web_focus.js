@@ -66,6 +66,34 @@ function add_screen(add_type) {//增加图片
 		}
     }
 }
+//焦点区切换大图上传
+function add_video_screen(add_type) {//增加图片
+	for (var i = 1; i <= 2; i++) {//防止数组下标重复
+		if (screen_obj.find("li[screen_id='"+i+"']").size()==0) {//编号不存在时添加
+    	    var text_input = '';
+    	    var text_type = '图片调用';
+    	    var ap = 0;
+    	    text_input += '<input name="screen_list['+i+'][pic_id]" value="'+i+'" type="hidden">';
+    	    text_input += '<input name="screen_list['+i+'][pic_name]" value="" type="hidden">';
+    	    if(add_type == 'adv') {
+    	        ap = 1;
+    	        text_type = '广告调用';
+    	        text_input += '<input name="screen_list['+i+'][ap_id]" value="" type="hidden">';
+    	    } else {
+    	        text_input += '<input name="screen_list['+i+'][pic_url]" value="" type="hidden">';
+    	    }
+    	    text_input += '<input name="screen_list['+i+'][color]" value="" type="hidden">';
+    	    text_input += '<input name="screen_list['+i+'][pic_img]" value="" type="hidden">';
+			var add_html = '';
+			add_html = '<li ap="'+ap+'" screen_id="'+i+'" title="可上下拖拽更改显示顺序">'+text_type+
+			'<a class="del" href="JavaScript:del_screen('+i+
+			');" title="删除">X</a><div class="focus-thumb" onclick="select_screen('+i+');" title="点击编辑选中区域内容"><img src="" /></div>'+text_input+'</li>';
+			screen_obj.find("ul").append(add_html);
+			select_screen(i);
+			break;
+		}
+    }
+}
 function screen_pic(pic_id,pic_img) {//更新图片
 	if (pic_img!='') {
 	    var color = screen_obj.find("input[name='screen_pic[color]']").val();
@@ -151,6 +179,45 @@ function del_screen(pic_id) {//删除图片
     	screen_obj.find("input[name='key']").val('');
     	ap_obj.hide();
     	upload_obj.hide();
+	}
+}
+
+//焦点区切换小图上传
+function add_video_focus(add_type) {//增加
+	for (var i = 1; i <= focus_max; i++) {//防止数组下标重复
+		if (focus_obj.find("div[focus_id='"+i+"']").size()==0) {//编号不存在时添加
+			var add_html = '';
+			var text_type = '图片调用';
+			if(add_type == 'adv') {
+			    text_type = '广告调用';
+			}
+			add_html = '<div focus_id="'+i+'" class="focus-trigeminy-group" title="可上下拖拽更改显示顺序" style="width:980px">'+text_type+
+			'<a class="del" href="JavaScript:del_focus('+i+');" title="删除">X</a><ul></ul></div>';
+			focus_obj.find("#btn_add_list").before(add_html);
+			for (var pic_id = 1; pic_id <= pic_max; pic_id++) {
+			    var text_append = '';
+			    text_append += '<li style="width:206px;height:149px" list="'+add_type+'" pic_id="'+pic_id+'" onclick="select_focus('+i+',this);" title="可左右拖拽更改图片排列顺序">';
+				text_append += '<div class="focus-thumb" style="width:206px;height:149px">';
+			    text_append += '<img title="" src=""  style="max-width: 206px;max-height: 149px;"/>';
+				text_append += '</div>';
+        	    text_append += '<input name="focus_list['+i+'][pic_list]['+pic_id+'][pic_id]" value="'+pic_id+'" type="hidden">';
+        	    text_append += '<input name="focus_list['+i+'][pic_list]['+pic_id+'][pic_name]" value="" type="hidden">';
+        	    if(add_type == 'adv') {
+        	        text_append += '<input name="focus_list['+i+'][pic_list]['+pic_id+'][ap_id]" value="" type="hidden">';
+        	    } else {
+        	        text_append += '<input name="focus_list['+i+'][pic_list]['+pic_id+'][pic_url]" value="" type="hidden">';
+        	    }
+        	    text_append += '<input name="focus_list['+i+'][pic_list]['+pic_id+'][pic_img]" value="" type="hidden">';
+			    text_append += '</li>';
+			    focus_obj.find("div[focus_id='"+i+"'] ul").append(text_append);
+			    if(add_type == 'adv') {
+			        focus_obj.find("div[focus_id='"+i+"'] li[pic_id='"+pic_id+"']").trigger("click");
+			    }
+			}
+			focus_obj.find("div ul").sortable({ items: 'li' });
+			focus_obj.find("div[focus_id='"+i+"'] li[pic_id='1']").trigger("click");//默认选中第一个图片
+			break;
+		}
 	}
 }
 

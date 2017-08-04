@@ -102,6 +102,7 @@ $lang['nc_article_class']		= '文章分类';
 $lang['nc_article_manage']		= '文章管理';
 $lang['nc_video_class']         = '视频分类';
 $lang['nc_video_manage']        = '视频管理';
+$lang['nc_video_recommend']     = '视频推荐';
 $lang['nc_document']			= '会员协议';
 $lang['nc_partner']				= '合作伙伴';
 $lang['nc_navigation']			= '页面导航';

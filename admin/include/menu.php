@@ -145,6 +145,7 @@ $arr = array(
 					array('args'=>'article,article,website',				'text'=>$lang['nc_article_manage']),
 				    array('args'=>'video_class,video_class,website',		'text'=>$lang['nc_video_class']),
 				    array('args'=>'video,video,website',				    'text'=>$lang['nc_video_manage']),
+				    array('args'=>'focus_edit,video_api,website',		    'text'=>$lang['nc_video_recommend']),
 					array('args'=>'document,document,website',				'text'=>$lang['nc_document']),
 					array('args'=>'navigation,navigation,website',			'text'=>$lang['nc_navigation']),
 					array('args'=>'ap_manage,adv,website',					'text'=>$lang['nc_adv_manage']),
