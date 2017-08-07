@@ -122,7 +122,7 @@
 <!--店铺基本信息 E--> 
 <script type="text/javascript">
 var cityName = "<?php echo $output['store_info']['store_address'];?>";
-var address = "<?php echo $output['store_info']['area_info'];?>";
+var address = "<?php echo $output['store_info']['live_store_address'];?>";
 var store_name = "<?php echo $output['store_info']['store_company_name'];?>"; 
 function initialize() {
 	map = new BMap.Map("map_container");
@@ -130,6 +130,7 @@ function initialize() {
 	
 	map.enableScrollWheelZoom(); 
 	localCity.get(function(cityResult){
+		
 	  if (cityResult) {
 	  	var level = cityResult.level;
 	  	if (level < 13) level = 13;

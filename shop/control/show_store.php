@@ -40,7 +40,6 @@ class show_storeControl extends BaseStoreControl {
         } else {
             Tpl::output('store_decoration_only', $this->store_decoration_only);
         }
-
         Tpl::output('page','index');
         Tpl::showpage('index');
     }
