@@ -177,7 +177,7 @@ $(function(){
        
         <a class="help_" href="<?php echo urlShop('article', 'article', array('ac_id' => 2));?>" target="_blank">帮助中心</a>
         <div class="city_">
-            太原
+        <?php echo $output['city_name'][city]?>
            
         </div>
     </div>

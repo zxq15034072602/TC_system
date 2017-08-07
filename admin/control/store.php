@@ -109,6 +109,7 @@ class storeControl extends SystemControl{
 			$update_array['grade_id'] = intval($_POST['grade_id']);
 			$update_array['store_end_time'] = $time;
 			$update_array['store_state'] = intval($_POST['store_state']);
+			$update_array['live_store_address'] = trim($_POST['store_live_address']);//店铺实际位置
 			$update_array['store_baozh'] = trim($_POST['store_baozh']);//保障服务开关
 			$update_array['store_baozhopen'] = trim($_POST['store_baozhopen']);//保证金显示开关
 			$update_array['store_baozhrmb'] = trim($_POST['store_baozhrmb']);//新加保证金-金额
@@ -884,7 +885,8 @@ class storeControl extends SystemControl{
             }
 
             $storeModel = model('store');
-
+            $store_bing_classModel = Model('store_bind_class');
+            
             $saveArray = array();
             $saveArray['store_name'] = $_POST['store_name'];
             $saveArray['member_id'] = $memberId;
@@ -894,8 +896,13 @@ class storeControl extends SystemControl{
             $saveArray['store_state'] = 1;
             $saveArray['store_time'] = time();
             $saveArray['is_own_shop'] = 0;
-
+            
             $storeId = $storeModel->addStore($saveArray);
+            if($storeId) {
+                $addArray['store_id']=$storeId;
+                $addArray['state']=1;
+                $store_bing_classModel->addStoreBindClass($addArray);
+            }
 
             model('seller')->addSeller(array(
                 'seller_name' => $_POST['seller_name'],

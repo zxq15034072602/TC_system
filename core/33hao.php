@@ -83,7 +83,7 @@ if ($config['gzip'] == 1 && function_exists('ob_gzhandler') && $_GET['inajax'] !
 require_once(BASE_CORE_PATH.'/framework/libraries/queue.php');
 require_once(BASE_CORE_PATH.'/framework/function/core.php');
 require_once(BASE_CORE_PATH.'/framework/core/base.php');
-
+require_once(BASE_CORE_PATH.'/framework/libraries/ip_area.php');
 require_once(BASE_CORE_PATH.'/framework/function/goods.php');
 
 if(function_exists('spl_autoload_register')) {

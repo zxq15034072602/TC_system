@@ -2343,7 +2343,7 @@ function checkPlatformStore(){
  * @return boolean
  */
 function checkPlatformStoreBindingAllGoodsClass(){
-    return checkPlatformStore() && $_SESSION['bind_all_gc'];
+    return checkPlatformStore()&& $_SESSION['bind_all_gc'];
 }
 
 /**

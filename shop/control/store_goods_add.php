@@ -45,7 +45,6 @@ class store_goods_addControl extends BaseSellerControl {
         $param_array = array();
         $param_array['member_id'] = $_SESSION['member_id'];
         $staple_array = $model_staple->getStapleList($param_array);
-
         Tpl::output('staple_array', $staple_array);
         Tpl::output('goods_class', $goods_class);
         Tpl::showpage('store_goods_add.step1');

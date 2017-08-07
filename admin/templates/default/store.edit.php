@@ -88,6 +88,13 @@
           <td class="vatop rowform"><input type="text" value="<?php echo $output['store_array']['store_end_time'];?>" id="end_time" name="end_time" class="txt date"></td>
           <td class="vatop tips"><?php echo $lang['formart'];?></td>
         </tr>
+        <tr>
+          <td colspan="2" class="required">店铺实际位置:</td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="<?php echo $output['store_array']['live_store_address'];?>"  name="store_live_address" class="txt valid" style="width:350px"></td>
+          <td class="vatop tips"></td>
+        </tr>
 <!--店铺保障开-by 33h ao.com-->
 <td class="vatop tips"></td>
         </tr>

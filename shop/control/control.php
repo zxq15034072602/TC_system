@@ -8,6 +8,7 @@
 defined('InShopNC') or exit('Access Invalid!');
 
 class Control{
+    
     /**
      * 检查短消息数量
      *
@@ -25,7 +26,7 @@ class Control{
         }
         Tpl::output('message_num',$countnum);
     }
-
+    
     /**
      *  输出头部的公用信息
      *
@@ -298,10 +299,16 @@ class Control{
 /********************************** 前台control父类 **********************************************/
 
 class BaseHomeControl extends Control {
-
+    private  $ip_area;
     public function __construct(){
         //输出头部的公用信息
         $this->showLayout();
+        $this->ip_area=new ip_area();
+        if($this->ip_area instanceof  ip_area){
+            $city_name=$this->ip_area->getcity(getIp());
+            Tpl::output("city_name",$city_name);
+           
+        }
         //输出会员信息
         $this->getMemberAndGradeInfo(false);
 
@@ -318,7 +325,9 @@ class BaseHomeControl extends Control {
 	// 自动登录
         $this->auto_login();
     }
-
+    protected function get_ip_area(){
+        return $this->ip_area;
+    }
 }
 
 /********************************** 闲置市场前台control父类 v3-b10**********************************************/

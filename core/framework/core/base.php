@@ -9,7 +9,7 @@ defined('InShopNC') or exit('Access Invalid!');
 final class Base{
 
 	const CPURL = '';
-
+    
 	/**
 	 * init
 	 */
@@ -41,6 +41,7 @@ final class Base{
 	 * run
 	 */
 	public static function run(){
+	    
 	    self::cp();
 	    self::init();
 		self::control();
@@ -174,11 +175,11 @@ final class Base{
 					continue;
 				}
 			}
-			header('location: http://bbs.33hao.com');exit();
+			header('location: http://www.duyiwang.cn');exit();
 		}else{
 			$d = strtolower(stristr($_SERVER['HTTP_HOST'],self::CPURL));
 			if ($d != strtolower(self::CPURL)){
-				header('location: http://bbs.33hao.com');exit();
+				header('location: http://www.duyiwang.cn');exit();
 			}
 		}
 	}
