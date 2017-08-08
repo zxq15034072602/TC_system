@@ -1,9 +1,7 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/css/layout.css"
 	rel="stylesheet" type="text/css">
-<link
-	href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/healthSchool_qty.css"
-	rel="stylesheet" type="text/css">
+<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/healthSchool_qty.css" rel="stylesheet" type="text/css">
 <!-- 视频首页 start -->
 <style>
 .nch-breadcrumb-layout {
@@ -16,7 +14,7 @@
 		<div class="healthBannerBox_qty">
 			<!--banner左边开始-->
 			<ul class="healthBannerLeft">
-				<div class="healthLeft_qty">
+				<div class="healthLeft_qty" >
 	    <?php foreach($output['sub_class_list'] as $class) {?>
 		<li class="color_qty"><a  style="color: #FFFFFF;" href="<?php echo urlShop("video","video",array("parent_id"=>$class['vd_parent_id'],"childlist"=>1,"vd_id"=>$class['vd_id']))?>"><?php echo $class['vd_name']?></a></span>
 						<div class="healthHidden_qty">

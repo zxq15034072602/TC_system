@@ -202,6 +202,7 @@ $(function(){
         </form>
         <ul class="nav_list">
            <?php if(!empty($output['nav_list']) && is_array($output['nav_list'])){?>
+           <?php $j=1?>
            <?php foreach($output['nav_list'] as $nav){?>
            <?php if($nav['nav_location'] == '3'){?>
            <li class="list_one">
@@ -239,14 +240,14 @@ $(function(){
                 break;
         }
         ?>>
-                   <div class="list_icon"></div>
+                   <div class="list_icon_<?php echo $j?>"></div>
                    <div class="list_world">
                        <div class="LW_a"><?php echo $nav['nav_title'] ?></div>
                        <div class="LW_b">ADVISORY</div>
                    </div>
                </a>
            </li>
-           
+           <?php $j++?>
            <?php }}}?>
            
 

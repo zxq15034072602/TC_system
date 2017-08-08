@@ -12,6 +12,18 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
         Model('seo')->type('index')->show();
         Tpl::setDir('duyiwang');
         Tpl::setLayout('home_dw_layout');
+        //板块信息
+        $model_web_config = Model('web_config');
+        $web_html = $model_web_config->getWebHtml('index');
+        $condition['web_id']=102;
+        $webcode=$model_web_config->getCodeList($condition);
+        if($webcode){//获取视频推荐内容
+            foreach ($webcode as &$video_recommend){
+                $video_recommend[code_info]=$model_web_config->get_array($video_recommend['code_info'],"array");
+            }
+        }
+        Tpl::output('video_recommend',$webcode);
+        Tpl::output('web_html',$web_html);
         Tpl::showpage('index');
     }
 	public function indexOp(){//商城首页

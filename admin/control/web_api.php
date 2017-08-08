@@ -37,6 +37,20 @@ class web_apiControl extends SystemControl {
 		Tpl::output('screen_adv_list',$screen_adv_list);
 		$focus_adv_list = $model_web_config->getAdvList("focus");//三张联动区广告数据
 		Tpl::output('focus_adv_list',$focus_adv_list);
+		
+		$code_list = $model_web_config->getCodeList(array('web_id'=> 150));
+		if(is_array($code_list) && !empty($code_list)) {
+		    foreach ($code_list as $key => $val) {//将变量输出到页面
+		        $var_name = $val['var_name'];
+		        $code_info = $val['code_info'];
+		        $code_type = $val['code_type'];
+		        $val['code_info'] = $model_web_config->get_array($code_info,$code_type);
+		        Tpl::output('code_'.$var_name,$val);
+		    }
+		}
+		$screen_adv_list = $model_web_config->getAdvList("screen");//首页焦点大图广告数据
+		Tpl::output('index_screen_adv_list',$screen_adv_list);
+		
 
 		Tpl::showpage('web_focus.edit');
 	}
@@ -308,13 +322,15 @@ class web_apiControl extends SystemControl {
 	public function screen_picOp() {
 		$code_id = intval($_POST['code_id']);
 		$web_id = intval($_POST['web_id']);
+		$flag = intval($_REQUEST['flag']);
 		$model_web_config = Model('web_config');
 		$code = $model_web_config->getCodeRow($code_id,$web_id);
+		
 		if (!empty($code)) {
 			$code_type = $code['code_type'];
 			$var_name = $code['var_name'];
 			$code_info = $_POST[$var_name];
-
+			file_put_contents("d://error.txt", var_export($code_info,true));
 			$key = intval($_POST['key']);
 			$ap_pic_id = intval($_POST['ap_pic_id']);
 			if ($ap_pic_id > 0 && $ap_pic_id == $key) {
@@ -339,6 +355,7 @@ class web_apiControl extends SystemControl {
 
 			    $code_info[$pic_id] = $pic_info;
 			    Tpl::output('pic',$pic_info);
+			    Tpl::output('flag',$flag);
 			}
 			$code_info = $model_web_config->get_str($code_info,$code_type);
 			$model_web_config->updateCode(array('code_id'=> $code_id),array('code_info'=> $code_info));

@@ -1,165 +1,463 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/css/index.css" rel="stylesheet" type="text/css">
+<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/index.css" rel="stylesheet" type="text/css">
+<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/healthSchool_qty.css" rel="stylesheet" type="text/css">
 <script src="<?php echo RESOURCE_SITE_URL;?>/js/waypoints.js"></script>
+<script src="<?php echo SHOP_TEMPLATES_URL;?>/dw/js/index.js"></script>
 <script type="text/javascript" src="<?php echo SHOP_RESOURCE_SITE_URL;?>/js/home_index.js" charset="utf-8"></script>
 <!--[if IE 6]>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/ie6.js" charset="utf-8"></script>
 <![endif]-->
-<style type="text/css">
-.category { display: block !important; }
+<style>
+body{background-color: #f8f8f8; }
+
 </style>
+
+<!--  首页 start  -->
+<div class="banner_yyt">
+    <?php echo $output['web_html']['index_big'];?>
+</div>
+<div class="health_area">
+    <div class="area_title"></div>
+    <div class="area_con">
+        <div class="area_left">
+            <ul class="find_dct">
+                <li class="find_dct_a">
+                    <span class="dct_a_a"></span>
+                    <span class="dct_a_b">找门店</span>
+                </li>
+                <li class="find_dct_a">
+                    <span class="dct_a_a dct_one_yyt"></span>
+                    <span class="dct_a_b">找医师</span>
+                </li>
+                <li class="find_dct_a">
+                    <span class="dct_a_a dct_two_yyt"></span>
+                    <span class="dct_a_b">找产品</span>
+                </li>
+                <li class="find_dct_a">
+                    <span class="dct_a_a dct_three_yyt"></span>
+                    <span class="dct_a_b">找视频</span>
+                </li>
+
+            </ul>
+            <div class="area_left_con">
+                <ul class="find_md">
+                    <div class="find_md_title">热门门店</div>
+                    <ul class="find_md_con">
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                    </ul>
+                    <a href="" class="find_md_more">查看更多</a>
+                </ul>
+                <ul class="find_md">
+                    <div class="find_md_title">热门门店</div>
+                    <ul class="find_md_con">
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                    </ul>
+                    <a href="" class="find_md_more">查看更多</a>
+                </ul>
+                <ul class="find_md">
+                    <div class="find_md_title">热门门店</div>
+                    <ul class="find_md_con">
+                        <li class="find_product">
+                            <a href="">独一张·温泉</a>
+                        </li>
+                        <li class="find_product">
+                            <a href="">独一张·老膏药</a>
+                        </li>
+                        <li class="find_product">
+                            <a href="">独一张·仪年堂</a>
+                        </li>
+                        <li class="find_product">
+                            <a href="">独一张·炙骨宁</a>
+                        </li>
+                    </ul>
+                    <a href="" class="find_md_more">查看更多</a>
+                </ul>
+                <ul class="find_md">
+                    <div class="find_md_title">热门门店</div>
+                    <ul class="find_md_con">
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                        <li class="find_md_one">
+                            <a href="">太原店</a>
+                        </li>
+                    </ul>
+                    <a href="" class="find_md_more">查看更多</a>
+                </ul>
+
+            </div>
+        </div>
+        <div class="area_cut_off"></div>
+        <!--*************************************************************************************-->
+        <div class="area_right">
+            <div class="health_select">
+                <div class="health_k_q">健康知识</div>
+                <div class="health_k_q">健康问答</div>
+            </div>
+            <ul class="health_zs">
+                <li class="health_zs_one">
+                    <a href="" class="zs_one_a"> · 诊疗</a>
+                    <span class="zs_one_b">|</span>
+                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
+                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
+                </li>
+                <li class="health_zs_one">
+                    <a href="" class="zs_one_a"> · 诊疗</a>
+                    <span class="zs_one_b">|</span>
+                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
+                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
+                </li>
+                <li class="health_zs_one">
+                    <a href="" class="zs_one_a"> · 诊疗</a>
+                    <span class="zs_one_b">|</span>
+                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
+                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
+                </li>
+                <li class="health_zs_one">
+                    <a href="" class="zs_one_a"> · 诊疗</a>
+                    <span class="zs_one_b">|</span>
+                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
+                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
+                </li>
+                <li class="health_zs_one">
+                    <a href="" class="zs_one_a"> · 诊疗</a>
+                    <span class="zs_one_b">|</span>
+                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
+                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
+                </li>
+                <li class="health_zs_one">
+                    <a href="" class="zs_one_a"> · 诊疗</a>
+                    <span class="zs_one_b">|</span>
+                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
+                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
+                </li>
+            </ul>
+            <ul class="health_zs health_zs_">
+                <li class="haelth_wd_one">
+                    <a href="" class="wd_one_a">为什么高血压患者会血压突然飙升？</a>
+                    <a href="" class="wd_one_b">张医师回答：我国的关节炎患者有一亿以上，且人数在不断增加。关节的红、肿、热、痛，功能障碍及关节畸形，严重...</a>
+                    <a href="" class="wd_one_c">进入</a>
+                </li>
+                <li class="haelth_wd_one">
+                    <a href="" class="wd_one_a">为什么高血压患者会血压突然飙升？</a>
+                    <a href="" class="wd_one_b">张医师回答：我国的关节炎患者有一亿以上，且人数在不断增加。关节的红、肿、热、痛，功能障碍及关节畸形，严重...</a>
+                    <a href="" class="wd_one_c">进入</a>
+                </li>
+                <li class="haelth_wd_one">
+                    <a href="" class="wd_one_a">为什么高血压患者会血压突然飙升？</a>
+                    <a href="" class="wd_one_b">张医师回答：我国的关节炎患者有一亿以上，且人数在不断增加。关节的红、肿、热、痛，功能障碍及关节畸形，严重...</a>
+                    <a href="" class="wd_one_c">进入</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="health_answer">
+    <div class="health_a_title"></div>
+    <ul class="health_a_con">
+       <li class="health_a_one">
+           <a href="" class="health_a_header"></a>
+           <div class="health_a_right">
+               <a href="" class="health_a_name">
+                   <span>张伟涛</span>
+                   <span>JON ZHANG</span>
+               </a>
+               <a href="" class="health_a_phone">电话：13694565812</a>
+               <a href="" class="health_a_mendian">所在门店：万柏林无前进路店</a>
+           </div>
+           <div class="health_b_right">
+               <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
+               <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
+               <a href="" class="health_b_more">查看更多</a>
+           </div>
+       </li>
+        <li class="health_a_one">
+           <a href="" class="health_a_header"></a>
+           <div class="health_a_right">
+               <a href="" class="health_a_name">
+                   <span>张伟涛</span>
+                   <span>JON ZHANG</span>
+               </a>
+               <a href="" class="health_a_phone">电话：13694565812</a>
+               <a href="" class="health_a_mendian">所在门店：万柏林无前进路店</a>
+           </div>
+           <div class="health_b_right">
+               <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
+               <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
+               <a href="" class="health_b_more">查看更多</a>
+           </div>
+       </li>
+        <li class="health_a_one">
+           <a href="" class="health_a_header"></a>
+           <div class="health_a_right">
+               <a href="" class="health_a_name">
+                   <span>张伟涛</span>
+                   <span>JON ZHANG</span>
+               </a>
+               <a href="" class="health_a_phone">电话：13694565812</a>
+               <a href="" class="health_a_mendian">所在门店：万柏林无前进路店</a>
+           </div>
+           <div class="health_b_right">
+               <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
+               <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
+               <a href="" class="health_b_more">查看更多</a>
+           </div>
+       </li>
+        <li class="health_a_one">
+           <a href="" class="health_a_header"></a>
+           <div class="health_a_right">
+               <a href="" class="health_a_name">
+                   <span>张伟涛</span>
+                   <span>JON ZHANG</span>
+               </a>
+               <a href="" class="health_a_phone">电话：13694565812</a>
+               <a href="" class="health_a_mendian">所在门店：万柏林无前进路店</a>
+           </div>
+           <div class="health_b_right">
+               <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
+               <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
+               <a href="" class="health_b_more">查看更多</a>
+           </div>
+       </li>
+
+    </ul>
+</div>
+
+<div class="healthSchoolSmallBox_qty">
+<!--小保健讲堂开始-->
+		<div class="healthBox_qty">
+			<div class="healthImgBox_qty">
+				<img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/health_jt_title.jpg" />
+			</div>
+			<div class="healthRightBox_qty">
+				<div class="healthTopFont_qty">
+					
+				</div>
+				<div class="healthBottomFont_qty">
+					
+				</div>
+			</div>
+		</div>
+		<!--小保健讲堂结束-->
+		<!--保健讲堂开始-->
+		<div class="healthRoom_qty">
+			<div class="healthRoomLeft_qty">
+        	<?php echo loadadv(1055);?>
+        	</div>
+			<div class="healthRoomRight_qty">
+				<div class="healthRoomTop_qty">
+					<ul>
+					    <?php foreach ($output['video_recommend'][1]['code_info'] as $k=>$screen){?>
+					    <?php if($k<=2) {?>
+						<li><a href="<?php echo $screen['pic_url']?>"> <img src="<?php echo UPLOAD_SITE_URL.DS.$screen['pic_img']?>" />
+					    <div class="heathRoomFont_qty">
+						<span style="text-align:center;"><?php echo $screen['pic_name']?></span>
+						
+						</div>	
+						</a></li>
+						<?php }?>
+						<?php }?>
+					</ul>
+				</div>
+				<div class="healthRoomBottom_qty">
+					<ul class="img_qty">
+					    <?php foreach ($output['video_recommend'][0]['code_info'] as $focus){?>
+					    <?php foreach ($focus['pic_list'] as $child_focus) {?>
+					    <?php if($child_focus['pic_img']) {?>
+						<li><a href="<?php echo $child_focus['pic_url']?>"> <img src="<?php echo UPLOAD_SITE_URL.DS.$child_focus['pic_img']?>" />
+								<div class="healthRoomBs_qty"><?php echo $child_focus['pic_name'] ?></div>
+						</a></li>
+						<?php }?>
+						<?php }?>
+						<?php }?>
+					</ul>
+					<ul class="lrbtns_qty">
+						<li class="lbtns_qty">&lt;</li>
+						<li class="rbtns_qty">&gt;</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--保健讲堂结束-->
+</div>
+
+
+<div class="goods_for">
+    <div class="goods_for_tirle"></div>
+    <ul class="goods_for_con">
+        <li class="goods_for_one">
+            <a href="" class="goods_for_img"><img src="themes/image/banner.png" alt=""></a>
+            <div class="goods_for_name">
+                <span></span>
+                <span>独一张·温泉</span>
+                <span></span>
+            </div>
+            <a href="" class="goods_for_more">查看更多</a>
+        </li>
+        <li class="goods_for_one">
+            <a href="" class="goods_for_img"><img src="themes/image/banner.png" alt=""></a>
+            <div class="goods_for_name">
+                <span></span>
+                <span>独一张·温泉</span>
+                <span></span>
+            </div>
+            <a href="" class="goods_for_more">查看更多</a>
+        </li>
+        <li class="goods_for_one">
+            <a href="" class="goods_for_img"><img src="themes/image/banner.png" alt=""></a>
+            <div class="goods_for_name">
+                <span></span>
+                <span>独一张·温泉</span>
+                <span></span>
+            </div>
+            <a href="" class="goods_for_more">查看更多</a>
+        </li>
+        <li class="goods_for_one">
+            <a href="" class="goods_for_img"><img src="themes/image/banner.png" alt=""></a>
+            <div class="goods_for_name">
+                <span></span>
+                <span>独一张·温泉</span>
+                <span></span>
+            </div>
+            <a href="" class="goods_for_more">查看更多</a>
+        </li>
+
+    </ul>
+    <div class="goods_forMore">更多</div>
+    <div class="goods_forME">TRADITIONAL NOURISHING</div>
+</div>
+<!--左边固定弹框开始-->
+<div class="fixedBox_qty">
+	<ul>
+		<li>电话
+			<div class="tele_qty">13545687561</div>
+		</li>
+		<li>微信
+			<div class="weixin_qty"></div>
+		</li>
+		<li>QQ
+			<div class="tele_qty">1454231@qq.com</div>
+		</li>
+		<li>咨询
+			<div class="tele_qty">您有什么想咨询的</div>
+		</li>
+	</ul>
+</div>
+<!--左边国定弹框结束-->
+
+
+<!--  首页 end  -->
+<script>
+//跑马车效果
+var imgW=$('.img_qty li').width();
+var index=0;
+var s=setInterval(move,2000)
+function move(){
+	 $('.img_qty').stop(true,true)
+     $('.img_qty').animate({marginLeft:-imgW},function(){
+   	 $('.img_qty li:first').appendTo($('.img_qty'))
+     $('.img_qty').css({marginLeft:0})
+   })
+}
+$('.rbtns_qty').click(function(){
+	move();
+})
+$('.lbtns_qty').click(function(){
+	 $('.img_qty').stop(true,true)
+	 $('.img_qty li:last').prependTo($('.img_qty'))
+	 $('.img_qty').css({marginLeft:-imgW});
+	 $('.img_qty').animate({marginLeft:0});
+})
+$('.healthRoomBottom_qty').hover(function(){
+	clearInterval(s)
+},function(){
+	s=setInterval(move,2000)
+})
+</script>
+
 <div class="clear"></div>
 
-<!-- HomeFocusLayout Begin-->
-<div class="home-focus-layout"> <?php echo $output['web_html']['index_pic'];?>
-  <div class="right-sidebar">
-    <div class="right-panel">
-      <?php if ($_SESSION['is_login']) {?>
-      <div class="loginBox">
-        <div class="exitPanel"> <img src="<?php echo getMemberAvatar($_SESSION['avatar']);?>" alt="" />
-          <div class="message">
-            <p class="name">Hi, <a href="<?php echo urlShop('member','home');?>"><?php echo $_SESSION['member_name'];?></a></p>
-            <p class="logOut qiueExt">[<a href="<?php echo urlShop('login','logout');?>">退出登录</a>]</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-        
-        <!-- 买家信息 -->
-        
-        <div class="txtPanel"> <a href="index.php?act=member_order&state_type=state_new" class="line">
-          <p class="num"><?php echo $output['member_order_info']['order_nopay_count'];?></p>
-          <p class="txt">待付款</p>
-          </a> <a target="_blank" href="index.php?act=member_order&op=index" class="line">
-          <p class="num"><?php echo $output['member_order_info']['order_noreceipt_count'];?></p>
-          <p class="txt">待收货</p>
-          </a> <a target="_blank" href="index.php?act=member_order&state_type=state_noeval">
-          <p class="num"><?php echo $output['member_order_info']['order_noeval_count'];?></p>
-          <p class="txt">待评价</p>
-          </a> </div>
-      </div>
-      <?php } else {?>
-      <div class="loginBox">
-        <div class="welcomePanel"> <img src="<?php echo getMemberAvatar($_SESSION['avatar']);?>">
-          <p>Hi，欢迎来<?php echo $output['setting_config']['site_name']; ?>，请登录</p>
-        </div>
-        <div class="loginPanel"> <a href="<?php echo urlShop('login','logout');?>" rel="nofollow"> <span class="loginTxt"><img alt="" src="<?php echo SHOP_TEMPLATES_URL;?>/images/u-me.png">登录</span> </a> <a href="index.php?act=login&op=register&ref_url=<?php echo urlencode($output['ref_url']);?>" rel="nofollow"> <span class="reigsterTxt"><img alt="" src="<?php echo SHOP_TEMPLATES_URL;?>/images/u-pencil.png">注册</span> </a> </div>
-      </div>
-      <?php } ?>
-      <div class="securePanel">
-        <li><img alt="买家保障" src="<?php echo SHOP_TEMPLATES_URL;?>/images/u-promise.png">
-          <p>买家保障</p>
-        </li>
-        <li><img alt="商家认证" src="<?php echo SHOP_TEMPLATES_URL;?>/images/u-quality.png">
-          <p>商家认证</p>
-        </li>
-        <li><img alt="安全交易" src="<?php echo SHOP_TEMPLATES_URL;?>/images/u-safe.png">
-          <p>安全交易</p>
-        </li>
-      </div>
-      <div class="panelimg-side">
-        <ul>
-          <li><?php echo loadadv(1049);?></li>
-        </ul>
-      </div>
-      <div class="clear"></div>
-    </div>
-  </div>
-</div>
-<!--HomeFocusLayout End-->
 
-<div class="home-sale-layout wrapper">
-  <div class="left-layout"> <?php echo $output['web_html']['index_sale'];?> </div>
-  <?php if(!empty($output['xianshi_item']) && is_array($output['xianshi_item'])) { ?>
-  <div class="right-sidebar">
-    <div class="title">
-      <h3><?php echo $lang['nc_xianshi'];?></h3>
-    </div>
-    <div id="saleDiscount" class="sale-discount">
-      <ul>
-        <?php foreach($output['xianshi_item'] as $val) { ?>
-        <li>
-          <dl>
-            <dt class="goods-name"><?php echo $val['goods_name']; ?></dt>
-            <dd class="goods-thumb"><a href="<?php echo urlShop('goods','index',array('goods_id'=> $val['goods_id']));?>"> <img src="<?php echo thumb($val, 240);?>"></a></dd>
-            <dd class="goods-price"><?php echo ncPriceFormatForList($val['xianshi_price']); ?> <span class="original"><?php echo ncPriceFormatForList($val['goods_price']);?></span></dd>
-            <dd class="goods-price-discount"><em><?php echo $val['xianshi_discount']; ?></em></dd>
-            <dd class="time-remain" count_down="<?php echo $val['end_time']-TIMESTAMP;?>"><i></i><em time_id="d">0</em><?php echo $lang['text_tian'];?><em time_id="h">0</em><?php echo $lang['text_hour'];?> <em time_id="m">0</em><?php echo $lang['text_minute'];?><em time_id="s">0</em><?php echo $lang['text_second'];?> </dd>
-            <dd class="goods-buy-btn"></dd>
-          </dl>
-        </li>
-        <?php } ?>
-      </ul>
-    </div>
-  </div>
-  <?php } ?>
-</div>
-<div class="wrapper">
-  <div class="mt10">
-    <div class="mt10"><?php echo loadadv(11,'html');?></div>
-  </div>
-</div>
-<!--StandardLayout Begin--> 
-<?php echo $output['web_html']['index'];?> 
-<!--StandardLayout End--> 
-<!--热门晒单str v3-b12-->
-<div class="comment">
-  <div class="tit">
-    <div class="cmttite"><span>
-      <?php if(!empty($output['goods_evaluate_info']) && is_array($output['goods_evaluate_info'])){?>
-      大家购买了
-      <?php }else{?>
-      招商入驻
-      <?php }?>
-      </span></div>
-    <div class="notice">
-      <h3><a>商城公告</a></h3>
-    </div>
-  </div>
-  <div class="cmtcon">
-    <div class="cmtleft">
-      <div id="con">
-        <ul>
-          <?php if(!empty($output['goods_evaluate_info']) && is_array($output['goods_evaluate_info'])){?>
-          <?php foreach($output['goods_evaluate_info'] as $k=>$v){?>
-          <li>
-            <dl>
-              <dt class="goods-thumb"> <a target="_blank" href="<?php echo urlShop('goods','index',array('goods_id'=> $v['geval_goodsid']));?>"> <img src="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif" rel="lazy" data-url="<?php echo strpos($v['goods_pic'],'http')===0 ? $v['goods_pic']:UPLOAD_SITE_URL."/".ATTACH_GOODS."/".$v['geval_storeid']."/".$v['geval_goodsimage'];?>" title="<?php echo $v['geval_goodsname']; ?>" alt="<?php echo $v['geval_goodsname']; ?>" /> </a> </dt>
-              <dd>
-                <h3><span class="username"> <a target="_blank" href="index.php?act=member_snshome&mid=<?php echo $v['geval_frommemberid'];?>"> <?php echo str_cut($v['geval_frommembername'],2).'***';?> </a> </span> <span class="datetime"> <em> <?php echo @date('m-d',$v['geval_addtime']);?> </em> 购买了</span><span class="star"><i class="v_5"></i></span></h3>
-              </dd>
-              <dd class="goods-name"> <a target="_blank" href="<?php echo urlShop('goods','index',array('goods_id'=> $v['geval_goodsid']));?>" title="<?php echo $v['geval_goodsname']; ?>"> <?php echo $v[ 'geval_goodsname']; ?> </a> </dd>
-            </dl>
-          </li>
-          <?php }?>
-          <?php }else{?>
-          <a target="_blank" title="商家入驻" href="<?php echo urlShop('show_joinin', 'index');?>"> <img width="978" height="248" data-url="<?php echo UPLOAD_SITE_URL;?>/shop/common/i_store_joinio.png" rel="lazy" alt="" src="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif"></a>
-          <?php }?>
-        </ul>
-      </div>
-    </div>
-    <div class="cmtrigt">
-      <div class="noticecon">
-        <div class="proclamation">
-          <div class="tabs-panel">
-            <div class="tabs-panel"> <a href="<?php echo urlShop('show_joinin', 'index');?>" title="商家入驻" class="store-join-btn" target="_blank">商家入驻</a> <a href="<?php echo urlShop('seller_login','show_login');?>" target="_blank" class="store-join-help"><i class="icon-cog"></i>登录商家中心</a> </div>
-            <ul class="mall-news">
-			  <?php if(!empty($output['show_article']['notice']['list']) && is_array($output['show_article']['notice']['list'])) { ?>
-			  <?php foreach($output['show_article']['notice']['list'] as $val) { ?>
-			  <li><i></i><a target="_blank" href="<?php echo empty($val['article_url']) ? urlShop('article', 'show',array('article_id'=> $val['article_id'])):$val['article_url'] ;?>" title="<?php echo $val['article_title']; ?>"><?php echo str_cut($val['article_title'],24);?> </a>
-				<time>(<?php echo date('Y-m-d',$val['article_time']);?>)</time>
-			  </li>
-			  <?php } ?>
-			  <?php } ?>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--热门晒单end-->
 
-<div class="wrapper mt10"><?php echo loadadv(9,'html');?></div>
+
+
+
+
 <div class="index-link wrapper">
   <dl class="website">
     <dt>合作伙伴 | 友情链接<b></b></dt>
@@ -179,20 +477,4 @@
   </dl>
 </div>
 <div class="footer-line"></div>
-<!--首页底部保障开始-->
-<?php require_once template('layout/index_ensure');?>
-<!--首页底部保障结束--> 
-<!--StandardLayout Begin-->
-<div id="nav_box">
-  <ul>
-    <li class="nav_h_1"><a href="javascript:;" class="num">1F</a> <a href="javascript:;" class="word">女装</a></li>
-    <li class="nav_h_2"><a href="javascript:;" class="num">2F</a> <a href="javascript:;" class="word">男装</a></li>
-    <li class="nav_h_3"><a href="javascript:;" class="num">3F</a> <a href="javascript:;" class="word">鞋靴</a></li>
-    <li class="nav_h_4"><a href="javascript:;" class="num">4F</a> <a href="javascript:;" class="word">护肤</a></li>
-    <li class="nav_h_5"><a href="javascript:;" class="num">5F</a> <a href="javascript:;" class="word">皮具</a></li>
-    <li class="nav_h_6"><a href="javascript:;" class="num">6F</a> <a href="javascript:;" class="word">户外</a></li>
-    <li class="nav_h_7"><a href="javascript:;" class="num">7F</a> <a href="javascript:;" class="word">配饰</a></li>
-    <li class="nav_h_8"><a href="javascript:;" class="num">8F</a> <a href="javascript:;" class="word">家居</a></li>
-  </ul>
-</div>
-<!--StandardLayout End-->
+

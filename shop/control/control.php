@@ -306,6 +306,9 @@ class BaseHomeControl extends Control {
         $this->ip_area=new ip_area();
         if($this->ip_area instanceof  ip_area){
             $city_name=$this->ip_area->getcity(getIp());
+            if($city_name[city]=="LAN"){
+                $city_name['city']="太原市";
+            }
             Tpl::output("city_name",$city_name);
            
         }

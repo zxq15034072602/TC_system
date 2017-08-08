@@ -105,13 +105,17 @@ class web_configModel extends Model{
         	    case 101:
         	        $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'focus.php';
         	    	break;
-        	    case 121:
-        	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'sale_goods.php';
+        	    case 150:
+        	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'index_focus.php';
         	    	break;
+    	    	case 121:
+    	    	    $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'sale_goods.php';
+    	    	    break;
         	    default:
         	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'default.php';
         	    	break;
     		}
+    		
 			if (file_exists($style_file)) {
 				ob_start();
                 include $style_file;

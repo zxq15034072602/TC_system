@@ -54,9 +54,18 @@
 		<!--健康讲堂视频左边结束-->
 		<!--健康讲堂视频右边开始-->
 		<div class="healthVideoRight_qty">
-			<div class="healthVideoSmallBox_qty">
-				<div class="healthVideoRightLeft_qty">
-				<?php echo htmlspecialchars_decode($output['article']['video_content'])?>
+			<div class="healthVideoSmallBox_qty" >
+				<div class="healthVideoRightLeft_qty" id="youkuplayer">
+                <script type="text/javascript" src="//player.youku.com/jsapi"></script>
+                <script type="text/javascript">
+                var player = new YKU.Player('youkuplayer',{
+                styleid: '0',
+                client_id: 'cd87e08045473b0a',
+                vid: '<?php echo $output['article']['video_content']?>',
+                newPlayer: true
+                });
+                </script>
+				
 				</div>
 				<div class="healthVideoRightRight_qty">
 					<div class="sendBox_qty">留言板</div>
