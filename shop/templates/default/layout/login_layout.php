@@ -55,6 +55,6 @@ var COOKIE_PRE = '<?php echo COOKIE_PRE;?>';var _CHARSET = '<?php echo strtolowe
 <div id="append_parent"></div>
 <div id="ajaxwaitid"></div>
 <?php require_once($tpl_file);?>
-<?php include template('footer');?>
+<?php include template('dw_footer');?>
 </body>
 </html>
