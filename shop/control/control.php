@@ -114,8 +114,10 @@ class Control{
             $model_member = Model('member');
             $member_info = $model_member->getMemberInfoByID($_SESSION['member_id']);
             if ($member_info){
+                $member_advisor_verifyModel=Model("member_advisor_verify");
+                $member_advisor_verify=$member_advisor_verifyModel->getOne(array('member_id'=>$_SESSION['member_id'],"verify_status"=>0));
                 $member_gradeinfo = $model_member->getOneMemberGrade(intval($member_info['member_exppoints']));
-                $member_info = array_merge($member_info,$member_gradeinfo);
+                $member_info = array_merge($member_info,$member_gradeinfo,$member_advisor_verify);
             }
         }
         if ($is_return == true){//返回会员信息
@@ -411,6 +413,7 @@ class BaseMemberControl extends Control {
 
         //获得会员信息
         $this->member_info = $this->getMemberAndGradeInfo(true);
+        
         $this->quicklink = explode(',', $this->member_info['member_quicklink']);
         Tpl::output('member_info', $this->member_info);
 
@@ -499,6 +502,9 @@ class BaseMemberControl extends Control {
      */
     private function _getMenuList() {
         $menu_list = array(
+                "member_advisor"=>array("name"=>"指导老师","child"=>array(
+                        'member_adviso_sns'=> array("name"=>"导师主页",'url'=>urlShop('member_snshome', 'index')),
+                )),
                 'trade' => array('name' => '交易管理', 'child' => array(
                         'member_order'      => array('name' => '实物交易订单', 'url'=>urlShop('member_order', 'index')),
                         'member_vr_order'   => array('name' => '虚拟兑码订单', 'url'=>urlShop('member_vr_order','index')),

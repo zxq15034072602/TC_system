@@ -35,7 +35,7 @@ a:hover{text-decoration: none;}
 							<img src="<?php if($article[file_name]){echo UPLOAD_SITE_URL.'/shop/article/'.$article['file_name'];}else{echo UPLOAD_SITE_URL.'/shop/common/loading.gif';}?>" width="418" height="169" data-url="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif"/>
 						</div>
 						<div class="detailRightBox_qty">
-							<h5><?php echo $article['article_title']?></h5>
+							<h5 ><?php echo $article['article_title']?></h5>
 							<span class="english_qty">HEALTH IS ALWAYS AROUND YOU</span>
 							<span class="time_qty"><?php echo date("Y-m-d",$article['article_time'])?></span>
 							<p>
@@ -63,5 +63,6 @@ a:hover{text-decoration: none;}
 	<!--健康咨询列表结束-->
 	</div>
 </div>
+
 
 <!-- 文章列表页 end -->

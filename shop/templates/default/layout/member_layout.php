@@ -130,7 +130,12 @@ $(function() {
         <?php if ($output['member_info']['level_name']){ ?>
         <div class="nc-grade-mini" style="cursor:pointer;" onclick="javascript:go('<?php echo urlShop('pointgrade','index');?>');"><?php echo $output['member_info']['level_name'];?></div>
         <?php } ?>
+        
       </div>
+      <div class="name" style="text-align: center;">
+      <?php if($output['member_info']['member_advisor']==0){?><span style="cursor: pointer;" onclick="apply_advisor(<?php echo $output['member_info']['member_id']?>)">申请成为指导老师</span>
+      <?php }else{?><?php echo $output['setting_config']['site_name']?>指导老师<?php }?>
+      </div> 
     </div>
     <ul class="ncm-sidebar ncm-quick-menu">
       <li class="side-menu-quick" nctype="commonOperations" <?php if (empty($output['common_menu_list'])) {?>style="display: none;"<?php }?>> <a href="javascript:void(0)">
@@ -168,5 +173,31 @@ $(function() {
   </div>
   <div class="clear"></div>
 </div>
+<script>
+function apply_advisor(member_id){
+	if(member_id==0){
+		alert("未知错误");
+		return;
+    }
+	$.ajax({
+		   url: 'index.php?act=member&op=ajax_member_applyadvisor',
+		   dataType:'json',
+		   success: function(data){
+			   if(data.code ==200){
+				   showSucc(data.msg);
+				}else{
+				   showError(data.msg);
+				}
+			   
+			   
+			   
+		   }
+	});
+}
+
+</script>
+
+
+
 <?php require_once template('footer');?>
 </body></html>

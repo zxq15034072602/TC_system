@@ -17,7 +17,6 @@ class pointgradeControl extends BasePointShopControl {
 	    $result = parent::pointshopMInfo(true);
 	    $member_info = $result['member_info'];
 	    unset($result);
-	    
 	    $model_member = Model('member');
 	    //获得会员升级进度
 	    $membergrade_arr = $model_member->getMemberGradeArr(true, $member_info['member_exppoints'],$member_info['level']);

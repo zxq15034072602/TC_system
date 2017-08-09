@@ -109,6 +109,7 @@ $arr = array(
 				'text' => $lang['nc_member'],
 				'list' => array(
 					array('args'=>'member,member,member',					'text'=>$lang['nc_member_manage']),
+				    array('args'=>'member_verify,member_advisor,member',				'text'=>'指导老师审核'),
 					array('args'=>'index,member_grade,member',				'text'=>'会员级别'),
 					array('args'=>'index,exppoints,member',					'text'=>$lang['nc_exppoints_manage']),
 					array('args'=>'notice,notice,member',					'text'=>$lang['nc_member_notice']),

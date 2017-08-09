@@ -46,6 +46,11 @@
               	<?php }?>
               <?php }?>
             </select></td>
+          <td><select name="member_advisor" >
+              <option value='-1'>会员身份</option>
+              <option <?php if(isset($_GET['member_advisor']) && $_GET['member_advisor'] == 1){ ?>selected='selected'<?php } ?> value="1">指导老师</option>
+              
+            </select></td>
           <td><a href="javascript:void(0);" id="ncsubmit" class="btn-search " title="<?php echo $lang['nc_query'];?>">&nbsp;</a>
             <?php if($output['search_field_value'] != '' or $output['search_sort'] != ''){?>
             <a href="index.php?act=member&op=member" class="btns "><span><?php echo $lang['nc_cancel_search']?></span></a>
@@ -91,7 +96,7 @@
         <tr class="hover member">
           <td class="w24"><input type="checkbox" name='del_id[]' value="<?php echo $v['member_id']; ?>" class="checkitem"></td>
           <td class="w48 picture"><div class="size-44x44"><span class="thumb size-44x44"><i></i><img src="<?php if ($v['member_avatar'] != ''){ echo UPLOAD_SITE_URL.DS.ATTACH_AVATAR.DS.$v['member_avatar'];}else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait');}?>?<?php echo microtime();?>"  onload="javascript:DrawImage(this,44,44);"/></span></div></td>
-          <td><p class="name"><strong><?php echo $v['member_name']; ?></strong>(<?php echo $lang['member_index_true_name']?>: <?php echo $v['member_truename']; ?>)</p>
+          <td><p class="name"><strong><?php echo $v['member_name']; ?><?php if($v['member_advisor']){?><font style="color: red">【指导老师】</font><?php }?></strong>(<?php echo $lang['member_index_true_name']?>: <?php echo $v['member_truename']; ?>)</p>
             <p class="smallfont"><?php echo $lang['member_index_reg_time']?>:&nbsp;<?php echo $v['member_time']; ?></p>
             
               <div class="im"><span class="email" >

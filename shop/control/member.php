@@ -15,9 +15,31 @@ class memberControl extends BaseMemberControl{
      * 我的商城
      */
     public function homeOp() {
+        
         Tpl::showpage('member_home');
     }
-
+    /**
+     * 申请成为指导导师
+     */
+    public function ajax_member_applyadvisorOp(){
+        $member_info = $this->member_info;
+        
+        $member_advisor_verifyModel=Model("member_advisor_verify");
+        $condition['verify_status']=0;
+        $condition['member_id']=$member_info['member_id'];
+        if($member_advisor_verifyModel->isExist($condition)){//如果有值
+            echo json_encode(array("code"=>500,"msg"=>'您已经提交了申请,请耐心等待'));
+            exit;
+        }
+        $parm['member_id']=$member_info['member_id'];
+        $parm['verify_time']=time();
+        if($member_advisor_verifyModel->save($parm)){
+            echo json_encode(array("code"=>200,"msg"=>'您的申请已提交，请等待工作人员审核！'));
+            exit;
+        }
+        echo json_encode(array("code"=>500,"msg"=>'申请失败！'));
+        exit;
+    }
     public function ajax_load_member_infoOp() {
 
         $member_info = $this->member_info;

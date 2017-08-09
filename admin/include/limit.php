@@ -43,6 +43,7 @@ $_limit =  array(
 		)),
 	array('name'=>$lang['nc_member'], 'child'=>array(
 		array('name'=>$lang['nc_member_manage'], 'op'=>null, 'act'=>'member'),
+	    array('name'=>'指导老师审核', 'op'=>null, 'act'=>'member_advisor'),
 	    array('name'=>'会员级别', 'op'=>null, 'act'=>'member_grade'),
 	    array('name'=>$lang['nc_exppoints_manage'], 'op'=>null, 'act'=>'exppoints'),
 		array('name'=>$lang['nc_member_notice'], 'op'=>null, 'act'=>'notice'),

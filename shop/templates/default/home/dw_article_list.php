@@ -114,7 +114,7 @@ a:hover{text-decoration: none;}
 							<img src="<?php if($article[file_name]){echo UPLOAD_SITE_URL.'/shop/article/'.$article['file_name'];}else{echo UPLOAD_SITE_URL.'/shop/common/loading.gif';}?>" width="330" height="132" data-url="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif"/>
 						</div>
 						<div class="hotFont_qty">
-							<h5><?php echo $article['article_title']?></h5>
+							<h5 style="font-weight: bold;"><?php echo $article['article_title']?></h5>
 						</div>
 						<div class="hotFontCenter_qty">
 							<?php echo mb_substr(strip_tags($article[article_content]), 0,80,"utf-8")?>

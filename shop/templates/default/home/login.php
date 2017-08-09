@@ -1,4 +1,5 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?> 
+<div style="width: 100%;background: #10C55B;">
 <div class="nc-login-layout">
   <div class="left-pic"><img src="<?php echo $output['lpic'];?>"  border="0"></div>
   <div class="nc-login">
@@ -102,6 +103,7 @@
     </div>
   </div>
   <div class="clear"></div>
+</div>
 </div>
 <script>
 $(function(){

@@ -71,6 +71,9 @@ class memberControl extends SystemControl{
     				break;
     		}
 		}
+		if($_GET['member_advisor'] != ''){
+		    $condition['member_advisor']=$_GET['member_advisor'];
+		}
 		switch ($_GET['search_state']){
 			case 'no_informallow':
 				$condition['inform_allow'] = '2';
