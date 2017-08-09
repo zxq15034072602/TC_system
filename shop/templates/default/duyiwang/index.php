@@ -458,23 +458,6 @@ $('.healthRoomBottom_qty').hover(function(){
 
 
 
-<div class="index-link wrapper">
-  <dl class="website">
-    <dt>合作伙伴 | 友情链接<b></b></dt>
-    <dd>
-      <?php 
-		  if(is_array($output['$link_list']) && !empty($output['$link_list'])) {
-		  	foreach($output['$link_list'] as $val) {
-		  		if($val['link_pic'] == ''){
-		  ?>
-      <a href="<?php echo $val['link_url']; ?>" target="_blank" title="<?php echo $val['link_title']; ?>"><?php echo str_cut($val['link_title'],15);?></a>
-      <?php
-		  		}
-		 	}
-		 }
-		 ?>
-    </dd>
-  </dl>
-</div>
+
 <div class="footer-line"></div>
 

@@ -176,7 +176,7 @@ $(function() {
 <script>
 function apply_advisor(member_id){
 	if(member_id==0){
-		alert("未知错误");
+		showError("未知错误")
 		return;
     }
 	$.ajax({

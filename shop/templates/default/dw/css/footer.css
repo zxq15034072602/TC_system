@@ -1,76 +1,96 @@
-.footer{
+.footerBox_qty{
     width: 100%;
-    height: 216px;
-    padding-top: 20px;
+    height: 306px;
     box-sizing: border-box;
-    background: #888888;
+    background: #393C40;
+}
+.footersmall_qty{
+	width: 1200px;
+	height: 306px;
+	margin: auto;
 	overflow: hidden;
 }
-.footer_con{
-    width: 1200px;
-    height: 100%;
-    margin: 0 auto;
+.footerSmallCenter_qty{
+	width: 1200px;
+	float: left;
+	margin-top: 50px;
 }
-.footer_one{
-    width: 450px;
-    height: 100%;
-    float: left;
+.homeBox_qty{
+	width: 170px;
+	float: left;
+	text-align: left;
 }
-.contact_us{
-    width: 100%;
-    height: 80px;
-    padding: 20px 0 0 0;
-    box-sizing: border-box;
+.contactBox_qty{
+	width: 346px;
+	float: left;
+	text-align: left;
 }
-.contact_a{
-    width: auto;
-    font-size: 18px;
-    line-height: 24px;
-    text-align: left;
-    color: #fff;
+.home_qty{
+	width: 100%;
+	float: left;
+	font-size: 18px;
+	color: #fff;
+	padding-bottom: 30px;
 }
-.contact_b{
-    width: auto;
-    font-size: 8px;
-    line-height: 12px;
-    color: #fff;
-    text-align: left;
-    font-weight: 600;
+.healthFont_qty{
+	width: 100%;
+	float: left;
+	font-size: 14px;
+	padding-bottom: 20px;
+	color: #999999;
 }
-.our_tell{
-    width: auto;
-    height: auto;
-    font-size: 14px;
-    line-height: 30px;
-    color: #fff;
-    display: block;
+.healthFont_qty a{
+	color: #999999;
 }
-.our_adress{
-    width: auto;
-    height: auto;
-    font-size: 14px;
-    line-height: 30px;
-    color: #fff;
-    display: block;
+.erweimaBox_qty{
+	width: 92px;
+	float: left;
+	margin-left: 82px;
 }
-.footer_two{
-    width: 300px;
+.erweimaBox_qty img{
+	width: 92px;
+	height: 92px;
+	float: left;
 }
-.look_at{
-    width: 104px;
-    height: auto;
-    float: right;
+.saoma_qty{
+	width: 100%;
+	float: left;
+	font-size: 14px;
+	color: #999999;
+	text-align: center;
+	margin-top: 5px;
 }
-.look_me{
-    width: 100%;
-    font-size: 16px;
-    line-height: 55px;
-    color: #fff;
-    text-align: center;
+.beianBox_qty{
+	width: 100%;
+	
+	margin: auto;
+	overflow: hidden;
+	background: #232426;
+	
+	color: #999999;
+	text-align: center;
+	line-height: 30px;
 }
-.erWeiMa{
-    display: block;
-    width:104px;
-    height: 104px;
-    margin-top: 0;
+.beian_qty{
+	width: 1200px;
+	margin: auto;
+	overflow: hidden;
+	color: #999999;
+	text-align: center;
+	
+}
+.beianSmall_qty{
+	width: 240px;
+	margin: auto;
+	overflow: hidden;
+}
+.beianSmall_qty div{
+	float: left;
+}
+.beianSmall_qty span{
+	width: 18px;
+	height: 17px;
+	background: url(../image/cn_qty_07.png);
+	
+	
 }
