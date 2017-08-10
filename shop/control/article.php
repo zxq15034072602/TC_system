@@ -245,5 +245,36 @@ class articleControl extends BaseHomeControl {
 		$templates_name=$_REQUEST['childshow']?"dw_article_show":"article_show";
 		Tpl::showpage($templates_name);
 	}
+	/*
+	 * 指导老师列表页
+	 */
+	public function member_advisor_listOp(){
+	    Tpl::setDir('sns');
+	    /**
+	     * 分类导航
+	     */
+	    $nav_link = array(
+	        array(
+	            'title'=>"首页",
+	            'link'=>SHOP_SITE_URL
+	        ),
+	        array(
+	            'title'=>"指导老师",
+	            'link' => urlShop('article', 'member_advisor_list')
+	        ),
+	         
+	    );
+	    $member_model=Model('member');
+	    $condition=array();
+	    $condition['member_advisor']=1;
+	    $page	= new Page();
+	    $page->setEachNum(10);
+	    $page->setStyle('admin');
+	    $member_advisor_list=$member_model->getMemberList($condition,$page);
+	    Tpl::output('nav_link_list',$nav_link);
+	    Tpl::output('show_page',$page->show());
+	    Tpl::output('member_advisor_list',$member_advisor_list);
+	    Tpl::showpage('member_adviso_list',"home_dw_layout");
+	}
 }
 ?>

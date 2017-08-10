@@ -7,7 +7,7 @@
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/dialog/dialog.js" id="dialog_js" charset="utf-8"></script>
 </head>
 
-<<style>
+<style>
 body{
 background-color: #f8f8f8;
 }
@@ -31,7 +31,7 @@ background-color: #f8f8f8;
             </div>
             <ul class="dicCate_right_bottom">
                 <li><b>工作时间 : </b><?php echo $output['master_info']['member_work_time']?></li>
-                <li><b>联系电话 : </b><?php if($output['master_info']['member_mobile']) { ?><?php echo $output['member_info']['member_mobile']; }else{?><a href="<?php echo urlShop("member_security","auth",array("type"=>"modify_mobile"))?>" class="">未绑定手机，点击绑定</a><?php }?></li>
+                <li><b>联系电话 : </b><?php if($output['master_info']['member_mobile']) { ?><?php echo $output['member_info']['member_mobile']; }else{?>未绑定手机<?php }?></li>
                 <li><b>所在地区: </b><?php echo $output['master_info']['member_areainfo']?></li>
                 <li><b>资历说明 : </b><?php echo $output['master_info']['member_service']?></li>
                 <li><b>医师评价 : </b><?php echo $output['master_info']['member_description'] ?></li>

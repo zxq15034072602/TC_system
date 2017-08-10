@@ -39,7 +39,7 @@ a:hover{text-decoration: none;}
 							<span class="english_qty">HEALTH IS ALWAYS AROUND YOU</span>
 							<span class="time_qty"><?php echo date("Y-m-d",$article['article_time'])?></span>
 							<p>
-							    <?php echo mb_substr(strip_tags($article[article_content]), 0,50,"utf-8")?>
+							    <?php echo mb_substr(strip_tags($article[article_content]), 0,100,"utf-8")?>
 
 							</p>
 						</div>

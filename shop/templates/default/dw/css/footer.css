@@ -3,6 +3,7 @@
     height: 306px;
     box-sizing: border-box;
     background: #393C40;
+	overflow: hidden;
 }
 .footersmall_qty{
 	width: 1200px;

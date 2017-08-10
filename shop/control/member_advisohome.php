@@ -47,7 +47,7 @@ class member_advisohomeControl extends BaseSNSControl {
             ),
             array(
 				'title'=>"指导老师",
-			    'link' => urlShop('member_advisohome', 'member_adviso_list')
+			    'link' => urlShop('article', 'member_advisor_list')
 			),
 			
         );
@@ -55,5 +55,6 @@ class member_advisohomeControl extends BaseSNSControl {
         Tpl::output('video_recommend',$webcode);
         Tpl::showpage('member_adviso_home',"home_dw_layout");
     }
+    
 }
 ?>
