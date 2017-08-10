@@ -53,7 +53,8 @@ class member_snshomeControl extends BaseSNSControl {
 		Tpl::output('goodslist', $goodslist);
 
 		// 我的图片
-		$pic_list = $model->table('sns_albumpic')->where(array('member_id'=>$this->master_id))->order('ap_id desc')->limit(3)->select();
+		$pic_class=$model->table('sns_albumclass')->where(array("member_id"=>$this->master_id,"is_default"=>2))->select();
+		$pic_list = $model->table('sns_albumpic')->where(array('member_id'=>$this->master_id,"ac_id"=>array("neq",$pic_class[0][ac_id])))->order('ap_id desc')->limit(3)->select();
 		Tpl::output('pic_list', $pic_list);
 
 		// 分享的店铺

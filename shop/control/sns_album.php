@@ -45,11 +45,15 @@ class sns_albumControl extends BaseSNSControl {
 		/**
 		 * 相册分类
 		 */
+		$parent = array (); // 条件
+		$parent ['member_id'] = $this->master_id;
+		$parent ['is_default']=array("neq",2);
 		$where = array (); // 条件
 		$where ['member_id'] = $this->master_id;
+		
 		$order = 'ac_sort asc';
 		// 相册
-		$ac_list = $model->table ( 'sns_albumclass' )->where ( $where )->order ( $order )->select ();
+		$ac_list = $model->table ( 'sns_albumclass' )->where ( $parent )->order ( $order )->select ();
 		$count = 0; // 图片总数量
 		if (! empty ( $ac_list )) {
 			// 相册中商品数量
@@ -416,9 +420,9 @@ class sns_albumControl extends BaseSNSControl {
 			) )->find ();
 			if (empty ( $ap_info ))
 				continue;
-			@unlink ( BASE_UPLOAD_PATH . DS . ATTACH_MALBUM . DS . $_SESSION ['member_id'] . DS . $ap_info ['ap_cover'] );
-			@unlink ( BASE_UPLOAD_PATH . DS . ATTACH_MALBUM . DS . $_SESSION ['member_id'] . DS . str_ireplace ( '.', '_240.', $ap_info ['ap_cover'] ) );
-			@unlink ( BASE_UPLOAD_PATH . DS . ATTACH_MALBUM . DS . $_SESSION ['member_id'] . DS . str_ireplace ( '.', '_1024.', $ap_info ['ap_cover'] ) );
+			@unlink ( BASE_UPLOAD_PATH . DS . ATTACH_MALBUM . DS  . $ap_info ['ap_cover'] );
+			@unlink ( BASE_UPLOAD_PATH . DS . ATTACH_MALBUM . DS  . str_ireplace ( '.', '_240.', $ap_info ['ap_cover'] ) );
+			@unlink ( BASE_UPLOAD_PATH . DS . ATTACH_MALBUM . DS  . str_ireplace ( '.', '_1024.', $ap_info ['ap_cover'] ) );
 			$model->table ( 'sns_albumpic' )->delete ( $ap_info ['ap_id'] );
 		}
 		

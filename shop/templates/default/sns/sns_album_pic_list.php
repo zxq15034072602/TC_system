@@ -52,7 +52,8 @@
         </ul>
         <?php }?>
         <dl>
-          <dt class="goodspic"><span class="thumb size233"><i></i><a href="index.php?act=sns_album&op=album_pic_info&id=<?php echo $v['ap_id'];?>&class_id=<?php echo $v['ac_id']?>&mid=<?php echo $output['master_id'];?><?php if(!empty($_GET['sort'])){?>&sort=<?php echo $_GET['sort']; }?>&curpage=<?php echo ceil((36*($curpage-1)+$ii)/9);?>&start_index=<?php echo ($tmp = (36*($curpage-1)+$ii)%9) ? $tmp-1 :8;?>" title="<?php echo $v['ap_name']?>"> <img id="img_<?php echo $v['ap_id'];?>" src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_MALBUM.DS.$output['master_id'].DS.str_ireplace('.', '_240.', $v['ap_cover']);?>"></a></span> </dt>
+          
+          <dt class="goodspic"><span class="thumb size233"><i></i><a href="index.php?act=sns_album&op=album_pic_info&id=<?php echo $v['ap_id'];?>&class_id=<?php echo $v['ac_id']?>&mid=<?php echo $output['master_id'];?><?php if(!empty($_GET['sort'])){?>&sort=<?php echo $_GET['sort']; }?>&curpage=<?php echo ceil((36*($curpage-1)+$ii)/9);?>&start_index=<?php echo ($tmp = (36*($curpage-1)+$ii)%9) ? $tmp-1 :8;?>" title="<?php echo $v['ap_name']?>"> <img id="img_<?php echo $v['ap_id'];?>" src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_MALBUM.DS.str_ireplace('.', '_240.', $v['ap_cover']);?>"></a></span> </dt>
           <dd> <span class="pinterest-addtime"><?php echo $lang['album_plist_upload_time'].$lang['nc_colon'].date("Y-m-d",$v['upload_time'])?></span><!--<span class="ops-comment"><a href="index.php?act=member_snshome&op=goodsinfo&type=like&mid=<?php echo $v['share_memberid'];?>&id=<?php echo $v['share_id'];?>" title="<?php echo $lang['sns_comment'];?>"><i></i></a><em><?php echo $v['share_commentcount'];?></em> </span>-->
           </dd>
         </dl>

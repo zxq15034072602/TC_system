@@ -416,9 +416,9 @@ class BaseMemberControl extends Control {
         
         $this->quicklink = explode(',', $this->member_info['member_quicklink']);
         Tpl::output('member_info', $this->member_info);
-
+        
         // 常用操作及导航
-        $common_menu_list = $this->_getCommonOperationsAndNavLink();
+        $common_menu_list = $this->_getCommonOperationsAndNavLink("",$this->member_info['member_advisor']);
 
     }
 
@@ -429,9 +429,9 @@ class BaseMemberControl extends Control {
      * 如果菜单中的切换卡不在一个菜单中添加$act参数，值为当前菜单的下标
      *
      */
-    protected function _getCommonOperationsAndNavLink ($act = '') {
+    protected function _getCommonOperationsAndNavLink ($act = '',$member_advisor=0) {
         // 左侧导航
-        $menu_list = $this->_getMenuList();
+        $menu_list = $this->_getMenuList($member_advisor);
         $operations_list = array();
         foreach ($menu_list as $key => $val) {
             foreach ($val['child'] as $k=>$v) {
@@ -500,46 +500,87 @@ class BaseMemberControl extends Control {
      * 菜单数组中child的下标要和其链接的act对应。否则面包屑不能正常显示
      * @return array
      */
-    private function _getMenuList() {
-        $menu_list = array(
+    private function _getMenuList($memeber_advisor=0) {
+        if($memeber_advisor ==1){
+            $menu_list = array(
+            
                 "member_advisor"=>array("name"=>"指导老师","child"=>array(
-                        'member_adviso_sns'=> array("name"=>"导师主页",'url'=>urlShop('member_snshome', 'index')),
+                    'member_adviso_sns'=> array("name"=>"导师主页",'url'=>urlShop('member_advisohome', 'index')),
                 )),
                 'trade' => array('name' => '交易管理', 'child' => array(
-                        'member_order'      => array('name' => '实物交易订单', 'url'=>urlShop('member_order', 'index')),
-                        'member_vr_order'   => array('name' => '虚拟兑码订单', 'url'=>urlShop('member_vr_order','index')),
-                        'member_favorites'  => array('name' => '我的收藏', 'url'=>urlShop('member_favorites', 'fglist')),
-                        'member_evaluate'   => array('name' => '交易评价/晒单', 'url'=>urlShop('member_evaluate', 'list')),
-                        'predeposit'        => array('name' => '账户余额', 'url'=>urlShop('predeposit', 'pd_log_list')),
-						'member_flea'     => array('name' => '我的闲置', 'url'=>urlShop('member_flea', 'index')),
-                        'member_points'     => array('name' => '我的积分', 'url'=>urlShop('member_points', 'index')),
-                        'member_voucher'    => array('name' => '我的代金券', 'url'=>urlShop('member_voucher', 'index'))
+                    'member_order'      => array('name' => '实物交易订单', 'url'=>urlShop('member_order', 'index')),
+                    'member_vr_order'   => array('name' => '虚拟兑码订单', 'url'=>urlShop('member_vr_order','index')),
+                    'member_favorites'  => array('name' => '我的收藏', 'url'=>urlShop('member_favorites', 'fglist')),
+                    'member_evaluate'   => array('name' => '交易评价/晒单', 'url'=>urlShop('member_evaluate', 'list')),
+                    'predeposit'        => array('name' => '账户余额', 'url'=>urlShop('predeposit', 'pd_log_list')),
+                    'member_flea'     => array('name' => '我的闲置', 'url'=>urlShop('member_flea', 'index')),
+                    'member_points'     => array('name' => '我的积分', 'url'=>urlShop('member_points', 'index')),
+                    'member_voucher'    => array('name' => '我的代金券', 'url'=>urlShop('member_voucher', 'index'))
                 )),
                 'serv' => array('name' => '客户服务', 'child' => array(
-                        'member_refund'     => array('name' => '退款及退货', 'url'=>urlShop('member_refund', 'index')),
-                        'member_complain'   => array('name' => '交易投诉', 'url'=>urlShop('member_complain', 'index')),
-                        'member_consult'    => array('name' => '商品咨询', 'url'=>urlShop('member_consult', 'my_consult')),
-                        'member_inform'     => array('name' => '违规举报', 'url'=>urlShop('member_inform', 'index')),
-                        'member_mallconsult'=> array('name' => '平台客服', 'url'=>urlShop('member_mallconsult', 'index'))
+                    'member_refund'     => array('name' => '退款及退货', 'url'=>urlShop('member_refund', 'index')),
+                    'member_complain'   => array('name' => '交易投诉', 'url'=>urlShop('member_complain', 'index')),
+                    'member_consult'    => array('name' => '商品咨询', 'url'=>urlShop('member_consult', 'my_consult')),
+                    'member_inform'     => array('name' => '违规举报', 'url'=>urlShop('member_inform', 'index')),
+                    'member_mallconsult'=> array('name' => '平台客服', 'url'=>urlShop('member_mallconsult', 'index'))
                 )),
                 'info' => array('name' => '资料管理', 'child' => array(
-                        'member_information'=> array('name' => '账户信息', 'url'=>urlShop('member_information', 'member')),
-                        'member_security'   => array('name' => '账户安全', 'url'=>urlShop('member_security', 'index')),
-                        'member_address'    => array('name' => '收货地址', 'url'=>urlShop('member_address', 'address')),
-                        'member_message'    => array('name' => '我的消息', 'url'=>urlShop('member_message', 'message')),
-                        'member_snsfriend'  => array('name' => '我的好友', 'url'=>urlShop('member_snsfriend', 'find')),
-                        'member_goodsbrowse'=> array('name' => '我的足迹', 'url'=>urlShop('member_goodsbrowse', 'list')),
-                        'member_connect'    => array('name' => '第三方账号登录', 'url'=>urlShop('member_connect', 'qqbind')),
-                        'member_sharemanage'=> array('name' => '分享绑定', 'url'=>urlShop('member_sharemanage', 'index'))
+                    'member_information'=> array('name' => '账户信息', 'url'=>urlShop('member_information', 'member')),
+                    'member_security'   => array('name' => '账户安全', 'url'=>urlShop('member_security', 'index')),
+                    'member_address'    => array('name' => '收货地址', 'url'=>urlShop('member_address', 'address')),
+                    'member_message'    => array('name' => '我的消息', 'url'=>urlShop('member_message', 'message')),
+                    'member_snsfriend'  => array('name' => '我的好友', 'url'=>urlShop('member_snsfriend', 'find')),
+                    'member_goodsbrowse'=> array('name' => '我的足迹', 'url'=>urlShop('member_goodsbrowse', 'list')),
+                    'member_connect'    => array('name' => '第三方账号登录', 'url'=>urlShop('member_connect', 'qqbind')),
+                    'member_sharemanage'=> array('name' => '分享绑定', 'url'=>urlShop('member_sharemanage', 'index'))
                 )),
                 'app' => array('name' => '应用管理', 'child' => array(
-                        'member_flea'     => array('name' => '我的闲置', 'url'=>urlShop('member_flea', 'index')),
-                        'sns'               => array('name' => '个人主页', 'url'=>urlShop('member_snshome', 'index')),
-                        'cms'               => array('name' => '我的CMS', 'url'=>urlCMS('member_article', 'article_list')),
-                        'circle'            => array('name' => '我的圈子', 'url'=>urlCircle('p_center', 'index')),
-                        'microshop'         => array('name' => '我的微商城', 'url'=>urlMicroshop('home', 'index', array('member_id' => $_SESSION['member_id'])))
+                    'member_flea'     => array('name' => '我的闲置', 'url'=>urlShop('member_flea', 'index')),
+                    'sns'               => array('name' => '个人主页', 'url'=>urlShop('member_snshome', 'index')),
+                    'cms'               => array('name' => '我的CMS', 'url'=>urlCMS('member_article', 'article_list')),
+                    'circle'            => array('name' => '我的圈子', 'url'=>urlCircle('p_center', 'index')),
+                    'microshop'         => array('name' => '我的微商城', 'url'=>urlMicroshop('home', 'index', array('member_id' => $_SESSION['member_id'])))
                 ))
-        );
+            );
+        }else {
+            $menu_list = array(
+                'trade' => array('name' => '交易管理', 'child' => array(
+                    'member_order'      => array('name' => '实物交易订单', 'url'=>urlShop('member_order', 'index')),
+                    'member_vr_order'   => array('name' => '虚拟兑码订单', 'url'=>urlShop('member_vr_order','index')),
+                    'member_favorites'  => array('name' => '我的收藏', 'url'=>urlShop('member_favorites', 'fglist')),
+                    'member_evaluate'   => array('name' => '交易评价/晒单', 'url'=>urlShop('member_evaluate', 'list')),
+                    'predeposit'        => array('name' => '账户余额', 'url'=>urlShop('predeposit', 'pd_log_list')),
+                    'member_flea'     => array('name' => '我的闲置', 'url'=>urlShop('member_flea', 'index')),
+                    'member_points'     => array('name' => '我的积分', 'url'=>urlShop('member_points', 'index')),
+                    'member_voucher'    => array('name' => '我的代金券', 'url'=>urlShop('member_voucher', 'index'))
+                )),
+                'serv' => array('name' => '客户服务', 'child' => array(
+                    'member_refund'     => array('name' => '退款及退货', 'url'=>urlShop('member_refund', 'index')),
+                    'member_complain'   => array('name' => '交易投诉', 'url'=>urlShop('member_complain', 'index')),
+                    'member_consult'    => array('name' => '商品咨询', 'url'=>urlShop('member_consult', 'my_consult')),
+                    'member_inform'     => array('name' => '违规举报', 'url'=>urlShop('member_inform', 'index')),
+                    'member_mallconsult'=> array('name' => '平台客服', 'url'=>urlShop('member_mallconsult', 'index'))
+                )),
+                'info' => array('name' => '资料管理', 'child' => array(
+                    'member_information'=> array('name' => '账户信息', 'url'=>urlShop('member_information', 'member')),
+                    'member_security'   => array('name' => '账户安全', 'url'=>urlShop('member_security', 'index')),
+                    'member_address'    => array('name' => '收货地址', 'url'=>urlShop('member_address', 'address')),
+                    'member_message'    => array('name' => '我的消息', 'url'=>urlShop('member_message', 'message')),
+                    'member_snsfriend'  => array('name' => '我的好友', 'url'=>urlShop('member_snsfriend', 'find')),
+                    'member_goodsbrowse'=> array('name' => '我的足迹', 'url'=>urlShop('member_goodsbrowse', 'list')),
+                    'member_connect'    => array('name' => '第三方账号登录', 'url'=>urlShop('member_connect', 'qqbind')),
+                    'member_sharemanage'=> array('name' => '分享绑定', 'url'=>urlShop('member_sharemanage', 'index'))
+                )),
+                'app' => array('name' => '应用管理', 'child' => array(
+                    'member_flea'     => array('name' => '我的闲置', 'url'=>urlShop('member_flea', 'index')),
+                    'sns'               => array('name' => '个人主页', 'url'=>urlShop('member_snshome', 'index')),
+                    'cms'               => array('name' => '我的CMS', 'url'=>urlCMS('member_article', 'article_list')),
+                    'circle'            => array('name' => '我的圈子', 'url'=>urlCircle('p_center', 'index')),
+                    'microshop'         => array('name' => '我的微商城', 'url'=>urlMicroshop('home', 'index', array('member_id' => $_SESSION['member_id'])))
+                ))
+            );
+        }
+        
     	return self::filter_menu($menu_list);
     }
     
@@ -566,7 +607,7 @@ class BaseSNSControl extends Control {
     const MAX_RECORDNUM = 20;//允许插入新记录的最大条数
     protected $master_info;
 
-    public function __construct(){
+    public function __construct($status=0){
 
         Tpl::setDir('sns');
 
@@ -580,7 +621,7 @@ class BaseSNSControl extends Control {
         //查询会员信息
         $this->getMemberAndGradeInfo(false);
 
-        $this->master_info = $this->get_member_info();
+        $this->master_info = $this->get_member_info($status);
         Tpl::output('master_info',$this->master_info);
 
         //添加访问记录
@@ -596,7 +637,20 @@ class BaseSNSControl extends Control {
         Tpl::output('max_recordnum',self::MAX_RECORDNUM);
 
         $this->showCartCount();
-
+        //友情链接
+        $model_link = Model('link');
+        $link_list = $model_link->getLinkList($condition,$page);
+        /**
+         * 整理图片链接
+         */
+        if (is_array($link_list)){
+            foreach ($link_list as $k => $v){
+                if (!empty($v['link_pic'])){
+                    $link_list[$k]['link_pic'] = UPLOAD_SITE_URL.'/'.ATTACH_PATH.'/common/'.DS.$v['link_pic'];
+                }
+            }
+        }
+        Tpl::output('$link_list',$link_list);
         Tpl::output('nav_list', rkcache('nav',true));
     }
 
@@ -628,13 +682,16 @@ class BaseSNSControl extends Control {
      *
      * @return array
      */
-    public function get_member_info() {
+    public function get_member_info($status=0) {
         if($this->master_id <= 0){
             showMessage(L('wrong_argument'), '', '', 'error');
         }
         $model = Model();
         $member_info = Model('member')->getMemberInfoByID($this->master_id);
         if(empty($member_info)){
+            if($status){
+                showMessage(L('wrong_argument'), 'index.php?act=member_advisohome', '', 'error');
+            }
             showMessage(L('wrong_argument'), 'index.php?act=member_snshome', '', 'error');
         }
         //粉丝数

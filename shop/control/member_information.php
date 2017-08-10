@@ -40,6 +40,9 @@ class member_informationControl extends BaseMemberControl {
 			$member_array['member_cityid']		= $_POST['city_id'];
 			$member_array['member_provinceid']	= $_POST['province_id'];
 			$member_array['member_areainfo']	= $_POST['area_info'];
+			$member_array['member_work_time']	= $_POST['member_work_time'];
+			$member_array['member_service']  	=   $_POST['member_service'];
+			$member_array['member_description']	= $_POST['member_description'];
 			if (strlen($_POST['birthday']) == 10){
 				$member_array['member_birthday']	= $_POST['birthday'];
 			}

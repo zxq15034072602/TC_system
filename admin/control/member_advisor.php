@@ -71,7 +71,20 @@ class member_advisorControl extends SystemControl{
             $condition['member_id']=$_REQUEST['member_id'];
             if($update['verify_status']==1){
                 $model_member = Model('member');
-                $model_member->editMember($condition,array('member_advisor'=>1));
+                $model_member->editMember($condition,array('member_advisor'=>1));//修改会员为指导老师
+                /**
+                 * 实例化相册模型
+                 */
+                $model = Model ();
+                
+                $insert = array ();
+                $insert ['ac_name'] = '荣誉墙';
+                $insert ['member_id'] = $_REQUEST['member_id'];
+                $insert ['ac_des'] = '此相册为指导老师荣誉展示用';
+                $insert ['ac_sort'] = '';
+                $insert ['upload_time'] = time ();
+                $insert ['is_default'] = 2;
+                $return = $model->table ( 'sns_albumclass' )->insert ( $insert );
             }
             showMessage($msg);
             exit();

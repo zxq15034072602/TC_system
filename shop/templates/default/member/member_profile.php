@@ -132,6 +132,35 @@
             </select>
             </span></dd>
         </dl>
+        <?php if($output['member_info']['member_advisor']==1) {?>
+        
+        <dl>
+          <dt>工作时间<?php echo $lang['nc_colon'];?></dt>
+          <dd><span class="w400">
+            <input name="member_work_time" type="text" class="text" maxlength="50" id="member_work_time" value="<?php echo $output['member_info']['member_work_time'];?>" />
+            </span><span>
+                                【指导老师信息录入】
+            </span></dd>
+        </dl>
+        <dl>
+          <dt>资历说明<?php echo $lang['nc_colon'];?></dt>
+          <dd><span class="w400">
+            <input name="member_service" type="text" class="text" maxlength="50" id="member_service" value="<?php echo $output['member_info']['member_service'];?>" />
+            </span><span>
+                                【指导老师信息录入】
+            </span></dd>
+        </dl>
+        <dl>
+          <dt>医师评价<?php echo $lang['nc_colon'];?></dt>
+          <dd><span class="w400">
+            <textarea rows="10" cols="10" name="member_description" style="width:350px;height:100%">
+            <?php echo $output['member_info']["member_description"]?>
+            </textarea>
+            </span><span>
+                                【指导老师信息录入】
+            </span></dd>
+        </dl>
+        <?php }?>
         <dl class="bottom">
           <dt></dt>
           <dd>
