@@ -360,45 +360,22 @@ body{background-color: #f8f8f8; }
 <div class="goods_for">
     <div class="goods_for_tirle"></div>
     <ul class="goods_for_con">
+        
         <li class="goods_for_one">
-            <a href="" class="goods_for_img"><img src="themes/image/banner.png" alt=""></a>
-            <div class="goods_for_name">
-                <span></span>
-                <span>独一张·温泉</span>
-                <span></span>
-            </div>
-            <a href="" class="goods_for_more">查看更多</a>
+            <?php echo rec(9);?>
         </li>
         <li class="goods_for_one">
-            <a href="" class="goods_for_img"><img src="themes/image/banner.png" alt=""></a>
-            <div class="goods_for_name">
-                <span></span>
-                <span>独一张·温泉</span>
-                <span></span>
-            </div>
-            <a href="" class="goods_for_more">查看更多</a>
+            <?php echo rec(10);?>
         </li>
         <li class="goods_for_one">
-            <a href="" class="goods_for_img"><img src="themes/image/banner.png" alt=""></a>
-            <div class="goods_for_name">
-                <span></span>
-                <span>独一张·温泉</span>
-                <span></span>
-            </div>
-            <a href="" class="goods_for_more">查看更多</a>
+            <?php echo rec(11);?>
         </li>
         <li class="goods_for_one">
-            <a href="" class="goods_for_img"><img src="themes/image/banner.png" alt=""></a>
-            <div class="goods_for_name">
-                <span></span>
-                <span>独一张·温泉</span>
-                <span></span>
-            </div>
-            <a href="" class="goods_for_more">查看更多</a>
+            <?php echo rec(12);?>
         </li>
 
     </ul>
-    <div class="goods_forMore">更多</div>
+    <div class="goods_forMore"><a href="<?php echo urlShop("index","index")?>" style="color:#fff">更多</a></div>
     <div class="goods_forME">TRADITIONAL NOURISHING</div>
 </div>
 <!--左边固定弹框开始-->

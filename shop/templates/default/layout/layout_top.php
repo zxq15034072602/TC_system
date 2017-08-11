@@ -106,7 +106,7 @@
 </div>
 <?php } ?>
 <div class="public-top-layout w">
-  <div class="topbar wrapper">
+  <div class="topbar wrapper" style="width:1200px">
     <div class="user-entry">
       <?php if($_SESSION['is_login'] == '1'){?>
       <?php echo $lang['nc_hello'];?> <span>
