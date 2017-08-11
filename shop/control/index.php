@@ -35,7 +35,54 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
                 }
             }
         }
-        Tpl::output('$link_list',$link_list);
+        
+        /*
+         * 指导老师列表
+         */
+        $member_model=Model('member');
+        $condition=array();
+        $condition['member_advisor']=1;
+        $member_advisor_list=$member_model->getMemberList($condition,"*",0,"member_id desc","9");
+        /*
+         * 推荐视频
+         */
+        $video_model=Model("video");
+        $condition=array();
+        $condition['order']="rand()";
+        $condition['limit']=9;
+        $video_list=$video_model->getVideoList($condition);
+        /*
+         * 推荐商品
+         */
+        $model_booth = Model('p_booth');
+        $goods_list = $model_booth->getBoothGoodsList($where, 'goods_id', 0,9,"rand()");
+        if (!empty($goods_list)) {
+            $goodsid_array = array();
+            foreach ($goods_list as $val) {
+                $goodsid_array[] = $val['goods_id'];
+            }
+            $goods_list = Model('goods')->getGoodsList(array('goods_id' => array('in', $goodsid_array)));
+        }
+        /*
+         * 健康知识
+         */
+        $article_model=Model('article');
+        $article_class_model = Model('article_tag');
+        $article_class=$article_class_model->getList("",0,"","*","5");
+        if($article_class){
+            $condition=array();
+            $condition['table'] = "article_tag,article";
+            $condition['join_on'] = array('article_tag.tag_id=article.tag_id');
+            $condition['article_recommend']=1;
+            $condition['order']="rand()";
+            $article_list=$article_model->getJoinList($condition);
+        }
+        Tpl::output("article_class",$article_class);
+        Tpl::output("article_list",$article_list);
+        Tpl::output('goods_list',$goods_list);
+        Tpl::output('member_advisor_list',$member_advisor_list);
+        Tpl::output("video_list",$video_list);
+        Tpl::output('link_list',$link_list);
         Tpl::output('video_recommend',$webcode);
         Tpl::output('web_html',$web_html);
         Tpl::showpage('index');

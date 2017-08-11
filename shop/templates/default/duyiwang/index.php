@@ -2,6 +2,8 @@
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/css/index.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/index.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/healthSchool_qty.css" rel="stylesheet" type="text/css">
+<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/dyw_pc.css" rel="stylesheet" type="text/css">
+<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/health_zn.css" rel="stylesheet" type="text/css">
 <script src="<?php echo RESOURCE_SITE_URL;?>/js/waypoints.js"></script>
 <script src="<?php echo SHOP_TEMPLATES_URL;?>/dw/js/index.js"></script>
 <script type="text/javascript" src="<?php echo SHOP_RESOURCE_SITE_URL;?>/js/home_index.js" charset="utf-8"></script>
@@ -17,218 +19,187 @@ body{background-color: #f8f8f8; }
 <div class="banner_yyt">
     <?php echo $output['web_html']['index_big'];?>
 </div>
-<div class="health_area">
-    <div class="area_title"></div>
-    <div class="area_con">
-        <div class="area_left">
-            <ul class="find_dct">
-                <li class="find_dct_a">
-                    <span class="dct_a_a"></span>
-                    <span class="dct_a_b">找门店</span>
-                </li>
-                <li class="find_dct_a">
-                    <span class="dct_a_a dct_one_yyt"></span>
-                    <span class="dct_a_b">找医师</span>
-                </li>
-                <li class="find_dct_a">
-                    <span class="dct_a_a dct_two_yyt"></span>
-                    <span class="dct_a_b">找产品</span>
-                </li>
-                <li class="find_dct_a">
-                    <span class="dct_a_a dct_three_yyt"></span>
-                    <span class="dct_a_b">找视频</span>
-                </li>
 
-            </ul>
-            <div class="area_left_con">
-                <ul class="find_md">
-                    <div class="find_md_title">热门门店</div>
-                    <ul class="find_md_con">
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                    </ul>
-                    <a href="" class="find_md_more">查看更多</a>
-                </ul>
-                <ul class="find_md">
-                    <div class="find_md_title">热门门店</div>
-                    <ul class="find_md_con">
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                    </ul>
-                    <a href="" class="find_md_more">查看更多</a>
-                </ul>
-                <ul class="find_md">
-                    <div class="find_md_title">热门门店</div>
-                    <ul class="find_md_con">
-                        <li class="find_product">
-                            <a href="">独一张·温泉</a>
-                        </li>
-                        <li class="find_product">
-                            <a href="">独一张·老膏药</a>
-                        </li>
-                        <li class="find_product">
-                            <a href="">独一张·仪年堂</a>
-                        </li>
-                        <li class="find_product">
-                            <a href="">独一张·炙骨宁</a>
-                        </li>
-                    </ul>
-                    <a href="" class="find_md_more">查看更多</a>
-                </ul>
-                <ul class="find_md">
-                    <div class="find_md_title">热门门店</div>
-                    <ul class="find_md_con">
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                        <li class="find_md_one">
-                            <a href="">太原店</a>
-                        </li>
-                    </ul>
-                    <a href="" class="find_md_more">查看更多</a>
-                </ul>
-
+<div id="health_zn">
+    <div class="health_title_zn">
+        <p class="health_title">
+            <span></span>
+            <span>健/康/专/区</span>
+            <span></span>
+        </p>
+        <p class="health_title_english">Health zone</p>
+    </div>
+    <ul class="sort_box_zn">
+        <li class="sort_list_zn">
+            <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/list_zn_01.png" alt=""/>
+            <span class="find_store_zn"><a href="#">找门店</a></span>
+            <div class="address_box">
+                <a href="#">太原市</a>
+                <a href="#">太原市</a>
+                <a href="#">太原市</a>
+                <a href="#">太原市</a>
+                <a href="#">太原市</a>
+                <a href="#">太原市</a>
+                <a href="#">太原市</a>
+                <a href="#">太原市</a>
+                <a href="#">太原市</a>
             </div>
-        </div>
-        <div class="area_cut_off"></div>
-        <!--*************************************************************************************-->
-        <div class="area_right">
-            <div class="health_select">
-                <div class="health_k_q">健康知识</div>
-                <div class="health_k_q">健康问答</div>
+            <span class="look_more">
+                <a href="#">查看更多</a>
+            </span>
+        </li>
+        <li class="sort_list_zn">
+            <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/list_zn_02.png" alt=""/>
+            <span class="find_store_zn"><a href="<?php echo urlShop('article',"member_advisor_list")?>">找老师</a></span>
+            <div class="address_box">
+                <?php if($output['member_advisor_list']&&is_array($output['member_advisor_list'])) {?>
+                <?php foreach ($output['member_advisor_list'] as $member_advisor) {?>
+                <a href="<?php echo urlShop("member_advisohome","index",array("mid"=>$member_advisor['member_id'])) ?>"><?php if($member_advisor['member_truename']){ echo $member_advisor['member_truename'];}else{echo $member_advisor['member_name'];}?></a>
+                <?php }?>
+                <?php }?>
             </div>
-            <ul class="health_zs">
-                <li class="health_zs_one">
-                    <a href="" class="zs_one_a"> · 诊疗</a>
-                    <span class="zs_one_b">|</span>
-                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
-                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
-                </li>
-                <li class="health_zs_one">
-                    <a href="" class="zs_one_a"> · 诊疗</a>
-                    <span class="zs_one_b">|</span>
-                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
-                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
-                </li>
-                <li class="health_zs_one">
-                    <a href="" class="zs_one_a"> · 诊疗</a>
-                    <span class="zs_one_b">|</span>
-                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
-                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
-                </li>
-                <li class="health_zs_one">
-                    <a href="" class="zs_one_a"> · 诊疗</a>
-                    <span class="zs_one_b">|</span>
-                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
-                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
-                </li>
-                <li class="health_zs_one">
-                    <a href="" class="zs_one_a"> · 诊疗</a>
-                    <span class="zs_one_b">|</span>
-                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
-                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
-                </li>
-                <li class="health_zs_one">
-                    <a href="" class="zs_one_a"> · 诊疗</a>
-                    <span class="zs_one_b">|</span>
-                    <a href="" class="zs_one_c">肠胃炎夏季高发预防记住这几点</a>
-                    <a href="" class="zs_one_d">春夏交替5条原则养好肠胃</a>
-                </li>
-            </ul>
-            <ul class="health_zs health_zs_">
-                <li class="haelth_wd_one">
-                    <a href="" class="wd_one_a">为什么高血压患者会血压突然飙升？</a>
-                    <a href="" class="wd_one_b">张医师回答：我国的关节炎患者有一亿以上，且人数在不断增加。关节的红、肿、热、痛，功能障碍及关节畸形，严重...</a>
-                    <a href="" class="wd_one_c">进入</a>
-                </li>
-                <li class="haelth_wd_one">
-                    <a href="" class="wd_one_a">为什么高血压患者会血压突然飙升？</a>
-                    <a href="" class="wd_one_b">张医师回答：我国的关节炎患者有一亿以上，且人数在不断增加。关节的红、肿、热、痛，功能障碍及关节畸形，严重...</a>
-                    <a href="" class="wd_one_c">进入</a>
-                </li>
-                <li class="haelth_wd_one">
-                    <a href="" class="wd_one_a">为什么高血压患者会血压突然飙升？</a>
-                    <a href="" class="wd_one_b">张医师回答：我国的关节炎患者有一亿以上，且人数在不断增加。关节的红、肿、热、痛，功能障碍及关节畸形，严重...</a>
-                    <a href="" class="wd_one_c">进入</a>
-                </li>
-
-            </ul>
+            <span class="look_more">
+                <?php if(count($output['member_advisor_list'])>9) {?>
+                <a href="<?php echo urlShop('article',"member_advisor_list")?>">查看更多</a>
+                <?php }?>
+            </span>
+        </li>
+        <li class="sort_list_zn">
+            <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/list_zn_03.png" alt=""/>
+            <span class="find_store_zn"><a href="<?php echo urlShop('index',"index")?>">找产品</a></span>
+            <div class="address_box">
+                <?php if($output['goods_list']&&is_array($output['goods_list'])) {?>
+                <?php foreach ($output['goods_list'] as $goods) {?>
+                <a href="<?php echo urlShop("goods","index",array("goods_id"=>$goods['goods_id']))?>"><?php echo str_cut($goods['goods_name'], 8)?></a>
+                <?php }?>
+                <?php }?>
+            </div>
+            <span class="look_more">
+                <?php  if(count($output['goods_list'])>9) {?>
+                <a href="<?php echo urlShop('index',"index")?>">查看更多</a>
+                <?php }?>
+            </span>
+        </li>
+        <li class="sort_list_zn">
+            <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/list_zn_04.png" alt=""/>
+            <span class="find_store_zn"><a href="#">找视频</a></span>
+            <div class="address_box">
+                <?php if($output['video_list']&&is_array($output['video_list'])) {?>
+                <?php foreach ($output['video_list'] as $video) {?>
+                <a href="<?php echo urlShop('video',"show",array("video_id"=>$video['video_id'],'parent_id'=>4))?>"><?php echo str_cut($video["video_title"], 8)?></a>
+                <?php }?>
+                <?php }?>
+            </div>
+            <span class="look_more">
+                <?php  if(count($output['video_list'])>9) {?>
+                <a href="<?php echo urlShop('video','video',array("vd_id"=>4))?>">查看更多</a>
+                <?php }?>
+            </span>
+        </li>
+    </ul>
+    <div class="health_question_zn">
+        <div class="health_question_box_zn">
+            <div class="health_click_title_zn">
+                <span class="health_knowledge_zn">健康<br/>知识</span>
+                <span class="health_question_zn_zn">健康<br/>问答</span>
+            </div>
+            <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/smile_man_zn.png" alt="" class="smile_man_zn"/>
+            <div class="health_con_zn">
+                <div class="title_zn">
+                    <p class="frist_p_zn">健康知识</p>
+                    <div class="over_box">
+                        <p class="color_p_zn">
+                            <span>He</span><span>alth</span>
+                        </p>
+                        <p class="color_p_zn">
+                            <span>K</span><span>nowledge</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <?php if($output['article_class']&&is_array($output['article_class'])) {?>
+                <?php foreach ($output['article_class'] as $article_class) {?>
+                <ul class="sort_health_zn">
+                    <li class="sort_title_zn"><?php echo str_cut($article_class['tag_name'], 4)?></li>
+                    <?php $num=0;?>
+                    <?php foreach ($output['article_list'] as $article) {?>
+                    <?php if($article['tag_id'] == $article_class['tag_id']&&$num<2) {?>
+                    <li class="sort_con_zn"><a href="<?php echo urlShop("article","show",array('article_id'=>$article['article_id'],'childshow'=>1))?>"><?php echo str_cut($article['article_title'], 54)?></a></li>                 
+                    <?php $num++;?>
+                    <?php }?>
+                    <?php }?>
+                </ul>
+                <?php }?>
+                <?php }?>
+            </div>
+            <div class="health_question_con_zn">
+                <div class="title_zn">
+                    <p class="frist_p_zn">健康问答</p>
+                    <div class="over_box">
+                        <p class="color_p_zn">
+                            <span>Q</span><span>uestion</span>
+                        </p>
+                        <p class="color_p_zn last_p_zn">
+                            <span>&</span>  <span>A</span><span>nswer</span>
+                        </p>
+                    </div>
+                </div>
+                <ul class="question_con_zn">
+                    <li class="question_title_zn">
+                        <a href="#">
+                            <span>问</span>
+                            <span class="prompt_zn">大腿皮肤表面有小疙瘩，但是不疼不痒，怎么办？</span>
+                        </a>
+                    </li>
+                    <li class="question_con_zn_list">
+                        <a href="#">
+                            <span>答</span>
+                            <span>你好，这个情况有很久了吧？ 这是毛周角化，与体内缺乏维生素A有关可以口服胡萝卜素胶囊，外涂维A酸乳膏，每天晚上涂一次，平时多吃蔬菜水果，尤其胡萝卜多吃 没有影响，保持皮肤滋润是好的 这个没有太好的办法，可以做激光脱毛，可以永久去除掉不客气 </span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="question_con_zn">
+                    <li class="question_title_zn">
+                        <a href="#">
+                            <span>问</span>
+                            <span class="prompt_zn">大腿皮肤表面有小疙瘩，但是不疼不痒，怎么办？</span>
+                        </a>
+                    </li>
+                    <li class="question_con_zn_list">
+                        <a href="#">
+                            <span>答</span>
+                            <span>你好，这个情况有很久了吧？ 这是毛周角化，与体内缺乏维生素A有关可以口服胡萝卜素胶囊，外涂维A酸乳膏，每天晚上涂一次，平时多吃蔬菜水果，尤其胡萝卜多吃 没有影响，保持皮肤滋润是好的 这个没有太好的办法，可以做激光脱毛，可以永久去除掉不客气 </span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="question_con_zn">
+                    <li class="question_title_zn last_question_zn">
+                        <a href="#">
+                            <span>问</span>
+                            <span class="prompt_zn">大腿皮肤表面有小疙瘩，但是不疼不痒，怎么办？</span>
+                        </a>
+                    </li>
+                    <li class="question_con_zn_list last_question_con">
+                        <a href="#">
+                            <span>答</span>
+                            <span>你好，这个情况有很久了吧？ 这是毛周角化，与体内缺乏维生素A有关可以口服胡萝卜素胶囊，外涂维A酸乳膏，每天晚上涂一次，平时多吃蔬菜水果，尤其胡萝卜多吃 没有影响，保持皮肤滋润是好的 这个没有太好的办法，可以做激光脱毛，可以永久去除掉不客气 </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
+
 <div class="health_answer">
-    <div class="health_a_title"></div>
+    <div class="health_title_zn">
+        <p class="health_title">
+            <span></span>
+            <span>健/康/问/答</span>
+            <span></span>
+        </p>
+        <p class="health_title_english">Health zone</p>
+    </div>
     <ul class="health_a_con">
        <li class="health_a_one">
            <a href="" class="health_a_header"></a>
@@ -301,9 +272,14 @@ body{background-color: #f8f8f8; }
 <div class="healthSchoolSmallBox_qty">
 <!--小保健讲堂开始-->
 		<div class="healthBox_qty">
-			<div class="healthImgBox_qty">
-				<img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/health_jt_title.jpg" />
-			</div>
+			<div class="health_title_zn">
+                <p class="health_title">
+                    <span></span>
+                    <span>健/康/讲/堂</span>
+                    <span></span>
+                </p>
+                <p class="health_title_english">Health zone</p>
+            </div>
 			<div class="healthRightBox_qty">
 				<div class="healthTopFont_qty">
 					
@@ -358,7 +334,14 @@ body{background-color: #f8f8f8; }
 
 
 <div class="goods_for">
-    <div class="goods_for_tirle"></div>
+    <div class="health_title_zn">
+        <p class="health_title">
+            <span></span>
+            <span>商/品/推/荐</span>
+            <span></span>
+        </p>
+        <p class="health_title_english">Health zone</p>
+    </div>
     <ul class="goods_for_con">
         
         <li class="goods_for_one">
@@ -425,6 +408,23 @@ $('.healthRoomBottom_qty').hover(function(){
 },function(){
 	s=setInterval(move,2000)
 })
+</script>
+<script>
+function click_zn(){
+    $(document).on('click','.health_knowledge_zn',function(){
+        $(this).css('background','#a3cb32').css('color','#fff');
+        $('.health_question_zn_zn').css('color','#999').css('background','#fff');
+        $('.health_con_zn').css('display','block');
+        $('.health_question_con_zn').css('display','none');
+    });
+    $(document).on('click','.health_question_zn_zn',function(){
+        $(this).css('background','#a3cb32').css('color','#fff');
+        $('.health_knowledge_zn').css('color','#999').css('background','#fff');
+        $('.health_question_con_zn').css('display','block');
+        $('.health_con_zn').css('display','none');
+    });
+}
+    click_zn();
 </script>
 
 <div class="clear"></div>
