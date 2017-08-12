@@ -113,7 +113,7 @@
 .public-nav-layout .category .menu li.hover { z-index: 2;}
 .public-nav-layout .category .menu li:last-child { height: 37px;}
 .public-nav-layout .category .class { display: block; width: 183px; height: 16px; padding: 9px 15px; position: absolute; z-index: 1; top: 0; left: 0; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s;}
-.public-nav-layout .category .hover .class { background-color: #F87622; width: 175px; padding: 9px 15px 9px 23px; z-index: 2;}
+.public-nav-layout .category .hover .class { background-color: #81a906; width: 175px; padding: 9px 15px 9px 23px; z-index: 2;}
 .public-nav-layout .category .class .ico { vertical-align: top; display: inline-block; width: 16px; height: 16px; margin-right: 6px;}
 .public-nav-layout .category .class .ico img { display: block; width: 16px; height: 16px;}
 .public-nav-layout .category .class h4 { vertical-align: top; display: inline-block;*display: inline/*IE7*/; *zoom: 1/*IE7*/;}

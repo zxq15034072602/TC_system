@@ -122,7 +122,7 @@ body { background-color: #FEFEFE; min-width: 1200px;}
 .squares .goods-pic-scroll-show ul li { vertical-align: middle; letter-spacing: normal; word-spacing: normal; display: inline-block; *display: inline/*IE7*/; width: 30px; height: 30px; margin: 0 5px 0 0; *zoom:1;}
 .squares .goods-pic-scroll-show ul li a { line-height: 0; text-align: center; vertical-align: middle; display: table-cell; *display: block; width: 28px; height: 28px; padding: 0; border: solid 1px #EEE; overflow: hidden;}
 .squares .goods-pic-scroll-show ul li.selected a,
-.squares .goods-pic-scroll-show ul li a:hover { border-color: #F87622; transition: border-color 0.4s ease-in-out 0s;}
+.squares .goods-pic-scroll-show ul li a:hover { border-color: #9cc813; transition: border-color 0.4s ease-in-out 0s;}
 .squares .goods-pic-scroll-show ul li img { max-width: 28px; max-height: 28px; margin-top:expression(28-this.height/2); *margin-top:expression(14-this.height/2)/*IE6,7*/;}
 .squares .goods-promotion { font: 700 12px/15px "microsoft yahei"; color: #FFF; background: url(../images/2014shop_background_img.png) no-repeat 0 -100px; text-align: center; width: 30px; height: 30px; padding: 20px 9px 15px 9px; position: absolute; z-index: 2; top: 5px; right: 5px;}
 .squares .goods-price { font: 12px/20px Arial; color: #C00; background-color: #FFF; white-space: nowrap; display: block; height: 20px; padding: 5px 10px; overflow: hidden;}
@@ -154,10 +154,10 @@ body { background-color: #FEFEFE; min-width: 1200px;}
 .squares .sell-stat ul li p { line-height: 20px; color: #999; height: 20px;}
 .squares .store { line-height: 20px; background-color: #F5F5F5; text-align: center; display: block; height: 20px; clear: both; padding: 8px 0; border-top: solid 1px #EEE;}
 .squares .add-cart { display: block;}
-.squares .add-cart a { font-weight: 600; font-size: 14px; line-height: 20px; color: #F5CDBF; text-shadow: -2px 0 0 rgba(0,0,0,0.05); background-color: #F87622; text-align: center; display: block; height: 20px; padding: 8px 0;}
+.squares .add-cart a { font-weight: 600; font-size: 14px; line-height: 20px; color: #FFF; text-shadow: -2px 0 0 rgba(0,0,0,0.05); background-color: #9cc813; text-align: center; display: block; height: 20px; padding: 8px 0;}
 .squares .add-cart a i { margin-right: 4px;}
 .squares .add-cart a:hover { color: #FFF; text-decoration: none;}
-.squares li:hover .goods-content { height: 445px; margin: 0; border: solid 4px #F87622; border-radius: 0; box-shadow: 0px 4px 4px rgba(102,102,102,0.65);}
+.squares li:hover .goods-content { height: 445px; margin: 0; border: solid 4px #9cc813; border-radius: 0; box-shadow: 0px 4px 4px rgba(102,102,102,0.65);}
 
 
 .squares .list_pic dl dd.promotion-price { width:65px; }
@@ -405,7 +405,7 @@ form label.validate_right { padding-left:20px; background:transparent url(../ima
 .tree li a:focus,
 .tree li a.tree-parent:focus,
 .tree li a.tree-item-active { color:#000;}
-.tree li a.selected { font-weight: bold; color: #F87622;}
+.tree li a.selected { font-weight: bold; color: #81a906;}
 .tree ul.tree-group-collapsed {display:none;}
 
 
@@ -562,7 +562,7 @@ form label.validate_right { padding-left:20px; background:transparent url(../ima
 .nch-compare-null p { font: 16px/28px "microsoft yahei"; background-color: #FEF6E5; width: 480px; padding: 40px; margin: 80px auto; border: solid 1px #F1E2C1;}
 .nch-compare-null p i { font-size: 24px; margin-right: 10px; color: #F1E2C1;}
 /* 即时打折 好商城v3-b12 瀑布流形式*/
-.ncp-category { border-bottom: solid 1px #F87622; overflow: hidden;}
+.ncp-category { border-bottom: solid 1px #9cc813; overflow: hidden;}
 .ncp-category dl { font-size: 0; *word-spacing:-1px/*IE6、7*/; padding-bottom: 5px; margin-top: -1px; border-top: dotted 1px #CCC;}
 .ncp-category dt, .ncp-category dd { font-size: 12px; vertical-align: top; display: inline-block; *display: inline/*IE7*/; padding: 5px 0; *zoom: 1;}
 .ncp-category dt { font-weight: 600; text-align: right; width: 100px; padding: 10px 0;}
@@ -572,7 +572,7 @@ form label.validate_right { padding-left:20px; background:transparent url(../ima
 .ncp-category li { font-size: 12px; vertical-align: middle; display: inline-block; *display: inline/*IE7*/; padding: 5px 10px; margin-left: 10px;*zoom: 1;}
 .ncp-category .searchbox li { cursor: pointer;}
 .ncp-category li.selected { color: #FFF; background-color: #F87622;}
-.ncp-category li a.selected { font-weight: 600; color: #F87622; }
+.ncp-category li a.selected { font-weight: 600; color: #81a906; }
 
 #promotionGoods { width: 1220px !important; margin-right: -20px;}
 #promotionGoods .item { width: 305px; padding: 10px 0;}

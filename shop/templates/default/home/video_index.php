@@ -15,9 +15,9 @@
 			<!--banner左边开始-->
 			<ul class="healthBannerLeft">
 				<div class="healthLeft_qty" >
-	    <?php foreach($output['sub_class_list'] as $class) {?>
+	    <?php foreach($output['sub_class_list'] as $k=>$class) {?>
 		<li class="color_qty"><a  style="color: #FFFFFF;" href="<?php echo urlShop("video","video",array("parent_id"=>$class['vd_parent_id'],"childlist"=>1,"vd_id"=>$class['vd_id']))?>"><?php echo $class['vd_name']?></a></span>
-						<div class="healthHidden_qty">
+						<div class="healthHidden_qty" style="background: url(<?php echo SHOP_TEMPLATES_URL?>/dw/image/vb<?php echo $k+1?>.png) center top no-repeat rgb(32, 7, 114);">
 							<div class="healthHiddenSmall_qty">
 								<h4><?php echo $class['vd_name'] ?>介绍</h4>
 								<div class="studyBox_qty">

@@ -160,6 +160,7 @@ $arr = array(
 				'nav' => 'operation',
 				'text' => $lang['nc_operation'],
 				'list' => array(
+				    array('args'=>'index,appointment,operation',                'text'=>'预约体验'),
 					array('args'=>'setting,operation,operation',			    'text'=>$lang['nc_operation_set']),
 					array('args'=>'groupbuy_template_list,groupbuy,operation',	'text'=>$lang['nc_groupbuy_manage']),
                     array('args'=>'index,vr_groupbuy,operation',               'text'=>'虚拟抢购设置'),
@@ -174,7 +175,8 @@ $arr = array(
 					array('args'=>'pointprod,pointprod,operation',				'text'=>$lang['nc_pointprod']),
 					array('args'=>'index,mall_consult,operation',               'text'=>'平台客服'),
                     array('args'=>'index,rechargecard,operation',               'text'=>'平台充值卡'),
-                    array('args'=>'index,delivery,operation',                   'text'=>'物流自提服务站')
+                    array('args'=>'index,delivery,operation',                   'text'=>'物流自提服务站'),
+				    
 				)
 			),
 			8 => array(
