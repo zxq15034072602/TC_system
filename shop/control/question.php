@@ -21,7 +21,9 @@ class questionControl extends BaseHomeControl{
                 'link'=>SHOP_SITE_URL
             ),
             array(
-                'title'=>"健康问答"
+                'title'=>"健康问答",
+                'link'=>urlShop("question","index")
+            
             )
         );
         Tpl::output('nav_link_list',$nav_link);
@@ -31,7 +33,16 @@ class questionControl extends BaseHomeControl{
      * 问答首页
      */
     public function indexOp(){
+        $on="question.question_member=member.member_id";
+        $question_list=$this->model->table("question,member")->order("question.question_id desc")->where($condition)->join("left")->on($on)->limit(2)->select();
         
+        if($question_list){
+            foreach ($question_list as &$question){
+                $condition="answer.answer_qid=$question[question_id]";
+                $question['answer_list']=$this->model->table("answer,member")->order("answer.answer_id desc")->where($condition)->join("left")->on("answer.answer_guide=member.member_id")->limit(1)->find();
+            }
+        }
+        Tpl::output("question_list",$question_list);
         Tpl::showpage("question.index","home_dw_layout");
     }
     /*
@@ -87,6 +98,20 @@ class questionControl extends BaseHomeControl{
      * 问答详情页
      */
     public function question_showOp(){
+        /**
+         * 分类导航
+         */
+        $nav_link = array(
+            array(
+                'title'=>'首页',
+                'link'=>SHOP_SITE_URL
+            ),
+            array(
+                'title'=>"健康问答",
+                'link' =>urlShop("question","question_list",array("question_status"=>3))
+            )
+        );
+        Tpl::output('nav_link_list',$nav_link);
         if(empty($_REQUEST['qid'])){
             showMessage("问题id为空","","html","error");
         }
@@ -96,11 +121,49 @@ class questionControl extends BaseHomeControl{
             $condition="answer.answer_qid=$question[question_id]";
             $question['answer_list']=$this->model->table("answer,member")->order("answer.answer_id desc")->where($condition)->join("left")->on("answer.answer_guide=member.member_id")->select();
         }
-        var_dump($question);
         $member_info=$this->getMemberAndGradeInfo(true);
         Tpl::output("member_info",$member_info);
+        
         Tpl::output("question",$question);
         Tpl::showpage("question.show","home_dw_layout");
+    }
+    /*
+     * 回答问题
+     */
+    public function answer_questionOp(){
+        if($_SESSION['is_login'] !== '1'){
+            showMessage("请先登录！");
+        }
+        if(empty($_POST['answer_content'])){
+            showMessage("回答不能为空","","html","error");
+        }
+        
+        $member_id=$this->getMemberAndGradeInfo(true)['member_id'];
+        $insert_array['answer_content']=$_POST['answer_content'];
+        $insert_array['answer_guide']=$member_id;
+        $insert_array['answer_time']=time();
+        $insert_array['answer_qid']=$_POST['qid'];
+        if($this->model->table("answer")->insert($insert_array)){
+            showMessage("回答成功！");
+        }
+        showMessage("回答失败","","html","error");
+    }
+    /*
+     * 解决问题
+     */
+    public function resolve_questionOp(){
+        if($_SESSION['is_login'] !== '1'){
+            showMessage("请先登录！");
+        }
+        if(empty($_REQUEST['qid'])){
+            showMessage("问题id不能为空","","html","error");
+        }
+        $update_array['question_status']=1;
+        $condition['where']="question_id=$_REQUEST[qid]";
+        if($this->model->table("question")->update($update_array,$condition)){
+            showMessage("设置成功！");
+        }
+        showMessage("设置失败","","html","error");
     }
 }
 ?>

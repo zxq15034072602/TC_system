@@ -34,18 +34,18 @@ body{background-color: #f8f8f8; }
             <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/list_zn_01.png" alt=""/>
             <span class="find_store_zn"><a href="#">找门店</a></span>
             <div class="address_box">
-                <a href="#">太原市</a>
-                <a href="#">太原市</a>
-                <a href="#">太原市</a>
-                <a href="#">太原市</a>
-                <a href="#">太原市</a>
-                <a href="#">太原市</a>
-                <a href="#">太原市</a>
-                <a href="#">太原市</a>
-                <a href="#">太原市</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=北京+">北京市</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=天津+">天津市</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=山西+太原市+">太原市</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=河北+石家庄市+">石家庄</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=内蒙古+">内蒙古</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=辽宁+">辽宁省</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=上海+">上海市</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=江苏+">江苏省</a>
+                <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=浙江+">浙江省</a>
             </div>
             <span class="look_more">
-                <a href="#">查看更多</a>
+                <a href="<?php echo urlShop("store_list","index")?>">查看更多</a>
             </span>
         </li>
         <li class="sort_list_zn">
@@ -205,22 +205,22 @@ body{background-color: #f8f8f8; }
        <?php if($output['member_advisor_wd_list']&&is_array($output['member_advisor_wd_list'])) {?>
        <?php foreach ($output['member_advisor_wd_list'] as $advisor) {?>
        <li class="health_a_one">
-           <a href="" class="health_a_header" title="<?php if($advisor['member_truename']) {echo $advisor['member_truename'];}else{echo $advisor['member_name'];} ?>">
-           <img src="">
+           <a href="javascript:void(0)" class="health_a_header" title="<?php if($advisor['member_truename']) {echo $advisor['member_truename'];}else{echo $advisor['member_name'];} ?>">
+           <img src="<?php if ($output['master_info']['member_avatar']!='') { echo UPLOAD_SITE_URL.'/'.ATTACH_AVATAR.DS.$output['master_info']['member_avatar']; } else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" width="129" height="129" style="border-radius: 50%;">
            </a>
            <div class="health_a_right">
-               <a href="" class="health_a_name">
+               <a href="javascript:void(0)" class="health_a_name">
                    <span><?php if($advisor['member_truename']) {echo $advisor['member_truename'];}else{echo $advisor['member_name'];} ?></span>
                    <span>JON ZHANG</span>
                </a>
-               <a href="" class="health_a_phone">电话：<?php if($advisor['member_mobile']) {echo $advisor['member_mobile'];}else{echo "暂未绑定电话";}?></a>
-               <a href="" class="health_a_mendian">所在地区：<?php echo $advisor['member_areainfo']?></a>
+               <a href="javascript:void(0)" class="health_a_phone">电话：<?php if($advisor['member_mobile']) {echo $advisor['member_mobile'];}else{echo "暂未绑定电话";}?></a>
+               <a href="javascript:void(0)" class="health_a_mendian">所在地区：<?php echo $advisor['member_areainfo']?></a>
            </div>
            <?php if($advisor['answer']&&is_array($advisor['answer'])) {?>
            <div class="health_b_right">
-               <a href="" class="health_b_q">Q : <?php echo str_cut($advisor['answer']['question_title'], 20)?></a>
-               <a href="" class="health_b_a">A : <?php echo str_cut($advisor['answer']['answer_content'], 90,"...")?></a>
-               <a href="<?php echo urlShop("question","index")?>" class="health_b_more">查看更多</a>
+               <a href="<?php echo urlShop("question","question_show",array("qid"=>$advisor['answer']['question_id']))?>" class="health_b_q">Q : <?php echo str_cut($advisor['answer']['question_title'], 20)?></a>
+               <a href="javascript:void(0)" class="health_b_a">A : <?php echo str_cut($advisor['answer']['answer_content'], 90,"...")?></a>
+               <a href="<?php echo urlShop("question","question_list",array("question_status"=>3))?>" class="health_b_more">查看更多</a>
            </div>
            <?php }?>
        </li>

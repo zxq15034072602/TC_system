@@ -1,76 +1,54 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 
-<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/answerList.css" rel="stylesheet" type="text/css">
+<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/question_detail_yyt.css" rel="stylesheet" type="text/css">
 <!-- 问答显示页start -->
 <<style>
 body{background: #F8F8F8;}
 </style>
-<div class="answerBox">
-	<div class="answerSmallBox">
-		
-		<!--问题列表开始-->
-		<div class="healthBox_qty">
-			<div class="healthImgBox_qty">
-				<img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/store_qty.png"/>
-			</div>
-			<div class="healthRightBox_qty">
-				<div class="healthTopFont_qty">
-					热点<span>提问</span>
-				</div>
-				<div class="healthBottomFont_qty">
-					HOT<span>QUESTIONS</span>
-				</div>
-			</div>
-		</div>
-		
-		<!--问题结束-->
-		<!--问题列表开始-->
-		<div class="answerListBox_qty">
-			<ul class="answerSmalllistBox_qty">
-			   
-				<li>
-				    
-					<div class="answerLeft_qty">
-					    
-						<div class="answer_qty">
-							<a href="<?php echo urlShop("question","question_show",array("qid"=>$question['question_id']))?>"><h4>Q：<?php echo str_cut($question['question_title'], 34)?><span><?php echo date("Y.m.d",$question['question_time'])?></span></h4></a>
-						</div>
-						<div class="answer_qty">
-							<h4 class="color_qty">A：</h4><p>遗传性多发性骨软骨瘤也称为多发性外生骨疣、骨干端连续症、遗传性畸形性软骨发育异常症。典型发病部位是股骨、胫骨、腓骨的远近侧端及肱骨近侧端。临床表现为可触及的骨性肿块。本病无症状时无须处理，出现症状时，采取相应的治疗措施。</p>
-						</div>
-						<div class="answer_qty">
-							<p class="left_qty">遗传性多发性骨软骨瘤也称为多发性外生骨疣、骨干端连续症、遗传性畸形性软骨发育异常症。典型发病部位是股骨、胫骨</p>
-						</div>
-						<div class="answer_qty">
-							<p class="left_qty">遗传性多发性骨软骨瘤也称为多发性外生骨疣、骨干端连续症、遗传性畸形性软骨发育异常症</p>
-						</div>
-						<div class="anony_qty">
-							<span class="anonyBox_qty"><?php if($question['member_truename']){echo $question['member_truename'];}else{echo $question['member_name'];}?>的提问</span>
-							<span class="anonyR_qty">张医师的回答</span>
-						</div>
-					</div>
-					<div class="answerRight_qty">
-						<a href="">
-							<img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/doctor_qty.png"/>
-							<span class="doctor_qty">张医师&nbsp;&nbsp;<span>预约+</span></span>
-						</a>
-					</div>
-					
-				</li>
-				
-			</ul>
-		</div>
-		<!--问题列表结束-->
-		<!--分页开始-->
-		<div class="pageBox_qty">
-				
-		</div>
-		<!--分页结束-->
-	</div>
+<div class="question_con_yyt">
+    <div class="queDet_title_yyt"><?php echo $output["question"]['question_title']?></div>
+    <div class="queDet_time_yyt">
+        <div class="QD_left_yyt">
+            <div class="QD_one_yyt"><?php if($output["question"]['member_truename']){echo $output["question"]['member_truename'];}else{echo $output["question"]['member_name'];}?>的提问</div>
+            <div class="QD_two_yyt"><?php if(count($output["question"]["answer_list"])>0){echo "已回答";}else{echo "未回答";}?></div>
+            <?php if($output['question']['question_status'] ==0){?>
+            <?php if($output['question']['question_member']==$output['member_info']['member_id']) {?>
+            <div class="QD_three_yyt" onclick="javascript:location.href='index.php?act=question&op=resolve_question&qid=<?php echo $output["question"]["question_id"]?>'">将问题设为已解决</div>
+            <?php }?>
+            <?php }else {?>
+            <div class="QD_three_yyt" >已解决</div>
+            <?php }?>
+        </div>
+        <div class="QD_right_yyt"><?php echo date('Y.m.d',$output["question"]['question_time'])?></div>
+    </div>
+    <?php if($output["question"]['question_content']) {?>
+    <div class="question_yyt"><?php echo $output["question"]['question_content']?></div>
+    <?php }?>
+    <?php if($output["question"]["answer_list"]&&is_array($output["question"]["answer_list"])) {?>
+    <ul class="answer_yyt">
+        <?php foreach ($output["question"]["answer_list"] as $answer) {?>
+        <li class="answer_a_yyt">
+            <div class="answer_name_yyt">
+                <div class="name_left_yyt"><?php if($answer['member_truename']){echo $answer['member_truename'];}else{echo $answer['member_name'];}?>的回答</div>
+                <div class="name_right_yyt">发布于 <?php echo date("Y.m.d",$answer['answer_time'])?></div>
+            </div>
+            <div class="answer_b_yyt"><?php echo $answer['answer_content']?></div>
+        </li>
+        <?php }?>
+    </ul>
+    <?php }?>
+    <?php if($output['member_info']['member_advisor']==1&&$output['question']['question_member']!=$output['member_info']['member_id']&&$output['question']['question_status']==0) {?>
+    <div class="docAns_yyt">
+        <div class="answer_name_yyt">
+            <div class="name_left_yyt">医师的回答</div>
+            <div class="name_right_yyt">发布于 2016.03.05</div>
+        </div>
+        <form action="index.php?act=question&op=answer_question" method="post">
+            <input type="hidden" name="qid" value="<?php echo $output['question']['question_id'] ?>">
+            <textarea class="answer_b_yyt" rows="3" cols="20" placeholder="请输入您的回答..." name="answer_content"></textarea>
+            <input type="submit" class="submit_yyt" value="提交">
+        </form>
+    </div>
+    <?php }?>
 </div>
-
-
-
-
-
 <!-- 问答显示页end -->

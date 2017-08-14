@@ -186,6 +186,7 @@
 .hotBigBox_qty{
 	width: 100%;
 	float: left;
+	margin-bottom: 20px;
 }
 .hotSmallBox_qty{
 	width: 400px;

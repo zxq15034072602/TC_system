@@ -40,50 +40,31 @@
         <div class="rdtw">
             <img src="<?php echo SHOP_TEMPLATES_URL?>/dw/image/wd_rdtw_zdw.png"/>
         </div>
+        <?php if($output['question_list']&&is_array($output['question_list'])) {?>
+        <?php foreach ($output['question_list'] as $quesion) {?>
         <div class="rdtw_qa">
             <div>
                 <ul class="rdtw_qqq">
-                    <b>遗传性多发性骨瘤怎么治疗？预后如何？</b>
-                    <span>2016.01.05</span><br/>
+                    <b><?php echo str_cut($quesion['question_title'], 40)?></b>
+                    <span style="margin-left: 10px"><?php echo date("Y.m.d",$quesion['question_time'])?></span><br/>
                 </ul>
+                <?php if($quesion['answer_list']) {?>
                 <ul class="rdtw_aaa">
-                <p>遗传性多发性骨软骨瘤亦称为多发性外生骨疣、骨干端连续症、遗传性畸形性软骨发育异常症等。目前国内外多数学者采用遗传性多发性骨软骨瘤这一名称。
-                <br/>治疗：<br/>
-                无症状者不需处理。如有疼痛，肢体功能障碍者、骨骼发育畸形，或有合并症时，可做局部肿瘤切除，矫正骨骼畸形应待骨骼发育成熟之后进行，以免畸形复发。
-                <br/>预后：<br/>
-                如发生恶变可转化为软骨肉瘤、恶性纤维组织细胞瘤或骨肉瘤。一旦恶变应采取相应的治疗措施，以求治愈。
+                <p>
+                 <?php echo str_cut($quesion['answer_list']['answer_content'], 250,"...")?>
                 </p>
                 </ul>
+                <?php }?>
             </div>
             <ul class="rdtw_bottom">
-                <li class="lf"><a href="#">匿名提问</a></li>
-                <li class="rt"><a href="#">张老师的回答</a></li>
+                <li class="lf"><a href="#"><?php if($quesion['member_truename']){echo $quesion['member_truename'];}else{echo $quesion['member_name'];}?>的提问</a></li>
+                <li class="rt"><a href="#"><?php if($quesion['answer_list']['member_truename']){echo $quesion['answer_list']['member_truename'];}else{echo $quesion['answer_list']['member_name'];}?>的回答</a></li>
             </ul>
             <img src="<?php echo SHOP_TEMPLATES_URL?>/dw/image/wd_yisheng_zdw.png"/>
-            <button>张医师 | 预约 +</button>
+            <button><?php if($quesion['member_truename']){echo $quesion['member_truename'];}else{echo $quesion['member_name'];}?> | 欢迎预约 </button>
         </div>
-        <div class="rdtw_qa">
-            <div>
-                <ul class="rdtw_qqq">
-                    <b>遗传性多发性骨瘤怎么治疗？预后如何？</b>
-                    <span>2016.01.05</span><br/>
-                </ul>
-                <ul class="rdtw_aaa">
-                    <p>遗传性多发性骨软骨瘤亦称为多发性外生骨疣、骨干端连续症、遗传性畸形性软骨发育异常症等。目前国内外多数学者采用遗传性多发性骨软骨瘤这一名称。
-                        <br/>治疗：<br/>
-                        无症状者不需处理。如有疼痛，肢体功能障碍者、骨骼发育畸形，或有合并症时，可做局部肿瘤切除，矫正骨骼畸形应待骨骼发育成熟之后进行，以免畸形复发。
-                        <br/>预后：<br/>
-                        如发生恶变可转化为软骨肉瘤、恶性纤维组织细胞瘤或骨肉瘤。一旦恶变应采取相应的治疗措施，以求治愈。
-                    </p>
-                </ul>
-            </div>
-            <ul class="rdtw_bottom">
-                <li class="lf"><a href="#">匿名提问</a></li>
-                <li class="rt"><a href="#">张老师的回答</a></li>
-            </ul>
-            <img src="themes/image/wd_yisheng_zdw.png"/>
-            <button>张医师 | 预约 +</button>
-        </div>
+        <?php }?>
+        <?php }?>
         <!--查看更多-->
         <button><a href="<?php echo urlShop("question","question_list",array("question_status"=>3))?>" style="color: #fff">查看更多</a></button>
     </div>
