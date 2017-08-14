@@ -2,7 +2,7 @@
 
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/question_detail_yyt.css" rel="stylesheet" type="text/css">
 <!-- 问答显示页start -->
-<<style>
+<style>
 body{background: #F8F8F8;}
 </style>
 <div class="question_con_yyt">
