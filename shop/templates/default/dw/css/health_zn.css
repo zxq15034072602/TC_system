@@ -82,10 +82,19 @@ body,html{
     margin:0 auto;
     margin-top:15px;
     text-align: center;
+	line-height: 25px;
+	font-size:16px;
 }
 .find_store_zn a{
-    color:#333;
-    font-size:18px;
+    color: #333;
+    font-size: 16px;
+    line-height: 21.7px;
+    display: block;
+    height: 19px;
+    box-sizing: border-box;
+}
+.find_store_zn a:hover{
+	text-decoration: none;
 }
 .address_box{
     width:230px;
@@ -108,6 +117,7 @@ body,html{
 }
 .address_box a:hover{
     color:#f69c1c;
+	text-decoration: none;
 }
 .look_more{
     width:60px;
@@ -190,6 +200,8 @@ body,html{
 .frist_p_zn{
     color:#333;
     font-size:18px;
+	letter-spacing: 3px;
+    line-height: 28px;
 }
 .over_box{
     overflow: hidden;
@@ -198,6 +210,7 @@ body,html{
     width:auto;
     float:left;
     border-bottom:2px solid #a3cb32;
+	letter-spacing: 2px;
 }
 .color_p_zn span{
     font-size:14px;
@@ -228,6 +241,7 @@ body,html{
 .sort_con_zn a{
     color:#999;
     font-size:14px;
+	text-decoration: none;
 }
 .sort_con_zn a:hover{
     color:#a3cb32;

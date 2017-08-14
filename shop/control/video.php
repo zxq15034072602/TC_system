@@ -103,7 +103,7 @@ class videoControl extends BaseHomeControl {
         $condition['vd_ids']	= $ac_ids;
         $condition['video_show']	= '1';
         $page	= new Page();
-        $page->setEachNum(10);
+        $page->setEachNum(12);
         $page->setStyle('admin');
         $article_list	= $article_model->getJoinList($condition,$page);
         if(empty($_REQUEST["childlist"])){

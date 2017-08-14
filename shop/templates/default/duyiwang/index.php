@@ -59,7 +59,7 @@ body{background-color: #f8f8f8; }
                 <?php }?>
             </div>
             <span class="look_more">
-                <?php if(count($output['member_advisor_list'])>9) {?>
+                <?php if(count($output['member_advisor_list'])>=9) {?>
                 <a href="<?php echo urlShop('article',"member_advisor_list")?>">查看更多</a>
                 <?php }?>
             </span>
@@ -75,7 +75,7 @@ body{background-color: #f8f8f8; }
                 <?php }?>
             </div>
             <span class="look_more">
-                <?php  if(count($output['goods_list'])>9) {?>
+                <?php  if(count($output['goods_list'])>=9) {?>
                 <a href="<?php echo urlShop('index',"index")?>">查看更多</a>
                 <?php }?>
             </span>
@@ -91,7 +91,7 @@ body{background-color: #f8f8f8; }
                 <?php }?>
             </div>
             <span class="look_more">
-                <?php  if(count($output['video_list'])>9) {?>
+                <?php  if(count($output['video_list'])>=9) {?>
                 <a href="<?php echo urlShop('video','video',array("vd_id"=>4))?>">查看更多</a>
                 <?php }?>
             </span>

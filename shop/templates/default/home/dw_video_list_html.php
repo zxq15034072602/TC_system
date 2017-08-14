@@ -84,7 +84,7 @@
 			<!--健康讲堂视频右边开始-->
 		</div>
 		<!--健康讲堂视频结束-->
-		<div class="more_qty">
+		<div class="">
 			<div class="pagination"> <?php echo $output['show_page'];?> </div>
 		</div>
 	</div>

@@ -4,26 +4,23 @@
 <!--  问答首页 start -->
 
 <section>
-    <!--导航条-->
-    <ul class="nav">
-        <li><a href="#" class="active">首页</a></li>
-        <li><a href="#">咨询</a></li>
-    </ul>
+   
     <!--提问专区-->
     <div class="twzq">
         <img src="<?php echo SHOP_TEMPLATES_URL?>/dw/image/wd-twzq_zdw.png"/>
         
         <div class="banner">
             <img src="<?php echo SHOP_TEMPLATES_URL?>/dw/image/wd_banner_zdw.png"/>
-            <form action="">
+            <form method="post" action="index.php?act=question&op=question">
+               
                 <ul>
                     <li>
                         <label>您的问题是</label>
-                        <input name="" value="" size="64" placeholder="标题：写下你的问题"/>
+                        <input name="question_title" value="" size="64" placeholder="标题：写下你的问题"/>
                     </li>
                     <li>
                         
-                        <textarea name="que" class="que" placeholder="选填，详细说明您的问题，以便获得更好的答案"></textarea>
+                        <textarea name="question_content" class="que" placeholder="选填，详细说明您的问题，以便获得更好的答案"></textarea>
                     </li>
                     
                     <li>
@@ -88,7 +85,7 @@
             <button>张医师 | 预约 +</button>
         </div>
         <!--查看更多-->
-        <button>查看更多</button>
+        <button><a href="<?php echo urlShop("question","question_list",array("question_status"=>3))?>" style="color: #fff">查看更多</a></button>
     </div>
 </section>
 

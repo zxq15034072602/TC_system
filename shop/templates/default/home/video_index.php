@@ -30,7 +30,7 @@
 								<div class="school_qty">
 									<div class="list_qty">
 						    <?php foreach($class['child'] as $child) {?>
-							<a href=""><?php echo $child['vd_name']?></a>
+							<a href="<?php echo urlShop("video","video",array("parent_id"=>$class['vd_parent_id'],"childlist"=>1,"vd_id"=>$class['vd_id']))?>"><?php echo $child['vd_name']?></a>
 							<?php }?>
 						</div>
 								</div>
