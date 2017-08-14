@@ -91,7 +91,7 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
                 $advisor['answer']=$model_index->table('question,answer')->where("answer_guide=$advisor[member_id]")->join("right")->on($on)->limit(1)->find();
             }
         }
-        var_dump($member_advisor_wd_list);
+        
         
         Tpl::output("member_advisor_wd_list",$member_advisor_wd_list);
         Tpl::output("article_class",$article_class);
