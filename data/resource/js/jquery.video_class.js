@@ -39,7 +39,7 @@ $(document).ready(function(){
 						src += " <span title='可编辑' required='1' fieldid='"+data[i].vd_id+"' ajax_branch='video_class_name' fieldname='ac_name' nc_type='inline_edit' class='editable'>"+data[i].vd_name+"</span>";
 						//新增下级
 						if(data[i].deep < 2){
-							src += "<a class='btn-add-nofloat marginleft' href='index.php?act=article_class&op=article_class_add&ac_parent_id="+data[i].vd_id+"'><span>新增下级</span></a></span>";
+							src += "<a class='btn-add-nofloat marginleft' href='index.php?act=video_class&op=video_class_add&ac_parent_id="+data[i].vd_id+"'><span>新增下级</span></a></span>";
 						}
 						src += "</td>";
 						

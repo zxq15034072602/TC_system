@@ -214,7 +214,7 @@ body{background-color: #f8f8f8; }
            <div class="health_b_right">
                <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
                <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
-               <a href="" class="health_b_more">查看更多</a>
+               <a href="<?php echo urlShop("question","index")?>" class="health_b_more">查看更多</a>
            </div>
        </li>
         <li class="health_a_one">
@@ -361,7 +361,10 @@ body{background-color: #f8f8f8; }
     <div class="goods_forMore"><a href="<?php echo urlShop("index","index")?>" style="color:#fff">更多</a></div>
     <div class="goods_forME">TRADITIONAL NOURISHING</div>
 </div>
+
 <!--左边固定弹框开始-->
+<!--  
+
 <div class="fixedBox_qty">
 	<ul>
 		<li>电话
@@ -378,6 +381,7 @@ body{background-color: #f8f8f8; }
 		</li>
 	</ul>
 </div>
+-->
 <!--左边国定弹框结束-->
 
 
