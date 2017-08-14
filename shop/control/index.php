@@ -77,6 +77,23 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
             $condition['order']="rand()";
             $article_list=$article_model->getJoinList($condition);
         }
+        /*
+         * 指导老师问答
+         */
+        $member_model=Model('member');
+        $condition=array();
+        $condition['member_advisor']=1;
+        $member_advisor_wd_list=$member_model->getMemberList($condition,"*",0,"rand()","4");
+        if($member_advisor_wd_list){
+            $model_index=Model();
+            foreach ($member_advisor_wd_list as &$advisor){
+                $on="question.question_id=answer.answer_qid";
+                $advisor['answer']=$model_index->table('question,answer')->where("answer_guide=$advisor[member_id]")->join("right")->on($on)->limit(1)->find();
+            }
+        }
+        var_dump($member_advisor_wd_list);
+        
+        Tpl::output("member_advisor_wd_list",$member_advisor_wd_list);
         Tpl::output("article_class",$article_class);
         Tpl::output("article_list",$article_list);
         Tpl::output('goods_list',$goods_list);

@@ -99,9 +99,9 @@ a:hover{text-decoration: none;}
 		<ul class="hotBigBox_qty">
 		
 		   <?php if(!empty($output['article']) and is_array($output['article'])){?>
-		   <?php foreach ($output['article'] as $k=>$article) {?>
 		   <?php $j=0;?>
-		   <?php if($article['article_recommend']&&j<6){?>
+		   <?php foreach ($output['article'] as $k=>$article) {?>
+		   <?php if($article['article_recommend']&&$j<6){?>
 			<li class="hotSmallBox_qty">
 				<a <?php if($article['article_url']!=''){?>target="_blank"<?php }?> href="<?php if($article['article_url']!='')echo $article['article_url'];else echo urlShop('article', 'show', array('article_id'=>$article['article_id'],'childshow'=>1));?>">
 					<div class="hotSmall_qty">
@@ -114,7 +114,7 @@ a:hover{text-decoration: none;}
 							<img src="<?php if($article[file_name]){echo UPLOAD_SITE_URL.'/shop/article/'.$article['file_name'];}else{echo UPLOAD_SITE_URL.'/shop/common/loading.gif';}?>" width="330" height="132" data-url="<?php echo UPLOAD_SITE_URL;?>/shop/common/loading.gif"/>
 						</div>
 						<div class="hotFont_qty">
-							<h5 style="font-weight: bold;"><?php echo $article['article_title']?></h5>
+							<h5 style="font-weight: bold;"><?php echo str_cut($article['article_title'], 35,"...")?></h5>
 						</div>
 						<div class="hotFontCenter_qty">
 							<?php echo mb_substr(strip_tags($article[article_content]), 0,80,"utf-8")?>
@@ -125,8 +125,8 @@ a:hover{text-decoration: none;}
 					</div>
 				</a>
 			</li>
-			<?php $j++;}?>
-			<?php }}?>
+			<?php }?>
+			<?php $j++;}}?>
 
 		</ul>
 		<!--热点资讯列表结束-->

@@ -86,7 +86,7 @@ body{background-color: #f8f8f8; }
             <div class="address_box">
                 <?php if($output['video_list']&&is_array($output['video_list'])) {?>
                 <?php foreach ($output['video_list'] as $video) {?>
-                <a href="<?php echo urlShop('video',"show",array("video_id"=>$video['video_id'],'parent_id'=>4))?>"><?php echo str_cut($video["video_title"], 8)?></a>
+                <a href="<?php echo urlShop('video',"show",array("video_id"=>$video['video_id'],'parent_id'=>4))?>" title="<?php echo $video["video_title"];?>"><?php echo str_cut($video["video_title"], 8)?></a>
                 <?php }?>
                 <?php }?>
             </div>
@@ -145,6 +145,7 @@ body{background-color: #f8f8f8; }
                     </div>
                 </div>
                 <ul class="question_con_zn">
+                   
                     <li class="question_title_zn">
                         <a href="#">
                             <span>问</span>
@@ -201,71 +202,30 @@ body{background-color: #f8f8f8; }
         <p class="health_title_english">Health zone</p>
     </div>
     <ul class="health_a_con">
+       <?php if($output['member_advisor_wd_list']&&is_array($output['member_advisor_wd_list'])) {?>
+       <?php foreach ($output['member_advisor_wd_list'] as $advisor) {?>
        <li class="health_a_one">
-           <a href="" class="health_a_header"></a>
+           <a href="" class="health_a_header" title="<?php if($advisor['member_truename']) {echo $advisor['member_truename'];}else{echo $advisor['member_name'];} ?>">
+           <img src="">
+           </a>
            <div class="health_a_right">
                <a href="" class="health_a_name">
-                   <span>张伟涛</span>
+                   <span><?php if($advisor['member_truename']) {echo $advisor['member_truename'];}else{echo $advisor['member_name'];} ?></span>
                    <span>JON ZHANG</span>
                </a>
-               <a href="" class="health_a_phone">电话：13694565812</a>
-               <a href="" class="health_a_mendian">所在门店：万柏林无前进路店</a>
+               <a href="" class="health_a_phone">电话：<?php if($advisor['member_mobile']) {echo $advisor['member_mobile'];}else{echo "暂未绑定电话";}?></a>
+               <a href="" class="health_a_mendian">所在地区：<?php echo $advisor['member_areainfo']?></a>
            </div>
+           <?php if($advisor['answer']&&is_array($advisor['answer'])) {?>
            <div class="health_b_right">
-               <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
-               <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
+               <a href="" class="health_b_q">Q : <?php echo str_cut($advisor['answer']['question_title'], 20)?></a>
+               <a href="" class="health_b_a">A : <?php echo str_cut($advisor['answer']['answer_content'], 90,"...")?></a>
                <a href="<?php echo urlShop("question","index")?>" class="health_b_more">查看更多</a>
            </div>
+           <?php }?>
        </li>
-        <li class="health_a_one">
-           <a href="" class="health_a_header"></a>
-           <div class="health_a_right">
-               <a href="" class="health_a_name">
-                   <span>张伟涛</span>
-                   <span>JON ZHANG</span>
-               </a>
-               <a href="" class="health_a_phone">电话：13694565812</a>
-               <a href="" class="health_a_mendian">所在门店：万柏林无前进路店</a>
-           </div>
-           <div class="health_b_right">
-               <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
-               <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
-               <a href="" class="health_b_more">查看更多</a>
-           </div>
-       </li>
-        <li class="health_a_one">
-           <a href="" class="health_a_header"></a>
-           <div class="health_a_right">
-               <a href="" class="health_a_name">
-                   <span>张伟涛</span>
-                   <span>JON ZHANG</span>
-               </a>
-               <a href="" class="health_a_phone">电话：13694565812</a>
-               <a href="" class="health_a_mendian">所在门店：万柏林无前进路店</a>
-           </div>
-           <div class="health_b_right">
-               <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
-               <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
-               <a href="" class="health_b_more">查看更多</a>
-           </div>
-       </li>
-        <li class="health_a_one">
-           <a href="" class="health_a_header"></a>
-           <div class="health_a_right">
-               <a href="" class="health_a_name">
-                   <span>张伟涛</span>
-                   <span>JON ZHANG</span>
-               </a>
-               <a href="" class="health_a_phone">电话：13694565812</a>
-               <a href="" class="health_a_mendian">所在门店：万柏林无前进路店</a>
-           </div>
-           <div class="health_b_right">
-               <a href="" class="health_b_q">Q : 得了药物性哮喘怎么办？</a>
-               <a href="" class="health_b_a">A : 随着医学科技的迅猛发展，新的药物也在逐步的出现，但是对药物的敏感的是对药物是对药物...</a>
-               <a href="" class="health_b_more">查看更多</a>
-           </div>
-       </li>
-
+      <?php }?>
+      <?php }?>
     </ul>
 </div>
 

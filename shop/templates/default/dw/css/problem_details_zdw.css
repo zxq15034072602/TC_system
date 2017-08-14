@@ -1,4 +1,4 @@
-/*µ¼º½Ìõ-Ê×Ò³>×ÉÑ¯>ÎÊÌâÏêÇé*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½Ò³>ï¿½ï¿½Ñ¯>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .nav{
     height: 32px;
 }
@@ -28,7 +28,7 @@
     width: 0;
     height: 0;
 }
-/*Ö÷ÌâÄÚÈÝ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .main{
     margin: 70px 100px;
     padding: 35px 180px;
@@ -57,12 +57,7 @@
 .main>.header>ul>li:last-child{
     float: right;
 }
-.main>.content>p{
-    margin-bottom: 25px;
-    text-indent:35px;
-    line-height: 30px;
-    color:#999999;
-}
+
 .main>.content>h3{
     text-align: center;
     color:#666;

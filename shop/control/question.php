@@ -76,7 +76,7 @@ class questionControl extends BaseHomeControl{
         if($question_list){
             foreach ($question_list as &$question){
                 $condition="answer.answer_qid=$question[question_id]";
-                $question['answer_list']=$this->model->table("answer,member")->order("answer.answer_id desc")->where($condition)->join("left")->on("answer.answer_guide=member.member_id")->select();
+                $question['answer_list']=$this->model->table("answer,member")->order("answer.answer_id desc")->where($condition)->join("left")->on("answer.answer_guide=member.member_id")->limit(2)->select();
             }
         }
         Tpl::output("question_list",$question_list);
@@ -90,7 +90,16 @@ class questionControl extends BaseHomeControl{
         if(empty($_REQUEST['qid'])){
             showMessage("问题id为空","","html","error");
         }
-        
+        $on="question.question_member=member.member_id";
+        $question=$this->model->table("question,member")->where($condition)->join("left")->on($on)->find();
+        if($question){
+            $condition="answer.answer_qid=$question[question_id]";
+            $question['answer_list']=$this->model->table("answer,member")->order("answer.answer_id desc")->where($condition)->join("left")->on("answer.answer_guide=member.member_id")->select();
+        }
+        var_dump($question);
+        $member_info=$this->getMemberAndGradeInfo(true);
+        Tpl::output("member_info",$member_info);
+        Tpl::output("question",$question);
         Tpl::showpage("question.show","home_dw_layout");
     }
 }
