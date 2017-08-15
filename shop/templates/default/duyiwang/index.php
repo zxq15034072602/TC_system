@@ -459,8 +459,8 @@ body{background-color: #f8f8f8; }
             <img class="web_ma_yyt" src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['site_logowx']; ?>" alt="">
         </div>
         <div class="left_q_yyt">
-            <div class="web_q_yyt">邮箱：</div>
-            <div class="web_qq_yyt"><?php echo $GLOBALS['setting_config']['site_email']; ?></div>
+            <div class="web_q_yyt">qq：</div>
+            <div class="web_qq_yyt">502251245</div>
         </div>
         <div class="left_zx_yyt">
             <div class="web_zx_yyt">提问：</div>
