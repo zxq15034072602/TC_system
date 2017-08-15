@@ -100,12 +100,18 @@ class articleControl extends BaseHomeControl {
 		$condition['ac_ids']	= $ac_ids;
 		$condition['article_show']	= '1';
 		$condition["upload_type"]   =1;
-		$page	= new Page();
-		$page->setEachNum(10);
-		$page->setStyle('admin');
+		
+		if($_REQUEST['childlist'] == 1){
+		    $page	= new Page();
+		    $page->setEachNum(10);
+		    $page->setStyle('admin');
+		}
+		
 		$article_list	= $article_model->getJoinList($condition,$page);
 		Tpl::output('article',$article_list);
-		Tpl::output('show_page',$page->show());
+		if(!empty($page)){
+		  Tpl::output('show_page',$page->show());
+		}
 		/**
 		 * 最新文章列表
 		 */
