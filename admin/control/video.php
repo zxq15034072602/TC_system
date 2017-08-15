@@ -253,6 +253,7 @@ class videoControl extends SystemControl{
                             $update_array = array();
                             $update_array['upload_id'] = intval($v);
                             $update_array['item_id'] = intval($_POST['video_id']);
+                            $update_array['upload_type'] = 7;
                             $model_upload->update($update_array);
                             unset($update_array);
                         }
@@ -298,7 +299,7 @@ class videoControl extends SystemControl{
          * 模型实例化
          */
         $model_upload = Model('upload');
-        $condition['upload_type'] = '1';
+        $condition['upload_type'] = '7';
         $condition['item_id'] = $article_array['video_id'];
         $file_upload = $model_upload->getUploadList($condition);
         if (is_array($file_upload)){
