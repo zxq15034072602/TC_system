@@ -118,12 +118,7 @@ class videoControl extends BaseHomeControl {
                 $condition['vd_parent_id']	= $article_class['vd_parent_id'];
                 $sub_class_list	= $article_class_model->getClassList($condition);
             }
-            foreach($sub_class_list as &$class){
-                $condition	= array();
-                $condition['vd_parent_id']=$class['vd_id'];
-                $class['child']=$article_class_model->getClassList($condition);
-            }
-            Tpl::output('sub_class_list',$sub_class_list);
+            
             /**
              * 最新视频列表
              */
@@ -143,20 +138,30 @@ class videoControl extends BaseHomeControl {
                 }
             
             }
+            foreach($sub_class_list as &$class){
+                $condition	= array();
+                $condition['vd_parent_id']=$class['vd_id'];
+                $class['child']=$article_class_model->getClassList($condition);
+            }
+            
+            Tpl::output('sub_class_list',$sub_class_list);
+            
             $random_keys=array_rand($new_article_list,2);//随机显示视频分类的两个分类的最新视频
             $recommend_video=array();
             foreach ($random_keys as $k=>$key){
                 $recommend_video[$k]=$new_article_list[$key];
             }
+            
             Tpl::output('new_article_list',$recommend_video);
         }else{
             /**
              * 左侧分类导航
              */
+           
             $condition	= array();
             $condition['vd_parent_id']	= $_REQUEST['parent_id'];
             $sub_class_list	= $article_class_model->getClassList($condition);
-            
+           
             if(empty($sub_class_list) || !is_array($sub_class_list)){
                 $condition['vd_parent_id']	= $article_class['vd_parent_id'];
                 $sub_class_list	= $article_class_model->getClassList($condition);
@@ -169,9 +174,10 @@ class videoControl extends BaseHomeControl {
             Tpl::output('sub_class_list',$sub_class_list);
            
         }
+        
         Tpl::output('article',$article_list);
         Tpl::output('show_page',$page->show());
-       
+         
         Model('seo')->type('video')->param(array('video_class'=>$article_class['vd_name']))->show();
         
             
