@@ -451,7 +451,7 @@
     margin-left: 25px;
 }
 .health_b_right{
-    width: 375px;
+    width: 395px;
     height: auto;
     overflow: hidden;
 }
@@ -474,9 +474,10 @@
     font-size: 14px;
     color: #999999;
     margin-left: 23px;
-    line-height: 22px;
+    line-height: 25px;
     text-decoration: none;
     letter-spacing: 1px;
+    margin-bottom: 5px;
 }
 .health_b_more{
     width: 65px;
