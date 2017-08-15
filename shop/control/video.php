@@ -102,6 +102,7 @@ class videoControl extends BaseHomeControl {
         $condition 	= array();
         $condition['vd_ids']	= $ac_ids;
         $condition['video_show']	= '1';
+        $condition["upload_type"]   =7;
         $page	= new Page();
         $page->setEachNum(12);
         $page->setStyle('admin');

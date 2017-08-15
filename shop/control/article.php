@@ -99,6 +99,7 @@ class articleControl extends BaseHomeControl {
 		$condition 	= array();
 		$condition['ac_ids']	= $ac_ids;
 		$condition['article_show']	= '1';
+		$condition["upload_type"]   =1;
 		$page	= new Page();
 		$page->setEachNum(10);
 		$page->setStyle('admin');

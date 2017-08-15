@@ -72,6 +72,9 @@ class videoModel{
         if ($condition['home_index'] != ''){
             $condition_str .= " and (video_class.vd_id <= 7 or (video_class.vd_parent_id > 0 and video_class.vd_parent_id <= 7))";
         }
+        if($condition['upload_type'] !=""){
+            $condition_str.="and upload.upload_type=".$condition['upload_type'];
+        }
     
         return $condition_str;
     }

@@ -75,7 +75,9 @@ class articleModel{
 		if ($condition['home_index'] != ''){
 			$condition_str .= " and (article_class.ac_id <= 7 or (article_class.ac_parent_id > 0 and article_class.ac_parent_id <= 7))";
 		}
-
+		if($condition['upload_type'] !=""){
+		    $condition_str.="and upload.upload_type=".$condition['upload_type'];
+		}
 		return $condition_str;
 	}
 

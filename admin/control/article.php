@@ -61,6 +61,7 @@ class articleControl extends SystemControl{
 		 * 列表
 		 */
 		$article_list = $model_article->getArticleList($condition,$page);
+		
 		/**
 		 * 整理列表内容
 		 */
@@ -158,6 +159,7 @@ class articleControl extends SystemControl{
 							$update_array = array();
 							$update_array['upload_id'] = $v;
 							$update_array['item_id'] = $result;
+							$update_array['upload_type'] = 1;
 							$model_upload->update($update_array);
 							unset($update_array);
 						}
@@ -261,6 +263,7 @@ class articleControl extends SystemControl{
 						foreach ($_POST['file_id'] as $k => $v){
 							$update_array = array();
 							$update_array['upload_id'] = intval($v);
+							$update_array['upload_type'] = 1;
 							$update_array['item_id'] = intval($_POST['article_id']);
 							$model_upload->update($update_array);
 							unset($update_array);
