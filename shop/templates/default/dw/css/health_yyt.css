@@ -98,6 +98,9 @@ td,th {
     cursor: pointer;
     color: #383838;
 }
+.health_one_yyt a{
+	text-decoration: none;
+}
 .health_one_yyt:hover{
     color: #9cc813;
 }

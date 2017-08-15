@@ -425,6 +425,7 @@
     font-size: 18px;
     text-align: left;
     color: #404040;
+    text-decoration: none;
 }
 .health_a_name span{
     display: block;
@@ -463,6 +464,8 @@
     margin-left: 23px;
     line-height: 22px;
     margin-top: 5px;
+    text-decoration: none;
+    letter-spacing: 1px;
 }
 .health_b_a{
     width: auto;
@@ -472,6 +475,8 @@
     color: #999999;
     margin-left: 23px;
     line-height: 22px;
+    text-decoration: none;
+    letter-spacing: 1px;
 }
 .health_b_more{
     width: 65px;
@@ -483,6 +488,7 @@
     font-size: 12px;
     color: #fff;
     margin-left: 25px;
+    text-decoration: none;
 }
 .health_jt{
     width: 1200px;
