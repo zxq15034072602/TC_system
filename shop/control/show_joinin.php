@@ -28,7 +28,11 @@ class show_joininControl extends BaseHomeControl {
         $model_help = Model('help');
         $condition['type_id'] = '1';//入驻指南
         $help_list = $model_help->getHelpList($condition,'',4);//显示4个
+        $good_class_model=Model("goods_class");
+        $condition ="gc_parent_id=0";
+        $goods_class=$good_class_model->getGoodsClassList($condition);
         Tpl::output('help_list',$help_list);
+        Tpl::output('goods_class',$goods_class);
         Tpl::output('article_list','');//底部不显示文章分类
         Tpl::output('show_sign','joinin');
         Tpl::output('html_title',C('site_name').' - '.'商家入驻');

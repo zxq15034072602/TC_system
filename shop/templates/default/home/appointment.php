@@ -12,40 +12,16 @@ body{background: #F8F8F8;}
 		<div class="appointImgBox_qty">
 			<ul>
 				<li>
-					<a href="">
-						<img src="themes/image/dyzBg_qty_03.png"/>
-						<div class="hotBox_qty">
-							<p>-&nbsp;独一张.温泉&nbsp;-</p>
-							<div><span>立即预约</span></div>
-						</div>
-					</a>
+					<?php echo rec(13);?>
 				</li>
 				<li>
-					<a href="">
-						<img src="themes/image/dyzBg_qty_03.png"/>
-						<div class="hotBox_qty">
-							<p>-&nbsp;独一张.温泉&nbsp;-</p>
-							<div><span>立即预约</span></div>
-						</div>
-					</a>
+					<?php echo rec(14);?>
 				</li>
 				<li>
-					<a href="">
-						<img src="themes/image/dyzBg_qty_03.png"/>
-						<div class="hotBox_qty">
-							<p>-&nbsp;独一张.温泉&nbsp;-</p>
-							<div><span>立即预约</span></div>
-						</div>
-					</a>
+					<?php echo rec(15);?>
 				</li>
 				<li>
-					<a href="">
-						<img src="themes/image/dyzBg_qty_03.png"/>
-						<div class="hotBox_qty">
-							<p>-&nbsp;独一张.温泉&nbsp;-</p>
-							<div><span>立即预约</span></div>
-						</div>
-					</a>
+					<?php echo rec(16);?>
 				</li>
 			</ul>
 		</div>

@@ -17,7 +17,7 @@ background-color: #f8f8f8;
     <div class="dicCate_header"></div>
     <div class="dicCate_one">
         <a href="javascript:;" class="dicCate_left">
-            <img src="<?php if ($output['master_info']['member_avatar']!='') { echo UPLOAD_SITE_URL.'/'.ATTACH_AVATAR.DS.$output['master_info']['member_avatar']; } else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" alt="" width="242" height="272">
+            <img src="<?php if ($output['master_info']['member_avatar']!='') { echo UPLOAD_SITE_URL.'/'.ATTACH_AVATAR.DS.$output['master_info']['member_avatar']; } else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" alt="" width="240" height="240">
             
         </a>
         <div class="dicCate_right">

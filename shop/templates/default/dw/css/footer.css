@@ -88,6 +88,9 @@
 .beianSmall_qty div{
 	float: left;
 }
+.beianSmall_qty div a{
+	color:#fff
+}
 .beianSmall_qty span{
 	width: 18px;
 	height: 17px;

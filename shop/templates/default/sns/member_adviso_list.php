@@ -15,7 +15,7 @@ background-color: #f8f8f8;
        <?php foreach ($output['member_advisor_list'] as $member_advisor) {?>
        <li class="doctor_one">
            <a href="" class="doctor_one_photo">
-           <img src="<?php if ($member_advisor['member_avatar']!='') { echo UPLOAD_SITE_URL.'/'.ATTACH_AVATAR.DS.$member_advisor['member_avatar']; } else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" width="200" height="150" alt="<?php echo $member_advisor['member_truename']?>">
+           <img src="<?php if ($member_advisor['member_avatar']!='') { echo UPLOAD_SITE_URL.'/'.ATTACH_AVATAR.DS.$member_advisor['member_avatar']; } else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" width="150" height="150" alt="<?php echo $member_advisor['member_truename']?>">
            </a>
            <a href="" class="doctor_oneName"><?php echo !empty($member_advisor['member_truename'])?$member_advisor['member_truename']:$member_advisor['member_name'];?></a>
            <span class="doctor_icon"></span>

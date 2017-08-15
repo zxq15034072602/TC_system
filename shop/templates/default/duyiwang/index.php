@@ -2,6 +2,7 @@
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/css/index.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/index.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/healthSchool_qty.css" rel="stylesheet" type="text/css">
+<link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/health_yyt.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/dyw_pc.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/health_zn.css" rel="stylesheet" type="text/css">
 <script src="<?php echo RESOURCE_SITE_URL;?>/js/waypoints.js"></script>
@@ -32,7 +33,7 @@ body{background-color: #f8f8f8; }
     <ul class="sort_box_zn">
         <li class="sort_list_zn">
             <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/list_zn_01.png" alt=""/>
-            <span class="find_store_zn"><a href="#">找门店</a></span>
+            <span class="find_store_zn"><a href="<?php echo urlShop("store_list","index")?>">找门店</a></span>
             <div class="address_box">
                 <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=北京+">北京市</a>
                 <a href="index.php?order=&act=store_list&cate_id=0&keyword=&area_info=天津+">天津市</a>
@@ -82,7 +83,7 @@ body{background-color: #f8f8f8; }
         </li>
         <li class="sort_list_zn">
             <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/list_zn_04.png" alt=""/>
-            <span class="find_store_zn"><a href="#">找视频</a></span>
+            <span class="find_store_zn"><a href="<?php echo urlShop('video','video',array("vd_id"=>4))?>">找视频</a></span>
             <div class="address_box">
                 <?php if($output['video_list']&&is_array($output['video_list'])) {?>
                 <?php foreach ($output['video_list'] as $video) {?>
@@ -103,35 +104,29 @@ body{background-color: #f8f8f8; }
                 <span class="health_knowledge_zn">健康<br/>知识</span>
                 <span class="health_question_zn_zn">健康<br/>问答</span>
             </div>
-            <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/smile_man_zn.png" alt="" class="smile_man_zn"/>
-            <div class="health_con_zn">
-                <div class="title_zn">
-                    <p class="frist_p_zn">健康知识</p>
-                    <div class="over_box">
-                        <p class="color_p_zn">
-                            <span>He</span><span>alth</span>
-                        </p>
-                        <p class="color_p_zn">
-                            <span>K</span><span>nowledge</span>
-                        </p>
-                    </div>
-                </div>
-                
-                <?php if($output['article_class']&&is_array($output['article_class'])) {?>
+            <!--  <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/smile_man_zn.png" alt="" class="smile_man_zn"/>-->
+            
+            <div class="health_know">
+            <ul class="health_con_yyt">
+                 <?php if($output['article_class']&&is_array($output['article_class'])) {?>
                 <?php foreach ($output['article_class'] as $article_class) {?>
-                <ul class="sort_health_zn">
-                    <li class="sort_title_zn"><?php echo str_cut($article_class['tag_name'], 4)?></li>
-                    <?php $num=0;?>
-                    <?php foreach ($output['article_list'] as $article) {?>
-                    <?php if($article['tag_id'] == $article_class['tag_id']&&$num<2) {?>
-                    <li class="sort_con_zn"><a href="<?php echo urlShop("article","show",array('article_id'=>$article['article_id'],'childshow'=>1))?>"><?php echo str_cut($article['article_title'], 54)?></a></li>                 
-                    <?php $num++;?>
-                    <?php }?>
-                    <?php }?>
-                </ul>
+                <li class="health_a_yyt">
+                    <div class="health_title_yyt"><?php echo str_cut($article_class['tag_name'], 4)?></div>
+                    <ul class="health_list_yyt">
+                         <?php $num=0;?>
+                         <?php foreach ($output['article_list'] as $article) {?>
+                         <?php if($article['tag_id'] == $article_class['tag_id']&&$num<4) {?>
+                         <li class="health_one_yyt"><a href="<?php echo urlShop("article","show",array('article_id'=>$article['article_id'],'childshow'=>1))?>"><?php echo str_cut($article['article_title'], 28)?></a></li>
+                         <?php $num++;?>
+                         <?php }?>
+                         <?php }?>
+                    </ul>
+                </li>
                 <?php }?>
                 <?php }?>
-            </div>
+        
+            </ul>
+        </div>
             <div class="health_question_con_zn">
                 <div class="title_zn">
                     <p class="frist_p_zn">健康问答</p>
@@ -144,49 +139,27 @@ body{background-color: #f8f8f8; }
                         </p>
                     </div>
                 </div>
+                <?php if($output['question_list']&&is_array($output['question_list'])) {?>
+                <?php foreach($output["question_list"] as $question) {?>
                 <ul class="question_con_zn">
                    
                     <li class="question_title_zn">
-                        <a href="#">
+                        <a href="<?php echo urlShop("question","question_show",array("qid"=>$question['question_id']))?>">
                             <span>问</span>
-                            <span class="prompt_zn">大腿皮肤表面有小疙瘩，但是不疼不痒，怎么办？</span>
+                            <span class="prompt_zn"><?php echo str_cut($question['question_title'], 50)?></span>
                         </a>
                     </li>
+                    <?php if($question['answers']) {?>
                     <li class="question_con_zn_list">
-                        <a href="#">
+                        <a href="<?php echo urlShop("question","question_show",array("qid"=>$question['question_id']))?>">
                             <span>答</span>
-                            <span>你好，这个情况有很久了吧？ 这是毛周角化，与体内缺乏维生素A有关可以口服胡萝卜素胶囊，外涂维A酸乳膏，每天晚上涂一次，平时多吃蔬菜水果，尤其胡萝卜多吃 没有影响，保持皮肤滋润是好的 这个没有太好的办法，可以做激光脱毛，可以永久去除掉不客气 </span>
+                            <span><?php echo str_cut($question['answers']['answer_content'], 250,"...")?></span>
                         </a>
                     </li>
+                    <?php }?>
                 </ul>
-                <ul class="question_con_zn">
-                    <li class="question_title_zn">
-                        <a href="#">
-                            <span>问</span>
-                            <span class="prompt_zn">大腿皮肤表面有小疙瘩，但是不疼不痒，怎么办？</span>
-                        </a>
-                    </li>
-                    <li class="question_con_zn_list">
-                        <a href="#">
-                            <span>答</span>
-                            <span>你好，这个情况有很久了吧？ 这是毛周角化，与体内缺乏维生素A有关可以口服胡萝卜素胶囊，外涂维A酸乳膏，每天晚上涂一次，平时多吃蔬菜水果，尤其胡萝卜多吃 没有影响，保持皮肤滋润是好的 这个没有太好的办法，可以做激光脱毛，可以永久去除掉不客气 </span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="question_con_zn">
-                    <li class="question_title_zn last_question_zn">
-                        <a href="#">
-                            <span>问</span>
-                            <span class="prompt_zn">大腿皮肤表面有小疙瘩，但是不疼不痒，怎么办？</span>
-                        </a>
-                    </li>
-                    <li class="question_con_zn_list last_question_con">
-                        <a href="#">
-                            <span>答</span>
-                            <span>你好，这个情况有很久了吧？ 这是毛周角化，与体内缺乏维生素A有关可以口服胡萝卜素胶囊，外涂维A酸乳膏，每天晚上涂一次，平时多吃蔬菜水果，尤其胡萝卜多吃 没有影响，保持皮肤滋润是好的 这个没有太好的办法，可以做激光脱毛，可以永久去除掉不客气 </span>
-                        </a>
-                    </li>
-                </ul>
+               <?php }?>
+               <?php }?>
             </div>
         </div>
     </div>
@@ -205,7 +178,7 @@ body{background-color: #f8f8f8; }
        <?php if($output['member_advisor_wd_list']&&is_array($output['member_advisor_wd_list'])) {?>
        <?php foreach ($output['member_advisor_wd_list'] as $advisor) {?>
        <li class="health_a_one">
-           <a href="javascript:void(0)" class="health_a_header" title="<?php if($advisor['member_truename']) {echo $advisor['member_truename'];}else{echo $advisor['member_name'];} ?>">
+           <a href="<?php echo urlShop("member_advisohome","index",array("mid"=>$advisor[member_id]))?>" class="health_a_header" title="<?php if($advisor['member_truename']) {echo $advisor['member_truename'];}else{echo $advisor['member_name'];} ?>">
            <img src="<?php if ($output['master_info']['member_avatar']!='') { echo UPLOAD_SITE_URL.'/'.ATTACH_AVATAR.DS.$output['master_info']['member_avatar']; } else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" width="129" height="129" style="border-radius: 50%;">
            </a>
            <div class="health_a_right">
@@ -323,27 +296,196 @@ body{background-color: #f8f8f8; }
 </div>
 
 <!--左边固定弹框开始-->
-<!--  
+<style>
+    .left_contact{
+        width: 53px;
+        height: 171px;
+        background: #f69c1c;
+        position: fixed;
+        left: -3px;
+        top: 50%;
+        margin-top: -85px;
+        z-index: 99999;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+    }
+    .left_word{
+        width: 30px;
+        height: 110px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 17px;
+        line-height: 26px;
+        font-size: 22px;
+        text-align: center;
+        color: #fff;
+    }
+    .left_icon_yyt{
+        width: 16px;
+        height: 13px;
+        background: url("<?php echo SHOP_TEMPLATES_URL?>/dw/image/left_l_yyt.png") no-repeat;
+        background-size: 100% 100%;
+        margin: 0 auto;
+        display: block;
+        margin-top: 10px;
+    }
+    .left_con_yyt{
+        width: 149px;
+        background: #f69c1c;
+        margin-left: -146px;
+    }
+    .left_c_yyt{
+        width: 149px;
+        /*margin-left: -146px;*/
+        height: 440px;
+        position: absolute;
+        left: -146px;
+        top: -134px;
+        z-index: 9999;
+        box-sizing: border-box;
+    }
+    .left_phone_yyt{
+        width: 100%;
+        height: 85px;
+        border-bottom: 2px solid #fff;
+        overflow: hidden;
+    }
+    .web_call_yyt{
+        width: auto;
+        height: auto;
+        font-size: 18px;
+        line-height: 35px;
+        color: #fff;
+        padding-left: 20px;
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+    .web_num_yyt{
+        width: auto;
+        height: auto;
+        padding-left: 20px;
+        box-sizing: border-box;
+        font-size: 14px;
+        line-height: 35px;
+        color: #fff;
+    }
+    .left_ma_yyt{
+        width: 100%;
+        height: 176px;
+        border-bottom: 2px solid #fff;
+        overflow: hidden;
+    }
+    .web_sao_yyt{
+        width: auto;
+        height: auto;
+        font-size: 18px;
+        line-height: 35px;
+        color: #fff;
+        padding-left: 20px;
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+    .web_ma_yyt{
+        width: 105px;
+        height: 105px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 5px;
+        border-radius: 5px;
+    }
+    .left_q_yyt{
+        width: 100%;
+        height: 80px;
+        border-bottom: 2px solid #fff;
+        overflow: hidden;
+    }
+    .web_q_yyt{
+        width: auto;
+        height: auto;
+        padding-left: 20px;
+        box-sizing: border-box;
+        font-size: 14px;
+        line-height: 30px;
+        color: #fff;
+        margin-top: 8px;
+    }
+    .web_qq_yyt{
+        width: auto;
+        height: auto;
+        padding-left: 20px;
+        box-sizing: border-box;
+        font-size: 14px;
+        line-height: 30px;
+        color: #fff;
+    }
+    .left_zx_yyt{
+        width: 100%;
+        height: 93px;
+        overflow: hidden;
+    }
+    .web_zx_yyt{
+        width: auto;
+        height: auto;
+        padding-left: 20px;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 40px;
+        margin-top: 8px;
+        color: #fff;
+    }
+    .web_ques_yyt{
+        width: auto;
+        height: auto;
+        padding-left: 20px;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 40px;
+        color: #fff;
+    }
+</style>
 
-<div class="fixedBox_qty">
-	<ul>
-		<li>电话
-			<div class="tele_qty">13545687561</div>
-		</li>
-		<li>微信
-			<div class="weixin_qty"></div>
-		</li>
-		<li>QQ
-			<div class="tele_qty">1454231@qq.com</div>
-		</li>
-		<li>咨询
-			<div class="tele_qty">您有什么想咨询的</div>
-		</li>
-	</ul>
+<div class="left_contact" onclick="left_contact()">
+    <span class="left_word">联系我们</span>
+    <span class="left_icon_yyt"></span>
+    <div class="left_con_yyt"></div>
+    <div class="left_c_yyt">
+        <div class="left_phone_yyt">
+            <div class="web_call_yyt">电话：</div>
+            <div class="web_num_yyt"><?php echo $GLOBALS['setting_config']['site_tel400']; ?></div>
+        </div>
+        <div class="left_ma_yyt">
+            <div class="web_sao_yyt">微信：</div>
+            <img class="web_ma_yyt" src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['site_logowx']; ?>" alt="">
+        </div>
+        <div class="left_q_yyt">
+            <div class="web_q_yyt">邮箱：</div>
+            <div class="web_qq_yyt"><?php echo $GLOBALS['setting_config']['site_email']; ?></div>
+        </div>
+        <div class="left_zx_yyt">
+            <div class="web_zx_yyt">提问：</div>
+            <a href="<?php echo urlShop("question","index")?>" class="web_ques_yyt">点我提问</a>
+        </div>
+    </div>
 </div>
--->
 <!--左边国定弹框结束-->
+<script>
 
+    var flag=true;
+    var left_height=3000;
+    $(".left_con_yyt").css({"height":left_height,"marginTop":(left_height-171)/-2});
+    function left_contact() {
+        if (flag == true){
+            flag=false
+            $(".left_contact").css("left",146);
+         
+        }else if (flag == false){
+            flag=true
+            $(".left_contact").css("left",-3);
+       
+        }
+    }
+</script>
 
 <!--  首页 end  -->
 <script>
@@ -378,14 +520,14 @@ function click_zn(){
     $(document).on('click','.health_knowledge_zn',function(){
         $(this).css('background','#a3cb32').css('color','#fff');
         $('.health_question_zn_zn').css('color','#999').css('background','#fff');
-        $('.health_con_zn').css('display','block');
+        $('.health_know').css('display','block');
         $('.health_question_con_zn').css('display','none');
     });
     $(document).on('click','.health_question_zn_zn',function(){
         $(this).css('background','#a3cb32').css('color','#fff');
         $('.health_knowledge_zn').css('color','#999').css('background','#fff');
         $('.health_question_con_zn').css('display','block');
-        $('.health_con_zn').css('display','none');
+        $('.health_know').css('display','none');
     });
 }
     click_zn();

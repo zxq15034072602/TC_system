@@ -57,7 +57,7 @@ a:hover{text-decoration: none;}
 							</div>
 							<div class="healthBottomSmall_qty">
 							     
-								<?php echo  mb_substr(strip_tags($article[article_content]), 0,100,"utf-8")?>
+								<?php echo  str_cut(strip_tags($article[article_content]),160,"...")?>
 							</div>
 							<div class="jiantouBox_qty"> <a href=""><span>&gt</span></a></div>
 						</div>
@@ -117,7 +117,7 @@ a:hover{text-decoration: none;}
 							<h5 style="font-weight: bold;"><?php echo str_cut($article['article_title'], 35,"...")?></h5>
 						</div>
 						<div class="hotFontCenter_qty">
-							<?php echo mb_substr(strip_tags($article[article_content]), 0,80,"utf-8")?>
+							<?php echo str_cut(strip_tags($article[article_content]),120,"...")?>
 						</div>
 						<div class="rItBox_qty">
 							<div href="">&lt</div>

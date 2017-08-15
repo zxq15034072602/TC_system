@@ -400,7 +400,7 @@ cursor:pointer; }
 /* 店铺列表展示 */
 .nc-store-list { }
 .nc-store-list li { border-bottom: solid 1px #E7E7E7; padding: 20px 0; vertical-align:top; }
-.nc-store-list li a { color: #DD4400; }
+.nc-store-list li a { color: #81a906; }
 .nc-store-list li dl { display: inline-block; height: 72px; vertical-align:top; }
 .nc-store-list li dl { *display: inline/*IE7*/;
 }

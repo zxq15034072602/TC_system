@@ -135,7 +135,7 @@
     <div class="quick-menu">
     <dl class="invite"><dt><a href="<?php echo BASE_SITE_URL;?>/index.php?act=invite"><span>邀请返利</span></a></dt></dl>
 	<?php if (C('mobile_isuse') && C('mobile_app')){?>
-	<dl class="down_app">
+	 <!--  <dl class="down_app">
         <dt><em class="ico_tel"></em><a href="<?php echo WAP_SITE_URL;?>">手机移动端</a><i></i></dt>
                 <dd>
        <div class="qrcode"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.C('mobile_app');?>"></div>
@@ -150,7 +150,7 @@
           <a href="<?php echo C('mobile_ios');?>" target="_blank"><i class="icon-apple"></i>iPhone</a>
           <?php } ?>
                         </div>
-    </dd>      </dl>
+    </dd>      </dl>-->
     <?php } ?>
 	<dl>
         <dt><em class="ico_shop"></em><a href="<?php echo urlShop('show_joinin','index');?>" title="商家管理">商家管理</a><i></i></dt>

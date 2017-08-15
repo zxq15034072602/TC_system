@@ -136,7 +136,7 @@
 				</ul>
 			</div>
 			<div class="s_join_btn">
-				<a href="/index.php?act=store_joinin&amp;op=step0">我要入驻</a>
+				<a href="<?php echo urlShop('store_joinin', 'step0');?>">我要入驻</a>
 			</div>
 			
 			<div class="s_hot_class">
@@ -152,14 +152,11 @@
 			<div class="s_hot_con">
 				<div class="con_l">
 					<ul>
-						<li><a href="">电脑配件</a></li>
-						<li><a href="">显卡</a></li>
-						<li><a href="">主板</a></li>
-						<li><a href="">内存</a></li>
-						<li><a href="">手机配件</a></li>
-						<li><a href="">贴膜</a></li>
-						<li><a href="">挂饰</a></li>
-						<li><a href="">后壳</a></li>
+					    <?php if($output['goods_class']&&is_array($output['goods_class'])) {?>
+					    <?php foreach ($output["goods_class"] as $good_class) {?>
+						<li><a href="<?php echo urlShop("search","index",array("cate_id"=>$good_class['gc_id']))?>"><?php echo $good_class['gc_name']?></a></li>
+						<?php }?>
+						<?php }?>
 					</ul>
 				</div>
 				<div class="con_r">

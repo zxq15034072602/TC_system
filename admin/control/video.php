@@ -209,7 +209,7 @@ class videoControl extends SystemControl{
         Tpl::showpage('video.add');
     }
     /**
-     * 文章编辑
+     * 视频编辑
      */
     public function video_editOp(){
         $lang	 = Language::getLangContent();

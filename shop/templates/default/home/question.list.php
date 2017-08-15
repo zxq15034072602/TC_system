@@ -39,7 +39,7 @@ body{background: #F8F8F8;}
 					<div class="answerLeft_qty">
 					    
 						<div class="answer_qty">
-							<a href="<?php echo urlShop("question","question_show",array("qid"=>$question['question_id']))?>"><h4>Q：<?php echo str_cut($question['question_title'], 34)?><span><?php echo date("Y.m.d",$question['question_time'])?></span><span ><?php if($question['member_truename']){echo $question['member_truename'];}else{echo $question['member_name'];}?>的提问</span></h4></a>
+							<a href="<?php echo urlShop("question","question_show",array("qid"=>$question['question_id']))?>"><h4>Q：<?php echo str_cut($question['question_title'], 44)?><span><?php echo date("Y.m.d",$question['question_time'])?></span><span ><?php if($question['member_truename']){echo $question['member_truename'];}else{echo $question['member_name'];}?>的提问</span></h4></a>
 						</div>
 						<?php if($question['answer_list']&&is_array($question['answer_list'])) {?>
 						<?php foreach ($question['answer_list'] as $answer) {?>

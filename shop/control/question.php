@@ -116,6 +116,7 @@ class questionControl extends BaseHomeControl{
             showMessage("问题id为空","","html","error");
         }
         $on="question.question_member=member.member_id";
+        $condition="question.question_id=$_REQUEST[qid]";
         $question=$this->model->table("question,member")->where($condition)->join("left")->on($on)->find();
         if($question){
             $condition="answer.answer_qid=$question[question_id]";
@@ -137,7 +138,10 @@ class questionControl extends BaseHomeControl{
         if(empty($_POST['answer_content'])){
             showMessage("回答不能为空","","html","error");
         }
-        
+        $question=$this->model->table("question")->where("question_id=$_POST[qid]")->find();
+        if($question['question_status']){
+            showMessage("此问题已经解决,无需回答","","html","error");
+        }
         $member_id=$this->getMemberAndGradeInfo(true)['member_id'];
         $insert_array['answer_content']=$_POST['answer_content'];
         $insert_array['answer_guide']=$member_id;

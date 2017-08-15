@@ -325,9 +325,7 @@ body,html{
 .prompt_zn:hover{
     color:#a3cb32;
 }
-.question_con_zn:last-child{
-    width:350px;
-}
+
 .last_question_zn span:last-child{
     width:320px;
 }

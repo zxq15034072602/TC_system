@@ -4,7 +4,7 @@ defined('InShopNC') or exit('Access Invalid!');
 
 
 //提示文字
-$lang['nc_member_avatar_hint']	=  '完善个人信息资料，上传头像图片有助于您结识更多的朋友。<br /><span style="color:orange;">头像默认尺寸为120x120像素，请根据系统操作提示进行裁剪并生效。</span>';
+$lang['nc_member_avatar_hint']	=  '完善个人信息资料，上传头像图片有助于您结识更多的朋友。<br /><span style="color:orange;">头像默认尺寸为240x240像素，请根据系统操作提示进行裁剪并生效。</span>';
 
 //裁剪图片
 
