@@ -168,7 +168,7 @@ class member_informationControl extends BaseMemberControl {
 	 */
 	public function cutOp(){
 		if (chksubmit()){
-			$thumb_width = 120;
+			$thumb_width = 240;
 			$x1 = $_POST["x1"];
 			$y1 = $_POST["y1"];
 			$x2 = $_POST["x2"];
