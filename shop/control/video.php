@@ -143,16 +143,38 @@ class videoControl extends BaseHomeControl {
                 $condition['vd_parent_id']=$class['vd_id'];
                 $class['child']=$article_class_model->getClassList($condition);
             }
-            
-            Tpl::output('sub_class_list',$sub_class_list);
-            
-            $random_keys=array_rand($new_article_list,2);//随机显示视频分类的两个分类的最新视频
-            $recommend_video=array();
-            foreach ($random_keys as $k=>$key){
-                $recommend_video[$k]=$new_article_list[$key];
+            $recommend_video_class_list=$sub_class_list;
+            foreach($recommend_video_class_list as &$class){
+                if($class[child]){
+                    $child_class_list	= $article_class_model->getChildClass(intval($class['vd_id']));
+                    $ac_ids	= array();
+                    if(!empty($child_class_list) && is_array($child_class_list)){
+                        foreach ($child_class_list as $v){
+                            $ac_ids[]	= $v['vd_id'];
+                        }
+                    }
+                    $condition['video_show']	= '1';
+                    $condition["upload_type"]   =7;
+                    $condition['order']="rand()";
+                    $condition["limit"]=4;
+                    $ac_ids	= implode(',',$ac_ids);
+                    $condition['vd_ids']= $ac_ids;
+                    $class['item']	= $article_model->getJoinList($condition);
+                    $condition=array();
+                }else{
+                    $condition['video_show']	= '1';
+                    $condition["upload_type"]   =7;
+                    $condition['order']="rand()";
+                    $condition["limit"]=4;
+                    $condition['vd_id']=$class['vd_id'];
+                    $class['item']	= $article_model->getJoinList($condition);
+                    
+                }
+               
             }
-            
-            Tpl::output('new_article_list',$recommend_video);
+            Tpl::output('recommend_video_class_list',$recommend_video_class_list);
+            Tpl::output('sub_class_list',$sub_class_list);
+            Tpl::output('new_article_list',$new_article_list);
         }else{
             /**
              * 左侧分类导航

@@ -36,7 +36,7 @@ class member_advisorControl extends SystemControl{
          * 检索条件
          */
         $condition['verify_status'] = intval($_GET['verify_status']);
-        $condition['member_name'] = trim($_GET['search_title']);
+        $condition['member_name'] = trim($_GET['member_name']);
         $condition['join_type'] ="right join";
         /**
          * 分页
@@ -49,6 +49,7 @@ class member_advisorControl extends SystemControl{
          */
         $member_advisor_verify_list=$member_advisor_verifyModel->getJoinList($condition,$page);
         Tpl::output("member_advisor_verify_list",$member_advisor_verify_list);
+        Tpl::output("page",$page->show());
         Tpl::showpage("member_verify.index");
 
     }

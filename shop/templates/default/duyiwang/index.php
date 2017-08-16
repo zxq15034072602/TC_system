@@ -179,7 +179,7 @@ body{background-color: #f8f8f8; }
        <?php foreach ($output['member_advisor_wd_list'] as $advisor) {?>
        <li class="health_a_one">
            <a href="<?php echo urlShop("member_advisohome","index",array("mid"=>$advisor[member_id]))?>" class="health_a_header" title="<?php if($advisor['member_truename']) {echo $advisor['member_truename'];}else{echo $advisor['member_name'];} ?>">
-           <img src="<?php if ($output['master_info']['member_avatar']!='') { echo UPLOAD_SITE_URL.'/'.ATTACH_AVATAR.DS.$output['master_info']['member_avatar']; } else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" width="129" height="129" style="border-radius: 50%;">
+           <img src="<?php if ($advisor['member_avatar']!='') { echo UPLOAD_SITE_URL.'/'.ATTACH_AVATAR.DS.$advisor['member_avatar']; } else { echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" width="129" height="129" style="border-radius: 50%;">
            </a>
            <div class="health_a_right">
                <a href="javascript:void(0)" class="health_a_name">

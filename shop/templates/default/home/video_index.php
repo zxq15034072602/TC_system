@@ -73,7 +73,7 @@
 		<!--小热门视频结束-->
 		<!--热门视频开始-->
 		<div class="videoBox_qty">
-    <?php foreach ($output['new_article_list'] as $k=>$video) {?>
+    <?php foreach ($output['recommend_video_class_list'] as $k=>$video) {?>
    
     <?php if($video[item]&&is_array($video[item])) {?>
 	<div class="videoFont_qty">.<?php echo $video['vd_name']?>.</div>
