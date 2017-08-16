@@ -428,7 +428,7 @@ i.home { background-image: url(../images/home_b.png); background-size: cover;}
 i.categroy { background-image: url(../images/browse_list.png); background-size: cover;}
 i.search { background-image: url(../images/search_ico.png); background-size: cover;}
 i.cart { background-image: url(../images/cart_b.png); background-size: cover;}
-i.member { background-image: url(../images/member_b.png); background-size: cover;}
+i.member { background-image: url(../images/mobile_b.png); background-size: cover;}
 .footnav ul li p { font-size: 0.55rem; color: #888; line-height: 1rem; height: 1rem;}
 
 /*文章*/

@@ -458,10 +458,7 @@ body{background-color: #f8f8f8; }
             <div class="web_sao_yyt">微信：</div>
             <img class="web_ma_yyt" src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['site_logowx']; ?>" alt="">
         </div>
-        <div class="left_q_yyt">
-            <div class="web_q_yyt">qq：</div>
-            <div class="web_qq_yyt">502251245</div>
-        </div>
+       
         <div class="left_zx_yyt">
             <div class="web_zx_yyt">提问：</div>
             <a href="<?php echo urlShop("question","index")?>" class="web_ques_yyt">点我提问</a>
