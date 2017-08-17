@@ -39,6 +39,19 @@ background-image: linear-gradient(top, rgba(0,0,0,0.5),  rgba(0,0,0,0.0));}
 .nctouch-home-nav li { float: left; width: 25%; height: 3.7rem; padding: 0.5rem 0 0.3rem 0;}
 .nctouch-home-nav li a { display: block; text-align: center;}
 .nctouch-home-nav li span { display: inline-block; width: 2.4rem; height: 2.4rem; margin: 0 auto 0.3rem auto; border-radius: 100%;}
+.nctouch-home-nav-list { background-color: #FFF; position: relative; z-index: 0; border-bottom: solid 0.05rem #EEE;}
+.nctouch-home-nav-list ul { font-size: 0; overflow: hidden;}
+.nctouch-home-nav-list li { float: left; width: 25%; height: 3.7rem; padding: 0.5rem 0 0.3rem 0;}
+.nctouch-home-nav-list li a { display: block; text-align: center;}
+.nctouch-home-nav-list li span { display: inline-block; width: 2.4rem; height: 2.4rem; margin: 0 auto 0.3rem auto; border-radius: 100%;}
+.nctouch-home-nav-list li span { background-color: #9cc813;}
+.nctouch-home-nav-list li span i { display: block; width: 100%; height: 100%; background-position: 50% 50%; background-repeat: no-repeat; background-size: 50%;}
+.nctouch-home-nav-list li:nth-child(1) span i { background-image: url(../images/browse_list_w.png);}
+.nctouch-home-nav-list li:nth-child(2) span i { background-image: url(../images/cart_w.png);}
+.nctouch-home-nav-list li:nth-child(3) span i { background-image: url(../images/member_w.png);}
+.nctouch-home-nav-list li:nth-child(4) span i { background-image: url(../images/mcc_04_w.png);}
+.nctouch-home-nav-list li:nth-child(5) span i { background-image: url(../images/browse_list_w.png);}
+.nctouch-home-nav-list li p { display: block; font-size: 0.6rem; line-height: 0.9rem; color: #555;}
 .nctouch-home-nav li:nth-child(1) span { background-color: #FB6E52;}
 .nctouch-home-nav li:nth-child(2) span { background-color: #48CFAE;}
 .nctouch-home-nav li:nth-child(3) span { background-color: #4FC0E8;}
@@ -47,6 +60,7 @@ background-image: linear-gradient(top, rgba(0,0,0,0.5),  rgba(0,0,0,0.0));}
 .nctouch-home-nav li:nth-child(6) span { background-color: #48CFAE;}
 .nctouch-home-nav li:nth-child(7) span { background-color: #4FC0E8;}
 .nctouch-home-nav li:nth-child(8) span { background-color: #AC92ED;}
+
 .nctouch-home-nav li span i { display: block; width: 100%; height: 100%; background-position: 50% 50%; background-repeat: no-repeat; background-size: 50%;}
 .nctouch-home-nav li:nth-child(1) span i { background-image: url(../images/browse_list_w.png);}
 .nctouch-home-nav li:nth-child(2) span i { background-image: url(../images/cart_w.png);}
@@ -56,6 +70,7 @@ background-image: linear-gradient(top, rgba(0,0,0,0.5),  rgba(0,0,0,0.0));}
 .nctouch-home-nav li:nth-child(6) span i { background-image: url(../images/cart_w.png);}
 .nctouch-home-nav li:nth-child(7) span i { background-image: url(../images/member_w.png);}
 .nctouch-home-nav li:nth-child(8) span i { background-image: url(../images/mcc_04_w.png);}
+
 .nctouch-home-nav li p { display: block; font-size: 0.6rem; line-height: 0.9rem; color: #555;}
 
 

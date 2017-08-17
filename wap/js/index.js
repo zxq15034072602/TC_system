@@ -42,16 +42,33 @@ $(function() {
                             vv.rectangle1_url = buildUrl(vv.rectangle1_type, vv.rectangle1_data);
                             vv.rectangle2_url = buildUrl(vv.rectangle2_type, vv.rectangle2_data);
                             break;
+                        case 'nav_list':
+                        	$.each(vv.nav,function(k3,v3){
+                        	  if(v3.nav_type==2){//如果是文章类型导航
+                        		  vv.nav[k3].nav_url=buildUrl(v3.nav_type,v3.item_id);
+                        	  }else if(v3.nav_type==4){//视频类型导航
+                        		  vv.nav[k3].nav_url=buildUrl(v3.nav_type,v3.item_id);
+                        	  }
+                        	});
+                            break;
+                        
                     }
                     if (k == 0) {
-                        $("#main-container1").html(template.render(kk, vv));
+                       $("#main-container1").html(template.render(kk, vv));
                     } else {
-                        html += template.render(kk, vv);
+                    	
+                    	if(kk=="nav_list"){//绑定到导航数据
+                    		 $("#nav_index").html(template.render(kk, vv));
+                    	}else{
+                    		 html += template.render(kk, vv);
+                    	}
+                    	
+                       
                     }
                     return false;
                 });
             });
-
+            
             $("#main-container2").html(html);
 
             $('.adv_list').each(function() {

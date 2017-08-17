@@ -188,7 +188,7 @@ class mb_specialControl extends SystemControl{
     public function special_item_editOp() {
         $model_mb_special = Model('mb_special');
 	// 33hao.com v3-10
-	$theitemid=$_GET['item_id'];
+	    $theitemid=$_GET['item_id'];
         $item_info = $model_mb_special->getMbSpecialItemInfoByID($theitemid);
         Tpl::output('item_info', $item_info);
 

@@ -25,7 +25,12 @@
       <sup></sup></a></div>
   </header>
   <div class="cohesive"></div>
-  <div class="adv_list" id="main-container1"></div>
+  <div class="adv_list" id="main-container1">
+  
+  </div>
+</div>
+<div class=" fixed-Width nctouch-home-nav-list" id="nav_index">
+
 </div>
 <div class="nctouch-home-nav fixed-Width">
   <ul>
@@ -53,8 +58,21 @@
     <li><a href="tmpl/member/views_list.html"><span><i></i></span>
       <p>我的足迹</p>
       </a></li>
+    
   </ul>
 </div>
+
+<script type="text/html" id="nav_list">
+    <ul>
+    <% for(var i in nav) {%>
+    <%if(nav[i].nav_location ==3) {%>
+	<li><a href="<%=nav[i].nav_url %>"><span><i></i></span>
+    <p><%= nav[i].nav_title %></p>
+    </a></li>
+    <% } %>
+    <%}%>
+    </ul>
+</script>
 <div class="nctouch-home-layout" id="main-container2"></div>
 <div class="fix-block-r"> <a href="javascript:void(0);" class="gotop-btn gotop hide" id="goTopBtn"><i></i></a> </div>
 <footer id="footer"></footer>
@@ -98,6 +116,7 @@
 			</li>
 		</ul>
 	</div>
+
 </script> 
 <script type="text/html" id="home3">
 	<div class="nctouch-home-block">
@@ -203,10 +222,6 @@
 <script type="text/javascript" src="js/index.js"></script> 
 <script type="text/javascript" src="js/tmpl/footer.js"></script> 
 <script type="text/javascript" src="js/addtohomescreen.js"></script> 
-<script>
-	addToHomescreen({
-		message:'如要把应用程式加至主屏幕,请点击%icon, 然后<strong>加至主屏幕</strong>'
-	});
-</script>
+
 </body>
 </html>

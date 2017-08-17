@@ -66,6 +66,8 @@
           <option value="special">专题编号</option>
           <option value="goods">商品编号</option>
           <option value="url">链接</option>
+          <option value="article">文章id</option>
+          <option value="video">视频id</option>
         </select>
         <input id="dialog_item_image_data" type="text" class="txt w200 marginright marginbot vatop"><br />
         <span id="dialog_item_image_desc" class="dialog-image-desc"></span>

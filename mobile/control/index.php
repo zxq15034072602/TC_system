@@ -13,6 +13,7 @@ class indexControl extends mobileHomeControl{
 
 	public function __construct() {
         parent::__construct();
+        
     }
 
     /**
@@ -21,7 +22,9 @@ class indexControl extends mobileHomeControl{
 	public function indexOp() {
         $model_mb_special = Model('mb_special'); 
         $data = $model_mb_special->getMbSpecialIndex();
+        $data[]["nav_list"]['nav']=rkcache('nav',true);//获取导航
         $this->_output_special($data, $_GET['type']);
+       
 	}
 
     /**
