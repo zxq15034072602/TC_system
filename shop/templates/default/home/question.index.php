@@ -45,7 +45,7 @@
         <div class="rdtw_qa">
             <div>
                 <ul class="rdtw_qqq">
-                    <b><?php echo str_cut($quesion['question_title'], 40)?></b>
+                    <b><a style="color: #f69c1c;" href="<?php echo urlShop("question","question_show",array("qid"=>$quesion['question_id']))?>"><?php echo str_cut($quesion['question_title'], 40)?></a></b>
                     <span style="margin-left: 10px"><?php echo date("Y.m.d",$quesion['question_time'])?></span><br/>
                 </ul>
                 <?php if($quesion['answer_list']) {?>

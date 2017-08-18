@@ -98,10 +98,11 @@
     height: 65px;
 }
 .banner .que,.banner input{
-    background-color: #f69c1c;
+    
     border-radius: 5px;
     padding: 5px;
-
+    border: 1px solid #ccc;
+    color: #eee;
 }
 form>ul>li>ul>li{
     float: left;
@@ -159,6 +160,7 @@ form .btn{
     font-size: 14px;
     box-shadow: -5px 5px 5px #f3cbb7;
 	cursor: pointer;
+	background-color: #f69c1c;
 }
 
 /*�ȵ�����*/

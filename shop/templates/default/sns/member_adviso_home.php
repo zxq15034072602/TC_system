@@ -77,45 +77,29 @@ background-color: #f8f8f8;
         </ul>
         
     </div>
+    <?php if($output['queststion_list']&&is_array($output['queststion_list'])) {?>
     <div class="dicCate_three">
         <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/wtjl_zdw.png"/>
         <div class="dicCate_three_left">
             <h2>健康用药指导老师回答</h2>
-            <h2>遗传性多发性骨瘤怎么治疗？预后如何？</h2>
-            <p>遗传性多发性骨软骨瘤亦称为多发性外生骨疣、骨干端连续症、遗传性畸形性软骨发育异常症等。目前国内外多数学者采用遗传性多发性骨软骨瘤这一名称。
-                <br/>治疗：<br/>
-                无症状者不需处理。如有疼痛，肢体功能障碍者、骨骼发育畸形，或有合并症时，可做局部肿瘤切除，矫正骨骼畸形应待骨骼发育成熟之后进行，以免畸形复发。
-                <br/>预后：<br/>
-                如发生恶变可转化为软骨肉瘤、恶性纤维组织细胞瘤或骨肉瘤。一旦恶变应采取相应的治疗措施，以求治愈。
+            <h2><?php echo str_cut($output['queststion_list'][0]["question_title"], 100)?></h2>
+            <p><?php echo  str_cut($output['queststion_list'][0]["answer_content"], 750,"...")?>
             </p>
         </div>
         <div class="dicCate_three_right">
             <ul>
+                <?php  foreach ($output['queststion_list'] as $k=> $question) {?>
+                <?php if($k>0) {?>
                 <li class="question_a_yyt">
-                    <a href=""> · 遗传性多发性骨瘤怎么治疗？预后如何？</a>
+                    <a href="<?php echo urlShop("question","question_show",array("qid"=>$question['question_id']))?>"> · <?php echo str_cut($question['question_title'], 70)?></a>
                 </li>
-                <li class="question_a_yyt">
-                    <a href=""> · 遗传性多发性骨瘤怎么治疗？预后如何？</a>
-                </li>
-                <li class="question_a_yyt">
-                    <a href=""> · 遗传性多发性骨瘤怎么治疗？预后如何？</a>
-                </li>
-                <li class="question_a_yyt">
-                    <a href=""> · 遗传性多发性骨瘤怎么治疗？预后如何？</a>
-                </li>
-                <li class="question_a_yyt">
-                    <a href=""> · 遗传性多发性骨瘤怎么治疗？预后如何？</a>
-                </li>
-                <li class="question_a_yyt">
-                    <a href=""> · 遗传性多发性骨瘤怎么治疗？预后如何？</a>
-                </li>
-                <li class="question_a_yyt">
-                    <a href=""> · 遗传性多发性骨瘤怎么治疗？预后如何？</a>
-                </li>
+                <?php }?>
+                <?php }?>
 
             </ul>
         </div>
     </div>
+    <?php }?>
     <div class="healthSchoolSmallBox_qty">
 <!--小保健讲堂开始-->
 		<div class="healthBox_qty">

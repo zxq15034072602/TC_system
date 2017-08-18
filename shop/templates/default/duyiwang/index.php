@@ -161,6 +161,7 @@ body{background-color: #f8f8f8; }
                <?php }?>
                <?php }?>
             </div>
+            <button onclick="javascript:location.href='<?php echo urlShop("question","index")?>'" style="width:80px;height:30px;font-size:16px;line-height:30px;background:#f69c1c;display:block;margin:0 auto;border-radius:5px;color:#fff;cursor:pointer;padding:1px 5px;">我要提问</button>
         </div>
     </div>
 </div>
@@ -192,7 +193,7 @@ body{background-color: #f8f8f8; }
            <?php if($advisor['answer']&&is_array($advisor['answer'])) {?>
            <div class="health_b_right">
                <a href="<?php echo urlShop("question","question_show",array("qid"=>$advisor['answer']['question_id']))?>" class="health_b_q">Q : <?php echo str_cut($advisor['answer']['question_title'], 20)?></a>
-               <a href="javascript:void(0)" class="health_b_a">A : <?php echo str_cut($advisor['answer']['answer_content'], 90,"...")?></a>
+               <a href="javascript:void(0)" class="health_b_a">A : <?php echo str_cut($advisor['answer']['answer_content'], 85,"...")?></a>
                <a href="<?php echo urlShop("question","question_list",array("question_status"=>3))?>" class="health_b_more">查看更多</a>
            </div>
            <?php }?>

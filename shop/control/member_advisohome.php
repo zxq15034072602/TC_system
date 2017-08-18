@@ -37,6 +37,10 @@ class member_advisohomeControl extends BaseSNSControl {
         Tpl::output("pic_class",$class_info);
         $pic_list = $model->table ( 'sns_albumpic' )->where ($pic_where)->order ()->page ( 36 )->select ();//获取荣誉墙相片
         Tpl::output('pic_list',$pic_list);
+        $answer_where['answer_guide']= $this->master_id;
+        
+        $queststion_list=$model->table("question,answer")->where($answer_where)->join("left join")->on('question.question_id=answer.answer_qid')->group("question_id")->order("rand()")->select();
+        Tpl::output('queststion_list',$queststion_list);
         /**
          * 分类导航
          */
