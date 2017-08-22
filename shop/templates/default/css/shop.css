@@ -85,7 +85,7 @@ textarea:focus { background-color:#FFF; border-color: #CCC; box-shadow: 1px 1px 
 .ncsl-nav .banner a.img { width: 1200px; display: block; }
 .ncs-default-banner { display: block; width: 1200px; height: 240px;}
 /* 店铺导航 */
-.ncs-nav { background-color: #F87622; width: 1200px;overflow: hidden;}
+.ncs-nav { background-color: #9cc813; width: 1200px;overflow: hidden;}
 .ncs-nav ul { white-space: nowrap; display: block; width: 1200px; height: 38px; margin:0 auto; overflow: hidden;}
 .ncs-nav li { float: left; }
 .ncs-nav li a { height: 38px; float: left;}
@@ -203,8 +203,8 @@ textarea:focus { background-color:#FFF; border-color: #CCC; box-shadow: 1px 1px 
 .ncs-search { width: 180px; margin: 5px 13px 10px 5px; display:inline-table; *display:inline;}
 .ncs-search th { width: 60px; text-align: right; padding: 5px 10px 5px 0;}
 .ncs-search td { padding: 5px 10px 5px 0;}
-.ncs-search a { border: solid 1px #F60; text-decoration:none; border-radius: 4px; background-color:#F90; color:#FFF; padding:4px 8px; line-height:16px; text-shadow: 1px 1px 0 rgba(255,110,0,.8); box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1); -moz-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1); -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);}
-.ncs-search a:hover { background-color: #FFA620;}
+.ncs-search a { border: solid 1px #81a70b; text-decoration:none; border-radius: 4px; background-color:#9cc813; color:#FFF; padding:4px 8px; line-height:16px; text-shadow: 1px 1px 0 #9cc813; box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1); -moz-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1); -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.1);}
+.ncs-search a:hover { background-color: #81a70b;}
 
 
 /* 侧边栏商品分类 */
@@ -285,10 +285,10 @@ textarea:focus { background-color:#FFF; border-color: #CCC; box-shadow: 1px 1px 
 .flex-control-nav li:first-child {margin: 0;}
 .flex-control-nav li a { width: 10px; height: 10px; line-height: 10px; display: block; background-color: #EEE; cursor: pointer; text-indent: -9999px; border-radius: 5px;}
 .flex-control-nav li a:hover { background-color: #FC0;}
-.flex-control-nav li a.flex-active { background-color: #F60; cursor: default; box-shadow: 1px 1px 1px #CC3300 inset;}
+.flex-control-nav li a.flex-active { background-color: #81a70b; cursor: default; box-shadow: 1px 1px 1px #81a70b inset;}
 
 .ncs-main-container {filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#E5FFFFFF', endColorstr='#E5FFFFFF');background:rgba(255,255,255,0.9); text-align: center; padding-bottom: 20px; overflow: hidden;}
-.ncs-main-container .title { background-color: #FCFCFC; text-align: left; border-color: #F87622 #E7E7E7 #E7E7E7; border-style: solid; border-width: 2px 1px 1px;}
+.ncs-main-container .title { background-color: #FCFCFC; text-align: left; border-color: #9cc813 #E7E7E7 #E7E7E7; border-style: solid; border-width: 2px 1px 1px;}
 .ncs-main-container .title h4 { font: 14px/20px "Microsoft Yahei"; color: #777777; display: inline-block; *dispaly: inline; padding: 6px 15px 5px; *zoom:1; }
 .ncs-main-container .title span { float:right; margin: 4px 12px 0 0; line-height: 24px;}
 .ncs-main-container .title span a { color: #999;}
