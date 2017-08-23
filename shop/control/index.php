@@ -35,14 +35,6 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
                 }
             }
         }
-        
-        /*
-         * 指导老师列表
-         */
-        $member_model=Model('member');
-        $condition=array();
-        $condition['member_advisor']=1;
-        $member_advisor_list=$member_model->getMemberList($condition,"*",0,"member_id desc","9");
         /*
          * 推荐视频
          */
@@ -74,9 +66,26 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
             $condition['table'] = "article_tag,article";
             $condition['join_on'] = array('article_tag.tag_id=article.tag_id');
             $condition['article_recommend']=1;
-            $condition['order']="rand()";
+            $condition['order']="article_id desc";
             $article_list=$article_model->getJoinList($condition);
         }
+        /*
+         *  健康问答
+         */
+        $question_model=Model();
+        $question_list=$question_model->table("question")->where("question_status=1")->order("rand()")->limit(3)->select();
+        if($question_list){
+            foreach ($question_list as &$question){
+                $question["answers"]=$question_model->table("answer")->order("answer_id desc")->where("answer_qid=$question[question_id]")->limit(1)->find();
+            }
+        }
+        /*
+         * 指导老师列表
+         */
+        $member_model=Model('member');
+        $condition=array();
+        $condition['member_advisor']=1;
+        $member_advisor_list=$member_model->getMemberList($condition,"*",0,"rand()","9");
         /*
          * 指导老师问答
          */
@@ -89,17 +98,6 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
             foreach ($member_advisor_wd_list as &$advisor){
                 $on="question.question_id=answer.answer_qid";
                 $advisor['answer']=$model_index->table('question,answer')->where("answer_guide=$advisor[member_id]")->join("right")->on($on)->limit(1)->find();
-            }
-        }
-        
-        /*
-         *  健康问答
-         */
-        $question_model=Model();
-        $question_list=$question_model->table("question")->where("question_status=1")->order("rand()")->limit(3)->select();
-        if($question_list){
-            foreach ($question_list as &$question){
-                $question["answers"]=$question_model->table("answer")->order("answer_id desc")->where("answer_qid=$question[question_id]")->limit(1)->find();
             }
         }
         Tpl::output("question_list",$question_list);
