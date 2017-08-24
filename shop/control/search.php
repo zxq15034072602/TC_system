@@ -54,13 +54,14 @@ class searchControl extends BaseHomeControl {
         }
         $model_goods = Model('goods');
         // 字段
-        $fields = "goods_id,goods_commonid,goods_name,goods_jingle,gc_id,store_id,store_name,goods_price,goods_promotion_price,goods_promotion_type,goods_marketprice,goods_storage,goods_image,goods_freight,goods_salenum,color_id,evaluation_good_star,evaluation_count,is_virtual,is_fcode,is_appoint,is_presell,have_gift";
+        $fields = "goods_id,goods_commonid,goods_name,is_own_shop,goods_jingle,gc_id,store_id,store_name,goods_price,goods_promotion_price,goods_promotion_type,goods_marketprice,goods_storage,goods_image,goods_freight,goods_salenum,color_id,evaluation_good_star,evaluation_count,is_virtual,is_fcode,is_appoint,is_presell,have_gift";
 
         $condition = array();
         if (is_array($indexer_ids)) {
 
             //商品主键搜索
             $condition['goods_id'] = array('in',$indexer_ids);
+            
             $goods_list = $model_goods->getGoodsOnlineList($condition, $fields, 0, $order, self::PAGESIZE, null, false);
 
             //如果有商品下架等情况，则删除下架商品的搜索索引信息
@@ -152,7 +153,16 @@ class searchControl extends BaseHomeControl {
                 }
             }
         }
-        Tpl::output('goods_list', $goods_list);
+        $new_goods_list=array();
+        foreach ($goods_list as $k=>$goods){
+            if($goods[is_own_shop]==1){
+                $new_goods_list[$k]=$goods;
+            }
+        }
+        
+        Tpl::output('goods_list', $new_goods_list);
+       
+        
         if ($_GET['keyword'] != ''){
             Tpl::output('show_keyword',  $_GET['keyword']);
         } else {
