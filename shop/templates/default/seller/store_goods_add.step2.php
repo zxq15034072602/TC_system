@@ -801,7 +801,7 @@ $(function(){
                 number      : true,
                 min         : 0.01,
                 max         : 9999999,
-                checkPrice  : true
+                checkPrice  : false
             },
             g_marketprice : {
                 required    : true,
