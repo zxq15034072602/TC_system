@@ -108,9 +108,14 @@ class searchControl extends BaseHomeControl {
 	    //v3-b13 end
             $goods_list = $model_goods->getGoodsListByColorDistinct($condition, $fields, $order, self::PAGESIZE);
         }
-
-        Tpl::output('show_page1', $model_goods->showpage(4));
-        Tpl::output('show_page', $model_goods->showpage(5));
+        $page=new Page();
+        $page->setStyle(4);
+        $page->setTotalNum(count($new_goods_list));
+        $page1=new Page();
+        $page->setStyle(5);
+        $page->setTotalNum(count($new_goods_list));
+        Tpl::output('show_page1', $page->show());
+        Tpl::output('show_page', $page1->show());
 
         // 商品多图
         if (!empty($goods_list)) {
