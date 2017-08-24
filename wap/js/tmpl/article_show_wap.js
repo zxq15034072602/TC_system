@@ -18,6 +18,7 @@ $(function(){
 				$("title").html(data.article_title);
 				var html = template.render('article', data);
 				$("#article_show").html(html);
+				$(".article_con_zn").html(data.article_content);
 			}
 		});
 	}	

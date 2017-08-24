@@ -56,9 +56,9 @@ function buildUrl(e, t) {
     case "url":
         return t;
     case "article":
-    	return WapSiteUrl + "/tmpl/article_show.html?article_id=" + t;
+    	return WapSiteUrl + "/tmpl/article_detail_wap.html?article_id=" + t;
     case "video":
-    	return WapSiteUrl + "/tmpl/video_list.html?vd_id=" + t;
+    	return WapSiteUrl + "/tmpl/video_show.html?video_id=" + t;
     case "2":
         return WapSiteUrl + "/tmpl/article_list_wap.html?article_id=" + t;
     case "4":

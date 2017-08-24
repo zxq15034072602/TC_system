@@ -22,9 +22,9 @@
 .nctouch-store-top .store-avatar img { width: 100%; height: 100%; border-radius: 0.3rem;}
 .nctouch-store-top .store-name { position: absolute; z-index: 3; top: 2.5rem; left: 3rem; width: 8rem; font-size: 0.7rem; color: #FFF; text-shadow: 0.05rem 0.05rem 0 rgba(0,0,0,0.75);}
 .nctouch-store-top .store-favorate { position: absolute; z-index: 3; bottom: 0.5rem; right: 0; display: block; width: 5rem; height: 1.7rem; text-align: center;}
-.nctouch-store-top .store-favorate a { display: inline-block; vertical-align: bottom; width: 50%; height: 0.9rem; padding: 0.4rem 0; background-color: #ED5564; font-size: 0.6rem; line-height: 0.9rem; color: #FFF;}
+.nctouch-store-top .store-favorate a { display: inline-block; vertical-align: bottom; width: 50%; height: 0.9rem; padding: 0.4rem 0; background-color: #9CC813; font-size: 0.6rem; line-height: 0.9rem; color: #FFF;}
 .nctouch-store-top .store-favorate a.added { background-color: #333;}
-.nctouch-store-top .store-favorate span { display: inline-block; vertical-align: bottom; width: 50%; height: 1.2rem; padding: 0.25rem 0; background-color: #DB4453; font-size: 0.55rem; line-height: 0.6rem; color: #FFF;}
+.nctouch-store-top .store-favorate span { display: inline-block; vertical-align: bottom; width: 50%; height: 1.2rem; padding: 0.25rem 0; background-color: #7ea50d; font-size: 0.55rem; line-height: 0.6rem; color: #FFF;}
 
 .nctouch-store-nav { height: 2.55rem;}
 .nctouch-store-nav ul li { width: 25%; height: 2.55rem;}
