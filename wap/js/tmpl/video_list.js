@@ -1,6 +1,6 @@
 //v3-b11
 $(function(){
-	var vd_id = getQueryString('video_id')
+	var vd_id = getQueryString('video_id');
 	
 	if (vd_id=='') {
     	window.location.href = WapSiteUrl + '/index.html';

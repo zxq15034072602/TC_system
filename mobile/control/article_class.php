@@ -19,7 +19,6 @@ class article_classControl extends mobileHomeControl{
 			$article_class_model	= Model('article_class');
 			$article_model	= Model('article');
 			$condition	= array();
-			
 			$article_class = $article_class_model->getClassList($condition);
 			output_data(array('article_class' => $article_class));		
     }

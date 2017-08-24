@@ -47,8 +47,7 @@ class videoControl extends mobileHomeControl{
                     $condition["upload_type"]   =7;
                     $condition['order']="rand()";
                     $condition['vd_id']=$class['vd_id'];
-                    $class['item']	= $video_model->getJoinList($condition);
-                
+                    $class['item']	= $video_model->getJoinList($condition);               
                 }
             }
             $video_type_name = $this->video_type_name($ac_ids);
@@ -78,18 +77,21 @@ class videoControl extends mobileHomeControl{
     public function video_showOp() {
         $vdieo_model	= Model('video');
         if(!empty($_GET['video_id']) && intval($_GET['video_id']) > 0) {
-            $video	= $vdieo_model->getOneArticle(intval($_GET['video_id']));
+            $video["video"]	= $vdieo_model->getOneArticle(intval($_GET['video_id']));
+            $condition	= array('vd_id'=>$video['video']['vd_id']);
+            $video['xg']['video_list']=$vdieo_model->getVideoList($condition);
             if (empty($video)) {
                 output_error('视频不存在');
             }
             else {
-                output_data($video);
+               output_data($video);
             }
         }
         else {
             output_error('缺少参数:视频编号');
         }
     }
+    
 }
 
 

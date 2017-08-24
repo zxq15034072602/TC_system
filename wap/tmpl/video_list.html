@@ -31,7 +31,7 @@
 			<ul class="hotVideoSmallBox_qty">
                 <% for(var j in video[i].item) {%>
 				<li class="<%if(j%2==1){%>right_qty<%}else{%>left_qty<%}%>" >
-					<a href="">
+					<a href="<%=WapSiteUrl%>video_show.html?video_id=<%=video[i].item[j].video_id%>">
 						<img src="/data/upload/shop/article/<%=video[i].item[j].file_name%>" alt="">
 						<div class="maskBox_qty">
 							<div class="maskSmall_qty">
