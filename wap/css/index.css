@@ -76,7 +76,7 @@ background-image: linear-gradient(top, rgba(0,0,0,0.5),  rgba(0,0,0,0.0));}
 
 .nctouch-home-layout { display: block; max-width: 640px; margin: 0 auto; overflow: hidden; position: relative; z-index: 0; }
 .nctouch-home-block { width: 100%; clear: both;}
-.nctouch-home-block .tit-bar { border-left: solid 0.15rem #ED5564; height: 0.8rem; margin: 0.5rem 0 0.5rem 0.3rem; padding-left: 0.3rem;  font-size: 0.7rem; line-height: 0.8rem;}
+.nctouch-home-block .tit-bar { border-left: solid 0.15rem #9CC813; height: 0.8rem; margin: 0.5rem 0 0.5rem 0.3rem; padding-left: 0.3rem;  font-size: 0.7rem; line-height: 0.8rem;}
 .nctouch-home-block .content { display: block;}
 .item-goods ul.goods-list { font-size: 0; margin-bottom: 0.5rem;}
 .item-goods ul.goods-list li { position:relative; background-color: #FFF; vertical-align: top; display: inline-block; width: 47%; overflow: hidden; border-radius: 0.2rem;}
@@ -157,4 +157,38 @@ background-image: linear-gradient(top, rgba(0,0,0,0.5),  rgba(0,0,0,0.0));}
 .ath-ios6:after { left: 39%; }
 .ath-ios8.ath-phone { left: auto; bottom: auto; right: 0.4em; top: 1.8em; }
 .ath-ios8.ath-phone:after { bottom: auto; top: -0.9em; left: 68%; z-index: 2147483641; box-shadow: none; }
+}
+.healthBox_qty{
+	width: 95%;
+    height: 2rem;
+    margin: auto;
+    overflow: hidden;
+    color: #9CC813;
+    font-size: 0.8rem;
+    line-height: 2rem;
+	
+}
+.style_qty {
+    width: 0.2rem;
+    height: 1.1rem;
+    float: left;
+    background: #9CC813;
+    margin-top: 0.38rem;
+    margin-right: 0.3rem;
+}
+.moreFont_qty {
+    float: right;
+}
+.moreFont_qty a {
+    color: #999999;
+}
+.arrow {
+    width: 0;
+    height: 0;
+    border-top: 0.3rem solid transparent;
+    border-bottom: 0.3rem solid transparent;
+    border-left: 0.3rem solid #9CC813;
+    float: right;
+    margin-top: 0.7rem;
+    margin-left: 0.5rem;
 }
