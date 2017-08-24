@@ -97,6 +97,9 @@
 	<%if(nav[i].nav_id==20){%>
 	<a href="tmpl/appointment.html"><span><i></i></span>
     <p><%= nav[i].nav_title %></p></a>
+    <% }else if(nav[i].nav_id==22) {%>
+    <a href="tmpl/product_list.html"><span><i></i></span>
+    <p><%= nav[i].nav_title %></p></a>
 	<%}else{%>
 	<a href="<%=nav[i].nav_url %>"><span><i></i></span>
     <p><%= nav[i].nav_title %></p></a>
