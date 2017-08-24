@@ -41,22 +41,30 @@ body,html{
     margin-right:0;
 }
 .title_teacher_list a{
-    display: block;
+   
     font-size:0.28rem;
     height:100%;
     width:100%;
     color:#999;
     border-bottom:0.02rem solid transparent;
     box-sizing: border-box;
-}
+} 
 
 .title_teacher_list:first-child a{
-    display: block;
+   
     font-size:0.28rem;
     height:100%;
-    color:#f69c1c;
+   
     box-sizing: border-box;
-    border-bottom:0.03rem solid #f69c1c;
+    
+} 
+.title_teacher_list:first-child .color_zn{
+	color:#f69c1c !important;
+	border-bottom:0.03rem solid #f69c1c !important;
+}
+.color_zn{
+	color:#f69c1c !important;
+	border-bottom:0.03rem solid #f69c1c !important;
 }
 /*标题头部统一样式*/
 .teacher_title_zn{

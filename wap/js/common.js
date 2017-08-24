@@ -60,10 +60,9 @@ function buildUrl(e, t) {
     case "video":
     	return WapSiteUrl + "/tmpl/video_list.html?vd_id=" + t;
     case "2":
-        return WapSiteUrl + "/tmpl/article_list.html?article_id=" + t;
+        return WapSiteUrl + "/tmpl/article_list_wap.html?article_id=" + t;
     case "4":
 	    return WapSiteUrl + "/tmpl/video_list.html?video_id=" + t;
-
     }
 	
     return WapSiteUrl
