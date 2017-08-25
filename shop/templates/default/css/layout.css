@@ -265,7 +265,7 @@ body { background-color: #FEFEFE; min-width: 1200px;}
 .nch-sortbar-owner span a.selected { color: #F87622; text-decoration: none;}
 .nch-sortbar-owner span a:hover i,
 .nch-sortbar-owner span a.selected i { background: url(../images/2014shop_background_img.png) no-repeat -56px 0;}
-.nch-sortbar-location { font: 12px/36px "microsoft yahei"; color: #777; vertical-align: top; display: inline-block; *display: inline/*IE6,7*/; padding: 0 0 0 70px; *zoom: 1;}
+.nch-sortbar-location { font: 12px/36px "microsoft yahei"; color: #777; vertical-align: top; display: inline-block; *display: inline/*IE6,7*/; //padding: 0 0 0 70px; *zoom: 1;}
 
 /* 商品筛选下拉形式 */
 

@@ -55,6 +55,7 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
             }
             $goods_list = Model('goods')->getGoodsList(array('goods_id' => array('in', $goodsid_array)));
         }
+        
         /*
          * 健康知识
          */
