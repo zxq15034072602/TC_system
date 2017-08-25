@@ -139,6 +139,7 @@ class goodsControl extends mobileHomeControl{
         $page_count = $model_goods->gettotalpage();
         //处理商品列表(团购、限时折扣、商品图片)
         $goods_list = $this->_goods_list_extend($goods_list);
+       
         output_data(array('goods_list' => $goods_list), mobile_page($page_count));
     }
 
