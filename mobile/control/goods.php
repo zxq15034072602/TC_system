@@ -56,7 +56,7 @@ class goodsControl extends mobileHomeControl{
         $price_to = preg_match('/^[\d.]{1,20}$/',$_GET['price_to']) ? $_GET['price_to'] : null;
 
         //所需字段
-        $fieldstr = "goods_id,goods_commonid,store_id,goods_name,goods_jingle,goods_price,goods_promotion_price,goods_promotion_type,goods_marketprice,goods_image,goods_salenum,evaluation_good_star,evaluation_count";
+        $fieldstr = "goods_id,goods_commonid,store_id,goods_name,is_own_shop,gc_id_1,goods_jingle,goods_price,goods_promotion_price,goods_promotion_type,goods_marketprice,goods_image,goods_salenum,evaluation_good_star,evaluation_count";
 
         $fieldstr .= ',is_virtual,is_presell,is_fcode,have_gift,goods_jingle,store_id,store_name,is_own_shop';
 
@@ -136,11 +136,25 @@ class goodsControl extends mobileHomeControl{
 
             $goods_list = $model_goods->getGoodsListByColorDistinct($condition, $fieldstr, $order, $this->page);
         }
-        $page_count = $model_goods->gettotalpage();
+        //$page_count = $model_goods->gettotalpage();
+
         //处理商品列表(团购、限时折扣、商品图片)
         $goods_list = $this->_goods_list_extend($goods_list);
-       
-        output_data(array('goods_list' => $goods_list), mobile_page($page_count));
+
+        $new_goods_list=array();
+        foreach ($goods_list as $k=>$goods){
+            if($goods['gc_id_1']=="1057"||$goods['gc_id_1']=="1066"||$goods['gc_id_1']=="1067"||$goods['gc_id_1']=="1068"){
+                if($goods[is_own_shop]==1){
+                    $new_goods_list[$k]=$goods;
+                }
+            }else{
+                $new_goods_list[$k]=$goods;
+            }
+            
+        }
+        $page_count=count($new_goods_list);
+        output_data(array('goods_list' => $new_goods_list), mobile_page($page_count));
+
     }
 
     /**
