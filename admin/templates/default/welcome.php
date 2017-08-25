@@ -140,7 +140,7 @@
         <h3><?php echo $lang['dashboard_welcome_sys_info'];?></h3>
         <div id="system-info">
           <ul>
-            <li>好商城V4.1 <?php echo $lang['dashboard_welcome_version'];?><span>20160316</span></li>
+            <li>独易网V5.1 <?php echo $lang['dashboard_welcome_version'];?><span>2017825</span></li>
             <li><?php echo $lang['dashboard_welcome_install_date'];?><span><?php echo $output['statistics']['setup_date'];?></span></li>
             <li><?php echo $lang['dashboard_welcome_server_os'];?><span><?php echo $output['statistics']['os'];?></span></li>
             <li>WEB <?php echo $lang['dashboard_welcome_server'];?><span><?php echo $output['statistics']['web_server'];?></span></li>
@@ -151,8 +151,8 @@
       </dt>
       <dd>
         <ul>
-          <li class="w50pre none"><a href="http://www.33hao.com" target="_blank">官方网站<sub></sub></a></li>
-          <li class="w50pre none"><a href="http://bbs.33hao.com" target="_blank">官方论坛<sub></sub></a></li>
+          <li class="w50pre none"><a href="http://www.duyiwang.cn" target="_blank">官方网站<sub></sub></a></li>
+          <li class="w50pre none"><a href="http://www.sxtaichang.com/" target="_blank">独一张<sub></sub></a></li>
         </ul>
       </dd>
     </dl>
