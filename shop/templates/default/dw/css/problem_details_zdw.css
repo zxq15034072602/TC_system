@@ -45,6 +45,7 @@
     /*letter-spacing: 5px;*/
     font-size: 24px;
     margin-bottom: 15px;
+	line-height: 40px;
 }
 .main>.header>ul{
     width: 510px;
