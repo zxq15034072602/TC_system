@@ -1998,3 +1998,40 @@ a:hover.ks-ext-close { text-decoration: none; color: #27A9E3;}
 
 .waybill_item { background-color: #FEF5E6; position: absolute; left: 0; top: 0; width: 90px; height: 20px; padding: 1px 5px 4px 5px; border-color: #FFBEBC; border-style: solid; border-width: 1px 1px 1px 1px; cursor: move;}
 .waybill_item:hover { padding: 1px 5px 1px 5px; border-color: #FF7A73; border-width: 1px 1px 4px 1px;}
+.elegantLeft_qty {
+    width: 480px;
+    float: left;
+    font-size: 14px;
+    color: #999999;
+    line-height: 25px;
+    text-align: justify;
+    margin-top: 50px;
+	padding-right: 40px
+}
+
+.elegantRight_qty {
+    width: 435px;
+    height: 280px;
+    float:left;
+}
+.elegantRight_qty ul {
+    width: 435px;
+    height: 280px;
+    float: left;
+}
+.elegantRight_qty ul li {
+    width: 135px;
+    height: 135px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.elegantRight_qty ul li img {
+    width: 135px;
+    height: 135px;
+    float: left;
+    border-radius: 4px;
+}

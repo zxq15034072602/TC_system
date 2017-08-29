@@ -7,11 +7,12 @@ $(function(){
 
     /* 商品图片ajax上传 */
     var url = SITEURL + '/index.php?act=store_setting&op=silde_image_upload';
+    var upload_type=UPLOADTYPE;
     $('.ncsc-upload-btn').find('input[type="file"]').unbind().change(
         function() {
             var id = $(this).attr('id');
             var file_id = $(this).attr('file_id');
-            ajaxFileUpload(url, id, file_id);
+            ajaxFileUpload(url, id, file_id,upload_type);
         });
 
     /* 删除图片 */
@@ -31,7 +32,7 @@ $(function(){
 });
 
 /* 图片上传ajax */
-function ajaxFileUpload(url, id, file_id)
+function ajaxFileUpload(url, id, file_id,uploade_type)
 {
         $('div[nctype="'+id+'"]').find('i').remove().end().find('img').remove()
             .end().prepend('<img nctype="'+id+'" scr="'+SHOP_TEMPLATES_URL+'/images/loading.gif">');
@@ -44,7 +45,7 @@ function ajaxFileUpload(url, id, file_id)
 			secureuri:false,
 			fileElementId:id,
 			dataType: 'json',
-			data:{name:'logan', id:id, file_id:file_id},
+			data:{name:'logan', id:id, file_id:file_id,upload_type:uploade_type},
 			success: function (data, status)
 			{
 				if(typeof(data.error) != 'undefined')

@@ -43,6 +43,7 @@ class member_informationControl extends BaseMemberControl {
 			$member_array['member_work_time']	= $_POST['member_work_time'];
 			$member_array['member_service']  	=   $_POST['member_service'];
 			$member_array['member_description']	= $_POST['member_description'];
+			$member_array['seller_description'] = $_POST['seller_description'];
 			if (strlen($_POST['birthday']) == 10){
 				$member_array['member_birthday']	= $_POST['birthday'];
 			}
@@ -59,7 +60,9 @@ class member_informationControl extends BaseMemberControl {
 		    $this->member_info['member_privacy'] = array();
 		}
 		Tpl::output('member_info',$this->member_info);
-
+		$seller_model=Model();
+		$store_seller_list=$seller_model->table("seller")->where(array("member_id"=>$this->member_info['member_id']))->select();
+		Tpl::output('store_seller_list',$store_seller_list);
 		self::profile_menu('member','member');
 		Tpl::output('menu_sign','profile');
 		Tpl::output('menu_sign_url','index.php?act=member_information&op=member');

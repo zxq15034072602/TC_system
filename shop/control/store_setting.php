@@ -150,7 +150,10 @@ class store_settingControl extends BaseSellerControl {
                 'store_phone' => $_POST['store_phone'],
                 'store_zy' => $_POST['store_zy'],
                 'store_keywords' => $_POST['seo_keywords'],
-                'store_description' => $_POST['seo_description']
+                'store_description' => $_POST['seo_description'],
+                "store_develop"     =>$_POST["store_develop"],
+                "store_style_show"  =>$_POST["store_style_show"]
+                
             );
             if (!empty($_POST['store_theme'])){
                 $param['store_theme'] = $_POST['store_theme'];
@@ -274,6 +277,52 @@ class store_settingControl extends BaseSellerControl {
 		 */
 		Tpl::showpage('store_slide_form');
 	}
+	/*
+	 * 店铺风采展示
+	 */
+	public function store_style_showOp(){
+	    /**
+	     * 模型实例化
+	     */
+	    $model_store = Model('store');
+	    $model_upload = Model('upload');
+	    /**
+	     * 保存店铺信息
+	     */
+	    if ($_POST['form_submit'] == 'ok'){
+	        // 更新店铺信息
+	        $update	= array();
+	        $update['store_style_show_img']		= implode(',', $_POST['image_path']);
+	        $model_store->editStore($update, array('store_id' => $_SESSION['store_id']));
+	        
+	        // 删除upload表中数据
+	        $model_upload->delByWhere(array('upload_type'=>8,'item_id'=>$_SESSION['store_id']));
+	        showDialog(Language::get('nc_common_save_succ'),'index.php?act=store_setting&op=store_style_show','succ');
+	    }
+	    
+	    // 删除upload中的无用数据
+	    $upload_info = $model_upload->getUploadList(array('upload_type'=>8,'item_id'=>$_SESSION['store_id']),'file_name');
+	    if(is_array($upload_info) && !empty($upload_info)){
+	        foreach ($upload_info as $val){
+	            @unlink(BASE_UPLOAD_PATH.DS.ATTACH_SLIDE.DS.$val['file_name']);
+	        }
+	    }
+	    $model_upload->delByWhere(array('upload_type'=>8,'item_id'=>$_SESSION['store_id']));
+	    
+	    $store_info = $model_store->getStoreInfoByID($_SESSION['store_id']);
+	    if($store_info['store_style_show_img'] != '' && $store_info['store_style_show_img'] != ',,,,'){
+	        Tpl::output('store_style_show_img', explode(',', $store_info['store_style_show_img']));
+	        
+	        
+	    }
+	    
+	    self::profile_menu('store_style_show');
+	    /**
+	     * 页面输出
+	     */
+	    Tpl::output('store_info', $store_info);
+	    Tpl::showpage('store_style_show');
+	}
 	/**
 	 * 店铺幻灯片ajax上传
 	 */
@@ -324,7 +373,7 @@ class store_settingControl extends BaseSellerControl {
 			 */
 			$insert_array = array();
 			$insert_array['file_name']		= $img_path;
-			$insert_array['upload_type']	= '3';
+			$insert_array['upload_type']	= $_POST['upload_type'];
 			$insert_array['file_size']		= $_FILES[$_POST['id']]['size'];
 			$insert_array['item_id']		= $_SESSION['store_id'];
 			$insert_array['upload_time']	= time();
@@ -343,7 +392,7 @@ class store_settingControl extends BaseSellerControl {
 			echo json_encode($output);die;
 		}
 	}
-
+	
 	/**
 	 * ajax删除幻灯片图片
 	 */
@@ -691,9 +740,11 @@ class store_settingControl extends BaseSellerControl {
         Language::read('member_layout');
         $menu_array = array(
             1=>array('menu_key'=>'store_setting','menu_name'=>Language::get('nc_member_path_store_config'),'menu_url'=>'index.php?act=store_setting&op=store_setting'),
+            2=>array('menu_key'=>'store_style_show','menu_name'=>"店铺风采展示",'menu_url'=>'index.php?act=store_setting&op=store_style_show'),
             4=>array('menu_key'=>'store_slide','menu_name'=>Language::get('nc_member_path_store_slide'),'menu_url'=>'index.php?act=store_setting&op=store_slide'),
+            
             5=>array('menu_key'=>'store_theme','menu_name'=>'店铺主题','menu_url'=>'index.php?act=store_setting&op=theme'),
-
+        
             7 => array(
                 'menu_key' => 'store_mobile',
                 'menu_name' => '手机店铺设置',

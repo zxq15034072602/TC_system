@@ -31,17 +31,34 @@ class show_storeControl extends BaseStoreControl {
             $goods_list = $this->getGoodsMore($new_goods_list, $recommended_goods_list);
             Tpl::output('new_goods_list',$goods_list[1]);
             Tpl::output('recommended_goods_list',$goods_list[2]);
-
+            //店员列表
+            $seller_model=Model();
+            $store_seller_list=$seller_model->table("seller,member")->where(array("store_id"=>$this->store_info['store_id']))->on("seller.member_id=member.member_id")->join("left join")->select();
+            Tpl::output('store_seller_list',$store_seller_list);
             //幻灯片图片
             if($this->store_info['store_slide'] != '' && $this->store_info['store_slide'] != ',,,,'){
                 Tpl::output('store_slide', explode(',', $this->store_info['store_slide']));
                 Tpl::output('store_slide_url', explode(',', $this->store_info['store_slide_url']));
             }
+            //风采展示图片
+            if($this->store_info['store_style_show_img'] != '' && $this->store_info['store_style_show_img'] != ',,,,'){
+                Tpl::output('store_style_show_img', explode(',', $this->store_info['store_style_show_img']));
+                
+            }
+            //最新问题
+            $question_model=Model();
+            $question_list=$question_model->table("question")->where("question_status=1")->order("rand()")->limit(1)->select();
+            if($question_list){
+                foreach ($question_list as &$question){
+                    $question["answers"]=$question_model->table("answer")->order("answer_id desc")->where("answer_qid=$question[question_id]")->limit(5)->select();
+                }
+            }
+            Tpl::output('question_list', $question_list);
         } else {
             Tpl::output('store_decoration_only', $this->store_decoration_only);
         }
         Tpl::output('page','index');
-        Tpl::showpage('index');
+        Tpl::showpage('self_index',"self_stroe_layout");
     }
 
     private function getGoodsMore($goods_list1, $goods_list2 = array()) {

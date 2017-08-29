@@ -161,6 +161,18 @@
             </span></dd>
         </dl>
         <?php }?>
+        <?php if($output['store_seller_list']&&is_array($output['store_seller_list'])) {?>
+        <dl>
+          <dt>个人介绍<?php echo $lang['nc_colon'];?></dt>
+          <dd><span class="w400">
+            <textarea rows="10" cols="10" name="seller_description" style="width:350px;height:100%">
+            <?php echo $output['member_info']["seller_description"]?>
+            </textarea>
+            </span><span>
+                                【门店所属店员信息展示】
+            </span></dd>
+        </dl>
+        <?php }?>
         <dl class="bottom">
           <dt></dt>
           <dd>

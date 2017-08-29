@@ -147,6 +147,24 @@
         <p class="hint"><?php echo $lang['store_setting_seo_description_help']; ?></p>
       </dd>
     </dl>
+    <dl>
+      <dt>发展历程：</dt>
+      <dd>
+      <p>
+          <textarea name="store_develop" rows="3" class="textarea w400" id="remark_input" ><?php echo $output['store_info']['store_develop'];?></textarea>
+       </p>
+       <p style="color:orange;">用于门店首页发展历程展示，建议输入的字数不要超过300个字</p>
+      </dd>
+    </dl>
+     <dl>
+      <dt>门店介绍：</dt>
+      <dd>
+      <p>
+          <textarea name="store_style_show" rows="3" class="textarea w400" id="remark_input" ><?php echo $output['store_info']['store_style_show'];?></textarea>
+       </p>
+       <p style="color:orange;">用于门店首页风采展示左侧门店文字介绍，建议输入的字数不要超过500个字</p>
+      </dd>
+    </dl>
     <div class="bottom">
         <label class="submit-border"><input type="submit" class="submit" value="<?php echo $lang['store_goods_class_submit'];?>" /></label>
       </div>

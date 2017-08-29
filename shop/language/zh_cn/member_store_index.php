@@ -261,7 +261,7 @@ $lang['store_setting_label_tip']			= '此处理店铺页logo；<br/><span style=
 $lang['store_setting_change_avatar']		= '店铺头像';
 $lang['store_setting_sign_tip']				= '此处为店铺方形头像；<br/><span style="color:orange;">建议使用宽100像素*高100像素内的方型图片；点击下方"提交"按钮后生效。</span>';
 $lang['store_setting_change_banner']		= '店铺条幅';
-$lang['store_setting_banner_tip']			= '此处为店铺页banner导航；<br/><span style="color:orange;">建议使用宽1000像素*高250像素的图片；点击下方"提交"按钮后生效。</span>';
+$lang['store_setting_banner_tip']			= '此处为店铺页banner导航；<br/><span style="color:orange;">建议使用宽1200像素*高248像素的图片；点击下方"提交"按钮后生效。</span>';
 $lang['store_setting_uri']					= '二级域名';
 $lang['store_setting_uri_tip']				= '可留空，域名长度应为';
 $lang['store_setting_domain_times']			= '已修改次数为';
@@ -494,7 +494,7 @@ $lang['store_coupon_error']		= '该优惠券不存在';
 $lang['store_slide_upload_fail']		= '上传失败';
 $lang['store_slide_image_upload']		= '图片上传';
 $lang['store_slide_description_one']	= '最多可上传5张幻灯片图片。';
-$lang['store_slide_description_two']	= '支持jpg、jpeg、gif、png格式上传，建议图片宽度940px、高度在300px到440px之间、大小%.2fM以内的图片。提交2~5张图片可以进行幻灯片播放，一张图片没有幻灯片播放效果。';
+$lang['store_slide_description_two']	= '支持jpg、jpeg、gif、png格式上传，建议图片宽度666px、高度在317px、大小%.2fM以内的图片。提交2~5张图片可以进行幻灯片播放，一张图片没有幻灯片播放效果。';
 $lang['store_slide_description_three']	= '操作完成以后，按“提交”按钮，可以在当前页面进行幻灯片展示。';
 $lang['store_slide_description_fore']	= '跳转链接必须带有<b style="color:red;">“http://”</b>';
 $lang['store_slide_submit']				= '提交';
