@@ -331,7 +331,7 @@
 							<?php }?>
 							<?php }?>
 							<div class="seeSmallBox_qty">
-								<a href="">查看更多</a>
+								<a href="<?php echo urlShop("question","question_list",array("question_status"=>3))?>">查看更多</a>
 							</div>
 							<?php }?>
 						</div>
