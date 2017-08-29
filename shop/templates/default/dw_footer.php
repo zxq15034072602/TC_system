@@ -58,7 +58,7 @@
 	    			<div class="healthFont_qty"><a href="<?php echo urlShop("article","article",array('ac_id'=>2)) ?>">帮助中心</a></div>
 	    			<div class="healthFont_qty"><a href="<?php echo urlShop("article","article",array('ac_id'=>6)) ?>">客服中心</a></div>
 	    			<div class="healthFont_qty"><a href="<?php echo urlShop("article","article",array('ac_id'=>3)) ?>">店主之家</a></div>
-	    			<div class="healthFont_qty"><a href="<a href="<?php echo urlShop("article","article",array('ac_id'=>4)) ?>">支付方式</a></div>
+	    			<div class="healthFont_qty"><a href="<?php echo urlShop("article","article",array('ac_id'=>4)) ?>">支付方式</a></div>
 	    		</div>
 	    		<div class="homeBox_qty">
 	    			<div class="home_qty">关于我们</div>
