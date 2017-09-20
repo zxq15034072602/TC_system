@@ -201,7 +201,7 @@
             <p class="parting_line_zn"></p>
             <ul class="our_service_box_zn">
                 <li class="our_service_list_zn">
-                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/our_service_zn_01.jpg" alt="">
+                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/jiankangguanlishi.png" alt="">
                     <p class="service_title_zn">健康管理师</p>
                     <div class="hide_box_zn">
                         <p class="hide_title_zn">健康管理师</p>
@@ -209,11 +209,11 @@
                         <p class="hide_con_zn">
                             健康管理师是从事个体和群体健康的检测、分析、评估以及健康咨询、指导和危险因素干预等工作的专业人员。主要从事的工作内容包括：采集和管理个人或群体的健康信息；评估个人或群体的健康和疾病危险性；进行个人或群体的健康咨询与指导；制定个人或群体的健康促进计划。
                         </p>
-                        <span><a href="javascrip:;">了解更多</a></span>
+                        <span><a href="<?php echo urlShop("article","member_advisor_list")?>">了解更多</a></span>
                     </div>
                 </li>
                 <li class="our_service_list_zn">
-                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/our_service_zn_01.jpg" alt="">
+                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/yinyangshi.png" alt="">
                     <p class="service_title_zn">营养师</p>
                     <div class="hide_box_zn">
                         <p class="hide_title_zn">营养师</p>
@@ -221,11 +221,11 @@
                         <p class="hide_con_zn">
                             5A健管体系中的指导师也由取得国家相应职业资格证的专业人员担任，包括营养师心理咨询师、体能康复师、医师、药师、社会师等，由这些专业人士提供一对一咨询指导和跟踪辅导服务，使客户从营养、心理、运动康复、社会等多角度得到全面的健康维护和保障服务。
                         </p>
-                        <span><a href="javascrip:;">了解更多</a></span>
+                        <span><a href="http://www.shiweijian.com.cn/a/yingyangshi/">了解更多</a></span>
                     </div>
                 </li>
                 <li class="our_service_list_zn">
-                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/our_service_zn_01.jpg" alt="">
+                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/jiankangganyu.png" alt="">
                     <p class="service_title_zn">健康干预</p>
                     <div class="hide_box_zn">
                         <p class="hide_title_zn">健康干预</p>
@@ -233,7 +233,7 @@
                         <p class="hide_con_zn">
                             实施健康干预是变被动的疾病治疗为主动的管理健康，达到节约医疗费用支出、维护健康的目的。具体做法是通过专业的护理人员对个人和群体提供有针对性的健康指导，并干预实施。它帮助、指导人们成功有效地把握与维护自身的健康。
                         </p>
-                        <span><a href="javascrip:;">了解更多</a></span>
+                        <span><a href="http://www.shiweijian.com.cn">了解更多</a></span>
                     </div>
                 </li>
             </ul>
