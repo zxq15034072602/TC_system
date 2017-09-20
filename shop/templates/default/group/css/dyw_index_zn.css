@@ -26,6 +26,12 @@ body{
     margin-left:12px;
     margin-right:12px;
 }
+#login_zn span:nth-child(1){
+    font-size:12px;
+    color:#e5e5e5;
+    margin-left:12px;
+    margin-right:12px;
+}
 /*导航部分*/
 #head_zn{
     width:100%;

@@ -11,10 +11,19 @@
 </head>
 <body>
     <div id="login_zn">
-        <p>
+        <p>  
+        <?php if ($_SESSION['is_login']) {?>
+            <span><a href="<?php echo urlShop('login','logout');?>">退出</a></span>
+            <span>|</span>
+            <span><a href="<?php echo urlShop('member','home');?>">个人中心</a></span>
+            <span style="font-size:12px;color:#e5e5e5;margin-left:12px;margin-right:12px;">|</span>
+            <span><a href="<?php echo urlShop('member','home');?>"><?php echo $_SESSION['member_name'];?></a></span>
+            
+         <?php } else {?>
             <span><a href="<?php echo urlShop("login","login")?>">登录</a></span>
             <span>|</span>
             <span><a href="<?php  echo urlShop("login","register")?>">注册</a></span>
+        <?php }?>
         </p>
     </div>
     <header id="head_zn">
