@@ -118,7 +118,7 @@ focus_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>'
           <?php } ?>
           <?php } ?>
         </ul>
-        <div class="add-focus"><a class="btn-add-nofloat" href="JavaScript:add_video_screen('pic');"><?php echo '图片调用';?></a>
+        <div class="add-focus"><a class="btn-add-nofloat" href="JavaScript:add_screen('pic');"><?php echo '图片调用';?></a>
             <?php if(!empty($output['screen_adv_list']) && is_array($output['screen_adv_list'])){ ?>
             <a class="btn-add-nofloat" href="JavaScript:add_screen('adv');"><?php echo '广告调用';?></a>
             <?php } ?>
