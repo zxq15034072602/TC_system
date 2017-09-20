@@ -1772,9 +1772,9 @@ function dcache($key = null, $prefix = ''){
  * @param int $rec_id 推荐位ID
  * @return string 推荐位内容
  */
-function rec($rec_id = null){
+function rec($rec_id = null,$show_title=0){
 	import('function.rec_position');
-	return rec_position($rec_id);
+	return rec_position($rec_id,$show_title);
 }
 
 /**

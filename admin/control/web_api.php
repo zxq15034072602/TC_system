@@ -330,7 +330,7 @@ class web_apiControl extends SystemControl {
 			$code_type = $code['code_type'];
 			$var_name = $code['var_name'];
 			$code_info = $_POST[$var_name];
-			file_put_contents("d://error.txt", var_export($code_info,true));
+			//file_put_contents("d://error.txt", var_export($code_info,true));
 			$key = intval($_POST['key']);
 			$ap_pic_id = intval($_POST['ap_pic_id']);
 			if ($ap_pic_id > 0 && $ap_pic_id == $key) {

@@ -149,6 +149,8 @@ $arr = array(
 				    array('args'=>'focus_edit,video_api,website',		    'text'=>$lang['nc_video_recommend']),
 					array('args'=>'document,document,website',				'text'=>$lang['nc_document']),
 					array('args'=>'navigation,navigation,website',			'text'=>$lang['nc_navigation']),
+				    array('args'=>'groupnavigation,groupnavigation,website',			'text'=>"集团页面导航"),
+				    array('args'=>'focus_edit,group_api,website',			'text'=>"集团首页banner"),
 					array('args'=>'ap_manage,adv,website',					'text'=>$lang['nc_adv_manage']),
 					array('args'=>'web_config,web_config,website',			'text'=>$lang['nc_web_index']),
 					array('args'=>'rec_list,rec_position,website',			'text'=>$lang['nc_admin_res_position']),

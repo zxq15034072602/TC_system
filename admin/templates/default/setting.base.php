@@ -35,6 +35,19 @@
             </span></td>
           <td class="vatop tips"><span class="vatop rowform">默认网站LOGO,通用头部显示，最佳显示尺寸为240*60像素</span></td>
         </tr>
+        
+         <tr>
+          <td colspan="2" class="required"><label for="group_logo">集团首页Logo:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
+            <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.DS.$output['list_setting']['group_logo']);?>"></div>
+            </span><span class="type-file-box"><input type='text' name='textfield' id='textfield10' class='type-file-text' /><input type='button' name='button' id='button1' value='' class='type-file-button' />
+            <input name="group_logo" type="file" class="type-file-file" id="group_logo" size="30" hidefocus="true" nc_type="change_site_logo">
+            </span></td>
+          <td class="vatop tips"><span class="vatop rowform">默认网站LOGO,通用头部显示，最佳显示尺寸为110*39像素</span></td>
+        </tr>
+        
         <tr>
           <td colspan="2" class="required"><label for="site_logo"><?php echo $lang['member_logo'];?>:</label></td>
         </tr>
@@ -207,6 +220,9 @@
 $(function(){
 	$("#site_logo").change(function(){
 		$("#textfield1").val($(this).val());
+	});
+	$("#group_logo").change(function(){
+		$("#textfield10").val($(this).val());
 	});
 	$("#member_logo").change(function(){
 		$("#textfield2").val($(this).val());

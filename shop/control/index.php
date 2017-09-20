@@ -8,6 +8,60 @@
 
 defined('InShopNC') or exit('Access Invalid!');
 class indexControl extends BaseHomeControl{ //父类定义了公共头部，以及模板路径等
+    public function groupindexOp(){//集团首页
+        Model('seo')->type('index')->show();
+        Tpl::setDir('jituan');
+        Tpl::setLayout('home_group_layout');
+        //板块信息
+        $model_web_config = Model('web_config');
+        $web_html = $model_web_config->getWebHtml('index');
+        $condition['web_id']=103;
+        $webcode=$model_web_config->getCodeList($condition);
+        if($webcode){//获取集团推荐
+            foreach ($webcode as &$group_recommend){
+                $group_recommend[code_info]=$model_web_config->get_array($group_recommend['code_info'],"array");
+            }
+        }
+        $condition['web_id']=151;
+        $webcode_join=$model_web_config->getCodeList($condition);
+        
+        if($webcode_join){//获取集团加入我们
+           foreach ($webcode_join as &$group_join){
+                $group_join[code_info]=$model_web_config->get_array($group_join['code_info'],"array");
+            }
+        }
+        //友情链接
+        $model_link = Model('link');
+        $link_list = $model_link->getLinkList($condition,$page);
+        /**
+         * 整理图片链接
+         */
+        if (is_array($link_list)){
+            foreach ($link_list as $k => $v){
+                if (!empty($v['link_pic'])){
+                    $link_list[$k]['link_pic'] = UPLOAD_SITE_URL.'/'.ATTACH_PATH.'/common/'.DS.$v['link_pic'];
+                }
+            }
+        }
+        /*
+         * 新闻动态
+         */
+        $article_model=Model('article');
+        $condition=array();
+       
+        $condition['article_recommend']=1;
+        $condition['order']="article_id desc";
+        $condition['ac_id'] =14;
+        $condition['limit']=7;
+        $article_list=$article_model->getArticleList($condition);
+        Tpl::output('new_article',$article_list);
+        Tpl::output('group_recommend',$webcode);
+        Tpl::output('group_join',$webcode_join);
+        Tpl::output('web_html',$web_html);
+        Tpl::output('link_list',$link_list);
+        Tpl::showpage('index');
+        
+    }
     public function selfindexOp(){//自定首页
         Model('seo')->type('index')->show();
         Tpl::setDir('duyiwang');
@@ -22,6 +76,7 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
                 $video_recommend[code_info]=$model_web_config->get_array($video_recommend['code_info'],"array");
             }
         }
+       
         //友情链接
         $model_link = Model('link');
         $link_list = $model_link->getLinkList($condition,$page);

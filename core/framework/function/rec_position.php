@@ -6,7 +6,7 @@ defined('InShopNC') or exit('Access Invalid!');
  * @param unknown_type $rec_id
  * @return string
  */
-function rec_position($rec_id = null){
+function rec_position($rec_id = null,$show_title=0){
 	if (!is_numeric($rec_id)) return null;
 	$string = '';
 
@@ -35,6 +35,7 @@ function rec_position($rec_id = null){
 		}
 		$string = "<ul>{$string}</ul>";
 	}else{//图片
+	 
 		$width = $height = '';
 		if (is_numeric($info['content']['width'])) $width = "width=\"{$info['content']['width']}\"";
 		if (is_numeric($info['content']['height'])) $height = "height=\"{$info['content']['height']}\"";
@@ -52,9 +53,13 @@ function rec_position($rec_id = null){
 	            if ($info['pic_type'] == 1) $v['title'] = UPLOAD_SITE_URL.'/'.$v['title'];
 	            $href = '';
 	            if ($v['url'] != '') $href = "href=\"{$v['url']}\"";
-	            $string .= "<a {$target} {$href}><img {$width} {$height} src=\"{$v['title']}\"></a>";
+	            $string .= "<a {$target} {$href}><img {$width} {$height} src=\"{$v['title']}\" ></a>";
+	            if($show_title){
+	                $string .="<p>$info[title]</p>";
+	            }
 		    }
 		}
+		
 	}
 	return $string;
 }

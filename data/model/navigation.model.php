@@ -41,7 +41,10 @@ class navigationModel {
 		}
 		if ($condition['nav_location'] != ''){
 			$condition_str .= " and nav_location = '". $condition['nav_location'] ."'";
-		}		
+		}	
+		if($condition["no_nav_location"]){
+		    $condition_str .= " and nav_location != '". $condition['no_nav_location'] ."'";
+		}
 		
 		return $condition_str;
 	}

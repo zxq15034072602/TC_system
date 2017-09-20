@@ -1,13 +1,13 @@
 <?php
 /**
- * 页面导航管理
+ * 集团页面导航管理
  *
  *
  *
  **by 太常系统 www.sxtaichang.com*/
 
 defined('InShopNC') or exit('Access Invalid!');
-class navigationControl extends SystemControl{
+class groupnavigationControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
 		Language::read('navigation');
@@ -16,7 +16,7 @@ class navigationControl extends SystemControl{
 	/**
 	 * 页面导航
 	 */
-	public function navigationOp(){
+	public function groupnavigationOp(){
 		$lang	= Language::getLangContent();
 		$model_navigation = Model('navigation');
 		/**
@@ -38,10 +38,8 @@ class navigationControl extends SystemControl{
 		 * 检索条件
 		 */
 		$condition['like_nav_title'] = trim($_GET['search_nav_title']);
-		$condition['nav_location'] = trim($_GET['search_nav_location']);
-		$condition["no_nav_location"]=4;
+		$condition['nav_location'] = 4;
 		$condition['order'] = 'nav_sort asc';
-		
 		/**
 		 * 分页
 		 */
@@ -67,6 +65,9 @@ class navigationControl extends SystemControl{
 					case '3':
 					    $navigation_list[$k]['nav_location'] = $lang['navigation_index_self'];
 					    break;
+				    case '4':
+				        $navigation_list[$k]['nav_location'] = $lang['navigation_group_index_nav'];
+				        break;
 				}
 				switch ($v['nav_new_open']){
 					case '0':
@@ -83,7 +84,7 @@ class navigationControl extends SystemControl{
 		Tpl::output('page',$page->show());
 		Tpl::output('search_nav_title',trim($_GET['search_nav_title']));
 		Tpl::output('search_nav_location',trim($_GET['search_nav_location']));
-		Tpl::showpage('navigation.index');
+		Tpl::showpage('groupnavigation.index');
 	}
 
 	/**
@@ -183,11 +184,11 @@ class navigationControl extends SystemControl{
 					dkcache('nav');
 					$url = array(
 						array(
-							'url'=>'index.php?act=navigation&op=navigation_add',
+							'url'=>'index.php?act=groupnavigation&op=navigation_add',
 							'msg'=>$lang['navigation_add_again'],
 						),
 						array(
-							'url'=>'index.php?act=navigation&op=navigation',
+							'url'=>'index.php?act=groupnavigation&op=groupnavigation',
 							'msg'=>$lang['navigation_add_back_to_list'],
 						)
 					);
@@ -237,6 +238,7 @@ class navigationControl extends SystemControl{
 		Tpl::output('goods_class_list',$goods_class_list);
 		Tpl::output('article_class_list',$article_class_list);
 		Tpl::output('video_class_list',$video_class_list);
+		Tpl::output("group_navigation","1");
 		Tpl::showpage('navigation.add');
 	}
 
@@ -331,11 +333,11 @@ class navigationControl extends SystemControl{
 					dkcache('nav');
 					$url = array(
 						array(
-							'url'=>'index.php?act=navigation&op=navigation_edit&nav_id='.intval($_POST['nav_id']),
+							'url'=>'index.php?act=groupnavigation&op=navigation_edit&nav_id='.intval($_POST['nav_id']),
 							'msg'=>$lang['navigation_edit_again'],
 						),
 						array(
-							'url'=>'index.php?act=navigation&op=navigation',
+							'url'=>'index.php?act=groupnavigation&op=groupnavigation',
 							'msg'=>$lang['navigation_add_back_to_list'],
 						)
 					);
@@ -391,6 +393,7 @@ class navigationControl extends SystemControl{
 		Tpl::output('goods_class_list',$goods_class_list);
 		Tpl::output('article_class_list',$article_class_list);
 		Tpl::output('video_class_list',$video_class_list);
+		Tpl::output("group_navigation",1);
 		Tpl::showpage('navigation.edit');
 	}
 
@@ -404,9 +407,9 @@ class navigationControl extends SystemControl{
 			$model_navigation->del(intval($_GET['nav_id']));
 			dkcache('nav');
 			$this->log(L('navigation_edit_succ').'[ID:'.intval($_GET['nav_id']).']',null);
-			showMessage($lang['navigation_index_del_succ'],'index.php?act=navigation&op=navigation');
+			showMessage($lang['navigation_index_del_succ'],'index.php?act=groupnavigation&op=groupnavigation');
 		}else {
-			showMessage($lang['navigation_index_choose_del'],'index.php?act=navigation&op=navigation');
+			showMessage($lang['navigation_index_choose_del'],'index.php?act=groupnavigation&op=groupnavigation');
 		}
 	}
 
