@@ -32,11 +32,7 @@
                 <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$output['setting_config']['group_logo']; ?>" alt="">
             </a>
             <ul id="head_nav_box_zn">
-                <li class="head_list_zn">
-                    <a  href="">
-                        太常集团
-                    </a>
-                </li>
+                
                 <?php if(!empty($output['nav_list']) && is_array($output['nav_list'])){?>
                 <?php foreach($output['nav_list'] as $nav){?>
                 <?php if($nav['nav_location'] == '4'){?>
@@ -81,6 +77,11 @@
                 <?php }?>
                 <?php }?>
                 <?php }?>
+                <li class="head_list_zn">
+                    <a  href="">
+                        太常集团
+                    </a>
+                </li>
             </ul>
             <div class="search_box">
                 <span class="search_zn">
