@@ -54,6 +54,11 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
         $condition['ac_id'] =14;
         $condition['limit']=7;
         $article_list=$article_model->getArticleList($condition);
+        if($article_list){
+            foreach ($article_list as &$article) {
+                $article['article_time']=date("Y-m-d h:i:s",$article['article_time']);
+            }
+        }
         Tpl::output('new_article',$article_list);
         Tpl::output('group_recommend',$webcode);
         Tpl::output('group_join',$webcode_join);

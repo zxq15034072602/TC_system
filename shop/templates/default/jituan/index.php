@@ -135,6 +135,8 @@
                                 <span><?php echo sprintf("%02d",$k+1) ?></span>
                                 <p><?php echo str_cut($article['article_title'], 70)?></p>
                             </a>
+                            <i class="news_time_yyt" style="display: block;width: auto;
+                            height: 30px;line-height: 20px;font-size:12px;color:#8c8c8c;padding-left: 39px;"><?php echo $article['article_time']?></i>
                         </li>
                         <?php }?>
                        <?php }?>
