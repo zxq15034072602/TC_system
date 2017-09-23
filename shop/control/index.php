@@ -377,4 +377,37 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
 	    echo json_encode($week_arr);
 	    die;
 	}
+	/*
+	 * 提交加盟意向
+	 */
+	public function add_join_messageOp(){
+	    Tpl::setDir('jituan');
+	    Tpl::setLayout('home_group_layout');
+	    $message="";
+	   if(empty($_REQUEST["join_type"])){
+	       $message="请选择加盟意向";
+	   }elseif(empty($_REQUEST["join_name"])){
+	       $message="请填写您的姓名";
+	   }elseif (empty($_REQUEST["join_mobile"])){
+	       $message="请填写您的手机";
+	   }elseif (!preg_match('/^0?(13|15|17|18|14)[0-9]{9}$/i',$_REQUEST['join_mobile'])){
+	       $message="请填写正确的手机";
+	   }
+	   if($message){
+	       showMessage($message,'','html','error');
+	   }
+	   $join_message_model=Model('join_message');
+	   $insert_array=array(
+	       "join_message_type"=>$_REQUEST["join_type"],
+	       "join_message_name"=>$_REQUEST['join_name'],
+	       "join_message_mobile"=>$_REQUEST['join_mobile'],
+	       "join_message_time" =>time(),
+	   );
+	   $result=$join_message_model->save($insert_array);
+	   if($result){
+	       showMessage("您的意向已提交，请耐性等待",'','html','succ');
+	   }else{
+	       showMessage("您的提交失败，请重新填写",'','html','error');
+	   }
+	}
 }

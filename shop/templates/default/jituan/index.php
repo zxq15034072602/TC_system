@@ -8,6 +8,7 @@
     <!--<link rel="stylesheet" href="css/demo.css">-->
     <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/group/css/style.css">
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/modernizr.custom.53451.js"></script>
+    
 </head>
 <body>
     <div id="login_zn">
@@ -354,41 +355,78 @@
         <p class="foot_end_zn"><?php echo html_entity_decode($output['setting_config']['statistics_code'],ENT_QUOTES); ?></p>
         <p class="foot_end_zn">reserved.</p>
     </footer>
+    <!-- 客服浮动层start -->
     <ul id="prompt_zn">
-        <li>
-            <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_01.png" alt="">
-            <ul class="online_zn">
-                <li class="online_list_zn">
-                    <a href="<?php echo urlShop("show_joinin")?>">
-                        <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/on_line_zn.png" alt="">
-                        <span>商店加盟</span>
-                    </a>
-                
-            </ul>
-            <i></i>
-        </li>
-        <li>
-            <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_02.png" alt="">
-            <div class="line_us_zn">
-                <p>独易网</p>
-                <p><?php echo $GLOBALS['setting_config']['site_tel400']; ?></p>
+    <li>
+        <div class="fixed_icon_zn">
+            <div class="fixed_box_zn" onClick="openSDK()">
+                <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_01.png" alt="">
+                <div class="title_fixed_zn">在线咨询</div>
             </div>
-            <i></i>
-        </li>
-        <li>
-            <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_03.png" alt="">
-            <div class="leave_tel_zn">
-                <p>留下您的电话，方便我们联系您</p>
-                <input type="text">
+        </div>
+      
+    </li>
+    <li>
+        <div class="fixed_icon_zn">
+            <div class="fixed_box_zn">
+                <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_02.png" alt="">
+                <div class="title_fixed_zn">联系电话</div>
             </div>
-            <i></i>
-        </li>
-        <li>
-            <a href="#">
-                <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_04.png" alt="">
-            </a>
-        </li>
-    </ul>
+        </div>
+        <div class="line_us_zn">
+            <p class="line_us_title_zn">独易网</p>
+            <p class="line_us_phone_zn"><?php echo $GLOBALS['setting_config']['site_tel400']; ?></p>
+        </div>
+    </li>
+    <li class="prompt_list_zn">
+        <div class="fixed_icon_zn">
+            <div class="fixed_box_zn">
+                <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_03.png" alt="">
+                <div class="title_fixed_zn">加盟意向</div>
+            </div>
+        </div>
+        <div class="leave_tel_zn">
+            <p class="join_intent_zn">加盟意向</p>
+            <p class="click_close_zn">×</p>
+            <form action="index.php?act=index&op=add_join_message" method="post">
+                <div class="check_zn">
+                    <label><img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/check_gray_zn.jpg" alt=""/><input name="join_type" type="radio"  class="man_yyt" value="2"/><span>食维健</span></label>
+                    <span>|</span>
+                    <label><img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/check_gray_zn.jpg" alt=""/><input name="join_type" type="radio"  class="woman_yyt" value="1" /><span>独一张</span></label>
+                </div>
+                <p class="leave_phone_zn">
+                    留下您的电话，我们将快速联系您：
+                </p>
+                <div class="name_zn">
+                    <span>姓名</span>
+                    <input type="text" name="join_name">
+                </div>
+                <div class="phone_zn">
+                    <span>电话</span>
+                    <input type="text" name="join_mobile">
+                </div>
+                <button class="submit_zn">提交</button>
+            </form>
+        </div>
+    </li>
+    <li>
+        <div class="fixed_icon_zn">
+            <div class="fixed_box_zn">
+                <a href="#">
+                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_04.png" alt="">
+                    <div class="title_fixed_zn">返回顶部</div>
+                </a>
+            </div>
+        </div>
+    </li>
+</ul>
+    <!--  客服浮动层end-->
+     <script src="https://qiyukf.com/script/b1ef49bc1fdf5ed87212333682e6d15a.js"></script>
+     <script type="text/javascript">
+            window.openSDK = function(){
+                ysf.open();
+            }
+     </script>
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/jquery.min.js"></script>
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/jquery.gallery.js"></script>
     <script>
@@ -444,6 +482,16 @@
             })
             $("#next").click(function(){
                 play();
+            })
+            $('.prompt_list_zn .fixed_icon_zn').click(function(){
+                $('.leave_tel_zn').show();
+            })
+            $('.click_close_zn').click(function(){
+                $('.leave_tel_zn').hide();
+            })
+            $('.check_zn label').change(function(){
+                $(this).siblings().children('img').attr('src','<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/check_gray_zn.jpg');
+                $(this).children('img').attr('src','<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/check_sure_zn.jpg');
             })
         })
     </script>

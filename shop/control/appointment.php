@@ -62,5 +62,6 @@ class appointmentControl extends BaseHomeControl{
         Tpl::output("member_info",$member_info);
         Tpl::showpage("appointment","home_dw_layout");
     }
+   
 }
 ?>

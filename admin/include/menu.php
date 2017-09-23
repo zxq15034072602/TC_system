@@ -163,6 +163,7 @@ $arr = array(
 				'text' => $lang['nc_operation'],
 				'list' => array(
 				    array('args'=>'index,appointment,operation',                'text'=>'预约体验'),
+				   array('args'=>'index,join_message,operation',                'text'=>'加盟意向'),
 					array('args'=>'setting,operation,operation',			    'text'=>$lang['nc_operation_set']),
 					array('args'=>'groupbuy_template_list,groupbuy,operation',	'text'=>$lang['nc_groupbuy_manage']),
                     array('args'=>'index,vr_groupbuy,operation',               'text'=>'虚拟抢购设置'),
