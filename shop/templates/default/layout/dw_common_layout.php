@@ -196,7 +196,7 @@ $(function(){
         <form class="search-form" method="get" action="<?php echo SHOP_SITE_URL;?>">
         <input type="hidden" value="search" id="search_act" name="act">
         <div class="search">
-            <input clstag="h|keycount|2016|03a" type="text" onKeyDown="javascript:if(event.keyCode==13) alert(1);" autocomplete="off" id="key" accesskey="s" class="search_add"    placeholder="请输入您要搜索的关键字" name="keyword" id="keyword">
+            <input clstag="h|keycount|2016|03a" type="text" onKeyDown="" autocomplete="off" id="key" accesskey="s" class="search_add"    placeholder="请输入您要搜索的关键字" name="keyword" id="keyword">
             <input type="submit" id="button" value="<?php echo $lang['nc_common_search'];?>" class="search_go">
         </div>
         </form>
