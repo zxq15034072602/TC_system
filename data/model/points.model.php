@@ -14,7 +14,7 @@ class pointsModel extends Model {
 	/**
 	 * 操作积分
 	 * @author ShopNC Develop Team
-	 * @param  string $stage 操作阶段 regist(注册),login(登录),comments(评论),order(下单),system(系统),other(其他),pointorder(积分礼品兑换),app(同步积分兑换)
+	 * @param  string $stage 操作阶段 regist(注册),login(登录),comments(评论),order(下单),system(系统),other(其他),pointorder(积分礼品兑换),app(同步积分兑换),from_store(门店开卡)
 	 * @param  array $insertarr 该数组可能包含信息 array('pl_memberid'=>'会员编号','pl_membername'=>'会员名称','pl_adminid'=>'管理员编号','pl_adminname'=>'管理员名称','pl_points'=>'积分','pl_desc'=>'描述','orderprice'=>'订单金额','order_sn'=>'订单编号','order_id'=>'订单序号','point_ordersn'=>'积分兑换订单编号');
 	 * @param  bool $if_repeat 是否可以重复记录的信息,true可以重复记录，false不可以重复记录，默认为true
 	 * @return bool
@@ -90,6 +90,12 @@ class pointsModel extends Model {
 				}
 				$insertarr['pl_points'] = $insertarr['rebate_amount'];
 				break;
+			case 'from_store':
+			    if (!$insertarr['pl_desc']){
+			        $insertarr['pl_desc'] = $insertarr['store_name'].'开卡';
+			    }
+			    $insertarr['pl_points'] = intval(C('points_reg'));
+			    break;
 			case 'other':
 				break;
 		}

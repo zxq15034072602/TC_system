@@ -1286,7 +1286,12 @@ class BaseSellerControl extends Control {
                 array('name' => '账号组', 'act'=>'store_account_group', 'op'=>'group_list'),
                 array('name' => '账号日志', 'act'=>'seller_log', 'op'=>'log_list'),
                 array('name' => '店铺消费', 'act'=>'store_cost', 'op'=>'cost_list'),
-            ))
+            )),
+            'member_manage'=>array("name"=>"会员管理","child"=>array(
+                array("name"=>"会员列表",'act'=>'store_member_manage','op'=>'store_member_list'),
+                //array("name"=>"会员消费记录",'act'=>'store_member_sales','op'=>'member_sales'),
+            )
+            )
         );
         return $menu_list;
     }

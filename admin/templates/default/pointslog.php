@@ -98,7 +98,10 @@
 	              		break;
               		case 'app':
 	              		echo $lang['admin_points_stage_app'];
-	              		break;                  		
+	              		break; 
+              		case 'from_store':
+              		    echo "会员开卡";
+              		    break;
 	          }?></td>
         <td><?php echo $v['pl_desc'];?></td>
       </tr>

@@ -251,7 +251,7 @@ class memberModel extends Model {
 	 * @param	array $param 会员信息
 	 * @return	array 数组格式的返回结果
 	 */
-	public function addMember($param) {
+	public function addMember($param,$type=0) {
 		if(empty($param)) {
 			return false;
 		}
@@ -267,7 +267,9 @@ class memberModel extends Model {
 		    $member_info['member_old_login_time'] = TIMESTAMP;
 		    $member_info['member_login_ip']		= getIp();
 		    $member_info['member_old_login_ip']	= $member_info['member_login_ip'];
-
+            $member_info["member_card"]               =$param['member_card'];
+		    $member_info['from_store']                     =$param['from_store']?$param['from_store']:0;
+            
 		    $member_info['member_truename']		= $param['member_truename'];
 		    $member_info['member_qq']			= $param['member_qq'];
 		    $member_info['member_sex']			= $param['member_sex'];
@@ -307,7 +309,12 @@ class memberModel extends Model {
             $rs = $this->table('sns_albumclass')->insert($insert);
             //添加会员积分
             if (C('points_isuse')){
-                Model('points')->savePointsLog('regist',array('pl_memberid'=>$insert_id,'pl_membername'=>$param['member_name']),false);
+                if($type==0){
+                    Model('points')->savePointsLog('regist',array('pl_memberid'=>$insert_id,'pl_membername'=>$param['member_name']),false);
+                }elseif($type==1){
+                    Model('points')->savePointsLog('from_store',array('pl_memberid'=>$insert_id,'pl_membername'=>$param['member_name'],'store_name'=>$_SESSION['store_name']),false);
+                }
+                
             }
 		    $this->commit();
 		    return $insert_id;
