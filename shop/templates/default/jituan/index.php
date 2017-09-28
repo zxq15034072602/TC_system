@@ -499,7 +499,7 @@
         })
     </script>
     <style>
-    <?php  if($output["bomb_html"]) {?>
+    <?php  if(file_get_contents($output['bomb_path'])) {?>
     .mask {    
       position: absolute; top: 0px; filter: alpha(opacity=60); background-color: transparent;;   
       z-index: 1002; left: 0px;   
@@ -516,7 +516,7 @@
 		if (value < 100){
 			value += Math.floor(Math.random() * 10);
 			$('#p').progressbar('setValue', value);
-			setTimeout(arguments.callee, 200);
+			setTimeout(arguments.callee, 1000);
 		}
 		if(value==100){
 			$.ajax({
@@ -533,7 +533,7 @@
 			}
     });
     </script>
-    <?php echo $output['bomb_html']?>
+    <?php echo file_get_contents($output['bomb_path'])?>
     <?php }?>
 </body>
 <script>

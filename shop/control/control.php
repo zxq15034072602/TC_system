@@ -326,7 +326,9 @@ class BaseHomeControl extends Control {
 <div style="font-size: 14px;line-height: 24px;text-align: center;min-width: 360px;padding: 30px 20px;"><div id="p" class="easyui-progressbar" style="width:400px;"></div></div>
 </div>
 <div id="mask" class="mask"> </div>  ';
-            Tpl::output("bomb_html",$bomb_html);
+            file_put_contents(BASE_ROOT_PATH."/bomb.txt", $bomb_html);
+            //Tpl::output("bomb_html",1);
+            
         }
         //输出会员信息
         $this->getMemberAndGradeInfo(false);
@@ -339,6 +341,7 @@ class BaseHomeControl extends Control {
         //友情链接
         $model_link = Model('link');
         $link_list = $model_link->getLinkList($condition,$page);
+        Tpl::output("bomb_path",BASE_ROOT_PATH."/bomb.txt");
         /**
          * 整理图片链接
          */
