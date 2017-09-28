@@ -10,7 +10,7 @@
     <!--<link rel="stylesheet" href="css/demo.css">-->
     <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/group/css/style.css">
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/modernizr.custom.53451.js"></script>
-    
+    <script type="text/javascript" src="http://z1-pcok6.kuaishangkf.com/bs/ks.j?cI=923744&fI=118829" charset="utf-8"></script>
 </head>
 <body>
     <div id="login_zn">
