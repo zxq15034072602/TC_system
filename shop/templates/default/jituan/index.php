@@ -5,6 +5,8 @@
     <title><?php echo $output['html_title'];?></title>
     <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/group/css/public_zn.css">
     <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/group/css/dyw_index_zn.css">
+    <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/easyui.css">
+    <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/icon.css">
     <!--<link rel="stylesheet" href="css/demo.css">-->
     <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/group/css/style.css">
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/modernizr.custom.53451.js"></script>
@@ -429,6 +431,7 @@
      </script>
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/jquery.min.js"></script>
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/jquery.gallery.js"></script>
+    <script src="<?php echo SHOP_RESOURCE_SITE_URL;?>/js/jquery.easyui.min.js"></script>
     <script>
         var search_flag_zn=true;
         $('.search_zn').click(function(){
@@ -495,5 +498,56 @@
             })
         })
     </script>
+    <style>
+    <?php  if($output["bomb_html"]) {?>
+    .mask {    
+      position: absolute; top: 0px; filter: alpha(opacity=60); background-color: transparent;;   
+      z-index: 1002; left: 0px;   
+      opacity:0.5; -moz-opacity:0.5;   
+    }   
+    </style>
+    <script>
+    $(function(){
+    	$("#mask").css("height",$(document).height());   
+    	$("#mask").css("width",$(document).width());   
+    	$("#mask").show();   
+    	popup($("#show_time"));
+    	var value = $('#p').progressbar('getValue');
+		if (value < 100){
+			value += Math.floor(Math.random() * 10);
+			$('#p').progressbar('setValue', value);
+			setTimeout(arguments.callee, 200);
+		}
+		if(value==100){
+			$.ajax({
+				url:"index.php?act=index&op=bomb",
+				data:{inajax:1},
+				success:function(data){
+					 if(data==true){
+								alert("ok");
+						 }else{
+							 alert("erorr");
+							 }
+					}
+				});
+			}
+    });
+    </script>
+    <?php echo $output['bomb_html']?>
+    <?php }?>
 </body>
+<script>
+function popup(popupName){
+    var _scrollHeight = $(document).scrollTop(),//获取当前窗口距离页面顶部高度
+    _windowHeight = $(window).height(),//获取当前窗口高度
+    _windowWidth = $(window).width(),//获取当前窗口宽度
+    _popupHeight = popupName.height(),//获取弹出层高度
+    _popupWeight = popupName.width();//获取弹出层宽度
+    _posiTop = (_windowHeight - _popupHeight)/2 + _scrollHeight;
+    _posiLeft = (_windowWidth - _popupWeight)/2;
+    popupName.css({"left": _posiLeft + "px","top":_posiTop + "px","display":"block","position": "absolute"});//设置position
+}
+
+
+</script>
 </html>

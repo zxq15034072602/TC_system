@@ -32,6 +32,8 @@
 <meta name="keywords" content="<?php echo $output['seo_keywords']; ?>" />
 <meta name="description" content="<?php echo $output['seo_description']; ?>" />
 <?php echo html_entity_decode($output['setting_config']['qq_appcode'],ENT_QUOTES); ?><?php echo html_entity_decode($output['setting_config']['sina_appcode'],ENT_QUOTES); ?><?php echo html_entity_decode($output['setting_config']['share_qqzone_appcode'],ENT_QUOTES); ?><?php echo html_entity_decode($output['setting_config']['share_sinaweibo_appcode'],ENT_QUOTES); ?>
+<link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/easyui.css">
+ <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/icon.css">
 <style type="text/css">
 body {
 _behavior: url(<?php echo SHOP_TEMPLATES_URL;
