@@ -146,11 +146,11 @@ $(document).ready(function(){
     });
     $(".good_add").change(function(){
         var price=$("#sales_price").val();
-        
 		 if($(this).is(':checked')){
 			 $("input[name='goods_sales_num_"+$(this).val()+"']").removeAttr("disabled");
 		 }else{
 			 var num=$("input[name='goods_sales_num_"+$(this).val()+"']").val();
+			 num=num||0;
 			 price=price-parseFloat($(this).attr("price"))*parseInt(num);
 			 $("input[name='goods_sales_num_"+$(this).val()+"']").attr("disabled","disabled");
 			 $("input[name='goods_sales_num_"+$(this).val()+"']").val("");
