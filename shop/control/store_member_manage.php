@@ -180,8 +180,8 @@ class store_member_manageControl extends BaseSellerControl{
             
             $obj_points = Model('points');
             $insert_arr['pl_memberid'] = $member_info['member_id'];
-            $insert_arr['pl_membername'] = $member_info['member_name'];
-           
+            $insert_arr['pl_membername'] = $member_info['member_truename']?$member_info['member_truename']:$member_info['member_name'];
+            $insert_arr['pl_adminname'] = $_SESSION['seller_name'];
             if ($_POST['operatetype'] == 2){
                 $insert_arr['pl_points'] = -$_POST['pointsnum'];
             }else {
@@ -287,6 +287,31 @@ class store_member_manageControl extends BaseSellerControl{
         $member_model=Model("member");
         $list = $member_model->getMemberInfo($condition);
         return $list;
+    }
+    /*
+     * ajax 查询会员
+     */
+    public function ajax_get_memberOp(){
+        $member_condition=$_REQUEST['member_condition'];
+        if($member_condition){
+            if(preg_match("/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/", $member_condition)){
+                $condition['member_mobile']=$member_condition;
+            }else{
+               $condition['member_card']=$member_condition;
+            }
+        }
+        $condition['from_store']=$_SESSION['store_id'];
+        $member_model=Model("member");
+        $store_member_list=$member_model->getMemberList($condition,"*");
+        if($store_member_list){
+            foreach ($store_member_list as $key=> $member){
+                $store_member_list[$key]['member_login_time']=date("Y-m-d",$member['member_login_time']);
+            }
+            echo json_encode(array("code"=>200,"member_list"=>$store_member_list));exit;
+        }else{
+            echo json_encode(array("code"=>500));exit;
+        }
+      
     }
     /**
      * 用户中心右边，小导航

@@ -1307,8 +1307,8 @@ class BaseSellerControl extends Control {
             )),
             'member_manage'=>array("name"=>"会员管理","child"=>array(
                 array("name"=>"会员列表",'act'=>'store_member_manage','op'=>'store_member_list'),
-                //array("name"=>"会员消费记录",'act'=>'store_member_sales','op'=>'member_sales'),
-               // array("name"=>"积分明细","act"=>'',"op"=>""),
+                array("name"=>"会员消费记录",'act'=>'store_member_sales','op'=>'member_sales'),
+                array("name"=>"积分明细","act"=>'store_member_points',"op"=>"pointslog"),
             )
             )
         );

@@ -60,6 +60,18 @@ class pointsModel extends Model {
 				$data['order_pointscount'] = array('exp','order_pointscount+'.$insertarr['pl_points']);
 				$obj_order->editOrderCommon($data,array('order_id'=>$insertarr['order_id']));
 				break;
+			case 'member_sales':
+			    if (!$insertarr['pl_desc']){
+			        $insertarr['pl_desc'] = '线下订单'.$insertarr['sales_sn'].'购物消费';
+			    }
+			    $insertarr['pl_points'] = 0;
+			    if ($insertarr['orderprice']){
+			        $insertarr['pl_points'] = @intval($insertarr['orderprice']/C('points_orderrate'));
+			        if ($insertarr['pl_points'] > intval(C('points_ordermax'))){
+			            $insertarr['pl_points'] = intval(C('points_ordermax'));
+			        }
+			    }
+			    break;
 			case 'system':
 				break;
 			case 'pointorder':
@@ -223,6 +235,9 @@ class pointsModel extends Model {
 		//描述
 		if ($condition_array['pl_desc_like']){
 			$condition_sql	.= " and `points_log`.pl_desc like '%{$condition_array['pl_desc_like']}%'";
+		}
+		if($condition_array['in_pl_memberid']){
+		    $condition_sql .=" and `points_log`.pl_memberid in({$condition_array['in_pl_memberid']})";
 		}
 		return $condition_sql;
 	}
