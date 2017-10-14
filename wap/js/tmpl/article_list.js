@@ -16,7 +16,9 @@ $(function(){
 			success:function(result){
 				var data = result.datas;
 				data.WapSiteUrl = WapSiteUrl;
-				var html = template.render('article-list', data);				
+				var html = template.render('article-list', data);
+				$(".header-title").find("h1").html(data.article_type_name);
+				$("title").html(data.article_type_name);
 				$("#article-content").html(html);
 			}
 		});

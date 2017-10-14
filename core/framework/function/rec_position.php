@@ -54,8 +54,10 @@ function rec_position($rec_id = null,$show_title=0){
 	            $href = '';
 	            if ($v['url'] != '') $href = "href=\"{$v['url']}\"";
 	            $string .= "<a {$target} {$href}><img {$width} {$height} src=\"{$v['title']}\" ></a>";
-	            if($show_title){
+	            if($show_title==1){
 	                $string .="<p>$info[title]</p>";
+	            }elseif($show_title==2){
+	                $string .="<p class='mark_zn'>$info[title]</p>";
 	            }
 		    }
 		}

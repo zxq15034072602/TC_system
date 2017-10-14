@@ -5,18 +5,8 @@ $agent = $_SERVER['HTTP_USER_AGENT'];
 if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2.0") || strpos($agent,"Opera Mini") || strpos($agent,"UCWEB") || strpos($agent,"Android") || strpos($agent,"Windows CE") || strpos($agent,"SymbianOS")){
     global $config;
     if(!empty($config['wap_site_url'])){
-        $url = $config['wap_site_url'];
-        switch ($_GET['act']){
-            case 'goods':
-                $url .= '/tmpl/product_detail.html?goods_id=' . $_GET['goods_id'];
-                break;
-            case 'store_list':
-                $url .= '/shop.html';
-                break;
-            case 'show_store':
-                $url .= '/tmpl/store.html?store_id=' . $_GET['store_id'];
-                break;
-        }
+        $url = $config['wap_site_url'].'/group_index.html';
+       
     } else {
         $header("Location:$wapurl");
     }

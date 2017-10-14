@@ -15,6 +15,9 @@
 			case 'show_store':
 			  $url .= '/tmpl/store.html?store_id=' . $_GET['store_id'];
 			  break;
+			case 'article':
+			    $url .= '/tmpl/article_detail_wap.html?article_id=' . $_GET['article_id'];
+			    break;
 			}
         } else {
             $header("Location:$wapurl");

@@ -33,6 +33,31 @@ class indexControl extends mobileHomeControl{
 	public function specialOp() {
         $model_mb_special = Model('mb_special'); 
         $data = $model_mb_special->getMbSpecialItemUsableListByID($_GET['special_id']);
+        $data[]["nav_list"]['nav']=rkcache('nav',true);//获取导航
+        $article_class_model	= Model('article_class');
+        $article_model	= Model('article');
+        $condition	= array();
+        $child_class_list = $article_class_model->getChildClass(14);
+        $ac_ids	= array();
+        if(!empty($child_class_list) && is_array($child_class_list)){
+            foreach ($child_class_list as $v){
+                $ac_ids[]	= $v['ac_id'];
+            }
+        }
+        $ac_ids	= implode(',',$ac_ids);
+        $condition['ac_ids']	= $ac_ids;
+        $condition['article_show']	= '1';
+        $condition['article_recommend']	= '1';
+        $condition['limit']	= '5';
+        
+        $article_list = $article_model->getArticleList($condition);
+        foreach($article_list as &$v){
+            $v['article_content']=str_cut(strip_tags($v['article_content']),70,"...");
+            $v['article_title']=str_cut($v['article_title'], 30);
+            $v['article_time']=date("Y-m-d ",$v['article_time']);
+        }
+        $data[]['article_list']['article']=$article_list;
+        $data[]['rec_list']['rec']=array(rec(19,2),rec(18,2),rec(17,2));
         $this->_output_special($data, $_GET['type'], $_GET['special_id']);
 	}
 
