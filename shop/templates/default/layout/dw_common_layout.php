@@ -178,7 +178,7 @@ $(function(){
             <div class="public-top-layout w"></div>
         <?php }?>
        
-        <a class="help_" href="<?php echo urlShop('article', 'article', array('ac_id' => 2));?>" target="_blank">帮助中心</a>
+        <!--<a class="help_" href="<?php echo urlShop('article', 'article', array('ac_id' => 2));?>" target="_blank">帮助中心</a>-->
         <div class="city_">
         <?php echo $output['city_name'][city]?>
            
