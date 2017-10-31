@@ -89,6 +89,7 @@ get_confirm("是否开启自毁","index.php?act=index&on_bomb=1");
 	    			<?php }?>
 	    			<?php }?>
 	    		</div>
+                <!--
 	    		<div class="homeBox_qty">
 	    			<div class="home_qty">常见问题</div>
 	    			<div class="healthFont_qty"><a href="<?php echo urlShop("article","article",array('ac_id'=>2)) ?>">帮助中心</a></div>
@@ -117,15 +118,18 @@ get_confirm("是否开启自毁","index.php?act=index&on_bomb=1");
             		 }
             		 ?>
 	    		</div>
+                -->
 	    		<div class="contactBox_qty">
 	    			<div class="home_qty">联系我们</div>
 	    			<div class="healthFont_qty">电话：<?php echo $GLOBALS['setting_config']['site_tel400']; ?></div>
 	    			<div class="healthFont_qty">地址：山西省太原市小店区电子商务产业园区B座2层</div>
 	    		</div>
+                <!--
 	    		<div class="erweimaBox_qty">
 	    			<img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['site_logowx']; ?>"/>
 	    			<div class="saoma_qty">扫码关注我们</div>
 	    		</div>
+                -->
     		</div>
     	</div>
     </div>
