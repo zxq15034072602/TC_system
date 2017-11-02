@@ -178,7 +178,7 @@ $(function(){
             <div class="public-top-layout w"></div>
         <?php }?>
        
-        <!--<a class="help_" href="<?php echo urlShop('article', 'article', array('ac_id' => 2));?>" target="_blank">帮助中心</a>-->
+        <a class="help_" href="<?php echo urlShop('article', 'article', array('ac_id' => 2));?>" target="_blank">帮助中心</a>
         <div class="city_">
         <?php echo $output['city_name'][city]?>
            
@@ -198,12 +198,12 @@ $(function(){
         <a class="logo_" href="<?php echo BASE_SITE_URL;?>"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$output['setting_config']['site_logo']; ?>" class="pngFix"></a>
         <form class="search-form" method="get" action="<?php echo SHOP_SITE_URL;?>">
         <input type="hidden" value="search" id="search_act" name="act">
-        <!--
+        
         <div class="search">
             <input clstag="h|keycount|2016|03a" type="text" onKeyDown="" autocomplete="off" id="key" accesskey="s" class="search_add"    placeholder="请输入您要搜索的关键字" name="keyword" id="keyword">
             <input type="submit" id="button" value="<?php echo $lang['nc_common_search'];?>" class="search_go">
         </div>
-        -->
+        
         </form>
         <ul class="nav_list">
            <?php if(!empty($output['nav_list']) && is_array($output['nav_list'])){?>

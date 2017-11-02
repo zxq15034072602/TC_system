@@ -20,7 +20,7 @@ body{background-color: #f8f8f8; }
 <div class="banner_yyt">
     <?php echo $output['web_html']['index_big'];?>
 </div>
-<!--
+
 <div id="health_zn">
     <div class="health_title_zn">
         <p class="health_title">
@@ -105,7 +105,7 @@ body{background-color: #f8f8f8; }
                 <span class="health_question_zn_zn">健康<br/>问答</span>
             </div>
             <!--  <img src="<?php echo SHOP_TEMPLATES_URL;?>/dw/image/smile_man_zn.png" alt="" class="smile_man_zn"/>-->
-            <!--
+            
             <div class="health_know">
             <ul class="health_con_yyt">
                  <?php if($output['article_class']&&is_array($output['article_class'])) {?>
@@ -165,7 +165,7 @@ body{background-color: #f8f8f8; }
         </div>
     </div>
 </div>
--->
+
 <div class="health_answer">
     <div class="health_title_zn">
         <p class="health_title">
@@ -202,7 +202,7 @@ body{background-color: #f8f8f8; }
       <?php }?>
     </ul>
 </div>
-<!--
+
 <div class="healthSchoolSmallBox_qty">
 
 		<div class="healthBox_qty">
@@ -264,8 +264,8 @@ body{background-color: #f8f8f8; }
 		</div>
 		
 </div>
--->
-<!--
+
+
 
 <div class="goods_for">
     <div class="health_title_zn">
@@ -295,7 +295,7 @@ body{background-color: #f8f8f8; }
     <div class="goods_forMore"><a href="<?php echo urlShop("index","index")?>" style="color:#fff">更多</a></div>
     <div class="goods_forME">TRADITIONAL NOURISHING</div>
 </div>
--->
+
 <!--左边固定弹框开始-->
 <style>
     .left_contact{
@@ -445,7 +445,7 @@ body{background-color: #f8f8f8; }
         color: #fff;
     }
 </style>
-<!--
+
 <div class="left_contact" onclick="left_contact()">
     <span class="left_word">联系我们</span>
     <span class="left_icon_yyt"></span>
@@ -466,7 +466,7 @@ body{background-color: #f8f8f8; }
         </div>
     </div>
 </div>
--->
+
 <!--左边国定弹框结束-->
 <script>
 
