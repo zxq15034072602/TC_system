@@ -24,7 +24,6 @@ class group_apiControl extends SystemControl {
         $model_web_config = Model('web_config');
         $web_id = '103';
         $code_list = $model_web_config->getCodeList(array('web_id'=> $web_id));
-        
         if(is_array($code_list) && !empty($code_list)) {
             foreach ($code_list as $key => $val) {//将变量输出到页面
                 $var_name = $val['var_name'];

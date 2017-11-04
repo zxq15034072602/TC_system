@@ -19,9 +19,9 @@ class CMSControl{
     //文章状态回收站
     const ARTICLE_STATE_RECYCLE = 4;
     //文章类型用户投稿
-    const ARTICLE_TYPE_MEMBER = 1;
+    const ARTICLE_TYPE_MEMBER = 2;
     //文章类型管理员发布
-    const ARTICLE_TYPE_ADMIN = 2;
+    const ARTICLE_TYPE_ADMIN = 1;
     //推荐
     const COMMEND_FLAG_TRUE = 1;
     //文章评论类型

@@ -179,7 +179,6 @@ class Model{
             	$options['limit'] = 1000;
             }
         }
-
         $resultSet = $this->db->select($options);
 
         if(empty($resultSet)) {
@@ -660,6 +659,7 @@ class ModelDb{
 			}
     	}
         $sql  = $this->parseSql($this->selectSql,$options);
+        
         $sql .= $this->parseLock(isset($options['lock'])?$options['lock']:false);
         return $sql;
     }

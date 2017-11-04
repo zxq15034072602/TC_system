@@ -340,6 +340,7 @@ class articleControl extends SystemControl{
 		 */
 		$upload = new UploadFile();
 		$upload->set('default_dir',ATTACH_ARTICLE);
+		
 		$result = $upload->upfile('fileupload');
 		if ($result){
 			$_POST['pic'] = $upload->file_name;

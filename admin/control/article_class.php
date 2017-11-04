@@ -44,6 +44,7 @@ class article_classControl extends SystemControl{
 		 * 列表
 		 */
 		$tmp_list = $model_class->getTreeClassList(2);
+		
 		if (is_array($tmp_list)){
 			foreach ($tmp_list as $k => $v){
 				if ($v['ac_parent_id'] == $parent_id){
@@ -57,6 +58,7 @@ class article_classControl extends SystemControl{
 				}
 			}
 		}
+	
 		if ($_GET['ajax'] == '1'){
 			/**
 			 * 转码

@@ -61,6 +61,20 @@ $(document).ready(function(){
           <td class="vatop rowform"><input type="text" value="" name="class_name" id="class_name" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['class_name_error'];?></td>
         </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="parent_class"><?php echo "上级分类".$lang['nc_colon'];?></label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <select name="parent_id" id="parent_class">
+          <option>-请选择-</option>
+          <?php foreach ($output['parent_list'] as $val){?>
+          <option value="<?php echo $val['class_id']?>" <?php if($output['parent_id']==$val['class_id']){echo "selected";}?>><?php echo $val['class_name']?></option>
+          <?php }?>
+          </select>
+          </td>
+          <td class="vatop tips"><?php echo $lang['class_name_error'];?></td>
+        </tr>
         <tr>
           <td colspan="2" class="required"><label for="class_sort" class="validation"><?php echo $lang['nc_sort'].$lang['nc_colon'];?></label></td>
         </tr>

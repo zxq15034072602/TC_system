@@ -43,7 +43,10 @@ class navigationModel {
 			$condition_str .= " and nav_location = '". $condition['nav_location'] ."'";
 		}	
 		if($condition["no_nav_location"]){
-		    $condition_str .= " and nav_location != '". $condition['no_nav_location'] ."'";
+		    if(is_array($condition['no_nav_location'])){
+		        $condition['no_nav_location']=implode(",", $condition['no_nav_location']);
+		    }
+		    $condition_str .= " and nav_location not in ( ". $condition['no_nav_location'] .")";
 		}
 		
 		return $condition_str;

@@ -1,13 +1,6 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.edit.js" charset="utf-8"></script>
 <script type="text/javascript">
-$(document).ready(function(){
- 
-	
-	   //行内ajax编辑
-	$('span[nc_type="class_sort"]').inline_edit({act: 'cms_article_class',op: 'update_class_sort'});
-	$('span[nc_type="class_name"]').inline_edit({act: 'cms_article_class',op: 'update_class_name'});
-});
 function submit_delete_batch(){
     /* 获取选中的项 */
     var items = '';
@@ -25,8 +18,8 @@ function submit_delete_batch(){
 function submit_delete(id){
     if(confirm('<?php echo $lang['nc_ensure_del'];?>')) {
         $('#list_form').attr('method','post');
-        $('#list_form').attr('action','index.php?act=cms_article_class&op=cms_article_class_drop');
-        $('#class_id').val(id);
+        $('#list_form').attr('action','index.php?act=web_special&op=special_drop');
+        $('#special_id').val(id);
         $('#list_form').submit();
     }
 }
@@ -35,7 +28,7 @@ function submit_delete(id){
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
-      <h3><?php echo $lang['nc_cms_article_class'];?></h3>
+      <h3><?php echo $lang['nc_cms_special_manage'];?></h3>
       <ul class="tab-base">
         <?php   foreach($output['menu'] as $menu) {  if($menu['menu_type'] == 'text') { ?>
         <li><a href="<?php echo $menu['menu_url'];?>" class="current"><span><?php echo $menu['menu_name'];?></span></a></li>
@@ -57,13 +50,13 @@ function submit_delete(id){
       </tr>
       <tr>
         <td><ul>
-            <li><?php echo $lang['cms_article_class_list_tip1'];?></li>
+            <li>专题可以支持商品列表、图片链接、图片热点三种内置方式，也可以自行编写HTML代码</li>
           </ul></td>
       </tr>
     </tbody>
   </table>
   <form id="list_form" method='post'>
-    <input id="class_id" name="class_id" type="hidden" />
+    <input id="special_id" name="special_id" type="hidden" />
     <table class="table tb-type2">
       <thead>
         <tr class="space">
@@ -71,8 +64,9 @@ function submit_delete(id){
         </tr>
         <tr class="thead">
           <th></th>
-          <th class="align-left"><?php echo $lang['nc_sort'];?></th>
-          <th class="align-left"><?php echo $lang['class_name'];?></th>
+          <th class="align-left">标题</th>
+          <th class="align-left">样式</th>
+          <th class="align-left">状态</th>
           <th class="align-center"><?php echo $lang['nc_handle'];?></th>
         </tr>
       </thead>
@@ -80,18 +74,19 @@ function submit_delete(id){
         <?php if(!empty($output['list']) && is_array($output['list'])){ ?>
         <?php foreach($output['list'] as $val){ ?>
         <tr class="hover edit">
-          <td class="w60"><input type="checkbox" value="<?php echo $val['class_id'];?>" class="checkitem">
-           <?php if($val['have_child'] == '1'){ ?>
-            <img src="<?php echo ADMIN_TEMPLATES_URL;?>/images/tv-expandable.gif" fieldid="<?php echo $val['class_id'];?>" status="open" nc_type="flex">
-            <?php }else{ ?>
-            <img fieldid="<?php echo $v['class_id'];?>" status="close" nc_type="flex" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/tv-item.gif">
-            <?php } ?>
+          <td class="w48"><input type="checkbox" value="<?php echo $val['special_id'];?>" class="checkitem"></td>
+          <td class="name"><?php echo $val['special_title'];?></td>
+          <td class="name"><?php if($val['special_type'] ==1){echo  "食维健";}elseif ($val['special_type']==2){echo "独一张";}?></td>
+          <td class="name"><?php if($val['special_state'] ==1){echo  "未发布";}elseif ($val['special_state']==2){echo "已发布";}?></td>
+          <td class="w84 align-center">
+              <?php if($val['special_state'] == '2') { ?> 
+              <a href="<?php echo $val['special_link'];?>" target="_blank"><?php echo $lang['cms_text_see'];?></a>
+              <?php } else { ?>
+              <a href="index.php?act=web_special&op=special_detail&special_id=<?php echo $val['special_id'];?>" target="_blank"><?php echo $lang['cms_text_view'];?></a>
+              <?php } ?>
+              <a href="index.php?act=web_special&op=special_edit&special_id=<?php echo $val['special_id'];?>"><?php echo $lang['nc_edit'];?></a>
+              <a href="javascript:submit_delete(<?php echo $val['special_id'];?>)"><?php echo $lang['nc_del'];?></a>
           </td>
-          <td class="w48 sort"><span nc_type="class_sort" column_id="<?php echo $val['class_id'];?>" title="<?php echo $lang['nc_editable'];?>" class="editable "><?php echo $val['class_sort'];?></span></td>
-          <td class="name"><span nc_type="class_name" column_id="<?php echo $val['class_id'];?>" title="<?php echo $lang['nc_editable'];?>" class="editable "><?php echo $val['class_name'];?></span>
-          <a class='btn-add-nofloat marginleft' href="index.php?act=cms_article_class&op=cms_article_class_add&parent_id=<?php echo $val['class_id'];?>"><span><?php echo $lang['nc_add_sub_class'];?></span></a>
-          </td>
-          <td class="w72 align-center"><a href="javascript:submit_delete(<?php echo $val['class_id'];?>)"><?php echo $lang['nc_del'];?></a></td>
         </tr>
         <?php } ?>
         <?php }else { ?>
@@ -114,4 +109,3 @@ function submit_delete(id){
     </table>
   </form>
 </div>
-<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.cms_article_class.js" charset="utf-8"></script> 
