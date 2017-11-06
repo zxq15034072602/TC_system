@@ -144,15 +144,15 @@ $arr = array(
 				    array('args'=>'article_tag_list,article_tag,website',	            'text'=>$lang['nc_article_tag']),
 					array('args'=>'article_class,article_class,website',	'text'=>$lang['nc_article_class']),
 					array('args'=>'article,article,website',				'text'=>$lang['nc_article_manage']),
-				    array('args'=>'video_class,video_class,website',		'text'=>$lang['nc_video_class']),
-				    array('args'=>'video,video,website',				    'text'=>$lang['nc_video_manage']),
-				    array('args'=>'focus_edit,video_api,website',		    'text'=>$lang['nc_video_recommend']),
 					array('args'=>'document,document,website',				'text'=>$lang['nc_document']),
 					array('args'=>'navigation,navigation,website',			'text'=>$lang['nc_navigation']),
+				    array('args'=>'groupnavigation,groupnavigation,website',			'text'=>"集团页面导航"),
+				    array('args'=>'focus_edit,group_api,website',			'text'=>"集团首页banner"),
 					array('args'=>'ap_manage,adv,website',					'text'=>$lang['nc_adv_manage']),
 					array('args'=>'web_config,web_config,website',			'text'=>$lang['nc_web_index']),
 					array('args'=>'rec_list,rec_position,website',			'text'=>$lang['nc_admin_res_position']),
 					array('args'=>'link,link,website',			'text'=>友情连接),
+				    array('args'=>'special_list,web_special,website',			'text'=>"专题管理"),
 				)
 			),
 		    
@@ -161,6 +161,7 @@ $arr = array(
 				'text' => $lang['nc_operation'],
 				'list' => array(
 				    array('args'=>'index,appointment,operation',                'text'=>'预约体验'),
+				    array('args'=>'index,join_message,operation',                'text'=>'加盟意向'),
 					array('args'=>'setting,operation,operation',			    'text'=>$lang['nc_operation_set']),
 					array('args'=>'groupbuy_template_list,groupbuy,operation',	'text'=>$lang['nc_groupbuy_manage']),
                     array('args'=>'index,vr_groupbuy,operation',               'text'=>'虚拟抢购设置'),
@@ -263,12 +264,15 @@ if(C('cms_isuse') !== null){
                     1 => array('args'=>'cms_index,cms_index,cms','text'=>$lang['nc_cms_index_manage']),
                     2 => array('args'=>'cms_article_list,cms_article,cms','text'=>$lang['nc_cms_article_manage']),
                     3 => array('args'=>'cms_article_class_list,cms_article_class,cms','text'=>$lang['nc_cms_article_class']),
-                    4 => array('args'=>'cms_picture_list,cms_picture,cms','text'=>$lang['nc_cms_picture_manage']),
-                    5 => array('args'=>'cms_picture_class_list,cms_picture_class,cms','text'=>$lang['nc_cms_picture_class']),
-                    6 => array('args'=>'cms_special_list,cms_special,cms','text'=>$lang['nc_cms_special_manage']),
-                    7 => array('args'=>'cms_navigation_list,cms_navigation,cms','text'=>$lang['nc_cms_navigation_manage']),
-                    8 => array('args'=>'cms_tag_list,cms_tag,cms','text'=>$lang['nc_cms_tag_manage']),
-                    9 => array('args'=>'comment_manage,cms_comment,cms','text'=>$lang['nc_cms_comment_manage']),
+				    4=>array('args'=>'video,video,cms',				    'text'=>$lang['nc_video_manage']),
+				    5=>array('args'=>'focus_edit,video_api,cms',		    'text'=>$lang['nc_video_recommend']),
+				    6=> array('args'=>'video_class,video_class,cms',		'text'=>$lang['nc_video_class']),
+                    7=> array('args'=>'cms_picture_list,cms_picture,cms','text'=>$lang['nc_cms_picture_manage']),
+                    8 => array('args'=>'cms_picture_class_list,cms_picture_class,cms','text'=>$lang['nc_cms_picture_class']),
+                    9 => array('args'=>'cms_special_list,cms_special,cms','text'=>$lang['nc_cms_special_manage']),
+                   10 => array('args'=>'cms_navigation_list,cms_navigation,cms','text'=>$lang['nc_cms_navigation_manage']),
+                   11=> array('args'=>'cms_tag_list,cms_tag,cms','text'=>$lang['nc_cms_tag_manage']),
+                   12=> array('args'=>'comment_manage,cms_comment,cms','text'=>$lang['nc_cms_comment_manage']),
 				)
 			);
 }

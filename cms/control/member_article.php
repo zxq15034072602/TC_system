@@ -74,7 +74,15 @@ class member_articleControl extends CMSMemberControl{
         $article_detail = $this->check_article_auth($article_id);
         if($article_detail) {
             $model_article_class = Model('cms_article_class');
-            $article_class_list = $model_article_class->getList(TRUE, null, 'class_sort asc');
+            
+            $article_class_list = $model_article_class->getTreeClassList(2,array('class_code'=>""));
+
+            If(is_array($article_class_list)){
+                foreach ($article_class_list as $k=>$v){
+                        $article_class_list[$k]['class_name']=str_repeat("&nbsp;",$v['deep']*2).$v['class_name'];
+                }
+            }
+            
             Tpl::output('article_class_list', $article_class_list);
 
             $model_tag = Model('cms_tag');

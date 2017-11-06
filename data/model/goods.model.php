@@ -58,7 +58,9 @@ class goodsModel extends Model{
         }
         return $result;
     }
-
+   /**
+    * 获取商品列表
+    */
     /**
      * 商品SKU列表
      *

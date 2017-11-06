@@ -5,8 +5,13 @@
     <div class="item-title">
       <h3><?php echo $lang['navigation_index_nav'];?></h3>
       <ul class="tab-base">
+        <?php if($output['group_navigation']){?>
+        <li><a href="index.php?act=groupnavigation&op=groupnavigation" ><span><?php echo $lang['nc_manage'];?></span></a></li>
+        <li><a href="index.php?act=groupnavigation&op=navigation_add" ><span><?php echo $lang['nc_new'];?></span></a></li>
+        <?php }else{?>
         <li><a href="index.php?act=navigation&op=navigation" ><span><?php echo $lang['nc_manage'];?></span></a></li>
         <li><a href="index.php?act=navigation&op=navigation_add" ><span><?php echo $lang['nc_new'];?></span></a></li>
+        <?php }?>
         <li><a href="JavaScript:void(0);" class="current"><span><?php echo $lang['nc_edit'];?></span></a></li>
       </ul>
     </div>
@@ -98,6 +103,24 @@
         </tr>
         <tr class="noborder">
           <td class="vatop rowform "><ul>
+             <?php if($output["group_navigation"]){?>
+             <li>
+                <input type="radio" <?php if($output['navigation_array']['nav_location'] == '4'){ ?>checked="checked"<?php } ?> value="4" name="nav_location" id="nav_location4">
+                <label for="nav_location4"><?php echo $lang['navigation_group_index_nav'];?></label>
+              </li>
+              <?php }elseif ($output['special_navigation']){?>
+              <?php if($output['special_type']==1) {?>
+              <li>
+                <input type="radio" <?php if($output['navigation_array']['nav_location'] == '5'){ ?>checked="checked"<?php } ?> value="5" name="nav_location" id="nav_location4">
+                <label for="nav_location4">食维健导航</label>
+              </li>
+              <?php }else{?>
+              <li>
+                <input type="radio" <?php if($output['navigation_array']['nav_location'] == '6'){ ?>checked="checked"<?php } ?> value="6" name="nav_location" id="nav_location4">
+                <label for="nav_location4">独一张导航</label>
+              </li>
+              <?php }?>
+             <?php }else{?>
               <li>
                 <input type="radio" <?php if($output['navigation_array']['nav_location'] == '0'){ ?>checked="checked"<?php } ?> value="0" name="nav_location" id="nav_location0">
                 <label for="nav_location0"><?php echo $lang['navigation_index_top'];?></label>
@@ -114,6 +137,7 @@
                 <input type="radio" <?php if($output['navigation_array']['nav_location'] == '3'){ ?>checked="checked"<?php } ?> value="3" name="nav_location" id="nav_location2">
                 <label for="nav_location2"><?php echo $lang['navigation_index_self'];?></label>
               </li>
+              <?php }?>
             </ul></td>
           <td class="vatop tips"></td>
         </tr>

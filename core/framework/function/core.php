@@ -4,7 +4,7 @@
  *
  * 公共方法
  *
- * by 33hao.com 好商城V3 运营版
+ * by 太常系统 www.sxtaichang.com
  */
 
 
@@ -1772,9 +1772,9 @@ function dcache($key = null, $prefix = ''){
  * @param int $rec_id 推荐位ID
  * @return string 推荐位内容
  */
-function rec($rec_id = null){
+function rec($rec_id = null,$show_title=0){
 	import('function.rec_position');
-	return rec_position($rec_id);
+	return rec_position($rec_id,$show_title);
 }
 
 /**

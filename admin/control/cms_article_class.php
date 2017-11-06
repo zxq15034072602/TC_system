@@ -27,17 +27,61 @@ class cms_article_classControl extends SystemControl{
      **/
     public function cms_article_class_listOp() {
         $model = Model('cms_article_class');
-        $list = $model->getList(TRUE);
-        $this->show_menu('list');
-        Tpl::output('list',$list);
-        Tpl::showpage("cms_article_class.list");
+        
+        /**
+         * 父ID
+         */
+        $parent_id=$_GET['parent_id']?intval($_GET['parent_id']):0;
+        $list = $model->getTreeClassList(2);
+        if(is_array($list)){
+            foreach ($list as $key=>$val){
+                if($val['parent_id']==$parent_id){
+                    /**
+                     * 判断是否有子类
+                     */
+                    if ($list[$key+1]['deep'] > $val['deep']){
+                        $val['have_child'] = 1;
+                    }
+                    $class_list[] = $val;
+                }
+            }
+        }
+        if ($_GET['ajax'] == '1'){
+            /**
+             * 转码
+             */
+            if (strtoupper(CHARSET) == 'GBK'){
+                $class_list = Language::getUTF8($class_list);
+            }
+            $output = json_encode($class_list);
+            print_r($output);
+            exit;
+        }else{
+            $this->show_menu('list');
+          
+            Tpl::output('list',$class_list);
+            Tpl::showpage("cms_article_class.list");
+        }
+      
     }
 
     /**
      * cms文章分类添加
      **/
     public function cms_article_class_addOp() {
+        $model_class= Model('cms_article_class');
+        /**
+         * 父类列表，只取到第三级
+         */
+        $parent_list = $model_class->getTreeClassList(1);
+        if (is_array($parent_list)){
+            foreach ($parent_list as $k => $v){
+                $parent_list[$k]['class_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['class_name'];
+            }
+        }
         $this->show_menu('add');
+        Tpl::output('parent_id',intval($_GET['parent_id']));
+        Tpl::output('parent_list',$parent_list);
         Tpl::showpage('cms_article_class.add');
     }
 
@@ -59,6 +103,7 @@ class cms_article_classControl extends SystemControl{
         $param = array();
         $param['class_name'] = trim($_POST['class_name']);
         $param['class_sort'] = intval($_POST['class_sort']);
+        $param['parent_id'] =intval($_POST['parent_id']);
         $model_class = Model('cms_article_class');
         $result = $model_class->save($param);
         if($result) {
@@ -133,17 +178,20 @@ class cms_article_classControl extends SystemControl{
      public function cms_article_class_dropOp() {
         $class_id = trim($_POST['class_id']);
         $model_class = Model('cms_article_class');
-        $condition = array();
-        $condition['class_id'] = array('in',$class_id);
-        $result = $model_class->drop($condition);
-        if($result) {
+        if($class_id>0){
+            $array = array(intval($class_id));
+            $del_array = $model_class->getChildClass($array);
+            if (is_array($del_array)){
+                foreach ($del_array as $k => $v){
+                    $model_class->drop(array('class_id'=>$v['class_id']));
+                }
+            }
             $this->log(Language::get('cms_log_article_class_drop').$_POST['class_id'], 1);
             showMessage(Language::get('class_drop_success'),'');
-        } else {
+        }else{
             $this->log(Language::get('cms_log_article_class_drop').$_POST['class_id'], 0);
-            showMessage(Language::get('class_drop_fail'),'','','error');
+            showMessage(Language::get('class_drop_fail'),'','','error');    
         }
-
      }
 
     private function show_menu($menu_key) {

@@ -313,6 +313,7 @@ label.error i { margin-right: 4px;}
 .ncsc-layout-left .sidebar .column-title .ico-service { background-position: -128px -100px;}
 .ncsc-layout-left .sidebar .column-title .ico-statistics { background-position: -192px -100px;}
 .ncsc-layout-left .sidebar .column-title .ico-account { background-position: 0 -170px;}
+.ncsc-layout-left .sidebar .column-title .ico-member_manage { background-position: -64px -100px;}
 .ncsc-layout-left .sidebar .column-title .ico-live { background-position: -64px -170px;}
 .ncsc-layout-left .sidebar .column-title h2 { font-size: 12px; line-height: 20px; font-weight: lighter; color: #999; text-align: center; height: 20px; margin: 0 auto;}
 .ncsc-layout-left .sidebar .column-menu { position: relative; z-index: 2;}

@@ -49,6 +49,7 @@ class appointmentControl extends SystemControl{
         $page->setStyle('admin');
         $appoints=$appoint_model->getJoinList($condition,$page);
         Tpl::output("appoints",$appoints);
+        Tpl::output("page",$page->show());
         Tpl::showpage("appointment.index");
 
     }

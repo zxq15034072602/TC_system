@@ -36,6 +36,18 @@ class settingControl extends SystemControl{
 				}
 			}
 			
+			//上传集团首页Logo
+			if (!empty($_FILES['group_logo']['name'])){
+			    $upload = new UploadFile();
+			    $upload->set('default_dir',ATTACH_COMMON);
+			    $result = $upload->upfile('group_logo');
+			    if ($result){
+			        $_POST['group_logo'] = $upload->file_name;
+			    }else {
+			        showMessage($upload->error,'','','error');
+			    }
+			}
+			
 			//V3-B11 上传wap手机客户端LOGO
 			if (!empty($_FILES['site_mobile_logo']['name'])){
 				$upload = new UploadFile();
@@ -91,6 +103,9 @@ class settingControl extends SystemControl{
 			if (!empty($_POST['site_logo'])){
 				$update_array['site_logo'] = $_POST['site_logo'];
 			}
+			if (!empty($_POST['group_logo'])){
+			    $update_array['group_logo'] = $_POST['group_logo'];
+			}
 			//  V3-B11
 			if (!empty($_POST['site_mobile_logo'])){
 				$update_array['site_mobile_logo'] = $_POST['site_mobile_logo'];
@@ -114,6 +129,9 @@ class settingControl extends SystemControl{
 				//判断有没有之前的图片，如果有则删除
 				if (!empty($list_setting['site_logo']) && !empty($_POST['site_logo'])){
 					@unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['site_logo']);
+				}
+				if (!empty($list_setting['group_logo']) && !empty($_POST['group_logo'])){
+				    @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['group_logo']);
 				}
 				if (!empty($list_setting['site_logowx']) && !empty($_POST['site_logowx'])){
 			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['site_logowx']);

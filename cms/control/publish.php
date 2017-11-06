@@ -83,7 +83,7 @@ class publishControl extends CMSMemberControl{
         if(!empty($_POST['article_image'])) {
             $param['article_image'] = serialize($article_image_all[$_POST['article_image']]);
         }
-
+     
         //文章商品
         if(!empty($_POST['article_goods_url'])) {
             $article_goods_list = array();

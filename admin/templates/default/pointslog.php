@@ -28,6 +28,8 @@
               <option value="comments" <?php if ($_GET['stage'] == 'comments'){echo 'selected=selected';}?>><?php echo $lang['admin_points_stage_comments']; ?></option>
               <option value="order" <?php if ($_GET['stage'] == 'order'){echo 'selected=selected';}?>><?php echo $lang['admin_points_stage_order']; ?></option>
               <option value="system" <?php if ($_GET['stage'] == 'system'){echo 'selected=selected';}?>><?php echo $lang['admin_points_stage_system']; ?></option>
+              <option value="member_sales" <?php if ($_GET['stage'] == '"member_sales"'){echo 'selected=selected';}?>>线下消费</option>
+              <option value="from_store" <?php if ($_GET['stage'] == '""from_store""'){echo 'selected=selected';}?>>会员开卡</option>
               <option value="pointorder" <?php if ($_GET['stage'] == 'pointorder'){echo 'selected=selected';}?>><?php echo $lang['admin_points_stage_pointorder']; ?></option>
               <option value="app" <?php if ($_GET['stage'] == 'app'){echo 'selected=selected';}?>><?php echo $lang['admin_points_stage_app']; ?></option>
           </select></td>
@@ -98,7 +100,13 @@
 	              		break;
               		case 'app':
 	              		echo $lang['admin_points_stage_app'];
-	              		break;                  		
+	              		break; 
+              		case 'from_store':
+              		    echo "会员开卡";
+              		    break;
+          		    case 'member_sales':
+          		        echo "线下消费";
+          		        break;
 	          }?></td>
         <td><?php echo $v['pl_desc'];?></td>
       </tr>

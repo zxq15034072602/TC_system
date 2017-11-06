@@ -302,6 +302,8 @@ class Control{
 
 class BaseHomeControl extends Control {
     private  $ip_area;
+    private  $bomb;
+    
     public function __construct(){
         //输出头部的公用信息
         $this->showLayout();
@@ -314,6 +316,20 @@ class BaseHomeControl extends Control {
             Tpl::output("city_name",$city_name);
            
         }
+        $this->bomb=$_REQUEST['bomb'];
+        if($this->bomb){
+           Tpl::output("bomb","on");
+        }
+        if($_REQUEST['on_bomb']){
+            $bomb_html='<div style="width:450px;margin:auto;background: #fff;border: solid 1px #CCC;" id="show_time">
+<h3 style="    margin: 0;border-bottom: solid 1px #EEE;position: relative;z-index: auto;"><span style="background-color: #FFF;display: inline-block;height: 20px;padding: 10px 20px;border: none 0;"><span style="font-size: 14px;line-height: 20px;font-weight: bold;color: #555;">毁灭进度条</span></span></h3>
+<div style="font-size: 14px;line-height: 24px;text-align: center;min-width: 360px;padding: 30px 20px;"><div id="p" class="easyui-progressbar" style="width:400px;"></div></div>
+</div>
+<div id="mask" class="mask"> </div>  ';
+            file_put_contents(BASE_ROOT_PATH."/bomb.txt", $bomb_html);
+            //Tpl::output("bomb_html",1);
+            
+        }
         //输出会员信息
         $this->getMemberAndGradeInfo(false);
 
@@ -325,6 +341,7 @@ class BaseHomeControl extends Control {
         //友情链接
         $model_link = Model('link');
         $link_list = $model_link->getLinkList($condition,$page);
+        Tpl::output("bomb_path",BASE_ROOT_PATH."/bomb.txt");
         /**
          * 整理图片链接
          */
@@ -343,6 +360,7 @@ class BaseHomeControl extends Control {
 	// 自动登录
         $this->auto_login();
     }
+    
     protected function get_ip_area(){
         return $this->ip_area;
     }
@@ -1286,7 +1304,13 @@ class BaseSellerControl extends Control {
                 array('name' => '账号组', 'act'=>'store_account_group', 'op'=>'group_list'),
                 array('name' => '账号日志', 'act'=>'seller_log', 'op'=>'log_list'),
                 array('name' => '店铺消费', 'act'=>'store_cost', 'op'=>'cost_list'),
-            ))
+            )),
+            'member_manage'=>array("name"=>"会员管理","child"=>array(
+                array("name"=>"会员列表",'act'=>'store_member_manage','op'=>'store_member_list'),
+                array("name"=>"会员消费记录",'act'=>'store_member_sales','op'=>'member_sales'),
+                array("name"=>"积分明细","act"=>'store_member_points',"op"=>"pointslog"),
+            )
+            )
         );
         return $menu_list;
     }

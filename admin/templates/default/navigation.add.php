@@ -5,7 +5,11 @@
     <div class="item-title">
       <h3><?php echo $lang['navigation_index_nav'];?></h3>
       <ul class="tab-base">
+        <?php if($output['group_navigation']){?>
+         <li><a href="index.php?act=groupnavigation&op=groupnavigation" ><span><?php echo $lang['nc_manage'];?></span></a></li>
+        <?php }else{?>
         <li><a href="index.php?act=navigation&op=navigation" ><span><?php echo $lang['nc_manage'];?></span></a></li>
+        <?php }?>
         <li><a href="JavaScript:void(0);" class="current"><span><?php echo $lang['nc_new'];?></span></a></li>
       </ul>
     </div>
@@ -96,6 +100,24 @@
         </tr>
         <tr class="noborder">
           <td class="vatop rowform"><ul>
+              <?php  if($output["group_navigation"]) {?>
+              <li>
+                <input type="radio" value="4" name="nav_location" checked="checked">
+                <label><?php echo $lang['navigation_group_index_nav'];?></label>
+              </li>
+              <?php }else if($output['special_navigation']) {?>
+               <?php if($output['special_type']==1) {?>
+               <li>
+                <input type="radio" value="5" name="nav_location" checked="checked">
+                <label>食维健导航</label>
+              </li>
+              <?php }else{?>
+              <li>
+                <input type="radio" value="6" name="nav_location" checked="checked">
+                <label>独一张导航</label>
+              </li>
+              <?php }?>
+              <?php  }else {?>
               <li>
                 <input type="radio" value="0" name="nav_location">
                 <label><?php echo $lang['navigation_index_top'];?></label>
@@ -112,6 +134,7 @@
                 <input type="radio" value="3" name="nav_location">
                 <label><?php echo $lang['navigation_index_self'];?></label>
               </li>
+              <?php }?>
             </ul></td>
           <td class="vatop tips"></td>
         </tr>

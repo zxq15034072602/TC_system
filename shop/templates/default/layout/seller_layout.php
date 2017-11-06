@@ -60,7 +60,7 @@ catch(e){}
 </div>
 <?php } ?>
 <header class="ncsc-head-layout w">
-  <div class="wrapper">
+  <div class="wrapper" style="width:1230px">
     <div class="ncsc-admin">
       <dl class="ncsc-admin-info">
         <dt class="admin-avatar"><img src="<?php echo getMemberAvatarForID($_SESSION['member_id']);?>" width="32" class="pngFix" alt=""/></dt>
@@ -69,7 +69,7 @@ catch(e){}
       </dl>
       <div class="ncsc-admin-function"><a href="<?php echo urlShop('show_store', 'index', array('store_id'=>$_SESSION['store_id']), $output['store_info']['store_domain']);?>" title="前往店铺" ><i class="icon-home"></i></a><a href="<?php echo urlShop('member_security', 'auth',array('type'=>'modify_pwd'));?>" title="修改密码" target="_blank"><i class="icon-wrench"></i></a><a href="<?php echo urlShop('seller_logout', 'logout');;?>" title="安全退出"><i class="icon-signout"></i></a></div>
     </div>
-    <div class="center-logo"> <a href="<?php echo SHOP_SITE_URL;?>" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('seller_center_logo');?>" class="pngFix" alt=""/></a>
+    <div class="center-logo" style="width:250px"> <a href="<?php echo SHOP_SITE_URL;?>" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('seller_center_logo');?>" class="pngFix" alt=""/></a>
       <h1>商家中心</h1>
     </div>
     <div class="index-search-container">

@@ -13,6 +13,11 @@ $(document).ready(function(){
     $("#special_background").change(function(){
         $("#textfield2").val($("#special_background").val());
     });
+    var textButton3="<input type='text' name='textfield' id='textfield3' class='type-file-text' /><input type='button' name='button' id='button3' value='' class='type-file-button' />";
+    $(textButton3).insertBefore("#special_logo");
+    $("#special_logo").change(function(){
+        $("#textfield3").val($("#special_logo").val());
+    });
     $("input[nctype='cms_image']").live("change", function(){
 		var src = getFullPath($(this)[0]);
 		$(this).parent().prev().find('.low_source').attr('src',src);

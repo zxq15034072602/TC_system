@@ -78,6 +78,9 @@ class articleModel{
 		if($condition['upload_type'] !=""){
 		    $condition_str.="and upload.upload_type=".$condition['upload_type'];
 		}
+		if($condition['ac_code']!=""){
+		    $condition_str.="and article_class.ac_code=".$condition['ac_code']."";
+		}
 		return $condition_str;
 	}
 

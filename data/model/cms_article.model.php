@@ -21,7 +21,6 @@ class cms_articleModel extends Model{
      */
     public function getList($condition, $page=null, $order='', $field='*', $limit=''){
         $result = $this->table('cms_article')->field($field)->where($condition)->page($page)->order($order)->limit($limit)->select();
-        $this->cls();
         return $result;
     }
     

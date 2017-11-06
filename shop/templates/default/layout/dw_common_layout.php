@@ -32,6 +32,8 @@
 <meta name="keywords" content="<?php echo $output['seo_keywords']; ?>" />
 <meta name="description" content="<?php echo $output['seo_description']; ?>" />
 <?php echo html_entity_decode($output['setting_config']['qq_appcode'],ENT_QUOTES); ?><?php echo html_entity_decode($output['setting_config']['sina_appcode'],ENT_QUOTES); ?><?php echo html_entity_decode($output['setting_config']['share_qqzone_appcode'],ENT_QUOTES); ?><?php echo html_entity_decode($output['setting_config']['share_sinaweibo_appcode'],ENT_QUOTES); ?>
+<link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/easyui.css">
+ <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/icon.css">
 <style type="text/css">
 body {
 _behavior: url(<?php echo SHOP_TEMPLATES_URL;
@@ -44,6 +46,7 @@ _behavior: url(<?php echo SHOP_TEMPLATES_URL;
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/css/base.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/css/home_header.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SHOP_RESOURCE_SITE_URL;?>/font/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+ <script type="text/javascript" src="http://z1-pcok6.kuaishangkf.com/bs/ks.j?cI=923744&fI=118829" charset="utf-8"></script>
 <!--[if IE 7]>
   <link rel="stylesheet" href="<?php echo SHOP_RESOURCE_SITE_URL;?>/font/font-awesome/css/font-awesome-ie7.min.css">
 <![endif]-->
@@ -195,10 +198,12 @@ $(function(){
         <a class="logo_" href="<?php echo BASE_SITE_URL;?>"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$output['setting_config']['site_logo']; ?>" class="pngFix"></a>
         <form class="search-form" method="get" action="<?php echo SHOP_SITE_URL;?>">
         <input type="hidden" value="search" id="search_act" name="act">
+        
         <div class="search">
-            <input clstag="h|keycount|2016|03a" type="text" onKeyDown="javascript:if(event.keyCode==13) alert(1);" autocomplete="off" id="key" accesskey="s" class="search_add"    placeholder="请输入您要搜索的关键字" name="keyword" id="keyword">
+            <input clstag="h|keycount|2016|03a" type="text" onKeyDown="" autocomplete="off" id="key" accesskey="s" class="search_add"    placeholder="请输入您要搜索的关键字" name="keyword" id="keyword">
             <input type="submit" id="button" value="<?php echo $lang['nc_common_search'];?>" class="search_go">
         </div>
+        
         </form>
         <ul class="nav_list">
            <?php if(!empty($output['nav_list']) && is_array($output['nav_list'])){?>

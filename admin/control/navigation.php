@@ -39,7 +39,9 @@ class navigationControl extends SystemControl{
 		 */
 		$condition['like_nav_title'] = trim($_GET['search_nav_title']);
 		$condition['nav_location'] = trim($_GET['search_nav_location']);
+		$condition["no_nav_location"]=array(4,5,6);
 		$condition['order'] = 'nav_sort asc';
+		
 		/**
 		 * 分页
 		 */
@@ -327,16 +329,30 @@ class navigationControl extends SystemControl{
 				$result = $model_navigation->update($update_array);
 				if ($result){
 					dkcache('nav');
-					$url = array(
-						array(
-							'url'=>'index.php?act=navigation&op=navigation_edit&nav_id='.intval($_POST['nav_id']),
-							'msg'=>$lang['navigation_edit_again'],
-						),
-						array(
-							'url'=>'index.php?act=navigation&op=navigation',
-							'msg'=>$lang['navigation_add_back_to_list'],
-						)
-					);
+					if($_REQUEST['special_navigation']){//如果是专题编辑过来的
+					    $url = array(
+					        array(
+					            'url'=>'index.php?act=navigation&op=navigation_edit&nav_id='.intval($_POST['nav_id'])."&special_type=".$_REQUEST['special_type']."&special_navigation=1&special_id=".$_REQUEST['special_id'],
+					            'msg'=>$lang['navigation_edit_again'],
+					        ),
+					        array(
+					            'url'=>'index.php?act=web_special&op=special_edit&special_id='.$_REQUEST['special_id'],
+					            'msg'=>"返回专题编辑页面",
+					        )
+					    );
+					}else{
+					    $url = array(
+					        array(
+					            'url'=>'index.php?act=navigation&op=navigation_edit&nav_id='.intval($_POST['nav_id']),
+					            'msg'=>$lang['navigation_edit_again'],
+					        ),
+					        array(
+					            'url'=>'index.php?act=navigation&op=navigation',
+					            'msg'=>$lang['navigation_add_back_to_list'],
+					        )
+					    );
+					}
+					
 					$this->log(L('navigation_edit_succ').'['.$_POST['nav_title'].']',null);
 					showMessage($lang['navigation_edit_succ'],$url);
 				}else {
@@ -389,6 +405,8 @@ class navigationControl extends SystemControl{
 		Tpl::output('goods_class_list',$goods_class_list);
 		Tpl::output('article_class_list',$article_class_list);
 		Tpl::output('video_class_list',$video_class_list);
+		Tpl::output("special_navigation",$_REQUEST['special_navigation']);
+		Tpl::output("special_type",$_REQUEST['special_type']);
 		Tpl::showpage('navigation.edit');
 	}
 
@@ -402,8 +420,14 @@ class navigationControl extends SystemControl{
 			$model_navigation->del(intval($_GET['nav_id']));
 			dkcache('nav');
 			$this->log(L('navigation_edit_succ').'[ID:'.intval($_GET['nav_id']).']',null);
+			if($_REQUEST['special_flag']){
+			    showMessage("专题导航删除成功",'index.php?act=web_special&op=special_edit&special_id='.$_REQUEST['special_id']);
+			}
 			showMessage($lang['navigation_index_del_succ'],'index.php?act=navigation&op=navigation');
 		}else {
+		    if($_REQUEST['special_flag']){
+		        showMessage("请选择要删除的专题导航");
+		    }
 			showMessage($lang['navigation_index_choose_del'],'index.php?act=navigation&op=navigation');
 		}
 	}

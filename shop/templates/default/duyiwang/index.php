@@ -204,7 +204,7 @@ body{background-color: #f8f8f8; }
 </div>
 
 <div class="healthSchoolSmallBox_qty">
-<!--小保健讲堂开始-->
+
 		<div class="healthBox_qty">
 			<div class="health_title_zn">
                 <p class="health_title">
@@ -223,8 +223,7 @@ body{background-color: #f8f8f8; }
 				</div>
 			</div>
 		</div>
-		<!--小保健讲堂结束-->
-		<!--保健讲堂开始-->
+		
 		<div class="healthRoom_qty">
 			<div class="healthRoomLeft_qty">
         	<?php echo loadadv(1055);?>
@@ -263,8 +262,9 @@ body{background-color: #f8f8f8; }
 				</div>
 			</div>
 		</div>
-		<!--保健讲堂结束-->
+		
 </div>
+
 
 
 <div class="goods_for">
@@ -466,6 +466,7 @@ body{background-color: #f8f8f8; }
         </div>
     </div>
 </div>
+
 <!--左边国定弹框结束-->
 <script>
 

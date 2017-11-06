@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html;" charset="<?php echo CHARSET;?>">
 <title><?php echo $output['html_title'];?></title>
 <link href="<?php echo ADMIN_TEMPLATES_URL;?>/css/skin_0.css" rel="stylesheet" type="text/css" id="cssfile"/>
-
+<link  href="<?php echo ADMIN_TEMPLATES_URL;?>/css/public.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.validation.min.js"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.cookie.js"></script>

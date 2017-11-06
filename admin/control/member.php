@@ -57,17 +57,17 @@ class memberControl extends SystemControl{
 		if ($_GET['search_field_value'] != '') {
     		switch ($_GET['search_field_name']){
     			case 'member_name':
-    				$condition['member_name'] = array('like', '%' . trim($_GET['search_field_value']) . '%');
+    				$condition['member_name'] = array('like', '' . trim($_GET['search_field_value']) . '%');
     				break;
     			case 'member_email':
-    				$condition['member_email'] = array('like', '%' . trim($_GET['search_field_value']) . '%');
+    				$condition['member_email'] = array('like', '' . trim($_GET['search_field_value']) . '%');
     				break;
 				//好商 城v3- b11
 				case 'member_mobile':
-    				$condition['member_mobile'] = array('like', '%' . trim($_GET['search_field_value']) . '%');
+    				$condition['member_mobile'] = array('like', '' . trim($_GET['search_field_value']) . '%');
     				break;
     			case 'member_truename':
-    				$condition['member_truename'] = array('like', '%' . trim($_GET['search_field_value']) . '%');
+    				$condition['member_truename'] = array('like', '' . trim($_GET['search_field_value']) . '%');
     				break;
     		}
 		}
@@ -105,6 +105,8 @@ class memberControl extends SystemControl{
 				$member_list[$k]['member_time'] = $v['member_time']?date('Y-m-d H:i:s',$v['member_time']):'';
 				$member_list[$k]['member_login_time'] = $v['member_login_time']?date('Y-m-d H:i:s',$v['member_login_time']):'';
 				$member_list[$k]['member_grade'] = ($t = $model_member->getOneMemberGrade($v['member_exppoints'], false, $member_grade))?$t['level_name']:'';
+				$store_model=Model();
+				$member_list[$k]['from_store_name']=$v['from_store']?$store_model->table('store')->where(array('store_id'=>$v['from_store']))->field("store_name")->find()['store_name']:"非门店来源";
 			}
 		}
 		Tpl::output('member_grade',$member_grade);

@@ -10,6 +10,7 @@ $lang['navigation_index_center']		= '中部';
 $lang['navigation_index_bottom']		= '底部';
 $lang['navigation_index_self']        = '咨询类导航';
 $lang['navigation_index_nav']			= '页面导航';
+$lang['navigation_group_index_nav']			= '集团导航';
 $lang['navigation_index_title']			= '标题';
 $lang['navigation_index_location']		= '所在位置';
 $lang['navigation_index_url']			= '链接';

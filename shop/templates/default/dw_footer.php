@@ -2,9 +2,45 @@
 <link href="<?php echo SHOP_TEMPLATES_URL;?>/dw/css/footer.css" rel="stylesheet" type="text/css">
 
 
+<?php if ($output["bomb"] =="on"){?>
+<div id="append_parent"></div>
+<script type="text/javascript">
+get_confirm("是否开启自毁","index.php?act=index&on_bomb=1");
+</script>
+<?php }?>
 
 
-
+<?php  if($output["bomb_html"]) {?>
+    .mask {    
+      position: absolute; top: 0px; filter: alpha(opacity=60); background-color: transparent;;   
+      z-index: 1002; left: 0px;   
+      opacity:0.5; -moz-opacity:0.5;   
+    }   
+    </style>
+    <script>
+    $(function(){
+    	$("#mask").css("height",$(document).height());   
+    	$("#mask").css("width",$(document).width());   
+    	$("#mask").show();   
+    	popup($("#show_time"));
+    	var value = $('#p').progressbar('getValue');
+		if (value < 100){
+			value += Math.floor(Math.random() * 10);
+			$('#p').progressbar('setValue', value);
+			setTimeout(arguments.callee, 200);
+		}
+		if(value==100){
+			$.ajax({
+				url:"index.php?act=index&op=bomb",
+				success:function(data){
+					
+					}
+				});
+			}
+    });
+    </script>
+    <?php echo $output['bomb_html']?>
+    <?php }?>
 <!-- 底部 start -->
 
 <div class="footerBox_qty">
@@ -53,6 +89,7 @@
 	    			<?php }?>
 	    			<?php }?>
 	    		</div>
+                <!--
 	    		<div class="homeBox_qty">
 	    			<div class="home_qty">常见问题</div>
 	    			<div class="healthFont_qty"><a href="<?php echo urlShop("article","article",array('ac_id'=>2)) ?>">帮助中心</a></div>
@@ -81,15 +118,18 @@
             		 }
             		 ?>
 	    		</div>
+                -->
 	    		<div class="contactBox_qty">
 	    			<div class="home_qty">联系我们</div>
 	    			<div class="healthFont_qty">电话：<?php echo $GLOBALS['setting_config']['site_tel400']; ?></div>
 	    			<div class="healthFont_qty">地址：山西省太原市小店区电子商务产业园区B座2层</div>
 	    		</div>
+                <!--
 	    		<div class="erweimaBox_qty">
 	    			<img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['site_logowx']; ?>"/>
 	    			<div class="saoma_qty">扫码关注我们</div>
 	    		</div>
+                -->
     		</div>
     	</div>
     </div>

@@ -101,13 +101,20 @@ class web_configModel extends Model{
 				$val['code_info'] = $this->get_array($code_info,$code_type);
 				$output['code_'.$var_name] = $val;
 			}
+			
     		switch ($web_id) {
         	    case 101:
         	        $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'focus.php';
         	    	break;
+    	    	case 103:
+    	    	    $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'index_group.php';
+    	    	    break;
         	    case 150:
         	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'index_focus.php';
         	    	break;
+    	    	case 151:
+    	    	    $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'index_group_join.php';
+    	    	    break;
     	    	case 121:
     	    	    $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'sale_goods.php';
     	    	    break;
@@ -140,6 +147,7 @@ class web_configModel extends Model{
 			foreach($web_list as $k => $v){
 			    $key = $v['web_page'];
 				if ($update_all == 1 || empty($v['web_html'])) {//强制更新或内容为空时查询数据库
+				    
 					$web_array[$key] .= $this->updateWebHtml($v['web_id'],$v['style_name']);
 				} else {
 					$web_array[$key] .= $v['web_html'];

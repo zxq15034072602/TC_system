@@ -1671,3 +1671,10 @@ td.trigger i:hover { color: #27A9E3;}
 .mb-item-edit-content .search-goods-list a { background-color: #F9F9F9; padding: 4px 12px; border: solid 1px #CCC; border-radius: 4px; position: absolute; z-index: 1; bottom: 10px; right: 10px;}
 .dialog-image-desc { color: #999;}
 #dialog_item_image { max-width: 480px; max-height: 300px;}
+.rowform  .hint {
+    font-size: 12px;
+    line-height: 20px;
+    color: #CCC;
+    clear: both;
+    padding-top: 6px;
+}
