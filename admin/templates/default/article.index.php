@@ -46,6 +46,7 @@
       <tr>
         <td><ul>
             <li><?php echo $lang['article_index_help1'];?></li>
+            <li>只显示系统文章、集团文章，资讯类文章请到CMS中查看</li>
           </ul></td>
       </tr>
     </tbody>

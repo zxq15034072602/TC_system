@@ -4,7 +4,7 @@
  *
  * 公共方法
  *
- * by 33hao.com 好商城V3 运营版
+ * by 太常系统 www.sxtaichang.com
  */
 defined('InShopNC') or exit('Access Invalid!');
 

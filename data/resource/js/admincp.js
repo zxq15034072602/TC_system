@@ -85,7 +85,12 @@ $(function(){
 			$(this).attr('checked',$('.checkall').attr('checked') == 'checked');
 		});
 	});
-
+	$('.checkall_article').click(function(){
+		$('.checkall_article').attr('checked',$(this).attr('checked') == 'checked');
+		$('.checkitem_article').each(function(){
+			$(this).attr('checked',$('.checkall_article').attr('checked') == 'checked');
+		});
+	});
 	// 表格鼠标悬停变色 start
 	$("tbody tr").hover(
     function(){

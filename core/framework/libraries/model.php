@@ -179,7 +179,6 @@ class Model{
             	$options['limit'] = 1000;
             }
         }
-
         $resultSet = $this->db->select($options);
 
         if(empty($resultSet)) {
@@ -660,6 +659,7 @@ class ModelDb{
 			}
     	}
         $sql  = $this->parseSql($this->selectSql,$options);
+        
         $sql .= $this->parseLock(isset($options['lock'])?$options['lock']:false);
         return $sql;
     }
@@ -929,6 +929,7 @@ class ModelDb{
             	//防止条件传错，删除所有记录
             	return false;
             }
+           
         return DB::execute($sql);
     }
 

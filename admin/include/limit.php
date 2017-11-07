@@ -70,9 +70,6 @@ $_limit =  array(
 	    array('name'=>$lang['nc_article_tag'], 'op'=>null, 'act'=>'article_tag'),
 		array('name'=>$lang['nc_article_class'], 'op'=>null, 'act'=>'article_class'),
 		array('name'=>$lang['nc_article_manage'], 'op'=>null, 'act'=>'article'),
-	    array('name'=>$lang['nc_video_class'], 'op'=>null, 'act'=>'video_class'),
-	    array('name'=>$lang['nc_video_manage'], 'op'=>null, 'act'=>'video'),
-	    array('name'=>$lang['nc_video_recommend'], 'op'=>null, 'act'=>'video_api'),
 		array('name'=>$lang['nc_document'], 'op'=>null, 'act'=>'document'),
 		array('name'=>$lang['nc_navigation'], 'op'=>null, 'act'=>'navigation'),
 	    array('name'=>"集团页面导航", 'op'=>null, 'act'=>'groupnavigation'),
@@ -81,6 +78,7 @@ $_limit =  array(
 		array('name'=>$lang['nc_web_index'], 'op'=>null, 'act'=>'web_config|web_api'),
 		array('name'=>$lang['nc_admin_res_position'], 'op'=>null, 'act'=>'rec_position'),
 		array('name'=>$lang['nc_cms_special_manage'], 'op'=>null, 'act'=>'web_special'),
+	    
 		)),
 	array('name'=>$lang['nc_operation'], 'child'=>array(
 		array('name'=>$lang['nc_operation_set'], 'op'=>null, 'act'=>'operation'),
@@ -99,7 +97,8 @@ $_limit =  array(
         array('name'=>'平台充值卡', 'op'=>null, 'act'=>'rechargecard'),
 	    array('name'=>'物流自提服务站', 'op'=>null, 'act'=>'delivery'),
 	    array('name'=>'预约体验', 'op'=>null, 'act'=>'appointment'),
-	    array('name'=>'加盟意向', 'op'=>null, 'act'=>'join_message')
+	    array('name'=>'加盟意向', 'op'=>null, 'act'=>'join_message'),
+	    array('name'=>'会场签到', 'op'=>null, 'act'=>'sign'),
 		)),
 	array('name'=>$lang['nc_stat'], 'child'=>array(
 	    array('name'=>$lang['nc_statgeneral'], 'op'=>null, 'act'=>'stat_general'),
@@ -150,6 +149,9 @@ if (C('cms_isuse') !== NULL){
 		array('name'=>$lang['nc_cms_manage'], 'op'=>null, 'act'=>'cms_manage'),
 		array('name'=>$lang['nc_cms_index_manage'], 'op'=>null, 'act'=>'cms_index'),
 		array('name'=>$lang['nc_cms_article_manage'], 'op'=>null, 'act'=>'cms_article|cms_article_class'),
+	    array('name'=>$lang['nc_video_class'], 'op'=>null, 'act'=>'video_class'),
+	    array('name'=>$lang['nc_video_manage'], 'op'=>null, 'act'=>'video'),
+	    array('name'=>$lang['nc_video_recommend'], 'op'=>null, 'act'=>'video_api'),
 		array('name'=>$lang['nc_cms_picture_manage'], 'op'=>null, 'act'=>'cms_picture|cms_picture_class'),
 		array('name'=>$lang['nc_cms_special_manage'], 'op'=>null, 'act'=>'cms_special'),
 		array('name'=>$lang['nc_cms_navigation_manage'], 'op'=>null, 'act'=>'cms_navigation'),

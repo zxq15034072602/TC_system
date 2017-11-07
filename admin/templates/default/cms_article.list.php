@@ -166,8 +166,11 @@ function submit_callback(id){
               <a href="javascript:submit_verify(<?php echo $val['article_id'];?>);">审核</a>
               <?php } ?>
               <?php if($val['callback_able']) {?>
+              <?php if($val['article_type']==2) {?>
               <a href="javascript:submit_callback(<?php echo $val['article_id'];?>);"><?php echo $lang['cms_text_op_callback'];?></a>
+              <?php }?>
               <?php } ?>
+              <a href="index.php?act=cms_article&op=cms_article_edit&article_id=<?php echo $val['article_id']?>">编辑</a>
               <a href="javascript:submit_delete(<?php echo $val['article_id'];?>)"><?php echo $lang['nc_del'];?></a></td>
         </tr>
         <?php } ?>

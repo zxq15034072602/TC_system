@@ -310,4 +310,10 @@ function billState($bill_state) {
 			'结算完成' 
 	), $bill_state );
 }
+/**
+ * 获取商品URL
+ */
+function getGoodsUrl($goods_id) {
+    return SHOP_SITE_URL.DS.'index.php?act=goods&goods_id='.$goods_id;
+}
 ?>

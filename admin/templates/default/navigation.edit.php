@@ -108,6 +108,18 @@
                 <input type="radio" <?php if($output['navigation_array']['nav_location'] == '4'){ ?>checked="checked"<?php } ?> value="4" name="nav_location" id="nav_location4">
                 <label for="nav_location4"><?php echo $lang['navigation_group_index_nav'];?></label>
               </li>
+              <?php }elseif ($output['special_navigation']){?>
+              <?php if($output['special_type']==1) {?>
+              <li>
+                <input type="radio" <?php if($output['navigation_array']['nav_location'] == '5'){ ?>checked="checked"<?php } ?> value="5" name="nav_location" id="nav_location4">
+                <label for="nav_location4">食维健导航</label>
+              </li>
+              <?php }else{?>
+              <li>
+                <input type="radio" <?php if($output['navigation_array']['nav_location'] == '6'){ ?>checked="checked"<?php } ?> value="6" name="nav_location" id="nav_location4">
+                <label for="nav_location4">独一张导航</label>
+              </li>
+              <?php }?>
              <?php }else{?>
               <li>
                 <input type="radio" <?php if($output['navigation_array']['nav_location'] == '0'){ ?>checked="checked"<?php } ?> value="0" name="nav_location" id="nav_location0">

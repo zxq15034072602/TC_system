@@ -105,6 +105,18 @@
                 <input type="radio" value="4" name="nav_location" checked="checked">
                 <label><?php echo $lang['navigation_group_index_nav'];?></label>
               </li>
+              <?php }else if($output['special_navigation']) {?>
+               <?php if($output['special_type']==1) {?>
+               <li>
+                <input type="radio" value="5" name="nav_location" checked="checked">
+                <label>食维健导航</label>
+              </li>
+              <?php }else{?>
+              <li>
+                <input type="radio" value="6" name="nav_location" checked="checked">
+                <label>独一张导航</label>
+              </li>
+              <?php }?>
               <?php  }else {?>
               <li>
                 <input type="radio" value="0" name="nav_location">

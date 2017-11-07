@@ -22,12 +22,7 @@ function getPictureImageUrl($picture_id) {
     return CMS_SITE_URL.DS.'index.php?act=picture&op=picture_detail_image&picture_id='.$picture_id;
 }
 
-/**
- * 获取商品URL
- */
-function getGoodsUrl($goods_id) {
-    return SHOP_SITE_URL.DS.'index.php?act=goods&goods_id='.$goods_id;
-}
+
 
 /**
  * 返回图片居中显示的样式字符串 

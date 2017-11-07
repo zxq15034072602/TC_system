@@ -26,8 +26,8 @@ class apiControl extends CMSHomeControl{
         } else {
             $condition['goods_name'] = trim($_GET['search_keyword']);
         }
-		$condition['goods_show'] = '1';//上架:1是,0否
-		$goods_list = $model_goods->getGoods($condition,$page,'goods.goods_id,goods.goods_name,goods.store_id,goods.goods_image,goods.goods_store_price','goods');
+		
+		$goods_list = $model_goods->getGoodsOnlineList($condition,'*',$page);
 		Tpl::output('show_page',$page->show());
 		Tpl::output('goods_list',$goods_list);
 		Tpl::showpage('api_goods_list','null_layout');

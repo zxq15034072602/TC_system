@@ -2,9 +2,11 @@
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.edit.js" charset="utf-8"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    //行内ajax编辑
-    $('span[nc_type="class_sort"]').inline_edit({act: 'cms_article_class',op: 'update_class_sort'});
-    $('span[nc_type="class_name"]').inline_edit({act: 'cms_article_class',op: 'update_class_name'});
+ 
+	
+	   //行内ajax编辑
+	$('span[nc_type="class_sort"]').inline_edit({act: 'cms_article_class',op: 'update_class_sort'});
+	$('span[nc_type="class_name"]').inline_edit({act: 'cms_article_class',op: 'update_class_name'});
 });
 function submit_delete_batch(){
     /* 获取选中的项 */
@@ -78,9 +80,17 @@ function submit_delete(id){
         <?php if(!empty($output['list']) && is_array($output['list'])){ ?>
         <?php foreach($output['list'] as $val){ ?>
         <tr class="hover edit">
-          <td class="w24"><input type="checkbox" value="<?php echo $val['class_id'];?>" class="checkitem"></td>
+          <td class="w60"><input type="checkbox" value="<?php echo $val['class_id'];?>" class="checkitem">
+           <?php if($val['have_child'] == '1'){ ?>
+            <img src="<?php echo ADMIN_TEMPLATES_URL;?>/images/tv-expandable.gif" fieldid="<?php echo $val['class_id'];?>" status="open" nc_type="flex">
+            <?php }else{ ?>
+            <img fieldid="<?php echo $v['class_id'];?>" status="close" nc_type="flex" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/tv-item.gif">
+            <?php } ?>
+          </td>
           <td class="w48 sort"><span nc_type="class_sort" column_id="<?php echo $val['class_id'];?>" title="<?php echo $lang['nc_editable'];?>" class="editable "><?php echo $val['class_sort'];?></span></td>
-          <td class="name"><span nc_type="class_name" column_id="<?php echo $val['class_id'];?>" title="<?php echo $lang['nc_editable'];?>" class="editable "><?php echo $val['class_name'];?></span></td>
+          <td class="name"><span nc_type="class_name" column_id="<?php echo $val['class_id'];?>" title="<?php echo $lang['nc_editable'];?>" class="editable "><?php echo $val['class_name'];?></span>
+          <a class='btn-add-nofloat marginleft' href="index.php?act=cms_article_class&op=cms_article_class_add&parent_id=<?php echo $val['class_id'];?>"><span><?php echo $lang['nc_add_sub_class'];?></span></a>
+          </td>
           <td class="w72 align-center"><a href="javascript:submit_delete(<?php echo $val['class_id'];?>)"><?php echo $lang['nc_del'];?></a></td>
         </tr>
         <?php } ?>
@@ -104,3 +114,4 @@ function submit_delete(id){
     </table>
   </form>
 </div>
+<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.cms_article_class.js" charset="utf-8"></script> 

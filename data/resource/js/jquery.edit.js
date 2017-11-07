@@ -346,7 +346,7 @@ function check_max(str,s_value,max,jqobj)
      return this.each(function() {
          $(this).click(onClick);
      });
-
+    
      function onClick() {
          var span = $(this);
          var old_value = $(this).html();
@@ -357,6 +357,7 @@ function check_max(str,s_value,max,jqobj)
          .select()
          .val(old_value)
          .blur(function(){
+        	 
              var new_value = $(this).attr("value");
              if(new_value != '') {
                  $.get('index.php?act='+settings.act+'&op='+settings.op+'&branch=ajax',{id:column_id,value:new_value},function(data){
@@ -377,6 +378,8 @@ function check_max(str,s_value,max,jqobj)
      }
 }
 })(jQuery);
+
+
 
 (function($) {
  $.fn.inline_edit_confirm = function(options) {

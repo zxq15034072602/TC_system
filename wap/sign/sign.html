@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Title</title>
+    <script src="../js/sign/rem.js"></script>
+    <script src="../js/sign/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/sign/index.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="sign">
+        <img src="../images/sign/sign_1.png" alt="" class="sign_title">
+        <form action="/mobile/index.php" id="sign"  method="POST">
+        <input type="hidden" name="act" value="sign"/>
+        <input type="hidden" name="op" value="sign_save"/>
+            <div class="form_box">
+                <label for="name">姓名</label>
+                <input type="text"  id="name" name="name"/>
+            </div>
+            <div class="form_box">
+                <label for="tel">电话</label>
+                <input type="text"  id="tel" maxlength="11" name="tel"/>
+            </div>
+            <div class="form_box">
+                <label for="position">地区</label>
+                <input type="text"  id="position"  name="position"/>
+            </div>
+            <p class="select">请选择您的身份：</p>
+            <ul class="identity">
+                <li>
+                    <div class="radio">
+                        <img src="../images/sign/sign_2.png" alt="">
+                    </div>
+                    <p role="1">经销商</p>
+                </li>
+                <li>
+                    <div class="radio">
+                        <img src="../images/sign/sign_2.png" alt="">
+                    </div>
+                    <p role="2">加盟商</p>
+                </li>
+                <li>
+                    <div class="radio">
+                        <img src="../images/sign/sign_2.png" alt="">
+                    </div>
+                    <p role="3">其他</p>
+                </li>
+            </ul>
+            <input  type="hidden" name="identity" id="identity"/>
+            <div class="submit">确定</div>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    $('.identity li').click(function () {
+        $('.identity li').removeClass('active');
+        $(this).addClass('active');
+        var identity=$('.active').find('p').attr('role');
+
+    });
+
+    $('.submit').click(function () {
+        var name=$('#name').val();
+        var tel=$('#tel').val();
+        var position=$('#position').val();
+        var identity=$('.active').find('p').attr('role');
+        if(name==""){
+    	   $("#name").attr("placeholder","请输入您的姓名");
+        }else if(tel==""||/^1\d{10}$/.test(tel)==false){
+        	$("#tel").val("");
+        	$("#tel").attr("placeholder","请输入正确的电话");
+        }else if(position==""){
+        	$("#position").attr("placeholder","请填写您的地区");
+        }else if(identity==null){
+        	alert("请选择您的身份");
+        }
+        if(name!=''&& tel!=''&& position!='' && /^1\d{10}$/.test(tel) && identity!='' && identity!=null){
+        	$("#identity").val(identity);
+            $('#sign').submit();
+        }
+    });
+
+</script>
