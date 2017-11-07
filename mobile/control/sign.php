@@ -21,9 +21,9 @@ class signControl extends mobileControl{
         $sign_model=Model('sign_member');
         $result=$sign_model->save($insert_array);
         if($result){
-                echo "<script>alert('您已签到成功!'); window.location.href='about:blank';window.close();</script>";
+                echo "<script>alert('您已签到成功!'); location.href='/wap/sign/remind.html';</script>";
         }else{
-                echo "<script>alert('签到失败，请核实您填写的信息');location.href='/wap/tmpl/sign.html';</script>";
+                echo "<script>alert('签到失败，请核实您填写的信息');location.href='/wap/sign/sign.html';</script>";
          }
     }
 }
