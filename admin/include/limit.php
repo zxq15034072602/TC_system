@@ -97,7 +97,8 @@ $_limit =  array(
         array('name'=>'平台充值卡', 'op'=>null, 'act'=>'rechargecard'),
 	    array('name'=>'物流自提服务站', 'op'=>null, 'act'=>'delivery'),
 	    array('name'=>'预约体验', 'op'=>null, 'act'=>'appointment'),
-	    array('name'=>'加盟意向', 'op'=>null, 'act'=>'join_message')
+	    array('name'=>'加盟意向', 'op'=>null, 'act'=>'join_message'),
+	    array('name'=>'会场签到', 'op'=>null, 'act'=>'sign'),
 		)),
 	array('name'=>$lang['nc_stat'], 'child'=>array(
 	    array('name'=>$lang['nc_statgeneral'], 'op'=>null, 'act'=>'stat_general'),

@@ -929,6 +929,7 @@ class ModelDb{
             	//防止条件传错，删除所有记录
             	return false;
             }
+           
         return DB::execute($sql);
     }
 
