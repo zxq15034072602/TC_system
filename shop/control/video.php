@@ -249,8 +249,8 @@ class videoControl extends BaseHomeControl {
         $video_count=$article['video_count'];
         $video_count=$video_count+1;
         $article_model->update(array('video_count'=>$video_count,"video_id"=>$article['video_id']));
+        $article["video_ad_url"]=UPLOAD_SITE_URL.DS."video".DS.$article['video_ad_url'];
         Tpl::output('article',$article);
-    
         /**
          * 根据类别编号获取文章类别信息
          */
@@ -343,7 +343,7 @@ class videoControl extends BaseHomeControl {
             }
         }
         Tpl::output('new_article_list',$new_article_list);
-    
+        
         $seo_param = array();
         $seo_param['name'] = $article['video_title'];
         $seo_param['video_class'] = $article_class['vd_name'];
