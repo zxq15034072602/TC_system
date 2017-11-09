@@ -198,6 +198,7 @@ class videoControl extends BaseHomeControl {
         }
         
         Tpl::output('article',$article_list);
+        
         Tpl::output('show_page',$page->show());
          
         Model('seo')->type('video')->param(array('video_class'=>$article_class['vd_name']))->show();
