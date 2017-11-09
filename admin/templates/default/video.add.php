@@ -163,7 +163,7 @@ var uploader = WebUploader.create({
     // 内部根据当前运行是创建，可能是input元素，也可能是flash.
     pick: '#picker',
     chunked :true,
-    chunkSize :104857600,
+    chunkSize :20485760,
     accept: {
         title: 'MP4',
         extensions: 'mp4',

@@ -41,7 +41,7 @@ class videoControl extends SystemControl{
                     }
                     $video_info=$model_article->getOneArticle($v);
                     if($video_info['video_ad_url']){
-                        @unlink(BASE_UPLOAD_PATH.DS.DS.'video'.DS.$video_info['video_ad_url']);
+                        @unlink(iconv ( 'UTF-8', 'GBK', BASE_UPLOAD_PATH.DS.DS.'video'.DS.$video_info['video_ad_url']));
                     }
                     $model_article->del($v);
                 }
@@ -397,6 +397,12 @@ class videoControl extends SystemControl{
      * 上传视频
      */
     public function  update_videoOp(){
+        header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+        header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+        header("Cache-Control: no-store, no-cache, must-revalidate");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+
         @set_time_limit(5 * 60);
         $targetDir = BASE_UPLOAD_PATH.DS.'video_tmp';
         $uploadDir = BASE_UPLOAD_PATH.DS.DS.'video';
