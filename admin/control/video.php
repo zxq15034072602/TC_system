@@ -39,6 +39,10 @@ class videoControl extends SystemControl{
                             @unlink(BASE_UPLOAD_PATH.DS.ATTACH_ARTICLE.DS.$v_upload['file_name']);
                         }
                     }
+                    $video_info=$model_article->getOneArticle($v);
+                    if($video_info['video_ad_url']){
+                        @unlink(BASE_UPLOAD_PATH.DS.DS.'video'.DS.$video_info['video_ad_url']);
+                    }
                     $model_article->del($v);
                 }
                 $this->log(L('article_index_del_succ').'[ID:'.implode(',',$_POST['del_id']).']',null);
@@ -144,6 +148,7 @@ class videoControl extends SystemControl{
                 $insert_array['video_content'] = trim($_POST['video_content']);
                 $insert_array['video_time'] = time();
                 $insert_array['video_recommend']= intval($_POST['video_recommend']);
+                $insert_array['video_ad_url'] = trim($_POST['video_ad_url']);
                 $result = $model_article->add($insert_array);
                 if ($result){
                     /**
@@ -241,8 +246,12 @@ class videoControl extends SystemControl{
                 $update_array['video_show'] = trim($_POST['video_show']);
                 $update_array['video_sort'] = trim($_POST['video_sort']);
                 $update_array['video_content'] = trim($_POST['video_content']);
+                $update_array['video_ad_url'] = trim($_POST['video_ad_url']);
                 $update_array['video_recommend']=intval($_POST['video_recommend']);
                 
+                if(!empty($_POST['video_ad_url_old'])&&$_POST['video_ad_url']!=$_POST['video_ad_url_old']){//如果修改过视频，则删除原来的视频
+                    @unlink(BASE_UPLOAD_PATH.DS.DS.'video'.DS.$_POST['video_ad_url_old']);
+                }
                 $result = $model_article->update($update_array);
                 if ($result){
                     /**
@@ -383,6 +392,121 @@ class videoControl extends SystemControl{
                 }
                 break;
         }
+    }
+    /*
+     * 上传视频
+     */
+    public function  update_videoOp(){
+        @set_time_limit(5 * 60);
+        $targetDir = BASE_UPLOAD_PATH.DS.'video_tmp';
+        $uploadDir = BASE_UPLOAD_PATH.DS.DS.'video';
+        $cleanupTargetDir = true; // Remove old files
+        $maxFileAge = 5 * 3600; // Temp file age in seconds
+        if (!file_exists($targetDir)) {
+            @mkdir($targetDir);
+        }
+        // Create target dir
+        if (!file_exists($uploadDir)) {
+            @mkdir($uploadDir);
+        }
+        // Get a file name
+        if (isset($_REQUEST["name"])) {
+            $fileName = $_REQUEST["name"];
+        } elseif (!empty($_FILES)) {
+            $fileName = $_FILES["file"]["name"];
+        } else {
+            $fileName = uniqid("video_");
+        }
+        
+        $filePath =$targetDir . DIRECTORY_SEPARATOR . $fileName;
+        $uploadPath =  $uploadDir . DIRECTORY_SEPARATOR . $fileName;
+       
+        // Chunking might be enabled
+        $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
+        $chunks = isset($_REQUEST["chunks"]) ? intval($_REQUEST["chunks"]) : 1;
+        // Remove old temp files
+        if ($cleanupTargetDir) {
+            if (!is_dir($targetDir) || !$dir = opendir($targetDir)) {
+                die('{"jsonrpc" : "2.0", "error" : {"code": 100, "message": "打开临时目录失败."}, "id" : "id"}');
+            }
+        
+            while (($file = readdir($dir)) !== false) {
+                $tmpfilePath = $targetDir . DIRECTORY_SEPARATOR . $file;
+        
+                // If temp file is current file proceed to the next
+                if ($tmpfilePath == "{$filePath}_{$chunk}.part" || $tmpfilePath == "{$filePath}_{$chunk}.parttmp") {
+                    continue;
+                }
+        
+                // Remove temp file if it is older than the max age and is not the current file
+                if (preg_match('/\.(part|parttmp)$/', $file) && (@filemtime($tmpfilePath) < time() - $maxFileAge)) {
+                    @unlink($tmpfilePath);
+                }
+            }
+            closedir($dir);
+        }
+        // Open temp file
+        if (!$out = @fopen(iconv ( 'UTF-8', 'GBK', "{$filePath}_{$chunk}.parttmp" ), "wb")) {
+            die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "打开输出流失败."}, "id" : "id"}');
+        }
+        
+        if (!empty($_FILES)) {
+            if ($_FILES["file"]["error"] || !is_uploaded_file($_FILES["file"]["tmp_name"])) {
+                file_put_contents("d://text", $_FILES["file"]["error"]);
+                die('{"jsonrpc" : "2.0", "error" : {"code": 103, "message": "移动上传文件失败."}, "id" : "id"}');
+            }
+        
+            // Read binary input stream and append it to temp file
+            
+            if (!$in = @fopen(iconv ( 'UTF-8', 'GBK', $_FILES["file"]["tmp_name"]), "rb")) {
+                die('{"jsonrpc" : "2.0", "error" : {"code": 101, "message": "打开输入流失败."}, "id" : "id"}');
+            }
+        } else {
+            if (!$in = @fopen("php://input", "rb")) {
+                die('{"jsonrpc" : "2.0", "error" : {"code": 101, "message": "打开输入流失败."}, "id" : "id"}');
+            }
+        }
+        while ($buff = fread($in, 4096)) {
+            fwrite($out, $buff);
+        }
+        @fclose($out);
+        @fclose($in);
+        //iconv ( 'UTF-8', 'GBK', "{$filePath}_{$chunk}.part");
+        rename(iconv ( 'UTF-8', 'GBK', "{$filePath}_{$chunk}.parttmp"), iconv ( 'UTF-8', 'GBK', "{$filePath}_{$chunk}.part"));
+        $index = 0;
+        $done = true;
+        for( $index = 0; $index < $chunks; $index++ ) {
+            if ( !file_exists(iconv ( 'UTF-8', 'GBK', "{$filePath}_{$index}.part" )) ) {
+                $done = false;
+                break;
+            }
+        }
+        if ( $done ) {
+            
+            if (!$out = @fopen(iconv ( 'UTF-8', 'GBK', $uploadPath), "wb")) {
+                die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "Failed to open output stream."}, "id" : "id"}');
+            }
+            
+            if ( flock($out, LOCK_EX) ) {
+                for( $index = 0; $index < $chunks; $index++ ) {
+                    if (!$in = @fopen(iconv ( 'UTF-8', 'GBK', "{$filePath}_{$index}.part" ), "rb")) {
+                        break;
+                    }
+        
+                    while ($buff = fread($in, 4096)) {
+                        fwrite($out, $buff);
+                    }
+        
+                    @fclose($in);
+                    @unlink(iconv ( 'UTF-8', 'GBK', "{$filePath}_{$index}.part" ));
+                }
+        
+                flock($out, LOCK_UN);
+            }
+            @fclose($out);
+        }
+        // Return Success JSON-RPC response
+        die('{"jsonrpc" : "2.0", "result" : '.$fileName.', "id" : "id"}');
     }
 }
 ?>

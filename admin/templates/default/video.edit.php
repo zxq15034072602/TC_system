@@ -1,5 +1,10 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
-
+<script>
+var base_site_url='<?php echo BASE_SITE_URL;?>';
+</script>
+<link rel="stylesheet" type="text/css" href="<?php echo  RESOURCE_SITE_URL?>/webuploader/webuploader.css">
+<!--引入JS-->
+<script type="text/javascript" src="<?php echo  RESOURCE_SITE_URL?>/webuploader/webuploader.js"></script>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -12,6 +17,29 @@
     </div>
   </div>
   <div class="fixed-empty"></div>
+    <table class="table tb-type2 nobdb">
+   <tr>
+          <td colspan="2" class="required" id="video_upload"><label class="validation" >视频上传:&nbsp;&nbsp;&nbsp;请勿上传文件名相同的视频</label>
+          
+          </td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="3" id="divComUploadContainer">
+          <div>已上传的视频：<?php echo $output['article_array']['video_ad_url']?>&nbsp;&nbsp;&nbsp;<span style="color: #F00;">重新上传将替换原有视频</span></div>
+         <div id="uploader" class="wu-example"> 
+    <!--用来存放文件信息-->
+            <div id="thelist" class="uploader-list"></div>
+            <div class="btns">
+                <div id="picker" class="webuploader-container">
+                <div class="webuploader-pick">选择文件</div>
+                </div>
+                
+            </div>
+        </div>
+
+          </td>
+        </tr>
+  </table>
   <form id="article_form" method="post">
     <input type="hidden" name="form_submit" value="ok" />
     <input type="hidden" name="video_id" value="<?php echo $output['article_array']['video_id'];?>" />
@@ -74,19 +102,19 @@
           <td class="vatop tips"></td>
         </tr>
         <tr>
-          <td colspan="2" class="required"><label class="validation"><?php echo $lang['article_add_content'];?>:</label></td>
+          <td colspan="2" class="required"><label class="validation">视频简介:</label></td>
         </tr>
         <tr class="noborder">
           <td colspan="2" class="vatop rowform"><?php showEditor('video_content',$output['article_array']['video_content']);?></td>
         </tr>
         <tr>
-          <td colspan="2" class="required"><?php echo $lang['article_add_upload'];?>:</td>
+          <td colspan="2" class="required" id="video_pic_upload">视频封面:</td>
         </tr>
         <tr class="noborder">
           <td colspan="3" id="divComUploadContainer"><input type="file" multiple="multiple" id="fileupload" name="fileupload" /></td>
         </tr>
         <tr>
-          <td colspan="2" class="required"><?php echo $lang['article_add_uploaded'];?>:</td>
+          <td colspan="2" class="required"><?php echo $lang['article_add_uploaded'];?>: 替换图片请先删除</td>
         </tr>
         <tr class="noborder">
           <td colspan="2"><ul id="thumbnails" class="thumblists">
@@ -104,7 +132,10 @@
       </tbody>
       <tfoot>
         <tr class="tfoot">
-          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span><?php echo $lang['nc_submit'];?></span></a></td>
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span><?php echo $lang['nc_submit'];?></span></a>
+           <input  type="hidden" name="video_ad_url" value="<?php echo $output['article_array']['video_ad_url']?>" id="video_ad_url"/>
+           <input  type="hidden" name="video_ad_url_old" value="<?php echo $output['article_array']['video_ad_url']?>" id="video_ad_url_old"/>
+          </td>
         </tr>
       </tfoot>
     </table>
@@ -113,9 +144,79 @@
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/fileupload/jquery.iframe-transport.js" charset="utf-8"></script> 
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/fileupload/jquery.ui.widget.js" charset="utf-8"></script> 
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/fileupload/jquery.fileupload.js" charset="utf-8"></script> 
+<script type="text/javascript">
+var uploader = WebUploader.create({
+
+    // swf文件路径
+    swf: '<?php RESOURCE_SITE_URL?>/webuploader/Uploader.swf',
+
+    // 文件接收服务端。
+    server: '<?php echo ADMIN_SITE_URL?>/index.php?act=video&op=update_video',
+    auto:"true",
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#picker',
+    chunked :true,
+    chunkSize :104857600,
+    accept: {
+        title: 'MP4',
+        extensions: 'mp4',
+        mimeTypes: 'flv-application/octet-stream'
+    },
+    // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+    resize: false
+});
+//当有文件被添加进队列的时候
+uploader.on( 'fileQueued', function( file ) {
+    $('#thelist').append( '<div id="' + file.id + '" class="item">' +
+        '<h4 class="info">' + file.name + '</h4>' +
+        '<p class="state">等待上传...</p>' +
+    '</div>' );
+});
+//文件上传过程中创建进度条实时显示。
+uploader.on( 'uploadProgress', function( file, percentage ) {
+    var $li = $( '#'+file.id ),
+        $percent = $li.find('.progress .progress-bar');
+    // 避免重复创建
+    if ( !$percent.length ) {
+        $percent = $('<div class="progress progress-striped active">' +
+          '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+          '<span class="sr-only">0%</span>'+
+          '</div>' +
+        '</div>').appendTo( $li ).find('.progress-bar');
+    }
+
+    $li.find('p.state').text('上传中');
+    $(".sr-only").html(Math.floor(percentage * 100) + '%');
+    $percent.css( 'width', percentage * 100 + '%' );
+});
+uploader.on("error",function(type){
+	if (type=="Q_TYPE_DENIED"){
+	 alert("请上传MP4格式的文件");
+    }
+	
+});
+//上传失败的时候
+uploader.on( 'uploadError', function( file ) {
+    $( '#'+file.id ).find('p.state').text('上传出错');
+});
+uploader.on( 'uploadSuccess', function( file ) {
+	$('#video_ad_url').val(file.name);
+    $( '#'+file.id ).find('p.state').text('已上传');
+});
+
+</script>
+
 <script>
 //按钮先执行验证再提交表单
 $(function(){$("#submitBtn").click(function(){
+	if($("#video_ad_url").val()==""){//判断视频是否为空
+		$("#video_upload").append('<label for="video_content" class="error">视频不能为空</label>');
+		return;
+	}
+	if($(".picture").length==0){
+		$("#video_pic_upload").append('<label for="video_content" class="error">视频封面为空</label>')
+	}
     if($("#article_form").valid()){
      $("#article_form").submit();
 	}

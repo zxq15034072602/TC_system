@@ -143,4 +143,10 @@ class indexControl extends mobileHomeControl{
         }
         output_data(array('area_list'=>$area_list ? $area_list : array(),'contract_list'=>$_tmp));
     }
+    /*
+     * 扫码送积分入口
+     */
+    public function pointsOp(){
+        echo "<script>location.href='/wap/guide.html'</script>";
+    }
 }
