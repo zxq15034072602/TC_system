@@ -128,10 +128,10 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
             
         </li>
         <li class="activity_list_zn">
-            <a href="">
+            
                 <?php echo rec(17,1);?>
                
-            </a>
+ 
         </li>
     </ul>
     <!-- 视频推荐start -->
