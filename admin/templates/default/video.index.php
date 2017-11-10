@@ -58,7 +58,7 @@
           <th class="w24"></th>
           <th class="w48"><?php echo $lang['nc_sort'];?></th>
           <th><?php echo $lang['article_index_title'];?></th>
-          <th>是否推荐</th>
+          <th>推荐位置</th>
           <th><?php echo $lang['video_index_class'];?></th>
           <th class="align-center"><?php echo $lang['article_index_show'];?></th>
           <th class="align-center"><?php echo $lang['article_index_addtime'];?></th>
@@ -72,7 +72,16 @@
           <td><input type="checkbox" name='del_id[]' value="<?php echo $v['video_id']; ?>" class="checkitem"></td>
           <td><?php echo $v['video_sort']; ?></td>
           <td><?php echo $v['video_title']; ?></td>
-          <td><?php  if($v['video_recommend'] == 0){echo $lang['nc_no'];}else{echo $lang['nc_yes'];}?></td>
+          <td><?php  if($v['video_recommend'] == 0){echo "集团推荐";}else{
+              if($output['special_list']&&is_array($output['special_list'])){
+                  foreach ($output['special_list'] as $special){
+                      if($special['special_id']==$v['video_recommend']){
+                          echo $special['special_title'];
+                      }
+                  }
+              }
+          }?>
+          </td>
           <td><?php echo $v['vd_name']; ?></td>
           <td class="align-center"><?php if($v['article_show'] == '0'){echo $lang['nc_no'];}else{echo $lang['nc_yes'];} ?></td>
           <td class="nowrap align-center"><?php echo $v['video_time']; ?></td>

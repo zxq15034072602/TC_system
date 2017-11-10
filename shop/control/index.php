@@ -59,6 +59,19 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
                 $article['article_time']=date("Y-m-d h:i:s",$article['article_time']);
             }
         }
+        //集团首页推荐视频
+        $video_model=Model("video");
+        $condition=array('video_recommend'=>0);
+        $condition['upload_type']=7;
+        $video_list=$video_model->getJoinList($condition,$page);
+        if($video_list&&is_array($video_list)){
+            foreach ($video_list as $k=> $video){
+                $video_list[$k]['video_ad_url']=UPLOAD_SITE_URL.DS."video".DS.$video['video_ad_url'];
+            }
+        }
+        $video_html=$video_model->get_player(1,$video_list,$video_list[0]['video_ad_url']);
+        Tpl::output("video_html",$video_html);
+        Tpl::output("video_list",$video_list);
         Tpl::output('new_article',$article_list);
         Tpl::output('group_recommend',$webcode);
         Tpl::output('group_join',$webcode_join);

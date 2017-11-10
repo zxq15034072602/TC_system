@@ -300,7 +300,7 @@ focus_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>'
       <div class="focus-trigeminy">
         <?php if (is_array($output['code_focus_list']['code_info']) && !empty($output['code_focus_list']['code_info'])) { ?>
         <?php foreach ($output['code_focus_list']['code_info'] as $key => $val) { ?>
-        <div focus_id="<?php echo $key;?>" class="focus-trigeminy-group" title="<?php echo '可上下拖拽更改图片组显示顺序';?>" style="width:980px">
+        <div focus_id="<?php echo $key;?>" class="focus-trigeminy-group" title="<?php echo '可上下拖拽更改图片组显示顺序';?>" style="width:580px">
             <?php if (is_array($val['pic_list']) && $val['pic_list'][1]['ap_id'] > 0) { ?>
             广告调用
             <a class="del" href="JavaScript:del_focus(<?php echo $key;?>);" title="<?php echo $lang['nc_del'];?>">X</a>
@@ -329,7 +329,7 @@ focus_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>'
             </li>
             <?php } ?>
     
-            <span class="bottom_show"><?php if($key==1){echo "大渠道展示";}elseif($key==2){echo "门店加盟展示";}else{echo "商家入驻展示";}?></span>
+            <span class="bottom_show"><?php if($key==1||$key==2){echo "门店加盟";}elseif($key==3){echo "大渠道展示";}elseif($key==4||$key==5||$key==6){echo "招商加盟入驻";}?></span>
             
           </ul>
             <?php } ?>
@@ -340,7 +340,7 @@ focus_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>'
             <?php if(!empty($output['focus_adv_list']) && is_array($output['focus_adv_list'])){ ?>
             <a class="btn-add-nofloat" href="JavaScript:add_focus('adv');"><?php echo '广告组';?></a>
             <?php } ?>
-            <span class="s-tips"><i></i>小提示：可添加每组3张，最多5组联动广告图，单击图片为单张编辑，拖动排序，保存生效。</span></div>
+            <span class="s-tips"><i></i>小提示：可添加每组1张，最多6组联动广告图，单击图片为单张编辑，拖动排序，保存生效。</span></div>
       </div>
       <table id="ap_focus" class="table tb-type2" style="display:none;">
         <tbody>
@@ -381,7 +381,7 @@ focus_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>'
               <input type='button' name='button' id='button1' value='' class='type-file-button' />
               <input name="pic" id="pic" type="file" class="type-file-file" size="30">
               </span></td>
-            <td class="vatop tips">为确保显示效果正确，请选择W:219px H:219px的清晰图片作为联动广告图组单图。</td>
+            <td class="vatop tips">为确保显示效果正确，请选择W:490px H:354px的清晰图片作为联动广告图组单图。</td>
           </tr>
         </tbody>
       </table>
