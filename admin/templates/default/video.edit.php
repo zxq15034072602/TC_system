@@ -92,13 +92,19 @@ var base_site_url='<?php echo BASE_SITE_URL;?>';
           <td class="vatop tips"></td>
         </tr>
         <tr>
-          <td colspan="2" class="required">是否推荐: 
+          <td colspan="2" class="required">推荐位置: 
         </tr>
         <tr class="noborder">
-          <td class="vatop rowform onoff"><label for="article_recommend1" class="cb-enable <?php if($output['article_array']['video_recommend'] ==1) {?>selected<?php }?> "><span><?php echo $lang['nc_yes'];?></span></label>
-            <label for="article_recommend0" class="cb-disable <?php if($output['article_array']['video_recommend'] ==0) {?> selected<?php } ?>" ><span><?php echo $lang['nc_no'];?></span></label>
-            <input id="article_recommend1" name="video_recommend" <?php if($output['article_array']['video_recommend'] ==1) {?>checked="checked" <?php }?> value="1" type="radio">
-            <input id="article_recommend0" name="video_recommend" <?php if($output['article_array']['video_recommend'] ==0) {?>checked="checked" <?php }?> value="0" type="radio"></td>
+          <td class="vatop rowform">
+          <input id="" name="video_recommend"  value="0" type="radio" <?php if($output['article_array']['video_recommend']==0){echo 'checked="checked"';}?>>
+          <label>集团推荐</label>
+          <?php if($output['special_list']&&is_array($output['special_list'])){?>
+            <?php foreach ($output['special_list'] as $special) {?>
+             <input id="" name="video_recommend" value="<?php echo $special['special_id']?>" type="radio" <?php if($output['article_array']['video_recommend']==$special['special_id']){echo 'checked="checked"';}?>>
+             <label><?php echo $special['special_title']?></label>
+            <?php }?>
+            <?php }?>
+          </td>
           <td class="vatop tips"></td>
         </tr>
         <tr>

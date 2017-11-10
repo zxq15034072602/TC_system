@@ -14,3 +14,6 @@ ul, ol { list-style: none; }
 .clear{clear: both;}
 .fl{ float: left; }
 .fr{float: right;}
+*{
+    font-family:'微软雅黑','Microsoft Yahei','simsun','arial','tahoma';
+}

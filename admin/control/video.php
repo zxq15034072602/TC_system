@@ -106,6 +106,13 @@ class videoControl extends SystemControl{
                 $parent_list[$k]['vd_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['vd_name'];
             }
         }
+        /*
+         * 获取专题项目
+         */
+        $special_model=Model("special");
+        $condition=array('special_state'=>2);
+        $special_list=$special_model->getList($condition);
+        Tpl::output("special_list",$special_list);
         Tpl::output('article_list',$article_list);
         Tpl::output('page',$page->show());
         Tpl::output('search_title',trim($_GET['search_title']));
@@ -207,9 +214,15 @@ class videoControl extends SystemControl{
                 $file_upload[$k]['upload_path'] = UPLOAD_SITE_URL.'/'.ATTACH_ARTICLE.'/'.$file_upload[$k]['file_name'];
             }
         }
-    
+        /*
+         * 获取专题项目
+         */
+        $special_model=Model("special");
+        $condition=array('special_state'=>2);
+        $special_list=$special_model->getList($condition);
         Tpl::output('PHPSESSID',session_id());
         Tpl::output('vd_id',intval($_GET['vd_id']));
+        TPl::output("special_list",$special_list);
         Tpl::output('parent_list',$parent_list);
         Tpl::output('file_upload',$file_upload);
         Tpl::showpage('video.add');
@@ -317,7 +330,13 @@ class videoControl extends SystemControl{
                 $file_upload[$k]['upload_path'] = UPLOAD_SITE_URL.'/'.ATTACH_ARTICLE.'/'.$file_upload[$k]['file_name'];
             }
         }
-    
+        /*
+         * 获取专题项目
+         */
+        $special_model=Model("special");
+        $condition=array('special_state'=>2);
+        $special_list=$special_model->getList($condition);
+        Tpl::output("special_list",$special_list);
         Tpl::output('PHPSESSID',session_id());
         Tpl::output('file_upload',$file_upload);
         Tpl::output('parent_list',$parent_list);

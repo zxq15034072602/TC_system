@@ -412,7 +412,7 @@ function add_video_focus(add_type) {//增加
 }
 //焦点区切换小图上传
 function add_group_focus(add_type) {//增加
-	for (var i = 1; i <= 3; i++) {//防止数组下标重复
+	for (var i = 1; i <= 6; i++) {//防止数组下标重复
 		if (focus_obj.find("div[focus_id='"+i+"']").size()==0) {//编号不存在时添加
 			var add_html = '';
 			var text_type = '图片调用';
@@ -420,14 +420,14 @@ function add_group_focus(add_type) {//增加
 			if(add_type == 'adv') {
 			    text_type = '广告调用';
 			}
-			add_html = '<div focus_id="'+i+'" class="focus-trigeminy-group" title="可上下拖拽更改显示顺序" style="width:980px">'+text_type+
+			add_html = '<div focus_id="'+i+'" class="focus-trigeminy-group" title="可上下拖拽更改显示顺序" style="width:580px">'+text_type+
 			'<a class="del" href="JavaScript:del_focus('+i+');" title="删除">X</a><ul></ul></div>';
 			focus_obj.find("#btn_add_list").before(add_html);
-			for (var pic_id = 1; pic_id <= pic_max; pic_id++) {
+			for (var pic_id = 1; pic_id <= 1; pic_id++) {
 			    var text_append = '';
-			    text_append += '<li style="width:206px;height:149px" list="'+add_type+'" pic_id="'+pic_id+'" onclick="select_focus('+i+',this);" title="可左右拖拽更改图片排列顺序">';
-				text_append += '<div class="focus-thumb" style="width:206px;height:149px">';
-			    text_append += '<img title="" src=""  style="max-width: 206px;max-height: 149px;"/>';
+			    text_append += '<li style="width:490px;height:354px;margin-right: 30px;" list="'+add_type+'" pic_id="'+pic_id+'" onclick="select_focus('+i+',this);" title="可左右拖拽更改图片排列顺序">';
+				text_append += '<div class="focus-thumb" style="width:490px;height:354px">';
+			    text_append += '<img title="" src=""  style="max-width: 490px;max-height: 354px;"/>';
 				text_append += '</div>';
         	    text_append += '<input name="focus_list['+i+'][pic_list]['+pic_id+'][pic_id]" value="'+pic_id+'" type="hidden">';
         	    text_append += '<input name="focus_list['+i+'][pic_list]['+pic_id+'][pic_name]" value="" type="hidden">';
@@ -439,11 +439,17 @@ function add_group_focus(add_type) {//增加
         	    text_append += '<input name="focus_list['+i+'][pic_list]['+pic_id+'][pic_img]" value="" type="hidden">';
 			    text_append += '</li>';
 			    if(i==1){
-			    	text_span="大渠道展示";
+			    	text_span="门店加盟";
 			    }else if(i==2){
-			    	text_span="门店加盟展示";
-			    }else{
-			    	text_span="商家入驻展示";
+			    	text_span="门店加盟";
+			    }else if(i==3){
+			    	text_span="大渠道展示";
+			    }else if(i==4){
+			    	text_span="招商加盟入驻";
+			    }else if(i==5){
+			    	text_span="招商加盟入驻";
+			    }else if(i==6){
+			    	text_span="招商加盟入驻";
 			    }
 			    focus_obj.find("div[focus_id='"+i+"'] ul").append(text_append);
 			   

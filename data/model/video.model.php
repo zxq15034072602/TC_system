@@ -75,7 +75,9 @@ class videoModel{
         if($condition['upload_type'] !=""){
             $condition_str.="and upload.upload_type=".$condition['upload_type'];
         }
-    
+       if(isset($condition['video_recommend'])){
+           $condition_str.=" and video.video_recommend=".$condition['video_recommend'];
+       }
         return $condition_str;
     }
     /**
@@ -153,6 +155,23 @@ class videoModel{
         }else {
             return false;
         }
+    }
+    /*
+     * 推荐播放器
+     */
+    public function get_player($style_id,$video_list,$video_url){
+          switch ($style_id){
+              case 1:
+                  $style_file = BASE_DATA_PATH.DS.'resource'.DS.'video'.DS.'video_show1.php';
+                  break;
+          }
+          if(file_exists($style_file)){
+              ob_start();
+              include $style_file;
+              $web_html = ob_get_contents();
+              ob_end_clean();
+          }
+          return $web_html;
     }
 }
 

@@ -26,6 +26,10 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
     <!--<link rel="stylesheet" href="css/demo.css">-->
     <link rel="stylesheet" href="<?php echo SHOP_TEMPLATES_URL;?>/group/css/style.css">
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/modernizr.custom.53451.js"></script>
+    <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/jquery.min.js"></script>
+    <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/animate.js"></script>
+
+    <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL?>/js/ckplayer/ckplayer.js"></script>
     <script type="text/javascript" src="http://z1-pcok6.kuaishangkf.com/bs/ks.j?cI=923744&fI=118829" charset="utf-8"></script>
 </head>
 <body>
@@ -56,7 +60,7 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
                 <?php foreach($output['nav_list'] as $nav){?>
                 <?php if($nav['nav_location'] == '4'){?>
                 <li class="head_list_zn">
-                    <a  <?php
+                    <a  class="name" <?php
         if($nav['nav_new_open']) {
             echo ' target="_blank"';
         }
@@ -97,22 +101,17 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
                 <?php }?>
                 <?php }?>
                 <li class="head_list_zn">
-                    <a  href="">
+                    <a  href="" class="name">
                         太常集团
                     </a>
                 </li>
             </ul>
             <div class="search_box">
-                <span class="search_zn">
-                </span>
                 <form class="search-form" method="get" action="<?php echo SHOP_SITE_URL;?>">
                 <input type="hidden" value="search" id="search_act" name="act">
-                <div class="search_box_zn">
-                    <span class="search_arrow_zn"></span>
-                    <input type="text" placeholder="搜索关键词" name="keyword">
-                    <i></i>
-                </div>
-                </form>
+                 <input type="text" placeholder="搜索关键词" name="keyword">
+                 <div class="search_zn"></div>
+                 </form> 
             </div>
         </div>
     </header>
@@ -135,10 +134,384 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
             </a>
         </li>
     </ul>
+    <!-- 视频推荐start -->
+    <div id="group_video_view">
+    <?php echo $output['video_html']?>
+    </div>
+    <!-- 视频推荐end -->
+    <!--健康资讯-->
+    <!--  
+<section id="health">
+        <div class="health_title">
+            <p></p>
+            <h1>健康资讯</h1>
+        </div>
+        <div class="health_cont">
+            <ul class="cont_list">
+                <li>
+                    <div class="recom_title_active">
+                        <pre class="tit_eng">Recommended  Daily</pre>
+                        <div class="tit_china">
+                            <p>每日推荐</p>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="recom_cont">
+                        <ul>
+                            <li>
+                                <img src="<?php echo SHOP_TEMPLATES_URL?>/group/image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_12.jpg" alt="" class="img">
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_14.png" alt="" class="img">
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="hidden">
+                    <div class="recom_title">
+                        <pre class="tit_eng">Health  preservation</pre>
+                        <div class="tit_china">
+                            <p>天天养生</p>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="recom_cont">
+                        <ul>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_12.jpg" alt="" class="img">
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_14.png" alt="" class="img">
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="hidden">
+                    <div class="recom_title">
+                        <pre class="tit_eng">Health  preservation</pre>
+                        <div class="tit_china">
+                            <p>处处养生</p>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="recom_cont">
+                        <ul>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_12.jpg" alt="" class="img">
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_14.png" alt="" class="img">
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="hidden">
+                    <div class="recom_title">
+                        <pre class="tit_eng">Health  preservation</pre>
+                        <div class="tit_china">
+                            <p>人人养生</p>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="recom_cont">
+                        <ul>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_12.jpg" alt="" class="img">
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_06.png" alt="" class="gray">
+                                <img src="image/image_zn/info_09.png" alt="" class="orange">
+                                <p>世界上本没有太难的事，都是世界上本没有太难的事</p>
+                                <pre>10/25</pre>
+                            </li>
+                            <li>
+                                <img src="image/image_zn/info_14.png" alt="" class="img">
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="more_info">
+                <div class="more_title">
+                    <pre>More  Raiders</pre>
+                    <p>更多资讯</p>
+                </div>
+            </div>
+        </div>
+    </section>
+   <section id="section_zn"> -->
+     <!--我们产业-->
+    <div id="our_domain_zn">
+        <div id="our_domain_box_zn">
+            <p class="activity_title_zn">
+                <img src="<?php echo SHOP_TEMPLATES_URL?>/group/image/image_zn/activity_zn_02.png" alt=""  >
+                我们的产业
+            </p>
+            <p class="parting_line_zn"></p>
+            <ul class="our_domain_zn">
+                <li class="our_domain_list_zn">
+                    <a href="http://www.sxtaichang.com">
+                        <p>独一张</p>
+                        <span></span>
+                        <img src="https://mini.s-shot.ru/1920x1200/JPEG/1920/Z100/?www.sxtaichang.com" alt="" width="380" height="285">
+                    </a>
+                </li>
+                <li class="our_domain_list_zn">
+                    <a href="http://www.shiweijian.com.cn">
+                        <p>食维健</p>
+                        <span></span>
+                        <img src="https://mini.s-shot.ru/1920x1200/JPEG/1920/Z100/?www.shiweijian.com.cn" alt=""  width="380" height="285">
+                    </a>
+                </li>
+                <li class="our_domain_list_zn">
+                    <a href="<?php echo urlShop("index","selfindex")?>">
+                        <p>独易网</p>
+                        <span></span>
+                        <img src="https://mini.s-shot.ru/1920x1200/JPEG/1920/Z100/?www.duyiwang.cn" alt="" width="380" height="285">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="join_us_zn">
+            <p class="activity_title_zn">
+                <i class="iconfont">&#xe8b4;</i>
+                加入我们
+            </p>
+            <p class="parting_line_zn"></p>
+            <div class="container">
+                <div id="dg-container" class="dg-container">
+                    <div class="dg-wrapper">
+                        <?php if($output['group_join'][0]['code_info']&&is_array($output['group_join'][0]['code_info'])) {?>
+                        <?php foreach ($output['group_join'][0]['code_info'] as $val) {?>
+                        <a href="<?php echo $val['pic_url'];?>"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_img'];?>" alt="<?php echo $val['pic_name']?>"><div><?php echo $val["pic_name"]?></div></a>
+                        <?php }?>
+                        <?php }?>
+                    </div>
+                    <nav>
+                        <span class="dg-prev">&lt;</span>
+                        <span class="dg-next">&gt;</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--招商入住-->
+    <div class="merchants">
+        <ul>
+            <?php if($output['group_recommend'][1]&&is_array($output['group_recommend'][1]['code_info'])) {?>
+            <?php $i=1;?>
+            <?php foreach ($output['group_recommend'][1]['code_info'] as $k=>$v) {?>
+            <li class="<?php if($i==count($output['group_recommend'][1]['code_info'])){ echo "";}else{echo "hidden";}?>" >
+                   <?php foreach($v['pic_list'] as $cv){?>
+                    <?php if($cv['pic_img']) {?>
+                        <img src="<?php echo UPLOAD_SITE_URL.DS.$cv['pic_img']?>" alt="" width="490px" height="354px">
+                     <?php }?>
+                    <?php }?>
+            </li>
+              <?php $i++;?>
+             <?php }?>
+            <?php }?>
+        </ul>
+    </div>
     <section id="section_zn">
         <div id="dynamic_zn">
             <p class="activity_title_zn">
-                <i></i>
+                <img src="<?php echo SHOP_TEMPLATES_URL?>/group/image/image_zn/activity_zn_01.png" alt="">
                 集团动态
             </p>
             <p class="parting_line_zn"></p>
@@ -186,130 +559,12 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
                 </div>
             </div>
         </div>
-        <div id="our_domain_zn">
-            <div id="our_domain_box_zn">
-                <p class="activity_title_zn">
-                    <i></i>
-                    我们的产业
-                </p>
-                <p class="parting_line_zn"></p>
-                <ul class="our_domain_zn">
-                    <li class="our_domain_list_zn">
-                        <a href="http://www.sxtaichang.com">
-                            <p>独一张</p>
-                            <img src="https://mini.s-shot.ru/1920x1200/JPEG/1920/Z100/?www.sxtaichang.com" alt="" width="380" height="285">
-                        </a>
-                    </li>
-                    <li class="our_domain_list_zn">
-                        <a href="http://www.shiweijian.com.cn">
-                            <p>食维健</p>
-                            <img src="https://mini.s-shot.ru/1920x1200/JPEG/1920/Z100/?www.shiweijian.com.cn" alt="" width="380" height="285">
-                        </a>
-                    </li>
-                    <li class="our_domain_list_zn">
-                        <a href="<?php echo urlShop("index","selfindex")?>">
-                            <p>独易网</p>
-                            <img src="https://mini.s-shot.ru/1920x1200/JPEG/1920/Z100/?www.duyiwang.cn" alt="" width="380" height="285">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div id="our_service_zn">
-            <p class="activity_title_zn">
-                <i></i>
-                我们的服务
-            </p>
-            <p class="parting_line_zn"></p>
-            <ul class="our_service_box_zn">
-                <li class="our_service_list_zn">
-                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/jiankangguanlishi.png" alt="">
-                    <p class="service_title_zn">健康管理师</p>
-                    <div class="hide_box_zn">
-                        <p class="hide_title_zn">健康管理师</p>
-                        <p class="hide_parting_line_zn"></p>
-                        <p class="hide_con_zn">
-                            健康管理师是从事个体和群体健康的检测、分析、评估以及健康咨询、指导和危险因素干预等工作的专业人员。主要从事的工作内容包括：采集和管理个人或群体的健康信息；评估个人或群体的健康和疾病危险性；进行个人或群体的健康咨询与指导；制定个人或群体的健康促进计划。
-                        </p>
-                        <span><a href="<?php echo urlShop("article","member_advisor_list")?>">了解更多</a></span>
-                    </div>
-                </li>
-                <li class="our_service_list_zn">
-                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/yinyangshi.png" alt="">
-                    <p class="service_title_zn">营养师</p>
-                    <div class="hide_box_zn">
-                        <p class="hide_title_zn">营养师</p>
-                        <p class="hide_parting_line_zn"></p>
-                        <p class="hide_con_zn">
-                            5A健管体系中的指导师也由取得国家相应职业资格证的专业人员担任，包括营养师心理咨询师、体能康复师、医师、药师、社会师等，由这些专业人士提供一对一咨询指导和跟踪辅导服务，使客户从营养、心理、运动康复、社会等多角度得到全面的健康维护和保障服务。
-                        </p>
-                        <span><a href="http://www.shiweijian.com.cn/a/yingyangshi/">了解更多</a></span>
-                    </div>
-                </li>
-                <li class="our_service_list_zn">
-                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/jiankangganyu.png" alt="">
-                    <p class="service_title_zn">健康干预</p>
-                    <div class="hide_box_zn">
-                        <p class="hide_title_zn">健康干预</p>
-                        <p class="hide_parting_line_zn"></p>
-                        <p class="hide_con_zn">
-                            实施健康干预是变被动的疾病治疗为主动的管理健康，达到节约医疗费用支出、维护健康的目的。具体做法是通过专业的护理人员对个人和群体提供有针对性的健康指导，并干预实施。它帮助、指导人们成功有效地把握与维护自身的健康。
-                        </p>
-                        <span><a href="http://www.shiweijian.com.cn">了解更多</a></span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div id="join_us_zn">
-            <p class="activity_title_zn">
-                <i></i>
-                加入我们
-            </p>
-            <p class="parting_line_zn"></p>
-            <div class="container">
-                <div id="dg-container" class="dg-container">
-                    <div class="dg-wrapper">
-                        <?php if($output['group_join'][0]['code_info']&&is_array($output['group_join'][0]['code_info'])) {?>
-                        <?php foreach ($output['group_join'][0]['code_info'] as $val) {?>
-                        <a href="<?php echo $val['pic_url'];?>"><img src="<?php echo UPLOAD_SITE_URL.'/'.$val['pic_img'];?>" alt="<?php echo $val['pic_name']?>"><div><?php echo $val["pic_name"]?></div></a>
-                        <?php }?>
-                        <?php }?>
-                    </div>
-                    <nav>
-                        <span class="dg-prev">&lt;</span>
-                        <span class="dg-next">&gt;</span>
-                    </nav>
-                </div>
-            </div>
-        </div>
+      
+       
+        
        
     </section>
-    <div id="show_zn">
-        <ul class="show_box_zn">
-          <?php if($output['group_recommend'][1]&&is_array($output['group_recommend'][1]['code_info'])) {?>
-            <?php foreach ($output['group_recommend'][1]['code_info'] as $k=>$v) {?>
-            <li class="show_list_zn">
-                <ul class="big_canal_zn">
-                    <li class="big_canal_list_zn">
-                        <a href="">
-                            <?php if($k==1){echo "大渠道展示";}elseif($k==2){echo "门店加盟展示";}elseif($k==3){echo '商家入驻展示';}?>
-                        </a>
-                    </li>
-                    <?php foreach($v['pic_list'] as $cv){?>
-                    <?php if($cv['pic_img']) {?>
-                    <li class="big_canal_list_zn">
-                        <a href="<?php echo $cv['pic_url']?>">
-                            <img src="<?php echo UPLOAD_SITE_URL.DS.$cv['pic_img']?>" alt="">
-                        </a>
-                    </li>
-                    <?php }?>
-                    <?php }?>
-                </ul>
-            </li>
-            <?php }?>
-            <?php }?>
-        </ul>
-    </div>
+    
     <footer id="foot_zn">
         <ul class="foot_box_zn">
             <li class="foot_list_zn">
@@ -373,79 +628,15 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
         <p class="foot_end_zn"><?php echo html_entity_decode($output['setting_config']['statistics_code'],ENT_QUOTES); ?></p>
         <p class="foot_end_zn">reserved.</p>
     </footer>
-    <!-- 客服浮动层start -->
-    <ul id="prompt_zn">
-    <li>
-        <div class="fixed_icon_zn">
-            <div class="fixed_box_zn" onClick="openSDK()">
-                <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_01.png" alt="">
-                <div class="title_fixed_zn">在线咨询</div>
-            </div>
-        </div>
-      
-    </li>
-    <li>
-        <div class="fixed_icon_zn">
-            <div class="fixed_box_zn">
-                <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_02.png" alt="">
-                <div class="title_fixed_zn">联系电话</div>
-            </div>
-        </div>
-        <div class="line_us_zn">
-            <p class="line_us_title_zn">独易网</p>
-            <p class="line_us_phone_zn"><?php echo $GLOBALS['setting_config']['site_tel400']; ?></p>
-        </div>
-    </li>
-    <li class="prompt_list_zn">
-        <div class="fixed_icon_zn">
-            <div class="fixed_box_zn">
-                <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_03.png" alt="">
-                <div class="title_fixed_zn">加盟意向</div>
-            </div>
-        </div>
-        <div class="leave_tel_zn">
-            <p class="join_intent_zn">加盟意向</p>
-            <p class="click_close_zn">×</p>
-            <form action="index.php?act=index&op=add_join_message" method="post">
-                <div class="check_zn">
-                    <label><img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/check_gray_zn.jpg" alt=""/><input name="join_type" type="radio"  class="man_yyt" value="2"/><span>食维健</span></label>
-                    <span>|</span>
-                    <label><img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/check_gray_zn.jpg" alt=""/><input name="join_type" type="radio"  class="woman_yyt" value="1" /><span>独一张</span></label>
-                </div>
-                <p class="leave_phone_zn">
-                    留下您的电话，我们将快速联系您：
-                </p>
-                <div class="name_zn">
-                    <span>姓名</span>
-                    <input type="text" name="join_name">
-                </div>
-                <div class="phone_zn">
-                    <span>电话</span>
-                    <input type="text" name="join_mobile">
-                </div>
-                <button class="submit_zn">提交</button>
-            </form>
-        </div>
-    </li>
-    <li>
-        <div class="fixed_icon_zn">
-            <div class="fixed_box_zn">
-                <a href="#">
-                    <img src="<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/bottom_zn_04.png" alt="">
-                    <div class="title_fixed_zn">返回顶部</div>
-                </a>
-            </div>
-        </div>
-    </li>
-</ul>
-    <!--  客服浮动层end-->
+    
      <script src="https://qiyukf.com/script/b1ef49bc1fdf5ed87212333682e6d15a.js"></script>
      <script type="text/javascript">
             window.openSDK = function(){
                 ysf.open();
             }
      </script>
-    <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/jquery.min.js"></script>
+   
+    <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/index.js"></script>
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/jquery.gallery.js"></script>
     <script src="<?php echo SHOP_RESOURCE_SITE_URL;?>/js/jquery.easyui.min.js"></script>
     <script>
@@ -512,7 +703,8 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
                 $(this).siblings().children('img').attr('src','<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/check_gray_zn.jpg');
                 $(this).children('img').attr('src','<?php echo SHOP_TEMPLATES_URL;?>/group/image/image_zn/check_sure_zn.jpg');
             })
-        })
+        });
+        
     </script>
     <style>
     <?php  if(file_get_contents($output['bomb_path'])) {?>

@@ -354,5 +354,28 @@ class videoControl extends BaseHomeControl {
         $templates_name="video_show";
         Tpl::showpage($templates_name);
     }
+    /*
+     * ajax 切换播放
+     */
+    public  function ajax_videoOp(){
+        $type=$_POST['type'];
+        $video_model=Model('video');
+        $video_url=$_POST['video_url'];
+        $video_recommend=$_POST['video_recommend'];
+        switch ($type){
+            case 1:
+                 $condition=array('video_recommend'=>$video_recommend);
+                  $condition['upload_type']=7;
+                  $video_list=$video_model->getJoinList($condition,$page);
+                    if($video_list&&is_array($video_list)){
+                        foreach ($video_list as $k=> $video){
+                            $video_list[$k]['video_ad_url']=UPLOAD_SITE_URL.DS."video".DS.$video['video_ad_url'];
+                        }
+                    }
+                $video_html=$video_model->get_player(1,$video_list,$video_url);
+                break;
+        }
+        echo $video_html;
+    }
 }
 ?>
