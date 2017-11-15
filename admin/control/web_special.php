@@ -126,7 +126,11 @@ class web_specialControl extends SystemControl{
             $param['special_state'] = 1;
         }
         $special_model=Model('special');
-        $result = $special_model->save($param);
+        if(empty($_POST['special_id'])){
+            $result = $special_model->save($param);
+        }else{
+            $result=$special_model->modify($param,array('special_id'=>$_POST['special_id']));
+        }
         if($result){
             if($_POST['special_state'] == 'publish') {//如果是发布生成html
                 
@@ -140,14 +144,6 @@ class web_specialControl extends SystemControl{
             );
             $model->table('special_code')->insert($insert_arary);//添加专题成功后插入专题banner项
             $this->log("专题专题保存，专题编号".$result, 1);
-           /* $article_model=Model("article_class");//添加专题成功后插入专题文章分类
-            $insert_array = array();
-            $insert_array['ac_name'] = trim($_POST['special_title']."-专题分类");
-            $insert_array['ac_parent_id'] =0;
-            $insert_array['ac_code']=$result;
-            $insert_array['ac_sort'] = 255;
-            $insert_array['type']    = 1;
-            $article_model->add($insert_array);*/
             showMessage(Language::get('nc_common_save_succ'), self::LINK_SPECIAL);
         }else {
             $this->log(Language::get('专题保存，专题编号').$result, 0);
