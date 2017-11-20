@@ -21,7 +21,16 @@ class articleControl extends CMSHomeControl{
      * 文章列表
      */
     public function article_listOp() {
+        //获取文章分类
+        $cms_article=Model('cms_article_class');
+        $condition=array();
+        $condition['order']='class_sort asc';
+        $article_class=$cms_article->select($condition);
+        
         //获取文章列表
+        /**
+		 * 分页
+		 */
         if(empty($_GET['type'])) {
             $page_number = 10;
             $template_name = 'article_list';
@@ -36,11 +45,16 @@ class articleControl extends CMSHomeControl{
         $condition['article_state'] = self::ARTICLE_STATE_PUBLISHED;
         $model_article = Model('cms_article');
         $article_list = $model_article->getList($condition, $page_number, 'article_sort asc, article_id desc');
+        foreach($article_list as &$v){
+            $v['article_publish_time']=date("Y/m/d",$v['article_publish_time']);
+        }
         Tpl::output('show_page', $model_article->showpage(2));
         Tpl::output('article_list', $article_list);
-        $this->get_article_sidebar();
+        Tpl::output('article_class', $article_class);
+        
+       // $this->get_article_sidebar();
 
-        Tpl::showpage($template_name);
+        Tpl::showpage('article_list');
     }
 
     /**
@@ -65,9 +79,19 @@ class articleControl extends CMSHomeControl{
                 }
             }
         }
+        /**
+         * 寻找上一篇与下一篇
+         */
+        $pre_article	=  $model_article->getOne(array('article_id'=>($article_id-1)));
+        $next_article   =  $model_article->getOne(array('article_id'=>($article_id+1)));
+        Tpl::output('pre_article', $pre_article);
+        Tpl::output('next_article', $next_article);
 
         //相关文章
         $article_link_list = $this->get_article_link_list($article_detail['article_link']);
+        foreach($article_link_list as &$link_list){
+            $link_list['article_image']=unserialize($link_list['article_image']);
+        }
         Tpl::output('article_link_list', $article_link_list);
 
         //相关商品
@@ -89,7 +113,6 @@ class articleControl extends CMSHomeControl{
 
         //分享
         $this->get_share_app_list();
-
         Tpl::output('article_detail', $article_detail);
         Tpl::output('detail_object_id', $article_id);
         $this->get_article_sidebar();
@@ -125,7 +148,6 @@ class articleControl extends CMSHomeControl{
 
         $article_hot_comment = $model_article->getList(array('article_state'=>self::ARTICLE_STATE_PUBLISHED), null, 'article_comment_count desc', '*', 10);
         Tpl::output('hot_comment', $article_hot_comment);
-
         Tpl::output('article_detail', $article_detail);
         Tpl::output('detail_object_id', $article_id);
         Tpl::output('comment_all', 'all');

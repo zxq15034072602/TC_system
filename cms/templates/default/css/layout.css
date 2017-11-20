@@ -9,7 +9,7 @@
 
 
 a { color: #666; text-decoration: none;}
-a:hover { color: #1E82EF; }
+/*a:hover { color: #1E82EF; }*/
 
 
 input.text{ font-size: 12px; line-height: 28px; color: #666; background-color: #FDFDFD; vertical-align: middle; display: inline-block; height: 28px; padding: 0 9px; border: solid 1px #BEBEBE; border-radius: 2px;}

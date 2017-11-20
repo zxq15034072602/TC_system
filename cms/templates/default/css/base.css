@@ -19,7 +19,7 @@ body { background: none repeat scroll 0 0 #FFF; color: #333333; font: 12px/1 "mi
 input, select, textarea { font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
 a { outline: medium none;}
 a:link, a:visited, a:active { text-decoration: none;}
-a:hover { text-decoration: underline;}
+a:hover { text-decoration: none;}
 i, cite, em { font-style: normal;}
 
 

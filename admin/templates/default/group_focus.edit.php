@@ -341,6 +341,7 @@ focus_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>'
             <a class="btn-add-nofloat" href="JavaScript:add_focus('adv');"><?php echo '广告组';?></a>
             <?php } ?>
             <span class="s-tips"><i></i>小提示：可添加每组1张，最多6组联动广告图，单击图片为单张编辑，拖动排序，保存生效。</span></div>
+
       </div>
       <table id="ap_focus" class="table tb-type2" style="display:none;">
         <tbody>
