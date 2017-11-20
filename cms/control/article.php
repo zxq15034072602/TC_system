@@ -38,7 +38,6 @@ class articleControl extends CMSHomeControl{
             $page_number = 40;
             $template_name = 'article_list.modern';
         }
-		
         $condition = array();
         if(!empty($_GET['class_id'])) {
             $condition['article_class_id'] = intval($_GET['class_id']);

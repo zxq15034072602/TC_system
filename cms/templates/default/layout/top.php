@@ -83,6 +83,7 @@ $(function(){
         </p>
 </div>
 <!--  
+
 <link href="<?php echo CMS_TEMPLATES_URL;?>/css/base.css" rel="stylesheet" type="text/css">
 <link href="<?php echo CMS_TEMPLATES_URL;?>/css/layout.css" rel="stylesheet" type="text/css">
 <!--[if IE 6]><style type="text/css">body { _behavior: url(<?php echo CMS_TEMPLATES_URL;?>/css/csshover.htc);}</style><![endif]-->

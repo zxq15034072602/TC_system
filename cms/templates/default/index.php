@@ -464,3 +464,4 @@ if(is_file($index_file)) {
     lb('#he_person .article_img','#he_person .article_img .pic  li','#he_person .article_img .point  li');
     lb('.health_every .article_img','.health_every .article_img .pic  li','.health_every .article_img .point  li');
 </script>
+

@@ -563,7 +563,7 @@ function showEditor($id, $value='', $width='700px', $height='300px', $style='vis
             'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'about']";
         break;
     default:
-        $items = "['source', '|', 'fullscreen', 'undo', 'redo', 'print', 'cut', 'copy', 'paste',
+        $items = "['source', 'preview','|', 'fullscreen', 'undo', 'redo', 'print', 'cut', 'copy', 'paste',
             'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
             'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
             'superscript', '|', 'selectall', 'clearhtml','quickformat','|',

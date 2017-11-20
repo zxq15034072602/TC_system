@@ -295,6 +295,7 @@
         event.stopPropagation();
     }); 
 });
+
 //更改字体大小
 var status0='';
 var curfontsize=10;
@@ -388,3 +389,4 @@ function fontZoomB(){
 </div>
 <?php //require('widget_sns_share.php');?> 
  -->  
+
