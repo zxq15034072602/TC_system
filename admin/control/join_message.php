@@ -51,7 +51,6 @@ class join_messageControl extends SystemControl{
         $page->setStyle('admin');
         $join_message_list=$join_messageModel->getmessageList($condition,$page);
         Tpl::output("join_messages",$join_message_list);
-       
         Tpl::output("page",$page->show());
         Tpl::showpage("join_message.index");
     }
