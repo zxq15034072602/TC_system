@@ -1,5 +1,55 @@
-<!-- 导航 -->
+<header id="head_zn">
+    <div id="head_box_zn">
+        <a href="" class="login_zn">
+            <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'logo_zn.png';?>">
+        </a>
+        <ul id="head_nav_box_zn">
+            <li class="head_list_zn">
+                <a href="<?php echo urlCMS('index','index')?>" class="name">
+                    健康云
+                </a>
+            </li>
+            <li class="head_list_zn" id="dyp">
+                <a href="" class="name">
+                    独易品
+                </a>
+                <div class="dyw_list">
+                    <p><a href="">独易网</a></p>
+                    <p><a href="">独一张</a></p>
+                    <p><a href="">食维健</a></p>
+                </div>
+            </li>
+            <li class="head_list_zn">
+                <a href="" class="name">
+                    招商加盟
+                </a>
+            </li>
+            <li class="head_list_zn">
+                <a href="" class="name">
+                    健康商城
+                </a>
+            </li>
+            <li class="head_list_zn">
+                <a href="" class="name">
+                    太常集团
+                </a>
+            </li>
+        </ul>
+        <!--搜索-->
+         <div class="search_box">
+                <form class="search-form" method="get" action="<?php echo SHOP_SITE_URL;?>">
+                <input type="hidden" value="search" id="search_act" name="act">
+                 <input type="text" placeholder="搜索关键词" name="keyword">
+                 <div class="search_zn"></div>
+                 </form> 
+         </div>
+    </div>
+</header>
 
+
+
+<!-- 导航 -->
+<!--  
 <div id="navBar">
   <div id="navBox">
     <div class="l"></div>
@@ -60,3 +110,5 @@ $(document).ready(function()
 
 document.onclick = jsddm_close;
   </script>
+  -->
+

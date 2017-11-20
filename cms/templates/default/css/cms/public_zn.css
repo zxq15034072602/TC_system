@@ -8,6 +8,7 @@ h1, h2, h3, h4, h5, h6, th { font-size: 100%; font-weight: normal; }
 button,input,select,textarea{font-size:100%;}
 fieldset,img{border:0;}
 a { text-decoration: none; color: #666; background: none }
+a:hover { text-decoration: none;}
 ul, ol { list-style: none; }
 :focus{ outline:none;}
 .clearfix{ clear: both; content: ""; display: block; overflow: hidden }
@@ -16,5 +17,5 @@ ul, ol { list-style: none; }
 .fr{float: right;}
 *{
     font-family:'微软雅黑','Microsoft Yahei','simsun','arial','tahoma';
+    box-sizing: border-box;
 }
-
