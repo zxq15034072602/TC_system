@@ -135,14 +135,49 @@ class web_specialControl extends SystemControl{
             if($_POST['special_state'] == 'publish') {//如果是发布生成html
                 
             }
-            $model=Model();
-            $insert_arary=array(
-                "special_id"=>$result,
-                "code_type"=>"array",
-                "var_name"=>"screen_list",
-                "show_name"=>"专题首页banner"
-            );
-            $model->table('special_code')->insert($insert_arary);//添加专题成功后插入专题banner项
+            if(empty($_POST['special_id'])){
+                $model=Model();
+                $insert_arary=array(
+                    array(
+                        "special_id"=>$result,
+                        "code_type"=>"array",
+                        "var_name"=>"screen_list",
+                        "show_name"=>"专题首页banner"
+                    ),
+                );
+                if($param['special_type']==2){//如果是独一张专题
+                    $attach_array=array(
+                        array(
+                            "special_id"=>$result,
+                            "code_type"=>"array",
+                            "var_name"=>"screen_honor_list",
+                            "show_name"=>"独一张荣誉资质"
+                        ),
+                        array(
+                            "special_id"=>$result,
+                            "code_type"=>"array",
+                            "var_name"=>"screen_recure_list",
+                            "show_name"=>"独一张康复案例"
+                        ),
+                        array(
+                            "special_id"=>$result,
+                            "code_type"=>"array",
+                            "var_name"=>"screen_store_list",
+                            "show_name"=>"独一张店面展示"
+                        ),
+                        array(
+                            "special_id"=>$result,
+                            "code_type"=>"array",
+                            "var_name"=>"screen_canvass_list",
+                            "show_name"=>"独一张招商加盟"
+                        ),
+                    );
+                }elseif($param['special_type']==1){//如果是食维健专题
+                    
+                }
+                $insert_arary=array_merge($insert_arary,$attach_array);
+                $model->table('special_code')->insertAll($insert_arary);//添加专题成功后插入专题banner项
+            }
             $this->log("专题专题保存，专题编号".$result, 1);
             showMessage(Language::get('nc_common_save_succ'), self::LINK_SPECIAL);
         }else {
@@ -428,8 +463,50 @@ class web_specialControl extends SystemControl{
             }
             $code_info = $special_code_model->get_str($code_info,$code_type);
             $special_code_model->updateCode(array('code_id'=> $code_id),array('code_info'=> $code_info));
-            
-            Tpl::showpage('web_upload_screen','null_layout');
+            Tpl::output("obj_name",$_POST['obj_name']);
+            Tpl::showpage('special_upload_screen','null_layout');
+        }
+    }
+    /*
+     * 上传联动图片
+     */
+    public function focus_picOp(){
+        $code_id = intval($_POST['code_id']);
+        $special_id = intval($_POST['special_id']);
+        $special_code_model=Model('special_code');
+        $code = $special_code_model->getCodeRow($code_id,$special_id);
+        if (!empty($code)) {
+            $code_type = $code['code_type'];
+            $var_name = $code['var_name'];
+            $code_info = $_POST[$var_name];
+        
+            $key = intval($_POST['key']);
+            $slide_id = intval($_POST['slide_id']);
+            $pic_id = intval($_POST['pic_id']);
+            if ($pic_id > 0 && $slide_id == $key) {
+                $var_name = "focus_pic";
+                $pic_info = $_POST[$var_name];
+                $pic_info['pic_id'] = $pic_id;
+                if (!empty($code_info[$slide_id]['pic_list'][$pic_id]['pic_img'])) {//原图片
+                  
+                    $pic_info['pic_img'] = $code_info[$slide_id]['pic_list'][$pic_id]['pic_img'];
+                    
+                }
+                $file_name = 'web-'.$web_id.'-'.$code_id.'-'.$slide_id.'-'.$pic_id;
+                $pic_name = $this->_upload_pic($file_name);//上传图片
+                if (!empty($pic_name)) {
+                    $pic_info['pic_img'] = $pic_name;
+                }
+        
+               $code_info[$slide_id]['pic_list'][$pic_id] = $pic_info;
+             
+                Tpl::output('pic',$pic_info);
+            }
+            $code_info = $special_code_model->get_str($code_info,$code_type);
+ 
+            $special_code_model->updateCode(array('code_id'=> $code_id),array('code_info'=> $code_info));
+            Tpl::output("obj_name",$_POST['obj_name']);
+            Tpl::showpage('special_upload_focus','null_layout');
         }
     }
     /*
