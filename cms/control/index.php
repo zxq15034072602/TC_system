@@ -10,9 +10,11 @@ class indexControl extends CMSHomeControl{
 
 	public function __construct() {
 		parent::__construct();
+		Tpl::setLayout('jky_layout');
         Tpl::output('index_sign','index');
     }
 	public function indexOp(){
+	   
 	    //文章分类标题
 	    $cms_article=Model('cms_article_class');
 	    $condition=array();
@@ -73,7 +75,8 @@ class indexControl extends CMSHomeControl{
         $condition=array('video_recommend'=>2);
         $condition['order']="video_id desc";
         $condition['limit']=6;
-        $video_list=$video_model->getVideoList($condition);
+        $condition['upload_type']=7;
+        $video_list=$video_model->getJoinList($condition);
         Tpl::output("video_list",$video_list);
         Tpl::output("question_list",$question_list);
 	    Tpl::output("article_class",$article_class);

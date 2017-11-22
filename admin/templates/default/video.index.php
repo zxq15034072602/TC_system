@@ -72,7 +72,7 @@
           <td><input type="checkbox" name='del_id[]' value="<?php echo $v['video_id']; ?>" class="checkitem"></td>
           <td><?php echo $v['video_sort']; ?></td>
           <td><?php echo $v['video_title']; ?></td>
-          <td><?php  if($v['video_recommend'] == 0){echo "集团推荐";}else{
+          <td><?php  if($v['video_recommend'] == 0){echo "不推荐";}elseif($v['video_recommend'] == 1){echo "集团推荐";}elseif($v['video_recommend'] == 2){echo "健康云";}else{
               if($output['special_list']&&is_array($output['special_list'])){
                   foreach ($output['special_list'] as $special){
                       if($special['special_id']==$v['video_recommend']){

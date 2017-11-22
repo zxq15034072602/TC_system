@@ -65,8 +65,8 @@ if(is_file($index_file)) {
                          <?php foreach($output['dayday_article_right'] as $dayarticle_right){?>
                             <li>
                                 <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$dayarticle_right['article_id']))?>">
-                                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_06.png';?>" alt="" class="gray">
-                                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="" class="orange">
+                                    <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_06.png';?>" alt="" class="gray">
+                                    <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="" class="orange">
                                     <p><?php echo str_cut($dayarticle_right['article_title'], 50);?></p>
                                     <pre><?php echo $dayarticle_right['article_publish_time'];?></pre>
                                 </a>
@@ -74,7 +74,7 @@ if(is_file($index_file)) {
                             <?php }?>
                             <li class="more_art">
                                 <a href="<?php echo urlCMS('article','article_list',array('class_id'=>$class['class_id']))?>">
-                                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_02.png';?>" alt="">
+                                    <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_02.png';?>" alt="">
                                     <h1>查看更多</h1>
                                 </a>
                             </li>
@@ -119,7 +119,7 @@ if(is_file($index_file)) {
                     <!--热门推荐-->
                     <div class="recommend">
                         <div class="recom_title">
-                            <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="">
+                            <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="">
                             <p>热门推荐</p>
                         </div>
                         <?php foreach($output['person_hot_article'] as $hot_article){?>
@@ -132,7 +132,7 @@ if(is_file($index_file)) {
                                 <span>|【<?php echo $hot_article['article_publisher_name']?>】|</span>
                                 <i>|</i>
                                 <p><?php echo $hot_article['article_publish_time'];?></p>
-                                <a href="javascript:;"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_person.png';?>" alt=""></a>           
+                                <a href="javascript:;"><img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_person.png';?>" alt=""></a>           
                             </div>                   
                         </div>
                          <?php }?>
@@ -145,8 +145,8 @@ if(is_file($index_file)) {
                         <?php foreach($output['person_article'] as $personarticle){?>
                             <li>
                                 <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$personarticle['article_id']))?>">
-                                   <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_06.png';?>" alt="" class="gray">
-                                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="" class="orange">
+                                   <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_06.png';?>" alt="" class="gray">
+                                    <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="" class="orange">
                                     <p><?php echo str_cut($personarticle['article_title'], 50);?></p>
                                     <pre><?php echo $personarticle['article_publish_time'];?></pre>
                                 </a>
@@ -155,7 +155,7 @@ if(is_file($index_file)) {
                         </ul>
                         <div class="person_more">
                             <a href="<?php echo urlCMS('article','article_list',array('class_id'=>$class['class_id']))?>">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_02.png';?>" alt="">
+                                <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_02.png';?>" alt="">
                                 <p>查看更多</p>
                             </a>
                         </div>
@@ -214,7 +214,7 @@ if(is_file($index_file)) {
                     <!--热门推荐-->
                     <div class="recommend">
                         <div class="recom_title">
-                            <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="">
+                            <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="">
                             <p>热门推荐</p>
                         </div>
                         <?php foreach($output['chuchu_hot_article'] as $hotarticle){?>
@@ -227,7 +227,7 @@ if(is_file($index_file)) {
                                     <span>|【<?php echo $hotarticle['article_publisher_name']?>】|</span>
                                     <i>|</i>
                                     <p><?php echo $hotarticle['article_publish_time']?></p>
-                                    <a href="javascript:;"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_person.png';?>" alt=""></a>
+                                    <a href="javascript:;"><img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_person.png';?>" alt=""></a>
                             	</div>       
                         	</div>
                          <?php }?>
@@ -239,8 +239,8 @@ if(is_file($index_file)) {
                     <?php foreach($output['chuchu_article'] as $cc_article){?>
                             <li>
                                 <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$cc_article['article_id']))?>">
-                                   <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_06.png';?>" alt="" class="gray">
-                                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="" class="orange">
+                                   <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_06.png';?>" alt="" class="gray">
+                                    <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="" class="orange">
                                     <p><?php echo str_cut($cc_article['article_title'],50);?></p>
                                     <pre><?php echo $cc_article['article_publish_time'];?></pre>
                                 </a>
@@ -248,7 +248,7 @@ if(is_file($index_file)) {
                         <?php }?>
                         <li id="click_more">
                             <a href="<?php echo urlCMS('article','article_list',array('class_id'=>$class['class_id']))?>">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="">
+                                <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="">
                                 <p>查看更多</p>
                             </a>
                         </li>
@@ -291,7 +291,7 @@ if(is_file($index_file)) {
                 </div>
                 <div class="answer_more">
                     <a href="<?php echo urlShop('question','question_list',array('question_status'=>3))?>">
-                        <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="">
+                        <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="">
                         <p>查看更多</p>
                     </a>
                 </div>
@@ -309,8 +309,8 @@ if(is_file($index_file)) {
                 <ul class="video_list">                
                     <?php foreach($output['video_list'] as $video){?>
                         <li>
-                            <a href="<?php echo urlCMS('video','show',array('video_id'=>$video['video_id']))?>">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'video_sxy_03.png';?>" alt="">
+                            <a href="<?php echo urlshop('video','show',array('video_id'=>$video['video_id']))?>">
+                               <img src="<?php echo UPLOAD_SITE_URL.DS."shop/article/".$video['file_name']?>" alt="" onerror="this.src='<?php echo CMS_TEMPLATES_URL.DS.'images/cms/video_sxy_03.png';?>'">
                             </a>
                         </li>
                    <?php }?>                   
@@ -318,7 +318,7 @@ if(is_file($index_file)) {
                 </ul>
                 <div class="answer_more">
                     <a href="<?php echo urlShop('video','video',array('vd_id'=>4))?>">
-                        <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="">
+                        <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="">
                         <p>查看更多</p>
                     </a>
                 </div>

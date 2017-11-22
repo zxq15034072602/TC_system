@@ -383,7 +383,7 @@ class videoControl extends BaseHomeControl {
                         $video_list[$k]['video_ad_url']=UPLOAD_SITE_URL.DS."video".DS.$video['video_ad_url'];
                     }
                 }
-                $video_html=$video_model->get_player(2,$video_list,$video_url);
+                $video_html=$video_model->get_player(2,$video_list,$video_url,$video_recommend);
                 break;
         }
         echo $video_html;

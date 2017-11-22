@@ -695,10 +695,9 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
                 <select name="special_type" disabled="disabled">
                    <option value="1" <?php if($output['special_detail']['special_type']==1){echo "selected";}?>>食维健</option> 
                    <option value="2" <?php if($output['special_detail']['special_type']==2){echo "selected";}?>>独一张</option> 
-<<<<<<< HEAD
+
                    <input type="hidden" name="special_type" value="<?php echo $output['special_detail']['special_type']?>"/>
-=======
->>>>>>> 1c3d97ae709fcae55eb348d205cbe9cf20a6b800
+
                 </select>
             </td>
           <td class="vatop tips">专题页面呈现的效果</td>
@@ -869,11 +868,8 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
         </tr>
         -->
         <?php if($output['special_detail']['special_id']) { ?>
-<<<<<<< HEAD
        <!--  <tr class="space">
-=======
-        <tr class="space">
->>>>>>> 1c3d97ae709fcae55eb348d205cbe9cf20a6b800
+
           <th colspan="2">专题内容<?php echo $lang['nc_colon'];?></th>
         </tr>
         <tr>

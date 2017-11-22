@@ -161,6 +161,7 @@
     </ul>
 </div>
 <!--视频专区-->
+<div id="group_video_view"></div>
 <?php echo $output['video_html']?>
 <!--公司简介-->
 <div id="company_profile">

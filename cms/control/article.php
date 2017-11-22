@@ -10,6 +10,7 @@ class articleControl extends CMSHomeControl{
 
     public function __construct() {
         parent::__construct();
+        Tpl::setLayout('jky_layout');
         Tpl::output('index_sign', 'article');
     }
 
@@ -24,8 +25,8 @@ class articleControl extends CMSHomeControl{
         //获取文章分类
         $cms_article=Model('cms_article_class');
         $condition=array();
-        $condition['order']='class_sort asc';
-        $article_class=$cms_article->select($condition);
+        $condition['class_code']="";
+        $article_class=$cms_article->getTreeClassList(2,$condition);
         
         //获取文章列表
         /**
@@ -48,7 +49,7 @@ class articleControl extends CMSHomeControl{
         foreach($article_list as &$v){
             $v['article_publish_time']=date("Y/m/d",$v['article_publish_time']);
         }
-        Tpl::output('show_page', $model_article->showpage(2));
+        Tpl::output('show_page', $model_article->showpage(6));
         Tpl::output('article_list', $article_list);
         Tpl::output('article_class', $article_class);
         
@@ -58,7 +59,7 @@ class articleControl extends CMSHomeControl{
     }
 
     /**
-     * 文章列表
+     * 文章详情
      */
     public function article_detailOp() {
         $article_id = intval($_GET['article_id']);
@@ -97,7 +98,17 @@ class articleControl extends CMSHomeControl{
         //相关商品
         $article_goods_list = unserialize($article_detail['article_goods']);
         Tpl::output('article_goods_list', $article_goods_list);
-
+       //作者发布文章数
+       $author_article_list=$model_article->getList(array('article_publisher_id'=>$article_detail['article_publisher_id']), null, 'article_sort asc, article_id desc');
+        Tpl::output("author_article_list",$author_article_list);
+        
+        //获取投稿文章用户资料
+        if($article_detail['article_type']==2){
+            $model_member = Model('member');
+            $member_info = $model_member->getMemberInfoByID($article_detail['article_publisher_id']);
+            $article_detail['member_info']=$member_info;
+            
+        }
         //计数加1
         $model_article->modify(array('article_click'=>array('exp','article_click+1')),array('article_id'=>$article_id));
 
