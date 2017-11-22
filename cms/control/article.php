@@ -233,5 +233,13 @@ class articleControl extends CMSHomeControl{
         $this->get_article_comment();
 
     }
-
+   /*
+    * 招商图片页面
+    */
+    function article_showOp(){
+        $article_type=$_REQUEST['article_type'];
+        $article_type=$article_type?$article_type:1;
+        Tpl::output("article_type",$article_type);
+        Tpl::showpage('static_article');
+    }
 }

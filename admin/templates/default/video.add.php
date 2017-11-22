@@ -96,7 +96,7 @@ var base_site_url='<?php echo BASE_SITE_URL;?>';
           <td colspan="2" class="required">推荐位置: 
         </tr>
         <tr class="noborder">
-          <td class="vatop rowform ">
+          <td class="vatop rowform " style="width: 500px;">
             <input id="" name="video_recommend" checked="checked" value="0" type="radio">
             <label>不推荐</label>
             <input id="" name="video_recommend" value="1" type="radio">

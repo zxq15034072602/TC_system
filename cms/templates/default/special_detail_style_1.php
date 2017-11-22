@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <title>独一张</title>
     <style>
-    .foot_end_zn a {
+    #head_box_zn a {
+    	color: #69443e;
+    }
+    #head_box_zn a:hover {
+    	background-color: #B49C8A;
     	color: #e9d9bf;
     }
    </style>
@@ -17,16 +21,25 @@
     <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL?>/js/ckplayer/ckplayer.js"></script>
 </head>
 <body>
+
 <!--登录注册-->
-<div id="login_zn">
+<div id="login_zn" style="background-color: #69443e;">
     <p>
-        <span><a href="">登录</a></span>
-        <span>|</span>
-        <span><a href="">注册</a></span>
+        <?php if($_SESSION['is_login'] == '1'){?>
+        <span ><a href="<?php echo urlShop('login','logout');?>" style="color: #e9d9bf;">退出</a></span>
+        <span style="color: #e9d9bf;">|</span>
+        <span><a href="<?php echo urlShop('member','home');?>" style="color: #e9d9bf;">个人中心</a></span>
+        <span style="font-size:12px;color:#e5e5e5;margin-left:12px;margin-right:12px;" style="color: #e9d9bf;">|</span>
+        <span><a href="<?php echo urlShop('member','home');?>" style="color: #e9d9bf;"><?php echo $_SESSION['member_name'];?></a></span>
+        <?php }else {?>
+        <span><a href="<?php echo urlShop("login","login")?>" style="color: #e9d9bf;">登录</a></span>
+        <span style="color: #e9d9bf;">|</span>
+        <span><a href="<?php  echo urlShop("login","register")?>" style="color: #e9d9bf;">注册</a></span>
+        <?php }?>
     </p>
 </div>
 <!--导航条-->
-<header id="head_zn">
+<header id="head_zn" style="background-color: #e9d9bf;">
     <div id="head_box_zn">
         <a href="<?php echo urlCMS("web_special","index",array('special_id'=>$output['special_file']['special_id']))?>" class="login_zn">
             <img src="<?php echo UPLOAD_SITE_URL.DS.'cms'.DS.'special'.DS.$output['special_file']['special_logo']?>" alt="<?php echo $output['special_file']['special_title']?>">
@@ -94,9 +107,9 @@
             <?php }?>
         </ul>
         <!--搜索-->
-        <div class="search_box">
+        <div class="search_box" style="border: 1px solid #69443e;">
             <form action="">
-                <input type="text">
+                <input type="text" placeholder="搜索关键词" style="background-color: #e9d9bf;">
                 <div class="search_zn"></div>
             </form>
         </div>
@@ -121,8 +134,8 @@
             <img src="<?php echo CMS_TEMPLATES_URL?>/images/special/arrow_yellow_03.png" alt="" class="arrow_yellow">
         </a>
         <a href="javascript:;" id="next" class="arrow">
-            <img src="image/image_zn/arrow_05.png" alt="" class="arrow_white">
-            <img src="image/image_zn/arrow_yellow_05.png" alt="" class="arrow_yellow">
+            <img src="<?php echo CMS_TEMPLATES_URL?>/images/special/arrow_05.png" alt="" class="arrow_white">
+            <img src="<?php echo CMS_TEMPLATES_URL?>/images/special/arrow_yellow_05.png" alt="" class="arrow_yellow">
         </a>
     </ul>
 </nav>

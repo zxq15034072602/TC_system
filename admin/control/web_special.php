@@ -196,7 +196,16 @@ class web_specialControl extends SystemControl{
     public function special_dropOp(){
         $condition = array();
         $condition['special_id'] = array('in', $_POST['special_id']);
-        var_dump($condition);
+        $special_model=Model("special");
+        $result=$special_model->drop($condition);
+        if($result){
+            $this->log("专题删除成功", 1);
+            showMessage("专题删除成功", self::LINK_SPECIAL);
+        }else {
+            $this->log('专题删除失败，专题编号' ,0);
+            showMessage('专题删除失败', self::LINK_SPECIAL);
+        }
+        
     }
     /*
      * 专题导航删除
