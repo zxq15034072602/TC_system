@@ -97,7 +97,11 @@ var base_site_url='<?php echo BASE_SITE_URL;?>';
         <tr class="noborder">
           <td class="vatop rowform">
           <input id="" name="video_recommend"  value="0" type="radio" <?php if($output['article_array']['video_recommend']==0){echo 'checked="checked"';}?>>
+          <label>不推荐</label>
+          <input id="" name="video_recommend"  value="1" type="radio" <?php if($output['article_array']['video_recommend']==1){echo 'checked="checked"';}?>>
           <label>集团推荐</label>
+           <input id="" name="video_recommend"  value="2" type="radio" <?php if($output['article_array']['video_recommend']==2){echo 'checked="checked"';}?>>
+          <label>健康云</label>
           <?php if($output['special_list']&&is_array($output['special_list'])){?>
             <?php foreach ($output['special_list'] as $special) {?>
              <input id="" name="video_recommend" value="<?php echo $special['special_id']?>" type="radio" <?php if($output['article_array']['video_recommend']==$special['special_id']){echo 'checked="checked"';}?>>

@@ -10,6 +10,7 @@ class articleControl extends CMSHomeControl{
 
     public function __construct() {
         parent::__construct();
+        Tpl::setLayout('jky_layout');
         Tpl::output('index_sign', 'article');
     }
 
@@ -21,7 +22,16 @@ class articleControl extends CMSHomeControl{
      * 文章列表
      */
     public function article_listOp() {
+        //获取文章分类
+        $cms_article=Model('cms_article_class');
+        $condition=array();
+        $condition['class_code']="";
+        $article_class=$cms_article->getTreeClassList(2,$condition);
+        
         //获取文章列表
+        /**
+		 * 分页
+		 */
         if(empty($_GET['type'])) {
             $page_number = 10;
             $template_name = 'article_list';
@@ -36,15 +46,20 @@ class articleControl extends CMSHomeControl{
         $condition['article_state'] = self::ARTICLE_STATE_PUBLISHED;
         $model_article = Model('cms_article');
         $article_list = $model_article->getList($condition, $page_number, 'article_sort asc, article_id desc');
-        Tpl::output('show_page', $model_article->showpage(2));
+        foreach($article_list as &$v){
+            $v['article_publish_time']=date("Y/m/d",$v['article_publish_time']);
+        }
+        Tpl::output('show_page', $model_article->showpage(6));
         Tpl::output('article_list', $article_list);
-        $this->get_article_sidebar();
+        Tpl::output('article_class', $article_class);
+        
+       // $this->get_article_sidebar();
 
-        Tpl::showpage($template_name);
+        Tpl::showpage('article_list');
     }
 
     /**
-     * 文章列表
+     * 文章详情
      */
     public function article_detailOp() {
         $article_id = intval($_GET['article_id']);
@@ -65,15 +80,35 @@ class articleControl extends CMSHomeControl{
                 }
             }
         }
+        /**
+         * 寻找上一篇与下一篇
+         */
+        $pre_article	=  $model_article->getOne(array('article_id'=>($article_id-1)));
+        $next_article   =  $model_article->getOne(array('article_id'=>($article_id+1)));
+        Tpl::output('pre_article', $pre_article);
+        Tpl::output('next_article', $next_article);
 
         //相关文章
         $article_link_list = $this->get_article_link_list($article_detail['article_link']);
+        foreach($article_link_list as &$link_list){
+            $link_list['article_image']=unserialize($link_list['article_image']);
+        }
         Tpl::output('article_link_list', $article_link_list);
 
         //相关商品
         $article_goods_list = unserialize($article_detail['article_goods']);
         Tpl::output('article_goods_list', $article_goods_list);
-
+       //作者发布文章数
+       $author_article_list=$model_article->getList(array('article_publisher_id'=>$article_detail['article_publisher_id']), null, 'article_sort asc, article_id desc');
+        Tpl::output("author_article_list",$author_article_list);
+        
+        //获取投稿文章用户资料
+        if($article_detail['article_type']==2){
+            $model_member = Model('member');
+            $member_info = $model_member->getMemberInfoByID($article_detail['article_publisher_id']);
+            $article_detail['member_info']=$member_info;
+            
+        }
         //计数加1
         $model_article->modify(array('article_click'=>array('exp','article_click+1')),array('article_id'=>$article_id));
 
@@ -89,7 +124,6 @@ class articleControl extends CMSHomeControl{
 
         //分享
         $this->get_share_app_list();
-
         Tpl::output('article_detail', $article_detail);
         Tpl::output('detail_object_id', $article_id);
         $this->get_article_sidebar();
@@ -125,7 +159,6 @@ class articleControl extends CMSHomeControl{
 
         $article_hot_comment = $model_article->getList(array('article_state'=>self::ARTICLE_STATE_PUBLISHED), null, 'article_comment_count desc', '*', 10);
         Tpl::output('hot_comment', $article_hot_comment);
-
         Tpl::output('article_detail', $article_detail);
         Tpl::output('detail_object_id', $article_id);
         Tpl::output('comment_all', 'all');

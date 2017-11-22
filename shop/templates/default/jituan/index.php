@@ -628,7 +628,6 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
         <p class="foot_end_zn"><?php echo html_entity_decode($output['setting_config']['statistics_code'],ENT_QUOTES); ?></p>
         <p class="foot_end_zn">reserved.</p>
     </footer>
-    
      <script src="https://qiyukf.com/script/b1ef49bc1fdf5ed87212333682e6d15a.js"></script>
      <script type="text/javascript">
             window.openSDK = function(){

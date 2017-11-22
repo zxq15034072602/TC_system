@@ -16,7 +16,7 @@ $(document).ready(function(){
             },
             navigation_link: {
                 required : true,
-                url : true,
+              //  url : true,
                 maxlength : 255
             },
             navigation_sort: {

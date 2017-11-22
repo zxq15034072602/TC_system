@@ -146,7 +146,7 @@ $lang['nc_statmarketing']			= '营销分析';
 $lang['nc_stataftersale']			= '售后分析';
 $lang['nc_statindustry']	        = '行业分析';
 
-$lang['nc_web_index']				= '首页管理';
+$lang['nc_web_index']				= '商城首页管理';
 $lang['nc_product_recd']				= '商品推荐类型';
 $lang['nc_microshop']			= '微商城';
 $lang['nc_microshop_goods']			= "随心看";

@@ -374,6 +374,29 @@ class Page{
 				}
 				$html_page .= '</ul>';
 				break;
+			case 6:
+			    $this->left_current_html = '<li ><span class="currentpage" style="background: #f69c1c;border-color: #f69c1c;">';
+			    $this->right_current_html = '</span></li>';
+			    $this->left_inside_a_html = '<span>';
+			    $this->right_inside_a_html = '</span>';
+			    $html_page .= '<ul>';
+			    if ($this->getNowPage() <= 1){
+			        $html_page .= '<li style="    margin-right: 10px;">'.$this->left_inside_a_html.$this->pre_home.$this->right_inside_a_html.'</li>';
+			        $html_page .= '<li >'.$this->left_inside_a_html.$this->pre_page.$this->right_inside_a_html.'</li>';
+			    }else {
+			        $html_page .= '<li   ><a class="demo" href="'. $this->page_url .'1">'.$this->left_inside_a_html.$this->pre_home.$this->right_inside_a_html.'</a></li>';
+			        $html_page .= '<li    ><a class="demo" href="'. $this->page_url . ($this->getNowPage()-1) .'">'.$this->left_inside_a_html.$this->pre_page.$this->right_inside_a_html.'</a></li>';
+			    }
+			    $html_page .= $this->getNowBar();
+			    if ($this->getNowPage() == $this->getTotalPage() || $this->getTotalPage() == 0){
+			        $html_page .= '<li >'.$this->left_inside_a_html.$this->next_page.$this->right_inside_a_html.'</li>';
+			        $html_page .= '<li >'.$this->left_inside_a_html.$this->pre_last.$this->right_inside_a_html.'</li>';
+			    }else {
+			        $html_page .= '<li style="    margin-right: 10px;"><a class="demo" href="'. $this->page_url . ($this->getNowPage()+1) .'">'.$this->left_inside_a_html.$this->next_page.$this->right_inside_a_html.'</a></li>';
+			        $html_page .= '<li ><a class="demo" href="'. $this->page_url . $this->getTotalPage() .'">'.$this->left_inside_a_html.$this->pre_last.$this->right_inside_a_html.'</a></li>';
+			    }
+			    $html_page .= '</ul>';
+			    break;
 			default:
 				break;
 		}

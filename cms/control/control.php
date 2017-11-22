@@ -318,7 +318,9 @@ class CMSHomeControl extends CMSControl{
         $article_class_list = array_under_reset($article_class_list, 'class_id');
         Tpl::output('article_class_list', $article_class_list);
 
+        $special_model=Model("special");
 
+        
         $model_picture_class = Model('cms_picture_class');
         $picture_class_list = $model_picture_class->getList(TRUE, null, 'class_sort asc');
         $picture_class_list = array_under_reset($picture_class_list, 'class_id');

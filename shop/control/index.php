@@ -61,7 +61,7 @@ class indexControl extends BaseHomeControl{ //父类定义了公共头部，以�
         }
         //集团首页推荐视频
         $video_model=Model("video");
-        $condition=array('video_recommend'=>0);
+        $condition=array('video_recommend'=>1);
         $condition['upload_type']=7;
         $video_list=$video_model->getJoinList($condition,$page);
         if($video_list&&is_array($video_list)){

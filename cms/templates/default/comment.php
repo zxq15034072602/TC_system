@@ -114,10 +114,10 @@ $(document).ready(function(){
 
 });
 </script>
-
+ 
 <div id="cms_comment_flag" class="article-comment-title">
   <h3></h3>
-  <span><?php echo $lang['cms_comment1'];?><a href="<?php echo CMS_SITE_URL.DS;?>index.php?act=<?php echo $_GET['act'];?>&op=<?php echo $_GET['act'];?>_comment_detail&<?php echo $_GET['act'];?>_id=<?php echo $output['detail_object_id'];?>"><em><?php echo $output[$_GET['act'].'_detail'][$_GET['act'].'_comment_count'];?></em></a><?php echo $lang['cms_comment2'];?><em><?php echo $output[$_GET['act'].'_detail'][$_GET['act'].'_click'];?></em><?php echo $lang['cms_comment3'];?></span> </div>
+  <!-- <span><?php echo $lang['cms_comment1'];?><a href="<?php echo CMS_SITE_URL.DS;?>index.php?act=<?php echo $_GET['act'];?>&op=<?php echo $_GET['act'];?>_comment_detail&<?php echo $_GET['act'];?>_id=<?php echo $output['detail_object_id'];?>"><em><?php echo $output[$_GET['act'].'_detail'][$_GET['act'].'_comment_count'];?></em></a><?php echo $lang['cms_comment2'];?><em><?php echo $output[$_GET['act'].'_detail'][$_GET['act'].'_click'];?></em><?php echo $lang['cms_comment3'];?></span> --> </div>
 <form id="add_form" action="" class="article-comment-form">
   <input id="input_comment_type" name="comment_type" type="hidden" value="<?php echo $_GET['act'];?>" />
   <input id="input_comment_object_id" name="comment_object_id" type="hidden" value="<?php echo $output['detail_object_id'];?>" />
