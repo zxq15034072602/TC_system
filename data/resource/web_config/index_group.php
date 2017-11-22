@@ -11,12 +11,12 @@
         <?php }?>
     </ul>
     <a href="javascript:;" id="prev" class="arrow">
-            <img src="shop/templates/default/group/image/image_zn/arrow_03.png" alt="" class="arrow_white">
-            <img src="shop/templates/default/group/image/image_zn/arrow_yellow_03.png" alt="" class="arrow_yellow">
+            <img src="<?php echo SHOP_SITE_URL?>/templates/default/group/image/image_zn/arrow_03.png" alt="" class="arrow_white">
+            <img src="<?php echo SHOP_SITE_URL?>/templates/default/group/image/image_zn/arrow_yellow_03.png" alt="" class="arrow_yellow">
         </a>
     <a href="javascript:;" id="next" class="arrow">
-        <img src="shop/templates/default/group/image/image_zn/arrow_05.png" alt="" class="arrow_white">
-        <img src="shop/templates/default/group/image/image_zn/arrow_yellow_05.png" alt="" class="arrow_yellow">
+        <img src="<?php echo SHOP_SITE_URL?>/templates/default/group/image/image_zn/arrow_05.png" alt="" class="arrow_white">
+        <img src="<?php echo SHOP_SITE_URL?>/templates/default/group/image/image_zn/arrow_yellow_05.png" alt="" class="arrow_yellow">
     </a>
     <?php }?>
 </div>
