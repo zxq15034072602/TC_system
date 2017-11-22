@@ -1,9 +1,5 @@
 /*导航选中*/
-.head_list_zn:nth-child(2) a.name {
-    background-color: #F5B55C;
-    color: #fff;
-    font-weight: normal;
-}
+
 .head_list_zn .dyw_list p:nth-child(2) a{
     color: #F5B55C;
 }
