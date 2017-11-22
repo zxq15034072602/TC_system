@@ -339,7 +339,7 @@ if(is_file($index_file)) {
                     <li>
                         <div class="list_top">
                             <div class="wei_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="" width='65' height="65">
                             </div>
                             <div class="list_text">
                                 <a href="">坚持午睡竟有这么多好处!!!</a>
@@ -354,7 +354,7 @@ if(is_file($index_file)) {
                     <li>
                         <div class="list_top">
                             <div class="wei_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="" width='65' height="65">
                             </div>
                             <div class="list_text">
                                 <a href="">坚持午睡竟有这么多好处!!!</a>
@@ -369,7 +369,7 @@ if(is_file($index_file)) {
                     <li>
                         <div class="list_top">
                             <div class="wei_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="" width='65' height="65">
                             </div>
                             <div class="list_text">
                                 <a href="">坚持午睡竟有这么多好处!!!</a>
@@ -384,7 +384,7 @@ if(is_file($index_file)) {
                     <li>
                         <div class="list_top">
                             <div class="wei_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="" width='65' height="65">
                             </div>
                             <div class="list_text">
                                 <a href="">坚持午睡竟有这么多好处!!!</a>
