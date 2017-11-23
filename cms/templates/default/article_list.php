@@ -25,6 +25,7 @@ s
                 </div>
                 <ul class="nav">
                <?php foreach($output['article_class'] as $class){?>
+                  
                     <li>
                         <p <?php if($_GET['class_id']==$class['class_id']){?>class="nav_active"<?php }?>><a href="<?php echo urlCMS('article','article_list',array('class_id'=>$class['class_id']))?>"><?php echo $class['class_name']?></a></p><span></span>
                     </li>
