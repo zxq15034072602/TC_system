@@ -29,7 +29,7 @@ if(is_file($index_file)) {
                         <li>
                             <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$dayarticle['article_id']))?>">
                                 <div class="img_box">
-                                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'article/admin_1/'.$dayarticle['article_image']['name'];?>" alt="">
+                                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'article/'.$dayarticle['article_image']['path'].'/'.$dayarticle['article_image']['name'];?>" alt="">
                                 </div>
                                 <p><?php echo str_cut($dayarticle['article_title'], 25);?></p>
                             </a>
@@ -124,7 +124,7 @@ if(is_file($index_file)) {
                         </div>
                         <?php foreach($output['person_hot_article'] as $hot_article){?>
                         <div class="recom_img">
-                            <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'article/admin_1/'.$hot_article['article_image']['name'];?>" alt="">
+                            <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'article/'.$hot_article['article_image']['path'].'/'.$hot_article['article_image']['name'];?>" alt="">
                         </div>
                         <div class="recon_info">        
                             <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$hot_article['article_id']))?>" class="recon_info_title"><?php echo str_cut($hot_article['article_title'], 30);?></a>
@@ -219,7 +219,7 @@ if(is_file($index_file)) {
                         </div>
                         <?php foreach($output['chuchu_hot_article'] as $hotarticle){?>
                             <div class="recom_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'article/admin_1/'.$hotarticle['article_image']['name'];?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'article/'.$hotarticle['article_image']['path'].'/'.$hotarticle['article_image']['name'];?>" alt="">
                             </div>
                         	<div class="recon_info">                    	
                                 <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$hotarticle['article_id']))?>"class="recon_info_title"><?php echo str_cut($hotarticle['article_title'], 30);?></a>
