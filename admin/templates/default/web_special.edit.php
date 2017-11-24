@@ -258,8 +258,8 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
                       <input type="hidden" name="key" value="">
                       <div class="full-screen-slides" style="width: 800px;margin: 0 auto;">
                         <ul style="overflow: hidden;">
-                          <?php if (is_array($output['code_screen_list']['code_info']) && !empty($output['code_screen_list']['code_info'])) { ?>
-                          <?php foreach ($output['code_screen_list']['code_info'] as $key => $val) { ?>
+                          <?php if (is_array($output['code_screen_honor_list']['code_info']) && !empty($output['code_screen_honor_list']['code_info'])) { ?>
+                          <?php foreach ($output['code_screen_honor_list']['code_info'] as $key => $val) { ?>
                           <?php if (is_array($val) && $val['ap_id'] > 0) { ?>
                           <li ap="1" screen_id="<?php echo $val['pic_id'];?>" title="可上下拖拽更改显示顺序">
                             广告调用
@@ -561,8 +561,8 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
                       <input type="hidden" name="key" value="">
                       <div class="full-screen-slides" style="width: 800px;margin: 0 auto;">
                         <ul style="overflow: hidden;">
-                          <?php if (is_array($output['code_screen_list']['code_info']) && !empty($output['code_screen_list']['code_info'])) { ?>
-                          <?php foreach ($output['code_screen_list']['code_info'] as $key => $val) { ?>
+                          <?php if (is_array($output['code_screen_canvass_list']['code_info']) && !empty($output['code_screen_canvass_list']['code_info'])) { ?>
+                          <?php foreach ($output['code_screen_canvass_list']['code_info'] as $key => $val) { ?>
                           <?php if (is_array($val) && $val['ap_id'] > 0) { ?>
                           <li ap="1" screen_id="<?php echo $val['pic_id'];?>" title="可上下拖拽更改显示顺序">
                             广告调用
