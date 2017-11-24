@@ -545,7 +545,9 @@
             move('right')
         });
     }
+    <?php if(count($output['special_file']['code_info']['screen_recure_list'])>1) {?>
     change('.case_img_box','.sharing_img','.change_case');
+    <?php }?>
     <?php if(count($output['special_file']['code_info']['screen_store_list'])>1) {?>
     change('.shop_img_box','.show_img','.change_shop')
     <?php }?>
