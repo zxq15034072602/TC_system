@@ -135,7 +135,19 @@ s
 </body>
 </html>
 <script>
-
+    //移上去下拉 独易品
+    let wait;
+    $('#dyp').hover(
+        function () {
+            wait = setTimeout(() => {
+                $('.dyw_list').slideDown('normal')
+            }, 200)
+        },
+        function () {
+            clearTimeout(wait);
+            $('.dyw_list').slideUp('normal')
+        }
+    )
     //选项卡
     $('.nav li').click(function () {
         $(".nav li").find('p').removeClass('nav_active');

@@ -18,8 +18,8 @@
                 </a>
                 <div class="dyw_list">
                     <p><a href="<?php echo urlShop('index',"selfindex")?>">独易网</a></p>
-                    <p><a href="">独一张</a></p>
-                    <p><a href="">食维健</a></p>
+                    <p><a href="<?php echo urlCMS("web_special","index",array("special_id"=>18))?>">独一张</a></p>
+                    <p><a href="#">食维健</a></p>
                 </div>
             </li>
             <?php }else {?>

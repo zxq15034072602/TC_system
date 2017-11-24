@@ -25,7 +25,7 @@ class articleControl extends CMSHomeControl{
         //获取文章分类
         $cms_article=Model('cms_article_class');
         $condition=array();
-        $condition['class_code']="";
+        //$condition['class_code']="";
         $article_class=$cms_article->getTreeClassList(2,$condition);
         
         //获取文章列表

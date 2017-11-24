@@ -10,6 +10,10 @@
     #head_box_zn a:hover {
     	background-color: #B49C8A;
     	color: #e9d9bf;
+    	
+    }
+    .foot_end_zn a{
+	 color: #e9d9bf;
     }
    </style>
     <link rel="stylesheet" href="<?php echo CMS_TEMPLATES_URL?>/css/special/public_zn.css">
@@ -56,9 +60,9 @@
                         独易品
                     </a>
                     <div class="dyw_list">
-                        <p><a href="">独易网</a></p>
-                        <p><a href="">独一张</a></p>
-                        <p><a href="">食维健</a></p>
+                        <p><a href="<?php urlShop("index","selfindex")?>">独易网</a></p>
+                        <p><a href="<?php echo urlCMS("web_special","index",array("special_id"=>18))?>">独一张</a></p>
+                        <p><a href="#">食维健</a></p>
                     </div>
                 </li>
                 <?php } else {?>
@@ -199,7 +203,7 @@
     <img src="<?php echo CMS_TEMPLATES_URL?>/images/special/dyz_index_sxy/dyz_index_title_08.png" alt="" class="dyz_index_title">
     <ul class="about_instrouce">
         <li>
-            <a href="javascript:;">
+            <a href="<?php echo urlCMS("article","article_list",array("class_id"=>25))?>">
                 <div class="about_title">
                     <img src="<?php echo CMS_TEMPLATES_URL?>/images/special/dyz_index_sxy/dyz_index_about_04.png" alt="">
                     <h1>新闻资讯</h1>
@@ -306,7 +310,7 @@
     </div>
     <div class="change_shop">
         <img src="<?php echo CMS_TEMPLATES_URL?>/images/special/dyz_index_sxy/dyz_change_shop_03.png" alt="">
-        <p>换一批</p>
+        <p >换一批</p>
     </div>
 </div>
 <?php }?>
@@ -540,5 +544,7 @@
         });
     }
     change('.case_img_box','.sharing_img','.change_case');
+    <?php if(count($output['special_file']['code_info']['screen_store_list'])>1) {?>
     change('.shop_img_box','.show_img','.change_shop')
+    <?php }?>
 </script>
