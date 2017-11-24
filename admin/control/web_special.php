@@ -126,7 +126,11 @@ class web_specialControl extends SystemControl{
             $param['special_state'] = 1;
         }
         $special_model=Model('special');
-        $result = $special_model->save($param);
+        if(empty($_POST['special_id'])){
+            $result = $special_model->save($param);
+        }else{
+            $result = $special_model->modify($param,array("special_id"=>$_POST['special_id']));
+        }
         if($result){
             if($_POST['special_state'] == 'publish') {//如果是发布生成html
                 
