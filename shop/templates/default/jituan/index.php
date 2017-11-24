@@ -5,7 +5,7 @@ $agent = $_SERVER['HTTP_USER_AGENT'];
 if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2.0") || strpos($agent,"Opera Mini") || strpos($agent,"UCWEB") || strpos($agent,"Android") || strpos($agent,"Windows CE") || strpos($agent,"SymbianOS")){
     global $config;
     if(!empty($config['wap_site_url'])){
-        $url = $config['wap_site_url'].'/group_index.html';
+        $url = $config['wap_site_url'].'/guidance.html';
        
     } else {
         $header("Location:$wapurl");
