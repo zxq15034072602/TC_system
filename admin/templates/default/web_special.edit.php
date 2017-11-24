@@ -726,9 +726,9 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
             <input name="special_background" type="file" class="type-file-file" id="special_background" size="30" hidefocus="true" nctype="cms_image">
             <input name="old_special_background" type="hidden" value="<?php echo $output['special_detail']['special_background'];?>" />
             </span></td>
-          <td class="vatop tips"><span class="vatop rowform">背景图即专题页面CSS属性中"body{ background-image}"值，选择本地图片上传作为页面整体背景。</span></td>
+          <td class="vatop tips"><span class="vatop rowform"><?php if($output['special_detail']['special_type']==2) {echo "图片尺寸940*370";}else{echo '背景图即专题页面CSS属性中"body{ background-image}"值，选择本地图片上传作为页面整体背景。';}?></span></td>
         </tr>
-        
+        <!--  
         <tr>
           <td colspan="2" class="required">背景图填充方式</td>
         </tr>
@@ -747,6 +747,7 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
               y轴平铺</label></td>
           <td class="vatop tips"><span class="vatop rowform">背景图填充方式即专题页面CSS属"body{ background-repeat}"值，选择不重复(no-repeat)|平铺(repeat)|x轴平铺(repeat-x)|y轴平铺(repeat-y)为背景图的填充方式。</span></td>
         </tr>
+        -->
         <tr class="noborder">
           <td c class="required">专题页首页导航<?php echo $lang['nc_colon'];?></td>
           <td class="vatop tips"><span class="vatop rowform">专题首页头部导航添加</span></td>

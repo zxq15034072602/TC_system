@@ -129,7 +129,7 @@ if(is_file($index_file)) {
                         <div class="recon_info">        
                             <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$hot_article['article_id']))?>" class="recon_info_title"><?php echo str_cut($hot_article['article_title'], 30);?></a>
                             <div class="recom_time">
-                                <span>|【<?php echo $hot_article['article_publisher_name']?>】|</span>
+                                <span>|【<?php echo str_cut($hot_article['article_publisher_name'], 5)?>】|</span>
                                 <i>|</i>
                                 <p><?php echo $hot_article['article_publish_time'];?></p>
                                 <a href="javascript:;"><img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_person.png';?>" alt=""></a>           

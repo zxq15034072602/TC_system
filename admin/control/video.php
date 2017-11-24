@@ -185,9 +185,9 @@ class videoControl extends SystemControl{
                         ),
                         );
                     $this->log(L('article_add_ok').'['.$_POST['article_title'].']',null);
-                    showMessage("{$lang['article_add_ok']}",$url);
+                    showMessage("视频添加成功",$url);
                 }else {
-                    showMessage("{$lang['article_add_fail']}");
+                    showMessage("视频添加失败");
                 }
             }
         }
@@ -293,9 +293,9 @@ class videoControl extends SystemControl{
                         ),
                     );
                     $this->log(L('article_edit_succ').'['.$_POST['video_title'].']',null);
-                    showMessage($lang['article_edit_succ'],$url);
+                    showMessage("视频编辑成功",$url);
                 }else {
-                    showMessage($lang['article_edit_fail']);
+                    showMessage("视频编辑失败");
                 }
             }
         }
