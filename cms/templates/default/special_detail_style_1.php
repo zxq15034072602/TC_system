@@ -178,8 +178,10 @@
     </ul>
 </div>
 <!--视频专区-->
-<div id="group_video_view"></div>
+<div id="group_video_view">
 <?php echo $output['video_html']?>
+</div>
+
 <!--公司简介-->
 <div id="company_profile">
     <img src="<?php echo CMS_TEMPLATES_URL?>/images/special/dyz_index_sxy/dyz_index_title_06.png" alt="" class="dyz_index_title">
