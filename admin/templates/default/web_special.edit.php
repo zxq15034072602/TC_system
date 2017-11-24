@@ -242,7 +242,7 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
                           </tr>
                         </tbody>
                       </table>
-                      <div class="margintop"><a href="JavaScript:void(0);" onclick="$('#upload_screen_form').submit();" class="btn"><span>上传</span></a>
+                      <div class="margintop"><a href="JavaScript:void(0);" onclick="$('#upload_screen_form').submit();" class="btn"><span>保存</span></a>
                       <input  type="hidden" name="obj_name" value="upload_screen"/>
                        <!--  <a href="index.php?act=web_api&op=html_update&web_id=<?php echo $output['code_screen_list']['web_id'];?>" class="btn"><span>更新板块内容</span></a>--> 
                         <span class="web-save-succ" style="display:none;">保存成功</span>
@@ -350,7 +350,7 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
                           </tr>
                         </tbody>
                       </table>
-                      <div class="margintop"><a href="JavaScript:void(0);" onclick="$('#upload_honor_form').submit();" class="btn"><span>上传</span></a>
+                      <div class="margintop"><a href="JavaScript:void(0);" onclick="$('#upload_honor_form').submit();" class="btn"><span>保存</span></a>
                       <input  type="hidden" name="obj_name" value="upload_honor"/>
                        <!--  <a href="index.php?act=web_api&op=html_update&web_id=<?php echo $output['code_screen_list']['web_id'];?>" class="btn"><span>更新板块内容</span></a>--> 
                         <span class="web-save-succ" style="display:none;">保存成功</span>
@@ -449,7 +449,7 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
                           </tr>
                         </tbody>
                       </table>
-                      <a href="JavaScript:void(0);" onclick="$('#upload_recure_form').submit();" class="btn"><span>上传</span></a>
+                      <a href="JavaScript:void(0);" onclick="$('#upload_recure_form').submit();" class="btn"><span>保存</span></a>
                       <input type="hidden" name="obj_name" value="upload_recure" />
                     <!--   <a href="index.php?act=web_api&op=html_update&web_id=<?php echo $output['code_screen_list']['web_id'];?>" class="btn"><span><?php echo $lang['web_config_web_html'];?></span></a>--> 
                       <span class="web-save-succ" style="display:none;"><?php echo $lang['nc_common_save_succ'];?></span>
@@ -547,7 +547,7 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
                           </tr>
                         </tbody>
                       </table>
-                      <a href="JavaScript:void(0);" onclick="$('#upload_store_form').submit();" class="btn"><span>上传</span></a>
+                      <a href="JavaScript:void(0);" onclick="$('#upload_store_form').submit();" class="btn"><span>保存</span></a>
                       <input type="hidden" name="obj_name" value="upload_store" />
                     <!--   <a href="index.php?act=web_api&op=html_update&web_id=<?php echo $output['code_screen_list']['web_id'];?>" class="btn"><span><?php echo $lang['web_config_web_html'];?></span></a>--> 
                       <span class="web-save-succ" style="display:none;"><?php echo $lang['nc_common_save_succ'];?></span>
@@ -653,7 +653,7 @@ screen_adv_append += '<option value="'+ap_id+'">'+adv_info['ap_name']+'</option>
                           </tr>
                         </tbody>
                       </table>
-                      <div class="margintop"><a href="JavaScript:void(0);" onclick="$('#upload_canvass_form').submit();" class="btn"><span>上传</span></a>
+                      <div class="margintop"><a href="JavaScript:void(0);" onclick="$('#upload_canvass_form').submit();" class="btn"><span>保存</span></a>
                       <input  type="hidden" name="obj_name" value="upload_canvass"/>
                        <!--  <a href="index.php?act=web_api&op=html_update&web_id=<?php echo $output['code_screen_list']['web_id'];?>" class="btn"><span>更新板块内容</span></a>--> 
                         <span class="web-save-succ" style="display:none;">保存成功</span>
