@@ -91,12 +91,12 @@ body {
     padding: 0 24px;
 }
 
-.head_list_zn:hover a.name {
+/*.head_list_zn:hover a.name {
     background-color: #F5B55C;
     color: #fff;
     font-weight: normal;
 }
-
+*/
 .head_list_zn .dyw_list {
     width: 170px;
     height: 172px;

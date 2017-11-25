@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>独一张</title>
+    <title><?php echo $output['special_file']['special_title']?></title>
     <style>
     #head_box_zn a {
     	color: #69443e;
     }
-    #head_box_zn a:hover {
-    	background-color: #B49C8A;
+    .head_list_zn:hover a.name {
+        background-color: #B49C8A;
     	color: #e9d9bf;
-    	
+        font-weight: normal;
     }
     .foot_end_zn a{
 	 color: #e9d9bf;
@@ -45,8 +45,8 @@
 <!--导航条-->
 <header id="head_zn" style="background-color: #e9d9bf;">
     <div id="head_box_zn">
-        <a href="<?php echo urlCMS("web_special","index",array('special_id'=>$output['special_file']['special_id']))?>" class="login_zn">
-            <img src="<?php echo UPLOAD_SITE_URL.DS.'cms'.DS.'special'.DS.$output['special_file']['special_logo']?>" alt="<?php echo $output['special_file']['special_title']?>">
+        <a href="<?php echo urlCMS("web_special","index",array('special_id'=>$output['special_file']['special_id']))?>" class="login_zn" style="margin-top: 2px">
+            <img src="<?php echo UPLOAD_SITE_URL.DS.'cms'.DS.'special'.DS.$output['special_file']['special_logo']?>" alt="<?php echo $output['special_file']['special_title']?>" width="166" height="60" style="width:166px;height:60px">
         </a>
         <ul id="head_nav_box_zn">
            

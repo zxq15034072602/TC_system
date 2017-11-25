@@ -59,7 +59,7 @@
 		 screen_max=4;
 	 }else if(obj_name=="upload_canvass"){//是否为招商加盟
 		 obj_form=screen_canvass_obj;
-		screen_max=5;
+		screen_max=6;
 	 }
   	for (var i = 1; i <= screen_max; i++) {//防止数组下标重复
   		if (obj_form.find("li[screen_id='"+i+"']").size()==0) {//编号不存在时添加
