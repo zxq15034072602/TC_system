@@ -176,7 +176,7 @@
           </div></td>
         </tr>
          <tr>
-          <td colspan="2" class="required">封面: 
+          <td colspan="2" class="required">封面: 尺寸w:202*h:126
         </tr>
         <tr class="noborder">
           <td class="vatop rowform" id="article_img">
@@ -272,7 +272,7 @@ function insert_editor(file_path){
 	KE.appendHtml('article_content', '<img src="'+ file_path + '" alt="'+ file_path + '">');
 }
 function insert_article_image(file_path,file_name){
-	var html="<img src='"+file_path+"' >";
+	var html="<img src='"+file_path+"' width='202' height='126'>";
 	      html+="<input  type='hidden' name='article_image' value='"+file_name+"'/>";
 	$("#article_img").html(html);
 }

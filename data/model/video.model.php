@@ -159,10 +159,13 @@ class videoModel{
     /*
      * 推荐播放器
      */
-    public function get_player($style_id,$video_list,$video_url){
+    public function get_player($style_id,$video_list,$video_url,$video_recommend=0){
           switch ($style_id){
               case 1:
                   $style_file = BASE_DATA_PATH.DS.'resource'.DS.'video'.DS.'video_show1.php';
+                  break;
+              case 2:
+                  $style_file = BASE_DATA_PATH.DS.'resource'.DS.'video'.DS.'video_show2.php';
                   break;
           }
           if(file_exists($style_file)){

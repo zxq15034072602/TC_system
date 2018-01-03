@@ -1,6 +1,7 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
  <link rel="stylesheet" href="<?php echo CMS_TEMPLATES_URL;?>/css/cms/news_list_sxy.css">
  <script src="<?php echo RESOURCE_SITE_URL;?>/js/cms/cms_jquery.pagination.js"></script>
+s
 
 <!--中间内容部分--> 
 <section class="sxy_content">
@@ -9,9 +10,9 @@
             <!--标题--> 
             <div class="jump_title">
                 <p><a href="<?php echo urlShop('index','groupindex')?>">首页</a></p>
-                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'news_list_03.png';?>" alt="">
+                <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/news_list_03.png';?>" alt="">
                 <p><a href="<?php echo urlCMS('index','index')?>">健康云</a></p>
-                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'news_list_03.png';?>" alt="">
+                <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/news_list_03.png';?>" alt="">
                <?php foreach($output['article_class'] as $class){?>
                 <p class="show"><?php if($_GET['class_id']==$class['class_id']){echo $class['class_name'];}?></p>
                 <?php }?>
@@ -19,11 +20,12 @@
             <!--选项卡导航-->
             <div class="title_taichang">
                 <div class="title_info">
-                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'news_list_07.png';?>" alt="">
+                    <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/news_list_07.png';?>" alt="">
                     <p>太常资讯</p>
                 </div>
                 <ul class="nav">
                <?php foreach($output['article_class'] as $class){?>
+                  
                     <li>
                         <p <?php if($_GET['class_id']==$class['class_id']){?>class="nav_active"<?php }?>><a href="<?php echo urlCMS('article','article_list',array('class_id'=>$class['class_id']))?>"><?php echo $class['class_name']?></a></p><span></span>
                     </li>
@@ -31,25 +33,26 @@
                 </ul>
             </div>
             <!--选项卡内容-->
-            
+           
              <div class="news_cont_list on">
                 <ul class="news_list">
-                <?php foreach($output['article_list'] as $list){?>
+                     <?php foreach($output['article_list'] as $list){?>
                     <li>
                         <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$list['article_id']))?>">
                             <div class="news_title">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_06.png';?>" alt="" class="gray">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_05.png';?>" alt="" class="orange">
+                                <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_06.png';?>" alt="" class="gray">
+                                <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/health_day_05.png';?>" alt="" class="orange">
                                 <p><?php echo $list['article_title']?></p>
                             </div>
                             <h1><?php echo $list['article_publish_time'];?></h1>
                         </a>
+                        
                     </li>
-                     <?php }?>
+                    <?php }?>
                 </ul>
                 
             </div>
-           
+            
             <div class="pagination"><?php echo $output['show_page'];?></div>
 			
         </div>
@@ -58,7 +61,8 @@
                 <?php echo loadadv(1056);?>
             </div>
             <div class="weixin_account">
-                <div class="weixin_orange"></div>
+            <?php echo loadadv(1066);?>
+               <!--  <div class="weixin_orange"></div>
                 <div class="weixin_title">
                     <p></p>
                     <h1>微信公众号</h1>
@@ -67,7 +71,7 @@
                     <li>
                         <div class="list_top">
                             <div class="wei_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="" width='65' height="65">
                             </div>
                             <div class="list_text">
                                 <a href="">坚持午睡竟有这么多好处!!!</a>
@@ -82,7 +86,7 @@
                     <li>
                         <div class="list_top">
                             <div class="wei_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="" width='65' height="65">
                             </div>
                             <div class="list_text">
                                 <a href="">坚持午睡竟有这么多好处!!!</a>
@@ -97,7 +101,7 @@
                     <li>
                         <div class="list_top">
                             <div class="wei_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="" width='65' height="65">
                             </div>
                             <div class="list_text">
                                 <a href="">坚持午睡竟有这么多好处!!!</a>
@@ -112,7 +116,7 @@
                     <li>
                         <div class="list_top">
                             <div class="wei_img">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="">
+                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'health_day_03.jpg';?>" alt="" width='65' height="65">
                             </div>
                             <div class="list_text">
                                 <a href="">坚持午睡竟有这么多好处!!!</a>
@@ -124,7 +128,7 @@
                             <p>独一张</p>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </div>
@@ -132,7 +136,19 @@
 </body>
 </html>
 <script>
-
+    //移上去下拉 独易品
+    let wait;
+    $('#dyp').hover(
+        function () {
+            wait = setTimeout(() => {
+                $('.dyw_list').slideDown('normal')
+            }, 200)
+        },
+        function () {
+            clearTimeout(wait);
+            $('.dyw_list').slideUp('normal')
+        }
+    )
     //选项卡
     $('.nav li').click(function () {
         $(".nav li").find('p').removeClass('nav_active');

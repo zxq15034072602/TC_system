@@ -5,7 +5,7 @@ $agent = $_SERVER['HTTP_USER_AGENT'];
 if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2.0") || strpos($agent,"Opera Mini") || strpos($agent,"UCWEB") || strpos($agent,"Android") || strpos($agent,"Windows CE") || strpos($agent,"SymbianOS")){
     global $config;
     if(!empty($config['wap_site_url'])){
-        $url = $config['wap_site_url'].'/group_index.html';
+        $url = $config['wap_site_url'].'/guidance.html';
        
     } else {
         $header("Location:$wapurl");
@@ -32,6 +32,24 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
     <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL?>/js/ckplayer/ckplayer.js"></script>
     <script type="text/javascript" src="http://z1-pcok6.kuaishangkf.com/bs/ks.j?cI=923744&fI=118829" charset="utf-8"></script>
 </head>
+<style>
+.dyw_list {
+    width: 170px;
+    height: 172px;
+    box-sizing: border-box;
+    background: #fff;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 999;
+    padding: 26px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    display: none;
+    /* transition: all 0.6s ease; */
+}
+</style>
 <body>
     <div id="login_zn">
         <p>  
@@ -59,6 +77,19 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
                 <?php if(!empty($output['nav_list']) && is_array($output['nav_list'])){?>
                 <?php foreach($output['nav_list'] as $nav){?>
                 <?php if($nav['nav_location'] == '4'){?>
+                <?php if($nav['nav_title'] =="独易品") {?>
+                <li class="head_list_zn" id="dyp">
+                    <a  href="" class="name">
+                        <?php echo $nav['nav_title']?>
+                    </a>
+                    <div class="dyw_list">
+                        <p><a href="<?php echo urlShop("index","selfindex")?>">独易网</a></p>
+                        <p><a href="<?php echo urlCMS("web_special","index",array("special_id"=>18))?>">独一张</a></p>
+                        <p><a href="#">食维健</a></p>
+                    </div>
+                </li>
+                
+                <?php }else{?>
                 <li class="head_list_zn">
                     <a  class="name" <?php
         if($nav['nav_new_open']) {
@@ -97,6 +128,7 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
                         <?php echo $nav['nav_title'] ?>
                     </a>
                 </li>
+                 <?php }?>
                 <?php }?>
                 <?php }?>
                 <?php }?>
@@ -639,6 +671,21 @@ if(strpos($agent,"comFront") || strpos($agent,"iPhone") || strpos($agent,"MIDP-2
     <script src="<?php echo SHOP_TEMPLATES_URL;?>/group/js/jquery.gallery.js"></script>
     <script src="<?php echo SHOP_RESOURCE_SITE_URL;?>/js/jquery.easyui.min.js"></script>
     <script>
+    //移上去下拉 独易品
+    let wait;
+    $('#dyp').hover(
+        function () {
+            wait=setTimeout(()=>{
+                $('.dyw_list').slideDown('normal')
+            },200)
+        },
+        function () {
+            clearTimeout(wait);
+            $('.dyw_list').slideUp('normal')
+        }
+    )
+
+    
         var search_flag_zn=true;
         $('.search_zn').click(function(){
             if(search_flag_zn==true){

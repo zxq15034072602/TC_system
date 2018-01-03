@@ -374,6 +374,17 @@ class videoControl extends BaseHomeControl {
                     }
                 $video_html=$video_model->get_player(1,$video_list,$video_url);
                 break;
+            case 2:
+                $condition=array('video_recommend'=>$video_recommend);
+                $condition['upload_type']=7;
+                $video_list=$video_model->getJoinList($condition,$page);
+                if($video_list&&is_array($video_list)){
+                    foreach ($video_list as $k=> $video){
+                        $video_list[$k]['video_ad_url']=UPLOAD_SITE_URL.DS."video".DS.$video['video_ad_url'];
+                    }
+                }
+                $video_html=$video_model->get_player(2,$video_list,$video_url,$video_recommend);
+                break;
         }
         echo $video_html;
     }

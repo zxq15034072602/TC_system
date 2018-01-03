@@ -1,16 +1,18 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 <link rel="stylesheet" href="<?php echo CMS_TEMPLATES_URL;?>/css/cms/jky_details_sxy.css">
 <script src="<?php echo RESOURCE_SITE_URL;?>/js/cms/cms_animate.js"></script>
+<style>
 
+</style>
 <div class="details_content">
     <div id="details_box">
         <div id="details_left">
             <!--标题-->
            	<div class="jump_title">
             <p><a href="<?php echo urlShop('index','groupindex')?>">首页</a></p>
-            <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'news_list_03.png';?>" alt="">
+            <img src="<?php echo CMS_TEMPLATES_URL.DS.'/images/cms/news_list_03.png';?>" alt="">
             <p><a href="<?php echo urlCMS('index','index');?>">健康云</a></p>
-            <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'news_list_03.png';?>" alt="">
+            <img src="<?php echo  CMS_TEMPLATES_URL.DS.'/images/cms/news_list_03.png';?>" alt="">
             <p class="show"><?php echo $output['article_detail']['article_title'];?></p>
             </div>
             <!--文章内容-->
@@ -21,6 +23,7 @@
                     <span></span>
                     <p class="article_time"><?php echo date('Y.m.d',$output['article_detail']['article_publish_time']);?></p>
                 </div>
+               
    				<?php echo $output['article_detail']['article_content']; echo'<br/><br/><br/>'?>
    				
                 <div class="article_copyright">
@@ -64,7 +67,7 @@
                     <?php if(!empty($output['pre_article']) && is_array($output['pre_article'])){?>
                         <li class="left">
                             <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$output['pre_article']['article_id']))?>">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'details_sxy_08.png';?>" alt="">
+                                <img src="<?php echo CMS_TEMPLATES_URL.DS.'/images/cms/details_sxy_08.png';?>" alt="">
                                 <h1><?php echo str_cut($output['pre_article']['article_title'], 18);?></h1>
                                 <span>上一篇</span>
                             </a>
@@ -72,7 +75,7 @@
                     <?php }else{?>
                     	<li class="left">
                             <a href="">
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'details_sxy_08.png';?>" alt="">
+                                <img src="<?php echo CMS_TEMPLATES_URL.DS.'/images/cms/details_sxy_08.png';?>" alt="">
                                 <h1><?php echo '没有上一篇文章'?></h1>
                                 <span>上一篇</span>
                             </a>
@@ -83,7 +86,7 @@
                             <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$output['next_article']['article_id']))?>">
                                 <span>下一篇</span>
                                 <h1><?php echo str_cut($output['next_article']['article_title'], 18)?></h1>
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'details_sxy_09.png';?>" alt="">
+                                <img src="<?php echo CMS_TEMPLATES_URL.DS.'/images/cms/details_sxy_09.png';?>" alt="">
                             </a>
                         </li>
                     <?php }else{?>
@@ -91,7 +94,7 @@
                             <a href="">
                                 <span>下一篇</span>
                                 <h1><?php echo '没有下一篇文章'?></h1>
-                                <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'details_sxy_09.png';?>" alt="">
+                                <img src="<?php echo CMS_TEMPLATES_URL.DS.'/images/cms/details_sxy_09.png';?>" alt="">
                             </a>
                     	</li>
                     <?php }?>
@@ -102,7 +105,7 @@
             <?php if(is_array($output['article_link_list']) && !empty($output['article_link_list'])){?>
             <div class="interest_article">
                 <div class="interest_title">
-                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'details_sxy_10.jpg';?>" alt="">
+                    <img src="<?php echo CMS_TEMPLATES_URL.DS.'/images/cms/details_sxy_10.jpg';?>" alt="">
                     <p>您可能感兴趣的文章</p>
                 </div>
                 <ul class="int_art_list">
@@ -194,50 +197,46 @@
             <div class="art_author_jieshao">
                 <div class="author_photo">
                     <div>
-                        <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'details_sxy_07.jpg';?>" alt="">
+                        <?php if($output['article_detail']['article_type']==1) {?>
+                        <img src="<?php echo CMS_TEMPLATES_URL."/images/cms/dywadmin.png";?>" alt="">
+                        <?php }else {?>
+                        <?php if($output['article_detail']['member_info']['member_avatar']) {?>
+                        <img src="<?php echo UPLOAD_SITE_URL."/shop/avatar/".$output['article_detail']['member_info']['member_avatar'];?>" alt="">
+                        <?php }else{?>
+                        <img src="<?php echo UPLOAD_SITE_URL."/shop/common/default_user_portrait.gif";?>" alt="">
+                        <?php }?>
+                        <?php }?>
                     </div>
                 </div>
                 <div class="author_name">
                     <p class="name_"><?php echo $output['article_detail']['article_author'];?></p>
                     <span></span>
-                    <p class="position"><?php if($output['article_detail']['article_author']=='admin'){echo '独易网管理员';}?></p>
+                    <p class="position"><?php if($output['article_detail']['article_type']=='1'){echo '独易网管理员';}else{echo "独易网会员";}?></p>
                 </div>
-                <div class="author_info"><?php if($output['article_detail']['article_author']=='admin'){echo '独易网管理员';}?>微信：dyw20170922</div>
+                <?php if($output['article_detail']['article_type']=='1') {?>
+                <div class="author_info">独易网管理员 ，微信：dyw20170922</div>
+                <?php }else {?>
+                <div class="author_info">独易网会员 ，邮箱：<?php echo $output['article_detail']['member_info']['member_email']?></div>
+                <?php }?>
                 <div class="author_works">
-                    <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_CMS.DS.'details_sxy_10.jpg';?>" alt="">
+                    <img src="<?php echo CMS_TEMPLATES_URL.DS.'images/cms/details_sxy_10.jpg';?>" alt="">
                     <span>共发表</span>
-                    <p class="article_num">1625</p>
+                    <p class="article_num"><?php echo count($output['author_article_list'])?></p>
                     <span>篇</span>
                 </div>
                 <ul class="author_art_list">
+                    <?php if($output['author_article_list']&&is_array($output['author_article_list'])) { $num=0; ?>
+                    <?php foreach ($output['author_article_list'] as $key=> $article) {?>
+                    <?php if($num>4){break;}?>
                     <li>
-                        <a href="" class="author_art_list_title">带状疱疹会遗传传染吗？带状疱疹会传染吗？</a>
+                        <a href="<?php echo urlCMS("article","article_detail",array("article_id"=>$article['article_id']))?>" class="author_art_list_title"><?php echo str_cut($article['article_title'], 20)?></a>
                         <div>
-                            <p class="author_art_list_time">1小时前</p>
-                            <p class="author_art_list_from">健康资讯</p>
+                            <p class="author_art_list_time"><?php echo date("Y-m-d h:i:s",$article['article_publish_time'])?></p>
+                            <p class="author_art_list_from">健康云</p>
                         </div>
                     </li>
-                    <li>
-                        <a href="" class="author_art_list_title">带状疱疹会遗传传染吗？带状疱疹会传染吗？</a>
-                        <div>
-                            <p class="author_art_list_time">1小时前</p>
-                            <p class="author_art_list_from">健康资讯</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="" class="author_art_list_title">带状疱疹会遗传传染吗？带状疱疹会传染吗？</a>
-                        <div>
-                            <p class="author_art_list_time">1小时前</p>
-                            <p class="author_art_list_from">健康资讯</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="" class="author_art_list_title">带状疱疹会遗传传染吗？带状疱疹会传染吗？</a>
-                        <div>
-                            <p class="author_art_list_time">1小时前</p>
-                            <p class="author_art_list_from">健康资讯</p>
-                        </div>
-                    </li>
+                  <?php $num++;} ?>
+                  <?php }?>
                 </ul>
             </div>
             <div class="right_img">
