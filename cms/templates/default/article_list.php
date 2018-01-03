@@ -31,9 +31,10 @@
                 </ul>
             </div>
             <!--选项卡内容-->
-            <?php foreach($output['article_list'] as $list){?>
+            
              <div class="news_cont_list on">
                 <ul class="news_list">
+                <?php foreach($output['article_list'] as $list){?>
                     <li>
                         <a href="<?php echo urlCMS('article','article_detail',array('article_id'=>$list['article_id']))?>">
                             <div class="news_title">
@@ -44,10 +45,11 @@
                             <h1><?php echo $list['article_publish_time'];?></h1>
                         </a>
                     </li>
+                     <?php }?>
                 </ul>
                 
             </div>
-            <?php }?>
+           
             <div class="pagination"><?php echo $output['show_page'];?></div>
 			
         </div>
